@@ -1,0 +1,331 @@
+
+import { useState } from 'react';
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/hooks/use-toast';
+
+const Contact = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    eventType: '',
+    eventDate: '',
+    guestCount: '',
+    budget: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Create WhatsApp message
+    const whatsappMessage = `
+Event Inquiry from ${formData.name}
+
+Event Details:
+- Type: ${formData.eventType}
+- Date: ${formData.eventDate}
+- Guests: ${formData.guestCount}
+- Budget: ${formData.budget}
+
+Contact Information:
+- Email: ${formData.email}
+- Phone: ${formData.phone}
+
+Message: ${formData.message}
+
+Please provide a detailed quote for this event.
+    `;
+
+    const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, '_blank');
+
+    toast({
+      title: "Inquiry Sent!",
+      description: "Your inquiry has been sent via WhatsApp. We'll get back to you soon!",
+    });
+
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      eventType: '',
+      eventDate: '',
+      guestCount: '',
+      budget: '',
+      message: ''
+    });
+  };
+
+  const contactInfo = [
+    {
+      icon: Phone,
+      title: "Phone",
+      details: ["+91 98765 43210", "+91 87654 32109"],
+      link: "tel:+919876543210"
+    },
+    {
+      icon: MessageCircle,
+      title: "WhatsApp",
+      details: ["+91 98765 43210"],
+      link: "https://wa.me/919876543210"
+    },
+    {
+      icon: Mail,
+      title: "Email",
+      details: ["info@srinidhicatering.com", "booking@srinidhicatering.com"],
+      link: "mailto:info@srinidhicatering.com"
+    },
+    {
+      icon: MapPin,
+      title: "Address",
+      details: ["123 Catering Street", "Coimbatore, Tamil Nadu 641001"],
+      link: "https://maps.google.com"
+    }
+  ];
+
+  return (
+    <section id="contact" className="py-20 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+            Get In <span className="text-orange-600">Touch</span>
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-orange-600 to-red-600 mx-auto mb-6"></div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Ready to plan your event? Contact us for a personalized quote and consultation
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
+          {/* Contact Information */}
+          <div>
+            <h3 className="text-3xl font-bold text-gray-800 mb-8">Contact Information</h3>
+            
+            <div className="space-y-6 mb-8">
+              {contactInfo.map((info, index) => (
+                <a
+                  key={index}
+                  href={info.link}
+                  target={info.link.startsWith('http') ? '_blank' : undefined}
+                  rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow group"
+                >
+                  <div className="bg-gradient-to-br from-orange-100 to-red-100 rounded-full p-3 group-hover:scale-110 transition-transform">
+                    <info.icon className="h-6 w-6 text-orange-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-1">{info.title}</h4>
+                    {info.details.map((detail, detailIndex) => (
+                      <p key={detailIndex} className="text-gray-600">{detail}</p>
+                    ))}
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {/* Business Hours */}
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="flex items-center space-x-3 mb-4">
+                <Clock className="h-6 w-6 text-orange-600" />
+                <h4 className="font-semibold text-gray-800">Business Hours</h4>
+              </div>
+              <div className="space-y-2 text-gray-600">
+                <div className="flex justify-between">
+                  <span>Monday - Saturday</span>
+                  <span>8:00 AM - 10:00 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Sunday</span>
+                  <span>9:00 AM - 9:00 PM</span>
+                </div>
+                <p className="text-sm text-orange-600 mt-3">
+                  *Available 24/7 for emergency catering services
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div>
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 className="text-3xl font-bold text-gray-800 mb-6">Send Inquiry</h3>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <Input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone Number *
+                    </label>
+                    <Input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="Enter your phone number"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address
+                  </label>
+                  <Input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Enter your email address"
+                  />
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Event Type *
+                    </label>
+                    <select
+                      name="eventType"
+                      value={formData.eventType}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    >
+                      <option value="">Select event type</option>
+                      <option value="Wedding">Wedding</option>
+                      <option value="Corporate Event">Corporate Event</option>
+                      <option value="Birthday Party">Birthday Party</option>
+                      <option value="Anniversary">Anniversary</option>
+                      <option value="Religious Function">Religious Function</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Event Date *
+                    </label>
+                    <Input
+                      type="date"
+                      name="eventDate"
+                      value={formData.eventDate}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Number of Guests *
+                    </label>
+                    <Input
+                      type="number"
+                      name="guestCount"
+                      value={formData.guestCount}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="e.g., 100"
+                      min="1"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Budget Range
+                    </label>
+                    <select
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleInputChange}
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    >
+                      <option value="">Select budget range</option>
+                      <option value="Under ₹50,000">Under ₹50,000</option>
+                      <option value="₹50,000 - ₹1,00,000">₹50,000 - ₹1,00,000</option>
+                      <option value="₹1,00,000 - ₹2,00,000">₹1,00,000 - ₹2,00,000</option>
+                      <option value="₹2,00,000 - ₹5,00,000">₹2,00,000 - ₹5,00,000</option>
+                      <option value="Above ₹5,00,000">Above ₹5,00,000</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Special Requirements
+                  </label>
+                  <Textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={4}
+                    placeholder="Tell us about your event requirements, dietary restrictions, or any special requests..."
+                  />
+                </div>
+
+                <Button 
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white py-3"
+                >
+                  <Send className="h-5 w-5 mr-2" />
+                  Send Inquiry via WhatsApp
+                </Button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Contact Buttons */}
+        <div className="text-center mt-16">
+          <h3 className="text-2xl font-bold text-gray-800 mb-6">Need Immediate Assistance?</h3>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="tel:+919876543210"
+              className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-green-700 transition-all flex items-center justify-center"
+            >
+              <Phone className="h-5 w-5 mr-2" />
+              Call Now
+            </a>
+            <a
+              href="https://wa.me/919876543210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-green-400 to-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-green-500 hover:to-green-600 transition-all flex items-center justify-center"
+            >
+              <MessageCircle className="h-5 w-5 mr-2" />
+              WhatsApp Chat
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;

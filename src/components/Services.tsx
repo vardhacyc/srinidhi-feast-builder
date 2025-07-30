@@ -1,0 +1,91 @@
+
+import { Crown, Building, Users, Utensils } from 'lucide-react';
+
+const Services = () => {
+  const services = [
+    {
+      icon: Crown,
+      title: "Wedding Catering",
+      description: "Make your special day unforgettable with our exquisite wedding menus and impeccable service",
+      features: ["Traditional South Indian Feast", "Custom Menu Planning", "Professional Service Staff", "Decoration Support"]
+    },
+    {
+      icon: Building,
+      title: "Corporate Catering",
+      description: "Professional catering solutions for meetings, conferences, and corporate events",
+      features: ["Business Lunch Packages", "Conference Catering", "Office Parties", "Product Launches"]
+    },
+    {
+      icon: Users,
+      title: "Institutional Catering",
+      description: "Reliable and nutritious meal solutions for institutions and large groups",
+      features: ["Educational Institutions", "Healthcare Facilities", "Hostels & Mess", "Bulk Catering"]
+    },
+    {
+      icon: Utensils,
+      title: "Event Catering",
+      description: "Complete catering solutions for all types of celebrations and gatherings",
+      features: ["Birthday Parties", "Anniversaries", "Religious Functions", "Social Gatherings"]
+    }
+  ];
+
+  return (
+    <section id="services" className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+            Our <span className="text-orange-600">Services</span>
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-orange-600 to-red-600 mx-auto mb-6"></div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Comprehensive catering solutions tailored to your specific needs and occasions
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {services.map((service, index) => (
+            <div 
+              key={index}
+              className="bg-gradient-to-br from-gray-50 to-orange-50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group"
+            >
+              <div className="bg-gradient-to-br from-orange-100 to-red-100 rounded-full p-4 w-16 h-16 mb-6 group-hover:scale-110 transition-transform">
+                <service.icon className="h-8 w-8 text-orange-600" />
+              </div>
+              
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">{service.title}</h3>
+              <p className="text-gray-600 mb-6 text-lg">{service.description}</p>
+              
+              <ul className="space-y-2">
+                {service.features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className="flex items-center text-gray-700">
+                    <div className="w-2 h-2 bg-orange-600 rounded-full mr-3"></div>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Call to action */}
+        <div className="text-center mt-16">
+          <div className="bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl p-8 text-white">
+            <h3 className="text-3xl font-bold mb-4">Ready to Plan Your Event?</h3>
+            <p className="text-xl mb-6 opacity-90">Let us help you create an unforgettable culinary experience</p>
+            <button 
+              onClick={() => {
+                const element = document.querySelector('#contact');
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            >
+              Get Free Consultation
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;
