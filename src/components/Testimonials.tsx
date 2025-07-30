@@ -1,5 +1,6 @@
 
 import { Star, Quote } from 'lucide-react';
+import ScribbleUnderline from '@/components/ui/ScribbleUnderline';
 
 const Testimonials = () => {
   const testimonials = [
@@ -7,14 +8,14 @@ const Testimonials = () => {
       name: "Rajesh Kumar",
       event: "Wedding Reception",
       rating: 5,
-      text: "Srinidhi Catering made our wedding reception absolutely perfect! The food was delicious and the service was impeccable. All our guests couldn't stop praising the authentic South Indian flavors.",
+      text: "Yolo Caterers made our wedding reception absolutely perfect! The food was delicious and the service was impeccable. All our guests couldn't stop praising the authentic South Indian flavors.",
       location: "Coimbatore"
     },
     {
       name: "Priya Mahesh",
       event: "Corporate Event",
       rating: 5,
-      text: "We've been using Srinidhi Catering for all our corporate events for the past 2 years. Their consistency in quality and timely service has never disappointed us. Highly recommended!",
+      text: "We've been using Yolo Caterers for all our corporate events for the past 2 years. Their consistency in quality and timely service has never disappointed us. Highly recommended!",
       location: "Coimbatore"
     },
     {
@@ -45,44 +46,50 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-24 bg-bg-neutral">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            What Our <span className="text-orange-600">Clients Say</span>
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8">
+            What Our{' '}
+            <span className="relative inline-block">
+              <ScribbleUnderline variant="smooth" delay={1.8} color="#B8860B">
+                <span className="text-primary">Clients Say</span>
+              </ScribbleUnderline>
+              {/* Hand-drawn yellow underline effect */}
+              <div className="absolute -bottom-2 left-0 w-full h-4 bg-accent opacity-60 transform -rotate-1 rounded-lg"></div>
+            </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-orange-600 to-red-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
             Don't just take our word for it - hear from our satisfied customers
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="bg-gradient-to-br from-gray-50 to-orange-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow relative"
+              className="bg-white rounded-3xl p-10 shadow-2xl hover:shadow-3xl transition-all duration-300 relative border-2 border-primary/20 hover:border-primary/40 hover:-translate-y-2"
             >
-              <div className="absolute top-4 right-4 text-orange-200">
-                <Quote className="h-12 w-12" />
+              <div className="absolute top-6 right-6 text-accent/30">
+                <Quote className="h-16 w-16" />
               </div>
               
-              <div className="flex items-center mb-4">
+              <div className="flex items-center mb-6">
                 {renderStars(testimonial.rating)}
               </div>
               
-              <p className="text-gray-700 text-lg mb-6 leading-relaxed">
+              <p className="text-gray-700 text-xl mb-8 leading-relaxed font-medium">
                 "{testimonial.text}"
               </p>
               
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-semibold text-gray-800 text-lg">{testimonial.name}</h4>
-                  <p className="text-orange-600 font-medium">{testimonial.event}</p>
-                  <p className="text-gray-600 text-sm">{testimonial.location}</p>
+                  <h4 className="font-black text-gray-900 text-xl mb-1">{testimonial.name}</h4>
+                  <p className="text-primary font-black text-lg">{testimonial.event}</p>
+                  <p className="text-gray-600 text-lg font-medium">{testimonial.location}</p>
                 </div>
-                <div className="bg-white rounded-full p-4 shadow-md">
-                  <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-400 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                <div className="bg-gradient-to-br from-primary to-accent rounded-full p-2 shadow-xl">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-primary font-black text-2xl shadow-lg">
                     {testimonial.name.charAt(0)}
                   </div>
                 </div>
@@ -91,28 +98,28 @@ const Testimonials = () => {
           ))}
         </div>
 
-        {/* Call to action */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl p-8 text-white max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold mb-4">Ready to Create Your Own Success Story?</h3>
-            <p className="text-xl mb-6 opacity-90">
+        {/* Call to action with vibrant styling */}
+        <div className="text-center mt-20">
+          <div className="bg-gradient-to-r from-primary via-accent to-green rounded-3xl p-12 text-white max-w-4xl mx-auto shadow-2xl">
+            <h3 className="text-4xl font-black mb-6">Ready to Create Your Own Success Story?</h3>
+            <p className="text-xl mb-8 opacity-90 font-medium leading-relaxed">
               Join hundreds of satisfied customers who trust us for their special occasions
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button 
                 onClick={() => {
                   const element = document.querySelector('#contact');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                className="bg-white text-primary px-10 py-4 rounded-xl font-black text-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105 shadow-xl"
               >
                 Book Your Event
               </button>
               <a 
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919994316559"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors"
+                className="border-4 border-white text-white px-10 py-4 rounded-xl font-black text-lg hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105"
               >
                 Chat on WhatsApp
               </a>

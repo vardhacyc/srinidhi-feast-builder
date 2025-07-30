@@ -1,5 +1,6 @@
 
 import { Crown, Building, Users, Utensils } from 'lucide-react';
+import ScribbleUnderline from '@/components/ui/ScribbleUnderline';
 
 const Services = () => {
   const services = [
@@ -30,36 +31,42 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="services" className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Our <span className="text-orange-600">Services</span>
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8">
+            Our{' '}
+            <span className="relative inline-block">
+              <ScribbleUnderline variant="rough" delay={1.0}>
+                <span className="text-primary">Services</span>
+              </ScribbleUnderline>
+              {/* Hand-drawn yellow underline effect */}
+              <div className="absolute -bottom-2 left-0 w-full h-4 bg-accent opacity-60 transform -rotate-1 rounded-lg"></div>
+            </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-orange-600 to-red-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
             Comprehensive catering solutions tailored to your specific needs and occasions
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-10">
           {services.map((service, index) => (
             <div 
               key={index}
-              className="bg-gradient-to-br from-gray-50 to-orange-50 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group"
+              className="bg-bg-neutral rounded-3xl p-10 hover:shadow-2xl transition-all duration-300 group border-2 border-primary/20 hover:border-primary/40 hover:-translate-y-2"
             >
-              <div className="bg-gradient-to-br from-orange-100 to-red-100 rounded-full p-4 w-16 h-16 mb-6 group-hover:scale-110 transition-transform">
-                <service.icon className="h-8 w-8 text-orange-600" />
+              <div className="bg-gradient-to-br from-primary to-accent rounded-full p-6 w-20 h-20 mb-8 group-hover:scale-110 transition-transform shadow-lg">
+                <service.icon className="h-8 w-8 text-white" />
               </div>
               
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">{service.title}</h3>
-              <p className="text-gray-600 mb-6 text-lg">{service.description}</p>
+              <h3 className="text-3xl font-black text-gray-900 mb-6">{service.title}</h3>
+              <p className="text-gray-700 mb-8 text-lg font-medium leading-relaxed">{service.description}</p>
               
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-gray-700">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mr-3"></div>
-                    {feature}
+                  <li key={featureIndex} className="flex items-center text-gray-700 text-lg">
+                    <div className="w-3 h-3 bg-green rounded-full mr-4 flex-shrink-0 shadow-sm"></div>
+                    <span className="font-medium">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -67,17 +74,19 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Call to action */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl p-8 text-white">
-            <h3 className="text-3xl font-bold mb-4">Ready to Plan Your Event?</h3>
-            <p className="text-xl mb-6 opacity-90">Let us help you create an unforgettable culinary experience</p>
+        {/* Call to action with vibrant styling */}
+        <div className="text-center mt-20">
+          <div className="bg-gradient-to-r from-primary via-accent to-green rounded-3xl p-12 text-white shadow-2xl">
+            <h3 className="text-4xl font-black mb-6">Ready to Plan Your Event?</h3>
+            <p className="text-xl mb-8 opacity-90 font-medium max-w-2xl mx-auto leading-relaxed">
+              Let us help you create an unforgettable culinary experience that your guests will remember forever
+            </p>
             <button 
               onClick={() => {
                 const element = document.querySelector('#contact');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              className="bg-white text-primary px-10 py-4 rounded-xl font-black text-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105 shadow-xl"
             >
               Get Free Consultation
             </button>

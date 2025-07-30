@@ -1,5 +1,6 @@
 
 import { Heart, Shield, Users, Trophy } from 'lucide-react';
+import ScribbleUnderline from '@/components/ui/ScribbleUnderline';
 
 const About = () => {
   const values = [
@@ -26,62 +27,80 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section id="about" className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            About <span className="text-orange-600">Srinidhi Catering</span>
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8">
+            About{' '}
+            <span className="relative inline-block">
+              <ScribbleUnderline variant="smooth" delay={0.8}>
+                <span className="text-primary">Yolo Caterers</span>
+              </ScribbleUnderline>
+              {/* Hand-drawn yellow underline effect */}
+              <div className="absolute -bottom-2 left-0 w-full h-4 bg-accent opacity-60 transform rotate-1 rounded-lg"></div>
+              {/* Added gold accent border for premium touch */}
+              <div className="absolute -bottom-4 left-2 w-20 h-1 bg-gold rounded-full"></div>
+            </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-orange-600 to-red-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Carrying forward the legacy of Kovai Catering with modern innovation and traditional flavors
+          <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
+            A unit of Sri Nidhi Catering - Creating delightful memories that your taste buds will fondly remember forever
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           <div>
-            <div className="bg-gradient-to-br from-orange-100 to-red-100 rounded-2xl p-8 h-96 flex items-center justify-center">
+            <div className="bg-gradient-to-br from-primary/10 to-accent/20 rounded-3xl p-12 h-96 flex items-center justify-center border-4 border-primary/20 shadow-2xl">
               <div className="text-center">
-                <div className="bg-white rounded-full p-6 w-24 h-24 mx-auto mb-4 shadow-lg flex items-center justify-center">
-                  <Heart className="h-12 w-12 text-orange-600" />
+                <div className="bg-white rounded-full p-8 w-32 h-32 mx-auto mb-6 shadow-xl flex items-center justify-center border-4 border-primary">
+                  <Heart className="h-16 w-16 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800">15+ Years</h3>
-                <p className="text-gray-600">of Culinary Excellence</p>
+                <h3 className="text-3xl font-black text-gray-900 mb-2">15+ Years</h3>
+                <p className="text-gray-700 font-semibold text-lg">of Culinary Excellence</p>
               </div>
             </div>
           </div>
 
-          <div className="space-y-6">
-            <h3 className="text-3xl font-bold text-gray-800 mb-6">Our Story</h3>
-            <p className="text-gray-600 text-lg leading-relaxed">
-              Srinidhi Catering is a proud subsidiary of the renowned Kovai Catering, inheriting over 15 years 
-              of culinary expertise and customer satisfaction. Based in the vibrant city of Coimbatore, we 
-              specialize in creating memorable dining experiences for all occasions.
-            </p>
-            <p className="text-gray-600 text-lg leading-relaxed">
-              Our journey began with a simple mission: to serve authentic South Indian cuisine with modern 
-              presentation and exceptional service. Today, we're trusted by thousands of families and 
-              businesses across Coimbatore for their most important celebrations.
-            </p>
-            <p className="text-gray-600 text-lg leading-relaxed">
-              From intimate family gatherings to grand weddings and corporate events, we bring the same 
-              level of dedication, quality, and flavor that has made Kovai Catering a household name.
-            </p>
+          <div className="space-y-8">
+            <h3 className="text-4xl font-black text-gray-900 mb-6">
+              Our <span className="text-primary">Story</span>
+            </h3>
+            <div className="space-y-6">
+              <p className="text-gray-700 text-lg leading-relaxed">
+                <strong className="text-primary">Yolo a unit of Sri Nidhi Catering</strong> is an independent Catering Company based in Coimbatore 
+                providing professional catering services to private and corporate clients. Building on the 
+                legacy of <strong className="text-header-bar">Kovai Catering</strong>, our food creates a delightful memory that your taste buds will 
+                fondly remember forever.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Ours is a <strong className="text-primary">mega food production set-up</strong> with a state-of-the-art kitchen and our outlet caters 
+                to the hunger pangs of thousands of people daily, creating a variety of dishes. With chefs 
+                who can cook a wide range of authentic, traditional dishes from any chosen cuisine and 
+                technology that brings menus at the click of a button.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Carrying forward the trusted reputation of <strong className="text-header-bar">Kovai Catering</strong>, Yolo Caterers has the winning 
+                combination to keep your tummy happy, whether it's intimate family gatherings, grand weddings, 
+                or corporate events. We bring <strong className="text-primary">excellence and flavor</strong> to every occasion with over 15 years of 
+                culinary expertise.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Values section */}
+        {/* Values section with vibrant styling and gold accents */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {values.map((value, index) => (
             <div 
               key={index}
-              className="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow group"
+              className="bg-white rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-gold/30 hover:border-gold group hover:-translate-y-2"
             >
-              <div className="bg-gradient-to-br from-orange-100 to-red-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <value.icon className="h-8 w-8 text-orange-600" />
+              <div className="bg-gradient-to-br from-primary to-accent rounded-full p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform shadow-lg border-2 border-gold/20">
+                <value.icon className="h-8 w-8 text-white" />
               </div>
-              <h4 className="text-xl font-semibold text-gray-800 mb-3">{value.title}</h4>
-              <p className="text-gray-600">{value.description}</p>
+              <h4 className="text-xl font-black text-gray-900 mb-4">{value.title}</h4>
+              <p className="text-gray-700 leading-relaxed">{value.description}</p>
+              {/* Gold accent divider for premium touch */}
+              <div className="w-12 h-1 bg-gold rounded-full mx-auto mt-4"></div>
             </div>
           ))}
         </div>

@@ -17,42 +17,36 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 41 100% 44%; /* Deep Amber Primary - #E1A200 converted to HSL */
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
+    --secondary: 84 100% 59%; /* Fresh green secondary */
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 210 40% 96.1%;
+    --muted: 60 9% 96%; /* Light neutral */
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 45 94% 38%; /* Darker Amber Accent - #B8860B converted to HSL */
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 41 100% 44%; /* Updated to match new primary amber */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
+    /* Updated Sidebar Colors to Match New Palette */
+    --sidebar-background: 60 9% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    --sidebar-primary: 41 100% 44%; /* Amber Primary */
     --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
+    --sidebar-accent: 60 5% 96%;
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 41 100% 44%; /* Amber Primary */
   }
 
   .dark {
@@ -65,16 +59,16 @@ All colors MUST be HSL.
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 45 93% 47%; /* Food-grade yellow for dark mode */
     --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 84 33% 25%; /* Darker green for dark mode */
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 84 50% 30%; /* Darker banana leaf for dark mode */
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -82,15 +76,15 @@ All colors MUST be HSL.
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 45 93% 47%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary: 45 93% 47%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 45 93% 47%;
   }
 }
 
@@ -101,5 +95,201 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Premium Organic Design System Animations */
+@layer utilities {
+  /* Floating animation for hero particles */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+      opacity: 0.4;
+    }
+    33% {
+      transform: translateY(-20px) translateX(10px) rotate(120deg);
+      opacity: 0.8;
+    }
+    66% {
+      transform: translateY(10px) translateX(-10px) rotate(240deg);
+      opacity: 0.6;
+    }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  /* Fade in animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  /* Pulse glow effect */
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(255, 199, 0, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 199, 0, 0.6), 0 0 30px rgba(255, 199, 0, 0.4);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  /* Gradient animation */
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+  }
+
+  /* Premium shadow utilities */
+  .shadow-premium {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 
+                0 4px 12px rgba(0, 0, 0, 0.05),
+                0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .shadow-3xl {
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15), 
+                0 10px 20px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Curved divider utilities */
+  .curve-divider::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: white;
+    clip-path: ellipse(100% 100% at 50% 100%);
+  }
+
+  /* Smooth transitions */
+  .transition-premium {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Typography enhancements */
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  /* ===================================================================
+     SCRIBBLE UNDERLINE ANIMATIONS
+     ================================================================= */
+  
+  /* Scribble animation keyframes */
+  @keyframes drawScribble {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes fadeInScribble {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Scribble container styles */
+  .scribble-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .scribble-svg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 32px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Responsive scribble adjustments */
+  @media (max-width: 768px) {
+    .scribble-svg {
+      height: 24px;
+      bottom: -6px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .scribble-svg {
+      height: 20px;
+      bottom: -4px;
+    }
+  }
+
+  /* Scribble path styles */
+  .scribble-path {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+  }
+
+  .scribble-path.animate {
+    animation: drawScribble 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  /* Different scribble variants */
+  .scribble-wavy {
+    filter: drop-shadow(0 2px 4px rgba(255, 199, 0, 0.2));
+  }
+
+  .scribble-rough {
+    filter: drop-shadow(0 1px 3px rgba(255, 199, 0, 0.3));
   }
 }

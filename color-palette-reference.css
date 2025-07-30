@@ -1,0 +1,269 @@
+/* ===================================================================
+   YOLO CATERERS - NEW COLOR PALETTE REFERENCE
+   Updated: January 2025
+   ================================================================= */
+
+/* CSS Custom Properties (Variables) */
+:root {
+  /* Primary Colors - Main Theme */
+  --primary-yellow: #FFC700;    /* Main highlights, buttons, key areas */
+  --accent-yellow: #FFD900;     /* Secondary highlights, backgrounds, hover states */
+  --site-green: #0B6E4F;        /* Navigation, icons, headings, CTA elements */
+  --gold-accent: #F1C40F;       /* Premium touches, borders, dividers, badges */
+  
+  /* Supporting Colors */
+  --bg-neutral: #F9F9F7;        /* Neutral background */
+  --white: #FFFFFF;             /* Pure white */
+  --gray-custom: #E5E7EB;       /* Custom gray */
+  
+  /* Text Colors for Contrast */
+  --text-on-yellow: #000000;    /* Black text on yellow backgrounds */
+  --text-on-green: #FFFFFF;     /* White text on green backgrounds */
+  --text-on-gold: #000000;      /* Black text on gold backgrounds */
+}
+
+/* ===================================================================
+   USAGE EXAMPLES - Component Classes
+   ================================================================= */
+
+/* Header & Navigation */
+.header {
+  background: var(--site-green);
+  color: var(--text-on-green);
+}
+
+.nav-link {
+  color: #4A5568; /* gray-700 */
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--site-green);
+}
+
+/* Logo */
+.logo {
+  background: linear-gradient(to right, var(--primary-yellow), var(--site-green));
+  color: var(--text-on-green);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--primary-yellow);
+  color: var(--text-on-yellow);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent-yellow);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--site-green);
+  border: 2px solid var(--site-green);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--site-green);
+  color: var(--text-on-green);
+}
+
+/* Call-to-Action Elements */
+.cta {
+  background: var(--site-green);
+  color: var(--text-on-green);
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+}
+
+.cta:hover {
+  background: #0A5D43; /* Darker green on hover */
+}
+
+/* Highlights & Accents */
+.highlight {
+  border-bottom: 3px solid var(--gold-accent);
+  position: relative;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 10%;
+  width: 20%;
+  height: 2px;
+  background: var(--gold-accent);
+  border-radius: 2px;
+}
+
+/* Premium Badges */
+.badge-premium {
+  background: var(--gold-accent);
+  color: var(--text-on-gold);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* Icons */
+.icon-primary {
+  color: var(--primary-yellow);
+}
+
+.icon-green {
+  color: var(--site-green);
+}
+
+.icon-gold {
+  color: var(--gold-accent);
+}
+
+/* Cards & Containers */
+.card {
+  background: var(--white);
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--gold-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-premium {
+  border-color: var(--gold-accent);
+  position: relative;
+}
+
+.card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary-yellow), var(--gold-accent));
+  border-radius: 1rem 1rem 0 0;
+}
+
+/* Gradients */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--primary-yellow), var(--accent-yellow));
+}
+
+.gradient-green-yellow {
+  background: linear-gradient(135deg, var(--site-green), var(--primary-yellow));
+}
+
+.gradient-premium {
+  background: linear-gradient(135deg, var(--gold-accent), var(--primary-yellow));
+}
+
+/* Text Colors */
+.text-primary {
+  color: var(--primary-yellow);
+}
+
+.text-green {
+  color: var(--site-green);
+}
+
+.text-gold {
+  color: var(--gold-accent);
+}
+
+/* Backgrounds */
+.bg-primary {
+  background-color: var(--primary-yellow);
+  color: var(--text-on-yellow);
+}
+
+.bg-green {
+  background-color: var(--site-green);
+  color: var(--text-on-green);
+}
+
+.bg-gold {
+  background-color: var(--gold-accent);
+  color: var(--text-on-gold);
+}
+
+.bg-neutral {
+  background-color: var(--bg-neutral);
+}
+
+/* ===================================================================
+   TAILWIND CSS EQUIVALENT CLASSES
+   ================================================================= */
+
+/*
+In your Tailwind classes, use:
+
+- text-primary (for #FFC700 text)
+- text-green (for #0B6E4F text) 
+- text-gold (for #F1C40F text)
+- bg-primary (for #FFC700 background)
+- bg-accent (for #FFD900 background)
+- bg-green (for #0B6E4F background)
+- bg-gold (for #F1C40F background)
+- border-primary, border-green, border-gold (for borders)
+- from-primary to-accent (for gradients)
+- hover:bg-accent, hover:text-green (for hover states)
+
+Examples:
+<button className="bg-primary hover:bg-accent text-white px-6 py-3 rounded-xl">
+<div className="border-2 border-gold/30 hover:border-gold">
+<span className="text-primary font-bold">
+<div className="bg-gradient-to-r from-primary to-green">
+*/
+
+/* ===================================================================
+   ACCESSIBILITY & CONTRAST NOTES
+   ================================================================= */
+
+/*
+✅ GOOD CONTRAST COMBINATIONS:
+- White text on green background (#0B6E4F)
+- Black text on yellow backgrounds (#FFC700, #FFD900)
+- Black text on gold background (#F1C40F)
+- Green text (#0B6E4F) on white background
+- Yellow/Gold text on dark backgrounds
+
+⚠️ AVOID:
+- Yellow text on white background (poor contrast)
+- Light colors on light backgrounds
+- Green text on yellow background
+*/
+
+/* ===================================================================
+   IMPLEMENTATION CHECKLIST
+   ================================================================= */
+
+/*
+✅ Updated Components:
+- ✅ Tailwind config (tailwind.config.ts)
+- ✅ Header component (navigation, logo, buttons)
+- ✅ Hero component (buttons, icons, gradients)
+- ✅ About component (highlights, cards, icons)
+- ✅ Footer component (links, social icons, accents)
+
+📋 Next Steps:
+- Test all components in browser
+- Verify accessibility/contrast
+- Update any remaining components (Services, Menu, Contact, etc.)
+- Add gold accents for premium touches
+- Test responsive design
+*/
