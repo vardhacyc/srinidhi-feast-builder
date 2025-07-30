@@ -64,6 +64,57 @@ const Testimonials = () => {
           </p>
         </div>
 
+        {/* Happy Customers Gallery */}
+        <div className="mb-20 bg-white rounded-3xl p-12 shadow-xl border-2 border-green/20">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl font-black text-gray-900 mb-4">
+              Happy <span className="text-green">Moments</span>
+            </h3>
+            <p className="text-lg text-gray-700">Capturing joy at every celebration</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <img 
+                src="/a2.jpg" 
+                alt="Happy Wedding Guests - Sri Nidhi Catering"
+                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h4 className="font-bold text-lg">Wedding Celebrations</h4>
+                <p className="text-sm opacity-90">Creating unforgettable moments</p>
+              </div>
+            </div>
+            
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <img 
+                src="/a3_demo.jpg" 
+                alt="Corporate Event Success - Sri Nidhi Catering"
+                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h4 className="font-bold text-lg">Corporate Events</h4>
+                <p className="text-sm opacity-90">Professional excellence</p>
+              </div>
+            </div>
+            
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <img 
+                src="/a4_outdoor.jpg" 
+                alt="Outdoor Celebration - Sri Nidhi Catering"
+                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h4 className="font-bold text-lg">Outdoor Events</h4>
+                <p className="text-sm opacity-90">Any venue, any occasion</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div 

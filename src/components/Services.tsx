@@ -53,23 +53,37 @@ const Services = () => {
           {services.map((service, index) => (
             <div 
               key={index}
-              className="bg-bg-neutral rounded-3xl p-10 hover:shadow-2xl transition-all duration-300 group border-2 border-primary/20 hover:border-primary/40 hover:-translate-y-2"
+              className="bg-bg-neutral rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 group border-2 border-primary/20 hover:border-primary/40 hover:-translate-y-2"
             >
-              <div className="bg-gradient-to-br from-primary to-accent rounded-full p-6 w-20 h-20 mb-8 group-hover:scale-110 transition-transform shadow-lg">
-                <service.icon className="h-8 w-8 text-white" />
+              {/* Service Image */}
+              <div className="relative h-64 overflow-hidden">
+                <img 
+                  src={index === 0 ? "/a2.jpg" : index === 1 ? "/a3_demo.jpg" : "/a4_outdoor.jpg"} 
+                  alt={`${service.title} - Sri Nidhi Catering`}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                
+                {/* Icon overlay */}
+                <div className="absolute top-4 right-4 bg-gradient-to-br from-primary to-accent rounded-full p-4 shadow-lg">
+                  <service.icon className="h-6 w-6 text-white" />
+                </div>
               </div>
               
-              <h3 className="text-3xl font-black text-gray-900 mb-6">{service.title}</h3>
-              <p className="text-gray-700 mb-8 text-lg font-medium leading-relaxed">{service.description}</p>
-              
-              <ul className="space-y-3">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-gray-700 text-lg">
-                    <div className="w-3 h-3 bg-green rounded-full mr-4 flex-shrink-0 shadow-sm"></div>
-                    <span className="font-medium">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Card Content */}
+              <div className="p-10">
+                <h3 className="text-3xl font-black text-gray-900 mb-6">{service.title}</h3>
+                <p className="text-gray-700 mb-8 text-lg font-medium leading-relaxed">{service.description}</p>
+                
+                <ul className="space-y-3">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center text-gray-700 text-lg">
+                      <div className="w-3 h-3 bg-green rounded-full mr-4 flex-shrink-0 shadow-sm"></div>
+                      <span className="font-medium">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>

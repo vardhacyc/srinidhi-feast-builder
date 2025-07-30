@@ -85,6 +85,70 @@ const Menu = () => {
           </p>
         </div>
 
+        {/* Signature Dishes Gallery */}
+        <div className="mb-20 bg-white rounded-3xl p-12 shadow-xl border-2 border-primary/20">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl font-black text-gray-900 mb-4">
+              Signature <span className="text-primary">Dishes</span>
+            </h3>
+            <p className="text-lg text-gray-700">Our most loved traditional preparations</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <img 
+                src="/a3_demo.jpg" 
+                alt="Traditional South Indian Thali - Sri Nidhi Catering"
+                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h4 className="font-bold text-lg">Traditional Thali</h4>
+                <p className="text-sm opacity-90">₹120 per plate</p>
+              </div>
+            </div>
+            
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <img 
+                src="/a2.jpg" 
+                alt="Vegetable Biryani - Sri Nidhi Catering"
+                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h4 className="font-bold text-lg">Vegetable Biryani</h4>
+                <p className="text-sm opacity-90">₹80 per plate</p>
+              </div>
+            </div>
+            
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <img 
+                src="/a4_outdoor.jpg" 
+                alt="Live Counter Setup - Sri Nidhi Catering"
+                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h4 className="font-bold text-lg">Live Counters</h4>
+                <p className="text-sm opacity-90">Interactive Experience</p>
+              </div>
+            </div>
+            
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <img 
+                src="/a1_award.jpg" 
+                alt="Award-Winning Preparations - Sri Nidhi Catering"
+                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h4 className="font-bold text-lg">Award Winners</h4>
+                <p className="text-sm opacity-90">Excellence Recognized</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Category tabs with vibrant styling */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
           {categories.map((category) => (

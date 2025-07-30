@@ -13,12 +13,22 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Hero Background with Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-yellow-50 to-gray-100"></div>
+      {/* Hero Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src="/a3_demo.jpg" 
+          alt="Sri Nidhi Catering - Professional Food Demonstration" 
+          className="w-full h-full object-cover"
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/40"></div>
+        {/* Additional gradient overlay for premium look */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/20 to-black/40"></div>
+      </div>
       
       {/* Curved Background Elements */}
       <div className="absolute inset-0">
-        <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+        <svg className="absolute top-0 left-0 w-full h-full opacity-30" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
           <defs>
             <linearGradient id="curveGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#E1A200" stopOpacity="0.1"/>
@@ -72,21 +82,21 @@ const Hero = () => {
           {/* Main Hero Title */}
           <div className="mb-16">
             <h1 className="text-7xl md:text-9xl font-black mb-8 leading-none tracking-tight">
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-header-bar to-gray-600 drop-shadow-sm">
+              <span className="block text-white drop-shadow-lg text-shadow-strong">
                 Sri Nidhi
               </span>
               <span className="relative block">
-                <ScribbleUnderline variant="wavy" className="text-primary opacity-60">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-gold">
+                <ScribbleUnderline variant="wavy" className="text-primary opacity-80">
+                  <span className="text-white drop-shadow-lg text-shadow-strong">
                     Catering
                   </span>
                 </ScribbleUnderline>
                 {/* Premium underline effect */}
-                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-80 h-6 bg-gradient-to-r from-primary/30 via-accent/40 to-gold/30 rounded-full blur-sm"></div>
+                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-80 h-6 bg-gradient-to-r from-accent/60 via-gold/60 to-primary/60 rounded-full blur-sm"></div>
               </span>
             </h1>
             
-            <p className="text-2xl md:text-3xl text-gray-700 mb-12 max-w-5xl mx-auto font-medium leading-relaxed">
+            <p className="text-2xl md:text-3xl text-white mb-12 max-w-5xl mx-auto font-medium leading-relaxed drop-shadow-lg text-shadow-medium">
               Creating extraordinary culinary experiences with 
               <span className="text-header-bar font-bold"> premium service</span> and 
               <span className="text-primary font-bold"> authentic flavors</span>.

@@ -115,8 +115,35 @@
   right: 0;
   bottom: 0;
   background: url('/hero-food-bg.jpg') center/cover no-repeat;
-  opacity: 0.3;
+  opacity: 0.2; /* Reduced from 0.3 to darken background for better text contrast */
   z-index: 1;
+}
+
+/* Additional overlay for better text readability */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: var(--off-white);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  transform: scaleX(1.5);
+  z-index: 3;
+}
+
+/* Text readability overlay using a different approach */
+.hero-content::before {
+  content: '';
+  position: absolute;
+  top: -2rem;
+  left: -2rem;
+  right: -2rem;
+  bottom: -2rem;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.2) 0%, rgba(15, 23, 42, 0.3) 100%);
+  border-radius: 20px;
+  z-index: -1;
 }
 
 .hero-section::after {
@@ -151,14 +178,44 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-shadow: 0 4px 20px rgba(255, 199, 0, 0.3);
+  /* Fallback for better contrast when gradient fails */
+  color: #FFFFFF;
+  /* Enhanced shadow for readability */
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
 }
 
 .hero-subtitle {
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 400; /* Increased from 300 for better visibility */
   margin-bottom: 3rem;
-  opacity: 0.95;
+  opacity: 1; /* Increased from 0.95 for full opacity */
   line-height: 1.6;
+  color: #FFFFFF; /* Explicit white color */
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.4); /* Strong text shadow for readability */
+  background: rgba(0,0,0,0.2); /* Semi-transparent background for additional contrast */
+  padding: 1rem 2rem; /* Padding around the text */
+  border-radius: 12px; /* Rounded corners for the background */
+  backdrop-filter: blur(4px); /* Blur effect for modern look */
+}
+
+/* High contrast text utilities for accessibility */
+.text-high-contrast {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 4px 16px rgba(0,0,0,0.5) !important;
+  font-weight: 600 !important;
+}
+
+.text-high-contrast-dark {
+  color: #222222 !important;
+  text-shadow: 0 2px 8px rgba(255,255,255,0.8), 0 4px 16px rgba(255,255,255,0.5) !important;
+  font-weight: 600 !important;
+}
+
+.text-with-background {
+  background: rgba(0,0,0,0.3) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(4px) !important;
 }
 
 .hero-cta {

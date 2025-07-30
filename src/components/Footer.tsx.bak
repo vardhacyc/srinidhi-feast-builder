@@ -132,9 +132,9 @@ const Footer = () => {
                 Quality • Tradition • Excellence
               </p>
               <div className="flex items-center justify-center md:justify-end space-x-2 text-food-yellow-500">
-                <span>Made with</span>
-                <Heart className="h-4 w-4 fill-current" />
-                <span>in Coimbatore</span>
+              
+              
+                <span>Made in Coimbatore</span>
               </div>
             </div>
           </div>

@@ -116,6 +116,26 @@ Please provide a detailed quote for this event.
           </p>
         </div>
 
+        {/* Contact Hero Banner */}
+        <div className="mb-20 relative overflow-hidden rounded-3xl shadow-2xl">
+          <img 
+            src="/a1_award.jpg" 
+            alt="Contact Sri Nidhi Catering - Award-Winning Service"
+            className="w-full h-64 md:h-80 object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 flex items-center justify-center text-center">
+            <div className="text-white max-w-4xl mx-auto px-8">
+              <h3 className="text-3xl md:text-5xl font-black mb-4 text-shadow-strong">
+                Award-Winning Excellence
+              </h3>
+              <p className="text-lg md:text-xl opacity-90 text-shadow-medium">
+                Your satisfaction is our commitment. Let's create something extraordinary together.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
           {/* Contact Information */}
           <div>
