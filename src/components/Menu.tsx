@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Coffee, Sun, Moon, Cookie, Cake, Cup } from 'lucide-react';
+import { Coffee, Sun, Moon, Cookie, Cake } from 'lucide-react';
 
 const Menu = () => {
   const [activeCategory, setActiveCategory] = useState('breakfast');
@@ -11,7 +11,7 @@ const Menu = () => {
     { id: 'dinner', label: 'Dinner', icon: Moon },
     { id: 'snacks', label: 'Snacks', icon: Cookie },
     { id: 'sweets', label: 'Sweets', icon: Cake },
-    { id: 'beverages', label: 'Beverages', icon: Cup },
+    { id: 'beverages', label: 'Beverages', icon: Coffee },
   ];
 
   const menuItems = {
