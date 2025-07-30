@@ -7,34 +7,34 @@ const Gallery = () => {
 
   const images = [
     {
+      url: "/a1_award.jpg",
+      title: "Award-Winning Excellence",
+      category: "Awards"
+    },
+    {
+      url: "/a3_demo.jpg",
+      title: "Premium Catering Demonstration",
+      category: "Events"
+    },
+    {
+      url: "/a2.jpg",
+      title: "Professional Service Team",
+      category: "Events"
+    },
+    {
+      url: "/a4_outdoor.jpg",
+      title: "Outdoor Event Catering",
+      category: "Events"
+    },
+    {
       url: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&w=800&q=80",
       title: "Traditional South Indian Feast",
       category: "Food"
     },
     {
-      url: "https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=800&q=80",
-      title: "Wedding Catering Setup",
-      category: "Events"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=800&q=80",
-      title: "Fresh Ingredients",
-      category: "Kitchen"
-    },
-    {
       url: "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=800&q=80",
       title: "Elegant Presentation",
       category: "Food"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1565895405229-71bec5b51ded?auto=format&fit=crop&w=800&q=80",
-      title: "Corporate Event Catering",
-      category: "Events"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1556804336-b4302b892d96?auto=format&fit=crop&w=800&q=80",
-      title: "Professional Kitchen",
-      category: "Kitchen"
     },
     {
       url: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
@@ -53,7 +53,7 @@ const Gallery = () => {
     }
   ];
 
-  const categories = ['All', 'Food', 'Events', 'Kitchen'];
+  const categories = ['All', 'Awards', 'Events', 'Food', 'Kitchen'];
   const [activeCategory, setActiveCategory] = useState('All');
 
   const filteredImages = activeCategory === 'All' 
@@ -105,7 +105,7 @@ const Gallery = () => {
               onClick={() => setActiveCategory(category)}
               className={`px-8 py-4 rounded-xl font-black text-lg transition-all transform ${
                 activeCategory === category
-                  ? 'bg-gradient-to-r from-primary via-accent to-green text-white shadow-2xl scale-105'
+                  ? 'btn-gradient-primary shadow-2xl scale-105'
                   : 'bg-white text-gray-700 hover:bg-primary/10 shadow-lg hover:scale-102 border-2 border-primary/20'
               }`}
             >

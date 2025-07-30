@@ -153,7 +153,7 @@ Please confirm availability and provide final quote.
                               </span>
                               <button
                                 onClick={() => updateQuantity(item.name, 1)}
-                                className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-accent text-white flex items-center justify-center hover:from-accent hover:to-primary transition-all transform hover:scale-110"
+                                className="w-10 h-10 rounded-full btn-gradient-primary flex items-center justify-center hover:scale-110 transition-all transform"
                               >
                                 <Plus className="h-5 w-5" />
                               </button>
@@ -216,7 +216,7 @@ Please confirm availability and provide final quote.
                   onClick={generateOrderSummary}
                   disabled={Object.keys(selectedItems).length === 0}
                   size="lg"
-                  className="w-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-black text-lg py-6 rounded-xl transform hover:scale-105 transition-all shadow-xl"
+                  className="w-full btn-gradient-multicolor font-black text-lg py-6 rounded-xl transform hover:scale-105 transition-all shadow-xl"
                 >
                   <Send className="h-6 w-6 mr-3" />
                   Send to WhatsApp

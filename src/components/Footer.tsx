@@ -36,10 +36,12 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              {/* Updated logo with new royal blue color palette */}
-              <div className="bg-gradient-to-r from-primary to-header-bar text-white px-4 py-2 rounded-lg font-bold text-xl">
-                YC
-              </div>
+              {/* Catering Logo with enhanced hover zoom effect */}
+              <img 
+                src="/cateringLogo.png" 
+                alt="Sri Nidhi Catering Logo" 
+                className="h-16 w-16 object-contain logo-hover cursor-pointer"
+              />
               <div>
                 <h3 className="text-2xl font-bold">Yolo Caterers</h3>
                 <p className="text-gray-400">A unit of Sri Nidhi Catering</p>

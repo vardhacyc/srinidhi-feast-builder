@@ -93,7 +93,7 @@ const Menu = () => {
               onClick={() => setActiveCategory(category.id)}
               className={`flex items-center space-x-3 px-8 py-4 rounded-xl font-black text-lg transition-all transform ${
                 activeCategory === category.id
-                  ? 'bg-gradient-to-r from-primary via-accent to-green text-white shadow-2xl scale-105'
+                  ? 'btn-gradient-primary shadow-2xl scale-105'
                   : 'bg-white text-gray-700 hover:bg-primary/10 shadow-lg hover:scale-102 border-2 border-primary/20'
               }`}
             >
@@ -135,7 +135,7 @@ const Menu = () => {
                 const element = document.querySelector('#calculator');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="bg-gradient-to-r from-primary via-accent to-green text-white px-10 py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              className="btn-gradient-multicolor px-10 py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
             >
               Calculate Your Order
             </button>

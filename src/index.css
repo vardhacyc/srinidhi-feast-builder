@@ -120,6 +120,10 @@ All colors MUST be HSL.
     animation: float 4s ease-in-out infinite;
   }
 
+  .animate-float-delayed {
+    animation: float 4s ease-in-out infinite 2s;
+  }
+
   /* Fade in animation */
   @keyframes fadeInUp {
     from {
@@ -343,5 +347,181 @@ All colors MUST be HSL.
 
   .scribble-rough {
     filter: drop-shadow(0 1px 3px rgba(255, 199, 0, 0.3));
+  }
+
+  /* Logo Hover Animation */
+  .logo-hover {
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-origin: center;
+  }
+
+  .logo-hover:hover {
+    transform: scale(1.25) rotate(3deg);
+    filter: drop-shadow(0 15px 30px rgba(225, 162, 0, 0.4));
+    animation: logoGlow 2s ease-in-out infinite;
+  }
+
+  /* Enhanced logo glow effect */
+  @keyframes logoGlow {
+    0% {
+      filter: drop-shadow(0 0 8px rgba(225, 162, 0, 0.6));
+    }
+    50% {
+      filter: drop-shadow(0 0 25px rgba(225, 162, 0, 0.9));
+    }
+    100% {
+      filter: drop-shadow(0 0 8px rgba(225, 162, 0, 0.6));
+    }
+  }
+
+  /* ===================================================================
+     ENHANCED BUTTON CONTRAST & ACCESSIBILITY
+     ================================================================= */
+
+  /* Premium button styles with high contrast */
+  .btn-enhanced {
+    position: relative;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* High contrast gradient buttons */
+  .btn-gradient-primary {
+    background: linear-gradient(135deg, #E1A200 0%, #B8860B 100%) !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  .btn-gradient-primary:hover {
+    background: linear-gradient(135deg, #B8860B 0%, #8B6914 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(225, 162, 0, 0.4);
+  }
+
+  /* Multi-color gradient with enhanced contrast */
+  .btn-gradient-multicolor {
+    background: linear-gradient(135deg, #E1A200 0%, #B8860B 50%, #464646 100%) !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    font-weight: 700;
+  }
+
+  .btn-gradient-multicolor:hover {
+    background: linear-gradient(135deg, #B8860B 0%, #8B6914 50%, #333333 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(225, 162, 0, 0.4);
+  }
+
+  /* Alternative high contrast button */
+  .btn-solid-amber {
+    background: #E1A200 !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .btn-solid-amber:hover {
+    background: #B8860B !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(184, 134, 11, 0.4);
+  }
+
+  /* Outline button with high contrast */
+  .btn-outline-enhanced {
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #464646 !important;
+    border: 2px solid #E1A200;
+    text-shadow: none;
+    font-weight: 700;
+  }
+
+  .btn-outline-enhanced:hover {
+    background: #E1A200 !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Fixed contrast for existing gradient combinations */
+  .gradient-text-fixed {
+    background: linear-gradient(135deg, #E1A200 0%, #B8860B 100%) !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Text shadow utilities for better readability */
+  .text-shadow-strong {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .text-shadow-medium {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-shadow-subtle {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Showcase specific animations and effects */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .showcase-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes pulse-gold {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(225, 162, 0, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 20px rgba(225, 162, 0, 0);
+    }
+  }
+
+  .pulse-gold {
+    animation: pulse-gold 2s infinite;
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slideInUp {
+    animation: slideInUp 0.8s ease-out;
+  }
+
+  /* Enhanced hover effects for showcase */
+  .showcase-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .showcase-image-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(225, 162, 0, 0.9) 0%,
+      rgba(184, 134, 11, 0.9) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .showcase-card:hover .showcase-image-overlay {
+    opacity: 1;
   }
 }

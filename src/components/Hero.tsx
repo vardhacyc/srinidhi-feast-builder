@@ -100,7 +100,7 @@ const Hero = () => {
             <Button 
               onClick={() => scrollToSection('#contact')}
               size="lg"
-              className="group bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-gold text-white px-12 py-8 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 border-0"
+              className="group btn-gradient-primary px-12 py-8 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 border-0"
             >
               <span>Book Your Event</span>
               <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />

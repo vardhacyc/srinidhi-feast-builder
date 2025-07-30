@@ -104,6 +104,75 @@ const About = () => {
             </div>
           ))}
         </div>
+
+        {/* Awards & Achievements Section */}
+        <div className="mt-32 bg-gradient-to-br from-primary/5 to-accent/10 rounded-3xl p-12 border-2 border-gold/20">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl font-black text-gray-900 mb-6">
+              Awards & <span className="text-primary">Recognition</span>
+            </h3>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-medium leading-relaxed">
+              Our commitment to excellence has been recognized with prestigious awards and certifications
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="space-y-6">
+                <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-gold/30">
+                  <div className="flex items-center mb-4">
+                    <Trophy className="h-8 w-8 text-gold mr-4" />
+                    <h4 className="text-2xl font-black text-gray-900">Excellence Award</h4>
+                  </div>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Recognized for outstanding catering services and customer satisfaction across 500+ successful events.
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-gold/30">
+                  <div className="flex items-center mb-4">
+                    <Shield className="h-8 w-8 text-primary mr-4" />
+                    <h4 className="text-2xl font-black text-gray-900">Quality Certification</h4>
+                  </div>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Certified for maintaining highest standards of food safety, hygiene, and quality assurance.
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-gold/30">
+                  <div className="flex items-center mb-4">
+                    <Users className="h-8 w-8 text-accent mr-4" />
+                    <h4 className="text-2xl font-black text-gray-900">Customer Choice</h4>
+                  </div>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Preferred catering partner for 50,000+ satisfied customers and repeat clients.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <div className="relative group">
+                <img 
+                  src="/a1_award.jpg" 
+                  alt="Award-Winning Excellence - Sri Nidhi Catering" 
+                  className="w-full h-96 object-cover rounded-2xl shadow-2xl border-4 border-gold/30 group-hover:scale-105 transition-all duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute bottom-6 left-6 right-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h5 className="text-2xl font-black mb-2">Award-Winning Excellence</h5>
+                  <p className="text-lg">Recognized for outstanding service and culinary mastery</p>
+                </div>
+                
+                {/* Decorative gold frame corners */}
+                <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-gold rounded-tl-2xl"></div>
+                <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-gold rounded-tr-2xl"></div>
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-gold rounded-bl-2xl"></div>
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-gold rounded-br-2xl"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

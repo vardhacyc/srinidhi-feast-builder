@@ -308,7 +308,7 @@ Please provide a detailed quote for this event.
 
                 <Button 
                   type="submit"
-                  className="w-full bg-gradient-to-r from-primary via-accent to-green hover:shadow-2xl text-white py-6 text-xl font-black rounded-xl hover:scale-105 transition-all duration-300"
+                  className="w-full btn-gradient-multicolor hover:shadow-2xl py-6 text-xl font-black rounded-xl hover:scale-105 transition-all duration-300"
                 >
                   <Send className="h-6 w-6 mr-3" />
                   Send Inquiry via WhatsApp
@@ -324,7 +324,7 @@ Please provide a detailed quote for this event.
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <a
               href="tel:9994316559"
-              className="bg-gradient-to-r from-green to-green/80 text-white px-10 py-5 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center hover:scale-105"
+              className="bg-header-bar text-white px-10 py-5 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center hover:scale-105 text-shadow-medium"
             >
               <Phone className="h-6 w-6 mr-3" />
               Call Now
@@ -333,7 +333,7 @@ Please provide a detailed quote for this event.
               href="https://wa.me/919994316559"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-r from-primary to-accent text-white px-10 py-5 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center hover:scale-105"
+              className="btn-gradient-primary px-10 py-5 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center hover:scale-105"
             >
               <MessageCircle className="h-6 w-6 mr-3" />
               WhatsApp Chat

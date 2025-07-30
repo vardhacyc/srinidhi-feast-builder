@@ -74,6 +74,72 @@ const Services = () => {
           ))}
         </div>
 
+        {/* Outdoor Catering Showcase */}
+        <div className="mt-24 bg-gradient-to-br from-green/5 to-primary/10 rounded-3xl p-12 border-2 border-primary/20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-gold/30">
+                <h3 className="text-4xl font-black text-gray-900 mb-6">
+                  <span className="text-primary">Outdoor</span> Catering Specialists
+                </h3>
+                <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                  Take your events beyond traditional venues with our comprehensive outdoor catering services. 
+                  From beachside celebrations to garden parties, we bring the kitchen to you.
+                </p>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 bg-green rounded-full mr-4"></div>
+                    <span className="text-gray-700 font-medium text-lg">Mobile Kitchen Setup</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 bg-accent rounded-full mr-4"></div>
+                    <span className="text-gray-700 font-medium text-lg">Weather-Resistant Service</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 bg-primary rounded-full mr-4"></div>
+                    <span className="text-gray-700 font-medium text-lg">Portable Equipment & Setup</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-4 h-4 bg-gold rounded-full mr-4"></div>
+                    <span className="text-gray-700 font-medium text-lg">Fresh Food Preparation On-Site</span>
+                  </div>
+                </div>
+
+                <button 
+                  onClick={() => {
+                    const element = document.querySelector('#contact');
+                    if (element) element.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="mt-8 btn-gradient-primary px-8 py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                >
+                  Plan Outdoor Event
+                </button>
+              </div>
+            </div>
+            
+            <div className="order-1 lg:order-2">
+              <div className="relative group">
+                <img 
+                  src="/a4_outdoor.jpg" 
+                  alt="Professional Outdoor Catering Setup - Sri Nidhi Catering" 
+                  className="w-full h-96 object-cover rounded-2xl shadow-2xl border-4 border-primary/30 group-hover:scale-105 transition-all duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute bottom-6 left-6 right-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h5 className="text-2xl font-black mb-2">Outdoor Event Excellence</h5>
+                  <p className="text-lg">Professional setup for memorable outdoor celebrations</p>
+                </div>
+                
+                {/* Animated badge */}
+                <div className="absolute top-4 right-4 bg-green text-white px-4 py-2 rounded-full font-black text-sm shadow-xl">
+                  ✓ Weather Ready
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Call to action with vibrant styling */}
         <div className="text-center mt-20">
           <div className="bg-gradient-to-r from-primary via-accent to-green rounded-3xl p-12 text-white shadow-2xl">
