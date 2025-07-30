@@ -1,4 +1,4 @@
-# Yolo Caterers - Grey & Amber Color Scheme Update
+# Sri Nidhi Catering - Grey & Amber Color Scheme Update
 
 ## 🎨 **Color Transformation Summary**
 Your website has been updated from **Royal Blue & Bright Yellow** to **Modern Grey & Deep Amber** for a more sophisticated, professional appearance.
@@ -58,7 +58,7 @@ colors: {
 ## **Updated Components**
 
 ### 🏠 **Hero Component Changes:**
-- **"Yolo" text gradient**: `from-header-bar to-gray-600` (was blue-600)
+- **"Sri Nidhi" text gradient**: `from-header-bar to-gray-600` (was blue-600)
 - **Background gradients**: Updated from blue tones to grey tones
 - **Statistics card**: Blue backgrounds → Grey backgrounds  
 - **Floating elements**: All color circles updated to new palette

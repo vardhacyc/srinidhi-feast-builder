@@ -34,7 +34,7 @@ const About = () => {
             About{' '}
             <span className="relative inline-block">
               <ScribbleUnderline variant="smooth" delay={0.8}>
-                <span className="text-primary">Yolo Caterers</span>
+                <span className="text-primary">Sri Nidhi Catering</span>
               </ScribbleUnderline>
               {/* Hand-drawn yellow underline effect */}
               <div className="absolute -bottom-2 left-0 w-full h-4 bg-accent opacity-60 transform rotate-1 rounded-lg"></div>
@@ -66,7 +66,7 @@ const About = () => {
             </h3>
             <div className="space-y-6">
               <p className="text-gray-700 text-lg leading-relaxed">
-                <strong className="text-primary">Yolo a unit of Sri Nidhi Catering</strong> is an independent Catering Company based in Coimbatore 
+                <strong className="text-primary">Sri Nidhi Catering</strong> is an independent Catering Company based in Coimbatore 
                 providing professional catering services to private and corporate clients. Building on the 
                 legacy of <strong className="text-header-bar">Kovai Catering</strong>, our food creates a delightful memory that your taste buds will 
                 fondly remember forever.
@@ -78,7 +78,7 @@ const About = () => {
                 technology that brings menus at the click of a button.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed">
-                Carrying forward the trusted reputation of <strong className="text-header-bar">Kovai Catering</strong>, Yolo Caterers has the winning 
+                Carrying forward the trusted reputation of <strong className="text-header-bar">Kovai Catering</strong>, Sri Nidhi Catering has the winning 
                 combination to keep your tummy happy, whether it's intimate family gatherings, grand weddings, 
                 or corporate events. We bring <strong className="text-primary">excellence and flavor</strong> to every occasion with over 15 years of 
                 culinary expertise.

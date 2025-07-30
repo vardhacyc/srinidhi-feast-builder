@@ -80,7 +80,7 @@ Your website has been successfully transformed from the old mustard yellow/green
 - Hover states and interactions maintained across all devices
 
 ### ✅ Brand Consistency
-- **Yolo Caterers** branding maintained with new color scheme
+- **Sri Nidhi Catering** branding maintained with new color scheme
 - **Contact information** and **company details** preserved
 - **Premium feel** enhanced with gold accent touches
 

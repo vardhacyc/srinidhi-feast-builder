@@ -43,13 +43,13 @@ const Footer = () => {
                 className="h-16 w-16 object-contain logo-hover cursor-pointer"
               />
               <div>
-                <h3 className="text-2xl font-bold">Yolo Caterers</h3>
-                <p className="text-gray-400">A unit of Sri Nidhi Catering</p>
+                <h3 className="text-2xl font-bold">Sri Nidhi Catering</h3>
+                <p className="text-gray-400">Premium Catering Services</p>
               </div>
             </div>
             
             <p className="text-gray-300 mb-6 max-w-md">
-              A unit of Sri Nidhi Catering, building on the legacy of Kovai Catering with professional services 
+              Sri Nidhi Catering, building on the legacy of Kovai Catering with professional services 
               creating delightful memories that your taste buds will fondly remember forever. 
               With state-of-the-art kitchen facilities, we serve thousands daily with authentic flavors.
             </p>

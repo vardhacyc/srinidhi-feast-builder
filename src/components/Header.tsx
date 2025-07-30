@@ -55,8 +55,8 @@ const Header = () => {
               className="h-16 w-16 object-contain logo-hover cursor-pointer"
             />
             <div>
-              <h1 className="text-2xl font-bold text-gray-800">Yolo Caterers</h1>
-              <p className="text-sm text-gray-600">A unit of Sri Nidhi Catering</p>
+              <h1 className="text-2xl font-bold text-gray-800">Sri Nidhi Catering</h1>
+              <p className="text-sm text-gray-600">Premium Catering Services</p>
             </div>
           </div>
 

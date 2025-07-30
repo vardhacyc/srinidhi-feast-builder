@@ -73,12 +73,12 @@ const Hero = () => {
           <div className="mb-16">
             <h1 className="text-7xl md:text-9xl font-black mb-8 leading-none tracking-tight">
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-header-bar to-gray-600 drop-shadow-sm">
-                Yolo
+                Sri Nidhi
               </span>
               <span className="relative block">
                 <ScribbleUnderline variant="wavy" className="text-primary opacity-60">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-gold">
-                    Caterers
+                    Catering
                   </span>
                 </ScribbleUnderline>
                 {/* Premium underline effect */}

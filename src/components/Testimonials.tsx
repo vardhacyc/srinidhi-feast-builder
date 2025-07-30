@@ -8,14 +8,14 @@ const Testimonials = () => {
       name: "Rajesh Kumar",
       event: "Wedding Reception",
       rating: 5,
-      text: "Yolo Caterers made our wedding reception absolutely perfect! The food was delicious and the service was impeccable. All our guests couldn't stop praising the authentic South Indian flavors.",
+      text: "Sri Nidhi Catering made our wedding reception absolutely perfect! The food was delicious and the service was impeccable. All our guests couldn't stop praising the authentic South Indian flavors.",
       location: "Coimbatore"
     },
     {
       name: "Priya Mahesh",
       event: "Corporate Event",
       rating: 5,
-      text: "We've been using Yolo Caterers for all our corporate events for the past 2 years. Their consistency in quality and timely service has never disappointed us. Highly recommended!",
+      text: "We've been using Sri Nidhi Catering for all our corporate events for the past 2 years. Their consistency in quality and timely service has never disappointed us. Highly recommended!",
       location: "Coimbatore"
     },
     {
