@@ -13,8 +13,13 @@ const WhatsAppFloat: React.FC<WhatsAppFloatProps> = ({
 }) => {
   const handleWhatsAppClick = () => {
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl, '_blank');
+    const sanitized = phoneNumber.replace(/\D/g, '');
+    const withCountry = sanitized.length === 10 ? `91${sanitized}` : sanitized;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${withCountry}&text=${encodedMessage}`;
+    const newWindow = window.open(whatsappUrl, '_blank');
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+      window.location.href = whatsappUrl;
+    }
   };
 
   return (

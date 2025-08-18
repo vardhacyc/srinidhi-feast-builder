@@ -69,14 +69,16 @@ Thank you! 🙏
 
 Order ID: ${Date.now()}`;
 
-    const whatsappUrl = `https://wa.me/9994316559?text=${encodeURIComponent(message)}`;
-    
+    const phoneRaw = '9994316559';
+    const sanitized = phoneRaw.replace(/\D/g, '');
+    const withCountry = sanitized.length === 10 ? `91${sanitized}` : sanitized;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${withCountry}&text=${encodeURIComponent(message)}`;
+
     // Try opening in a new tab; if blocked, navigate current tab as fallback
     const newWindow = window.open(whatsappUrl, '_blank');
     if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
       window.location.href = whatsappUrl;
     } else {
-      // Re-enable button shortly when opening in new tab
       setTimeout(() => setIsProcessing(false), 1200);
     }
 
