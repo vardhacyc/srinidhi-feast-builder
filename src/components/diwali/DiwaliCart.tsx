@@ -32,14 +32,23 @@ const DiwaliCart = () => {
 
     setIsProcessing(true);
 
-    // Create WhatsApp message
+    // Create WhatsApp message with timestamp to ensure uniqueness
     const orderDetails = cart.map(item => 
       `• ${item.name} - ${item.quantity}kg × ₹${item.price} = ₹${item.price * item.quantity}`
     ).join('\n');
 
     const totalAmount = getTotalPrice();
+    const timestamp = new Date().toLocaleString('en-IN', { 
+      timeZone: 'Asia/Kolkata',
+      day: '2-digit',
+      month: '2-digit', 
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
     
     const message = `🪔 *Diwali Sweet Order* 🪔
+Order Time: ${timestamp}
 
 👋 Hi! I'm ${customerName}
 
@@ -56,10 +65,16 @@ ${orderDetails}
 
 Thank you! 🙏
 
-*Happy Diwali!* ✨`;
+*Happy Diwali!* ✨
 
+Order ID: ${Date.now()}`;
+
+    // Clear any existing draft by opening WhatsApp web first, then redirecting
     const whatsappUrl = `https://wa.me/919994316559?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    
+    // Force clear any existing draft by using window.location instead of window.open
+    // This ensures the current tab navigates to WhatsApp, clearing any existing state
+    window.location.href = whatsappUrl;
 
     setTimeout(() => {
       setIsProcessing(false);
