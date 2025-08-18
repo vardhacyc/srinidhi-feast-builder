@@ -9,26 +9,27 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 45 100% 97%; /* Food yellow light background */
-    --foreground: 25 85% 15%; /* Deep brown for text */
+    /* Premium Dark Theme with Gold Accents */
+    --background: 220 20% 8%; /* Deep charcoal background */
+    --foreground: 0 0% 95%; /* Light text */
 
-    --card: 45 100% 99%; /* Cream white cards */
-    --card-foreground: 25 85% 15%;
+    --card: 220 15% 12%; /* Dark card background */
+    --card-foreground: 0 0% 90%;
 
-    --popover: 45 100% 99%;
-    --popover-foreground: 25 85% 15%;
+    --popover: 220 15% 10%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 45 100% 50%; /* Bright food yellow primary */
-    --primary-foreground: 25 85% 15%;
+    --primary: 45 95% 58%; /* Premium gold primary */
+    --primary-foreground: 220 20% 8%;
 
-    --secondary: 25 60% 45%; /* Warm orange secondary */
-    --secondary-foreground: 45 100% 99%;
+    --secondary: 220 15% 15%; /* Darker secondary */
+    --secondary-foreground: 0 0% 85%;
 
-    --muted: 45 80% 95%; /* Light yellow muted */
-    --muted-foreground: 25 40% 60%;
+    --muted: 220 15% 18%; /* Muted dark */
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 15 70% 55%; /* Diwali orange accent */
-    --accent-foreground: 45 100% 99%;
+    --accent: 45 90% 65%; /* Bright gold accent */
+    --accent-foreground: 220 20% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -51,41 +52,42 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Light mode override (keeping same premium theme) */
+    --background: 0 0% 98%;
+    --foreground: 220 20% 8%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 8%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 8%;
 
-    --primary: 45 93% 47%; /* Food-grade yellow for dark mode */
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 45 95% 45%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 84 33% 25%; /* Darker green for dark mode */
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 220 20% 8%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 220 15% 40%;
 
-    --accent: 84 50% 30%; /* Darker banana leaf for dark mode */
-    --accent-foreground: 210 40% 98%;
+    --accent: 45 90% 50%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 45 93% 47%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 45 93% 47%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 45 93% 47%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 45 95% 45%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 20% 8%;
+    --sidebar-primary: 45 95% 45%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 220 20% 8%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 45 95% 45%;
   }
 }
 
@@ -524,26 +526,43 @@ All colors MUST be HSL.
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
   }
 
-  /* Text shadow utilities for better readability */
-  .text-shadow-strong {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  /* Premium Dark Theme Enhancements */
+  .text-shadow-gold {
+    text-shadow: 0 2px 8px hsl(45 95% 58% / 0.3);
   }
 
-  .text-shadow-medium {
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  .text-shadow-dark {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   }
 
-  .text-shadow-subtle {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  .premium-gradient {
+    background: linear-gradient(135deg, hsl(220 20% 8%) 0%, hsl(220 15% 12%) 50%, hsl(220 20% 8%) 100%);
   }
 
-  /* Food Yellow Theme Enhancements */
-  .food-theme-bg {
-    background: linear-gradient(135deg, hsl(45 100% 50% / 0.1) 0%, hsl(25 60% 45% / 0.1) 100%);
+  .gold-gradient {
+    background: linear-gradient(135deg, hsl(45 95% 58%) 0%, hsl(45 90% 65%) 100%);
   }
 
-  .food-theme-border {
-    border-color: hsl(45 100% 50% / 0.3);
+  .glass-dark {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section-divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(45 95% 58% / 0.3), transparent);
+  }
+
+  .flowing-card {
+    background: linear-gradient(145deg, hsl(220 15% 12%) 0%, hsl(220 15% 15%) 100%);
+    border: 1px solid hsl(220 15% 20%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(255, 215, 0, 0.1);
   }
 
   .text-shadow-medium {

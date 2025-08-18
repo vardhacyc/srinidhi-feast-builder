@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import DiwaliHeader from '../components/diwali/DiwaliHeader';
 import DiwaliHero from '../components/diwali/DiwaliHero';
@@ -23,7 +22,7 @@ const DiwaliIndex = () => {
 
   return (
     <CartProvider>
-      <div className="min-h-screen bg-gradient-to-br from-food-yellow-50 via-food-yellow-100 to-secondary">
+      <div className="min-h-screen premium-gradient">
         {showFlowers && <FlowerShower />}
         <DiwaliHeader />
         <DiwaliHero />
@@ -32,7 +31,7 @@ const DiwaliIndex = () => {
         <DiwaliFooter />
         <WhatsAppFloat 
           phoneNumber="919994316559"
-          message="🪔 Hi! I'm interested in your Diwali sweets collection. Can you help me with more information? ✨"
+          message="🪔 Hi! I'm interested in your premium Diwali sweets collection. Can you help me with more information? ✨"
         />
       </div>
     </CartProvider>
