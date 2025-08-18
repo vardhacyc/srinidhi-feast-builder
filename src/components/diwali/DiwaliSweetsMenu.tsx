@@ -161,7 +161,7 @@ const DiwaliSweetsMenu = () => {
     : sweetsData.filter(sweet => sweet.category === selectedCategory);
 
   return (
-    <section id="sweets" className="py-16 px-4 bg-gradient-to-br from-yellow-50 to-orange-50">
+    <section id="sweets" className="py-16 px-4 bg-gradient-to-br from-food-yellow-100 to-food-yellow-200 animate-gradient">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-orange-800 mb-4">
@@ -228,10 +228,10 @@ const DiwaliSweetsMenu = () => {
                   </div>
                   <Button
                     onClick={() => addToCart(sweet)}
-                    className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105"
+                    className="w-full bg-gradient-to-r from-food-yellow-500 to-secondary hover:from-food-yellow-600 hover:to-accent text-foreground font-bold py-2 px-4 rounded-lg transition-all duration-300 hover:scale-110 animate-pulse-glow btn-enhanced"
                   >
                     <Plus className="h-4 w-4 mr-2" />
-                    Add to Cart
+                    Add to Cart ✨
                   </Button>
                 </div>
               </div>

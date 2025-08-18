@@ -70,7 +70,7 @@ Thank you! 🙏
 
   if (cart.length === 0) {
     return (
-      <section id="cart" className="py-16 px-4 bg-gradient-to-br from-orange-50 to-yellow-50">
+      <section id="cart" className="py-16 px-4 bg-gradient-to-br from-food-yellow-50 to-food-yellow-100 animate-gradient">
         <div className="container mx-auto text-center">
           <div className="bg-white rounded-xl shadow-lg p-12 max-w-md mx-auto">
             <div className="text-6xl mb-4">🛒</div>
@@ -91,7 +91,7 @@ Thank you! 🙏
   }
 
   return (
-    <section id="cart" className="py-16 px-4 bg-gradient-to-br from-orange-50 to-yellow-50">
+    <section id="cart" className="py-16 px-4 bg-gradient-to-br from-food-yellow-50 to-food-yellow-100 animate-gradient">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-orange-800 mb-4">
@@ -191,7 +191,7 @@ Thank you! 🙏
               <Button
                 onClick={handleWhatsAppOrder}
                 disabled={isProcessing || !customerName.trim()}
-                className="flex-1 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed animate-pulse-glow btn-enhanced"
               >
                 {isProcessing ? (
                   <>

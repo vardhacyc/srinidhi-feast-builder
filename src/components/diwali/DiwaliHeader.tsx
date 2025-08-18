@@ -16,12 +16,12 @@ const DiwaliHeader = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 shadow-lg">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-food-yellow-500 via-secondary to-accent shadow-lg animate-diwali-glow">
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="text-3xl">🪔</div>
+            <div className="text-3xl animate-sparkle">🪔</div>
             <div>
               <h1 className="text-xl md:text-2xl font-bold text-white">
                 Sri Nidhi Diwali Sweets

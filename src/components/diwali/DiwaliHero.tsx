@@ -11,18 +11,22 @@ const DiwaliHero = () => {
   };
 
   return (
-    <section className="pt-20 pb-16 px-4 bg-gradient-to-br from-orange-100 via-yellow-100 to-red-100 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 text-6xl animate-spin">🪔</div>
-        <div className="absolute top-20 right-10 text-4xl animate-bounce">🌺</div>
-        <div className="absolute bottom-20 left-20 text-5xl animate-pulse">✨</div>
-        <div className="absolute bottom-10 right-20 text-4xl animate-spin">🎇</div>
+    <section className="pt-20 pb-16 px-4 bg-gradient-to-br from-food-yellow-200 via-food-yellow-300 to-secondary animate-gradient relative overflow-hidden">
+      {/* Enhanced decorative elements with diwali sparkles */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-10 left-10 text-6xl animate-sparkle">🪔</div>
+        <div className="absolute top-20 right-10 text-4xl animate-sparkle-burst">🌺</div>
+        <div className="absolute bottom-20 left-20 text-5xl animate-diwali-glow">✨</div>
+        <div className="absolute bottom-10 right-20 text-4xl animate-sparkle">🎇</div>
+        <div className="absolute top-32 left-1/4 text-3xl animate-sparkle-burst">🎆</div>
+        <div className="absolute bottom-32 right-1/4 text-3xl animate-diwali-glow">🌟</div>
+        <div className="absolute top-1/2 left-16 text-2xl animate-sparkle">💫</div>
+        <div className="absolute top-1/3 right-24 text-4xl animate-sparkle-burst">🎊</div>
       </div>
 
       <div className="container mx-auto text-center relative z-10">
         <div className="mb-8">
-          <div className="text-6xl md:text-8xl mb-4">🪔</div>
+          <div className="text-6xl md:text-8xl mb-4 animate-diwali-glow">🪔</div>
           <h1 className="text-4xl md:text-6xl font-bold text-orange-800 mb-4">
             Diwali Sweet Paradise
           </h1>
@@ -53,9 +57,9 @@ const DiwaliHero = () => {
 
         <button
           onClick={scrollToSweets}
-          className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-4 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+          className="bg-gradient-to-r from-food-yellow-500 to-secondary text-foreground px-8 py-4 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 animate-pulse-glow btn-enhanced"
         >
-          🍯 Explore Our Sweets Collection
+          🍯 Explore Our Sweets Collection ✨
         </button>
 
         {/* Festive message */}
