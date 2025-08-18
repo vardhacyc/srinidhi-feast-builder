@@ -25,7 +25,7 @@ const App = () => (
         </Routes>
         {/* Floating WhatsApp Button - Always visible */}
         <WhatsAppFloat 
-          phoneNumber="919994316559"
+          phoneNumber="9994316559"
           message="Hi! I'm interested in your Diwali sweets. Could you please provide more information?"
         />
       </BrowserRouter>

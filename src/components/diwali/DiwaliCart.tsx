@@ -69,18 +69,22 @@ Thank you! 🙏
 
 Order ID: ${Date.now()}`;
 
-    // Clear any existing draft by opening WhatsApp web first, then redirecting
-    const whatsappUrl = `https://wa.me/919994316559?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/9994316559?text=${encodeURIComponent(message)}`;
     
-    // Force clear any existing draft by using window.location instead of window.open
-    // This ensures the current tab navigates to WhatsApp, clearing any existing state
-    window.location.href = whatsappUrl;
+    // Try opening in a new tab; if blocked, navigate current tab as fallback
+    const newWindow = window.open(whatsappUrl, '_blank');
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+      window.location.href = whatsappUrl;
+    } else {
+      // Re-enable button shortly when opening in new tab
+      setTimeout(() => setIsProcessing(false), 1200);
+    }
 
+    // Safety: ensure UI never stays stuck
     setTimeout(() => {
       setIsProcessing(false);
-      // Optional: Clear cart after successful order
-      // clearCart();
-    }, 2000);
+      // clearCart(); // optional after confirming order
+    }, 4000);
   };
 
   if (cart.length === 0) {

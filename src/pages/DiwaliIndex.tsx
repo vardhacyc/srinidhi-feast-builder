@@ -31,7 +31,7 @@ const DiwaliIndex = () => {
         <DiwaliCart />
         <DiwaliFooter />
         <WhatsAppFloat 
-          phoneNumber="919994316559"
+          phoneNumber="9994316559"
           message="🪔 Hi! I'm interested in your Diwali sweets collection. Can you help me with more information? ✨"
         />
       </div>
