@@ -22,7 +22,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Bengali Rasgulla',
       description: 'Soft, spongy cottage cheese balls in sugar syrup',
       price: 450,
-      image: '/rasgulla.png',
+      image: '/lovable-uploads/a7c240ca-9638-4f9a-b530-e2a2e1696347.png',
       category: 'milk-based'
     },
     {
@@ -30,7 +30,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Rasmalai',
       description: 'Delicate cottage cheese dumplings in sweetened milk',
       price: 550,
-      image: '/kaju-katli.png',
+      image: '/lovable-uploads/90e0608c-b5fa-480e-9dfa-0a8173cd3f7e.png',
       category: 'milk-based'
     },
     {
@@ -38,7 +38,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Royal Kheer',
       description: 'Creamy rice pudding with nuts and cardamom',
       price: 350,
-      image: '/diamond-barfi.png',
+      image: '/lovable-uploads/3f9c1eba-d27c-4ca8-bff6-452efdb026dd.png',
       category: 'milk-based'
     },
     {
@@ -46,7 +46,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Kulfi Falooda',
       description: 'Traditional Indian ice cream with vermicelli',
       price: 250,
-      image: '/pista-roll.png',
+      image: '/lovable-uploads/8a25412c-6bca-463c-a2f9-cd4ba98905e6.png',
       category: 'milk-based'
     },
     
@@ -56,7 +56,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Crispy Jalebi',
       description: 'Golden spirals soaked in sugar syrup',
       price: 300,
-      image: '/motichoor-laddu.png',
+      image: '/lovable-uploads/63e67f13-ca1f-4971-9c1e-b7c7b3bec5cc.png',
       category: 'fried'
     },
     {
@@ -64,7 +64,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Gulab Jamun',
       description: 'Soft milk solid balls in rose-flavored syrup',
       price: 400,
-      image: '/gulab-jamun.png',
+      image: '/lovable-uploads/83c09900-3531-4b73-80e6-69da609f6f92.png',
       category: 'fried'
     },
     {
@@ -72,7 +72,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Imarti',
       description: 'Flower-shaped crispy sweet in saffron syrup',
       price: 450,
-      image: '/mysore-pak.png',
+      image: '/lovable-uploads/be4a8a1a-e952-4710-8111-60ee6ed7eb78.png',
       category: 'fried'
     },
     {
@@ -80,7 +80,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Balushahi',
       description: 'Flaky pastry glazed with sugar syrup',
       price: 350,
-      image: '/soan-papdi.png',
+      image: '/lovable-uploads/8f7791bb-208a-4778-9f6a-21441f9bfaff.png',
       category: 'fried'
     },
 
@@ -90,7 +90,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Kaju Katli',
       description: 'Diamond-shaped cashew fudge with silver leaf',
       price: 800,
-      image: '/kaju-katli.png',
+      image: '/lovable-uploads/90e0608c-b5fa-480e-9dfa-0a8173cd3f7e.png',
       category: 'dry-fruits'
     },
     {
@@ -98,7 +98,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Badam Halwa',
       description: 'Rich almond pudding with ghee and cardamom',
       price: 650,
-      image: '/mysore-pak.png',
+      image: '/lovable-uploads/be4a8a1a-e952-4710-8111-60ee6ed7eb78.png',
       category: 'dry-fruits'
     },
     {
@@ -106,7 +106,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Anjeer Roll',
       description: 'Fig and nut rolls with pure ghee',
       price: 750,
-      image: '/diamond-barfi.png',
+      image: '/lovable-uploads/3f9c1eba-d27c-4ca8-bff6-452efdb026dd.png',
       category: 'dry-fruits',
       isVegan: true
     },
@@ -115,7 +115,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Pista Roll',
       description: 'Pistachio rolls with sweetened milk',
       price: 900,
-      image: '/pista-roll.png',
+      image: '/lovable-uploads/8a25412c-6bca-463c-a2f9-cd4ba98905e6.png',
       category: 'dry-fruits'
     },
 
@@ -125,7 +125,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Mysore Pak',
       description: 'Karnataka\'s famous ghee-rich sweet',
       price: 500,
-      image: '/mysore-pak.png',
+      image: '/lovable-uploads/be4a8a1a-e952-4710-8111-60ee6ed7eb78.png',
       category: 'regional'
     },
     {
@@ -133,7 +133,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Soan Papdi',
       description: 'Flaky, crispy sweet with cardamom',
       price: 400,
-      image: '/soan-papdi.png',
+      image: '/lovable-uploads/8f7791bb-208a-4778-9f6a-21441f9bfaff.png',
       category: 'regional'
     },
     {
@@ -141,7 +141,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Motichoor Laddu',
       description: 'Golden droplet laddus with nuts',
       price: 450,
-      image: '/motichoor-laddu.png',
+      image: '/lovable-uploads/63e67f13-ca1f-4971-9c1e-b7c7b3bec5cc.png',
       category: 'regional'
     },
     {
@@ -149,7 +149,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Coconut Barfi',
       description: 'Fresh coconut fudge squares',
       price: 350,
-      image: '/diamond-barfi.png',
+      image: '/lovable-uploads/3f9c1eba-d27c-4ca8-bff6-452efdb026dd.png',
       category: 'regional',
       isVegan: true
     }
