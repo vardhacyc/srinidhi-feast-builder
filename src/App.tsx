@@ -18,7 +18,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DiwaliIndex />} />
+          <Route path="/" element={<Index />} />
+          <Route path="/diwali" element={<DiwaliIndex />} />
           <Route path="/catering" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
