@@ -22,7 +22,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Bengali Rasgulla',
       description: 'Soft, spongy cottage cheese balls in sugar syrup',
       price: 450,
-      image: '🍡',
+      image: '/rasgulla.png',
       category: 'milk-based'
     },
     {
@@ -30,7 +30,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Rasmalai',
       description: 'Delicate cottage cheese dumplings in sweetened milk',
       price: 550,
-      image: '🥛',
+      image: '/kaju-katli.png',
       category: 'milk-based'
     },
     {
@@ -38,7 +38,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Royal Kheer',
       description: 'Creamy rice pudding with nuts and cardamom',
       price: 350,
-      image: '🍚',
+      image: '/diamond-barfi.png',
       category: 'milk-based'
     },
     {
@@ -46,7 +46,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Kulfi Falooda',
       description: 'Traditional Indian ice cream with vermicelli',
       price: 250,
-      image: '🍨',
+      image: '/pista-roll.png',
       category: 'milk-based'
     },
     
@@ -56,7 +56,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Crispy Jalebi',
       description: 'Golden spirals soaked in sugar syrup',
       price: 300,
-      image: '🌀',
+      image: '/motichoor-laddu.png',
       category: 'fried'
     },
     {
@@ -64,7 +64,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Gulab Jamun',
       description: 'Soft milk solid balls in rose-flavored syrup',
       price: 400,
-      image: '🍯',
+      image: '/gulab-jamun.png',
       category: 'fried'
     },
     {
@@ -72,7 +72,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Imarti',
       description: 'Flower-shaped crispy sweet in saffron syrup',
       price: 450,
-      image: '🌸',
+      image: '/mysore-pak.png',
       category: 'fried'
     },
     {
@@ -80,7 +80,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Balushahi',
       description: 'Flaky pastry glazed with sugar syrup',
       price: 350,
-      image: '🥐',
+      image: '/soan-papdi.png',
       category: 'fried'
     },
 
@@ -90,7 +90,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Kaju Katli',
       description: 'Diamond-shaped cashew fudge with silver leaf',
       price: 800,
-      image: '💎',
+      image: '/kaju-katli.png',
       category: 'dry-fruits'
     },
     {
@@ -98,7 +98,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Badam Halwa',
       description: 'Rich almond pudding with ghee and cardamom',
       price: 650,
-      image: '🥜',
+      image: '/mysore-pak.png',
       category: 'dry-fruits'
     },
     {
@@ -106,7 +106,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Anjeer Roll',
       description: 'Fig and nut rolls with pure ghee',
       price: 750,
-      image: '🌯',
+      image: '/diamond-barfi.png',
       category: 'dry-fruits',
       isVegan: true
     },
@@ -115,7 +115,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Pista Roll',
       description: 'Pistachio rolls with sweetened milk',
       price: 900,
-      image: '🟢',
+      image: '/pista-roll.png',
       category: 'dry-fruits'
     },
 
@@ -125,7 +125,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Mysore Pak',
       description: 'Karnataka\'s famous ghee-rich sweet',
       price: 500,
-      image: '🟨',
+      image: '/mysore-pak.png',
       category: 'regional'
     },
     {
@@ -133,7 +133,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Soan Papdi',
       description: 'Flaky, crispy sweet with cardamom',
       price: 400,
-      image: '📄',
+      image: '/soan-papdi.png',
       category: 'regional'
     },
     {
@@ -141,7 +141,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Motichoor Laddu',
       description: 'Golden droplet laddus with nuts',
       price: 450,
-      image: '🟡',
+      image: '/motichoor-laddu.png',
       category: 'regional'
     },
     {
@@ -149,7 +149,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Coconut Barfi',
       description: 'Fresh coconut fudge squares',
       price: 350,
-      image: '🥥',
+      image: '/diamond-barfi.png',
       category: 'regional',
       isVegan: true
     }
@@ -206,8 +206,17 @@ const DiwaliSweetsMenu = () => {
             >
               <div className="p-6">
                 {/* Sweet Image */}
-                <div className="text-5xl text-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {sweet.image}
+                <div className="relative w-full h-48 mb-4 rounded-xl overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                  <img 
+                    src={sweet.image} 
+                    alt={sweet.name}
+                    className="w-full h-full object-cover diwali-glass-effect"
+                    style={{
+                      background: 'linear-gradient(135deg, hsl(var(--diwali-cream)) 0%, hsl(var(--diwali-light)) 100%)',
+                      boxShadow: 'inset 0 1px 3px hsl(var(--diwali-shadow) / 0.2)'
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
                 </div>
                 
                 {/* Sweet Info */}
