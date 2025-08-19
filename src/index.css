@@ -49,6 +49,25 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 41 100% 44%; /* Amber Primary */
+
+    /* Premium Yellow Diwali Theme Colors */
+    --diwali-cream: 54 100% 95%; /* #FFFBE6 */
+    --diwali-light: 50 100% 85%; /* #FFF3B3 */
+    --diwali-soft: 49 100% 83%; /* #FFEFA8 */
+    --diwali-bright: 51 100% 64%; /* #FFE148 */
+    --diwali-gold: 48 100% 48%; /* #F5C800 */
+    --diwali-amber: 47 100% 47%; /* #F2C200 */
+    --diwali-bronze: 39 100% 35%; /* #B07600 */
+    
+    /* Deep Neutrals */
+    --diwali-dark: 42 65% 8%; /* #1A1608 */
+    --diwali-charcoal: 42 100% 13%; /* #2A2100 */
+    --diwali-shadow: 42 65% 18%; /* #3B2E08 */
+    --diwali-muted: 42 85% 22%; /* #6D5605 */
+    
+    /* Soft Greys */
+    --diwali-text: 30 8% 27%; /* #45423C */
+    --diwali-subtle: 39 30% 41%; /* #8C7A4D */
   }
 
   .dark {
@@ -712,5 +731,252 @@ All colors MUST be HSL.
 
   .showcase-card:hover .showcase-image-overlay {
     opacity: 1;
+  }
+
+  /* ===================================================================
+     PREMIUM YELLOW DIWALI THEME UTILITIES
+     ================================================================= */
+
+  /* Diwali Gradient Backgrounds */
+  .diwali-gradient {
+    background: radial-gradient(
+      ellipse at center,
+      hsl(var(--diwali-cream)) 0%,
+      hsl(var(--diwali-light)) 25%,
+      hsl(var(--diwali-gold)) 70%,
+      hsl(var(--diwali-bronze)) 100%
+    );
+  }
+
+  .diwali-molten-honey {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--diwali-cream)) 0%,
+      hsl(var(--diwali-soft)) 20%,
+      hsl(var(--diwali-bright)) 50%,
+      hsl(var(--diwali-amber)) 80%,
+      hsl(var(--diwali-bronze)) 100%
+    );
+  }
+
+  /* Diwali Glass Morphism */
+  .diwali-glass {
+    background: linear-gradient(
+      135deg,
+      hsla(var(--diwali-cream), 0.15) 0%,
+      hsla(var(--diwali-light), 0.08) 50%,
+      hsla(var(--diwali-amber), 0.05) 100%
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid hsla(var(--diwali-bright), 0.3);
+    box-shadow: 
+      0 16px 40px hsla(var(--diwali-dark), 0.3),
+      inset 0 2px 0 hsla(var(--diwali-cream), 0.4),
+      inset 0 -2px 0 hsla(var(--diwali-bronze), 0.1);
+  }
+
+  .diwali-glass-card {
+    background: radial-gradient(
+      ellipse at top,
+      hsla(var(--diwali-bright), 0.2) 0%,
+      hsla(var(--diwali-gold), 0.1) 40%,
+      hsla(var(--diwali-dark), 0.8) 100%
+    );
+    backdrop-filter: blur(25px);
+    border: 1px solid hsla(var(--diwali-amber), 0.2);
+    box-shadow: 
+      0 20px 50px hsla(var(--diwali-dark), 0.4),
+      inset 0 1px 0 hsla(var(--diwali-cream), 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diwali-glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--diwali-cream)) 0%,
+      hsl(var(--diwali-bright)) 50%,
+      hsl(var(--diwali-amber)) 100%
+    );
+  }
+
+  /* Diwali Buttons */
+  .diwali-btn {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--diwali-cream)) 0%,
+      hsl(var(--diwali-light)) 20%,
+      hsl(var(--diwali-gold)) 70%,
+      hsl(var(--diwali-bronze)) 100%
+    );
+    color: hsl(var(--diwali-dark));
+    border: 1px solid hsla(var(--diwali-cream), 0.5);
+    box-shadow: 
+      0 8px 25px hsla(var(--diwali-gold), 0.4),
+      inset 0 2px 0 hsla(var(--diwali-cream), 0.6),
+      inset 0 -2px 0 hsla(var(--diwali-bronze), 0.3);
+    font-weight: 600;
+    text-shadow: 0 1px 2px hsla(var(--diwali-dark), 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diwali-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsla(var(--diwali-cream), 0.8), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .diwali-btn:hover::before {
+    left: 100%;
+  }
+
+  .diwali-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 12px 35px hsla(var(--diwali-gold), 0.5),
+      inset 0 2px 0 hsla(var(--diwali-cream), 0.8),
+      inset 0 -2px 0 hsla(var(--diwali-bronze), 0.4);
+  }
+
+  /* Diwali Badge */
+  .diwali-badge {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--diwali-bright)) 0%,
+      hsl(var(--diwali-gold)) 50%,
+      hsl(var(--diwali-bronze)) 100%
+    );
+    color: hsl(var(--diwali-dark));
+    text-shadow: 0 1px 2px hsla(var(--diwali-cream), 0.5);
+    border: 1px solid hsla(var(--diwali-cream), 0.3);
+    box-shadow: 0 4px 12px hsla(var(--diwali-gold), 0.3);
+  }
+
+  /* Diwali Text Gradients */
+  .diwali-text-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--diwali-cream)) 0%,
+      hsl(var(--diwali-bright)) 50%,
+      hsl(var(--diwali-bronze)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+  }
+
+  /* Diwali Animations */
+  @keyframes diwali-shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .diwali-shimmer {
+    background: linear-gradient(
+      90deg,
+      hsla(var(--diwali-cream), 0.3),
+      hsla(var(--diwali-bright), 0.8),
+      hsla(var(--diwali-cream), 0.3)
+    );
+    background-size: 200% 100%;
+    animation: diwali-shimmer 3s infinite;
+  }
+
+  @keyframes diwali-particle-float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateY(-20px) rotate(180deg);
+      opacity: 0.8;
+    }
+  }
+
+  .diwali-particle {
+    animation: diwali-particle-float 4s ease-in-out infinite;
+  }
+
+  /* Diwali Shadows */
+  .diwali-shadow {
+    box-shadow: 
+      0 10px 30px hsla(var(--diwali-bronze), 0.3),
+      0 4px 12px hsla(var(--diwali-gold), 0.2);
+  }
+
+  .diwali-shadow-lg {
+    box-shadow: 
+      0 20px 50px hsla(var(--diwali-bronze), 0.4),
+      0 8px 20px hsla(var(--diwali-gold), 0.3),
+      0 2px 8px hsla(var(--diwali-bright), 0.2);
+  }
+
+  /* Diwali Vignette */
+  .diwali-vignette {
+    position: relative;
+  }
+
+  .diwali-vignette::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      transparent 50%,
+      hsla(var(--diwali-dark), 0.3) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* WhatsApp Amber Theme Override for Diwali */
+  .whatsapp-amber {
+    background: linear-gradient(135deg, hsl(var(--diwali-gold)) 0%, hsl(var(--diwali-bronze)) 100%);
+    box-shadow: 0 8px 25px hsla(var(--diwali-gold), 0.4);
+  }
+
+  .whatsapp-amber:hover {
+    background: linear-gradient(135deg, hsl(var(--diwali-bright)) 0%, hsl(var(--diwali-gold)) 100%);
+    box-shadow: 0 12px 35px hsla(var(--diwali-gold), 0.6);
+  }
+
+  @keyframes whatsappAmberPulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 hsla(var(--diwali-gold), 0.7);
+    }
+    70% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 15px hsla(var(--diwali-gold), 0);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 hsla(var(--diwali-gold), 0);
+    }
+  }
+
+  .whatsapp-amber:hover {
+    animation: whatsappAmberPulse 1.5s ease-in-out infinite;
   }
 }

@@ -15,20 +15,20 @@ const DiwaliHeader = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 premium-gradient glass-dark border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 diwali-glass border-b border-yellow-200/20 diwali-shadow">
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           {/* Premium Logo */}
           <div className="flex items-center space-x-4">
             <div className="relative">
               <div className="text-3xl animate-pulse-glow">🪔</div>
-              <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-primary animate-sparkle" />
+              <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-yellow-400 animate-sparkle" />
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-bold text-foreground text-shadow-gold">
+              <h1 className="text-xl md:text-2xl font-bold diwali-text-gradient">
                 Sri Nidhi
               </h1>
-              <p className="text-xs md:text-sm text-muted-foreground">
+              <p className="text-xs md:text-sm" style={{ color: 'hsl(var(--diwali-text))' }}>
                 Premium Diwali Sweets
               </p>
             </div>
@@ -38,13 +38,14 @@ const DiwaliHeader = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection('sweets')}
-              className="text-foreground hover:text-primary font-medium transition-all duration-300 hover:scale-105"
+              className="font-medium transition-all duration-300 hover:scale-105"
+              style={{ color: 'hsl(var(--diwali-text))' }}
             >
               Collection
             </button>
             <button
               onClick={() => scrollToSection('cart')}
-              className="relative gold-gradient text-accent-foreground px-6 py-2 rounded-full font-bold hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2"
+              className="relative diwali-btn px-6 py-2 rounded-full font-bold diwali-shadow transition-all duration-300 hover:scale-105 flex items-center space-x-2"
             >
               <ShoppingCart className="h-5 w-5" />
               <span>Cart</span>
@@ -60,7 +61,7 @@ const DiwaliHeader = () => {
           <div className="md:hidden flex items-center space-x-4">
             <button
               onClick={() => scrollToSection('cart')}
-              className="relative gold-gradient text-accent-foreground p-2 rounded-full"
+              className="relative diwali-btn p-2 rounded-full"
             >
               <ShoppingCart className="h-5 w-5" />
               {getTotalItems() > 0 && (
@@ -71,7 +72,7 @@ const DiwaliHeader = () => {
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-foreground"
+              style={{ color: 'hsl(var(--diwali-text))' }}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -80,10 +81,11 @@ const DiwaliHeader = () => {
 
         {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-white/10">
+          <div className="md:hidden mt-4 py-4 border-t border-yellow-200/20">
             <button
               onClick={() => scrollToSection('sweets')}
-              className="block w-full text-left text-foreground hover:text-primary font-medium py-2 transition-colors"
+              className="block w-full text-left font-medium py-2 transition-colors hover:scale-105"
+              style={{ color: 'hsl(var(--diwali-text))' }}
             >
               Sweet Collection
             </button>

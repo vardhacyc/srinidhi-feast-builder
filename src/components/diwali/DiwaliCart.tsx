@@ -90,17 +90,17 @@ Order ID: ${Date.now()}`;
 
   if (cart.length === 0) {
     return (
-      <section id="cart" className="relative py-20 premium-gradient section-divider">
+      <section id="cart" className="relative py-20">
         <div className="container mx-auto text-center px-6">
-          <div className="glass-card rounded-3xl p-16 max-w-md mx-auto">
+          <div className="diwali-glass-card rounded-3xl p-16 max-w-md mx-auto diwali-shadow-lg">
             <div className="text-8xl mb-6 opacity-60">🛒</div>
-            <h2 className="text-3xl font-bold text-foreground mb-4 text-shadow-gold">Your Cart is Empty</h2>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
+            <h2 className="text-3xl font-bold mb-4 diwali-text-gradient">Your Cart is Empty</h2>
+            <p className="mb-8 leading-relaxed" style={{ color: 'hsl(var(--diwali-text))' }}>
               Start adding some delicious sweets to your cart!
             </p>
             <button
               onClick={() => document.getElementById('sweets')?.scrollIntoView({ behavior: 'smooth' })}
-              className="btn-glossy text-white px-8 py-4 rounded-full font-bold hover:shadow-lg transition-all duration-300 hover:scale-110"
+              className="diwali-btn px-8 py-4 rounded-full font-bold diwali-shadow transition-all duration-300 hover:scale-110"
             >
               Browse Collection
             </button>
@@ -111,25 +111,25 @@ Order ID: ${Date.now()}`;
   }
 
   return (
-    <section id="cart" className="relative py-20 premium-gradient section-divider">
+    <section id="cart" className="relative py-20">
       <div className="container mx-auto max-w-5xl px-6">
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center mb-6">
-            <ShoppingBag className="h-8 w-8 text-primary mr-2" />
-            <h2 className="text-4xl md:text-6xl font-bold text-foreground text-shadow-gold">
+            <ShoppingBag className="h-8 w-8 mr-2" style={{ color: 'hsl(var(--diwali-gold))' }} />
+            <h2 className="text-4xl md:text-6xl font-bold diwali-text-gradient">
               Your Sweet Cart
             </h2>
-            <ShoppingBag className="h-8 w-8 text-primary ml-2" />
+            <ShoppingBag className="h-8 w-8 ml-2" style={{ color: 'hsl(var(--diwali-gold))' }} />
           </div>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-xl" style={{ color: 'hsl(var(--diwali-text))' }}>
             Review your selection and proceed to order via WhatsApp
           </p>
         </div>
 
-        <div className="glass-card rounded-3xl overflow-hidden">
+        <div className="diwali-glass-card rounded-3xl overflow-hidden diwali-shadow-lg">
           {/* Customer name input */}
-          <div className="p-8 border-b border-white/10 bg-gradient-to-r from-primary/10 to-accent/10">
-            <label className="block text-foreground font-bold mb-3 text-lg">
+          <div className="p-8 border-b border-yellow-200/20 diwali-molten-honey">
+            <label className="block font-bold mb-3 text-lg" style={{ color: 'hsl(var(--diwali-dark))' }}>
               👤 Your Name (Required)
             </label>
             <Input
@@ -137,7 +137,8 @@ Order ID: ${Date.now()}`;
               value={customerName}
               onChange={(e) => setCustomerName(e.target.value)}
               placeholder="Enter your full name"
-              className="w-full p-4 bg-card border-2 border-white/20 rounded-xl focus:border-primary text-foreground placeholder:text-muted-foreground text-lg"
+              className="w-full p-4 border-2 border-yellow-200/30 rounded-xl text-lg diwali-glass"
+              style={{ color: 'hsl(var(--diwali-dark))' }}
             />
           </div>
 

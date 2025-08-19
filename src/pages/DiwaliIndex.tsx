@@ -22,7 +22,7 @@ const DiwaliIndex = () => {
 
   return (
     <CartProvider>
-      <div className="min-h-screen premium-gradient">
+      <div className="min-h-screen diwali-gradient diwali-vignette">
         {showFlowers && <FlowerShower />}
         <DiwaliHeader />
         <DiwaliHero />
@@ -32,6 +32,7 @@ const DiwaliIndex = () => {
         <WhatsAppFloat 
           phoneNumber="919994316559"
           message="🪔 Hi! I'm interested in your premium Diwali sweets collection. Can you help me with more information? ✨"
+          className="whatsapp-amber"
         />
       </div>
     </CartProvider>
