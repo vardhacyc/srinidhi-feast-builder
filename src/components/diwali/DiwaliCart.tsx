@@ -92,7 +92,7 @@ Order ID: ${Date.now()}`;
     return (
       <section id="cart" className="relative py-20 premium-gradient section-divider">
         <div className="container mx-auto text-center px-6">
-          <div className="flowing-card rounded-3xl p-16 max-w-md mx-auto">
+          <div className="glass-card rounded-3xl p-16 max-w-md mx-auto">
             <div className="text-8xl mb-6 opacity-60">🛒</div>
             <h2 className="text-3xl font-bold text-foreground mb-4 text-shadow-gold">Your Cart is Empty</h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -100,7 +100,7 @@ Order ID: ${Date.now()}`;
             </p>
             <button
               onClick={() => document.getElementById('sweets')?.scrollIntoView({ behavior: 'smooth' })}
-              className="gold-gradient text-accent-foreground px-8 py-4 rounded-full font-bold hover:shadow-lg transition-all duration-300 hover:scale-110"
+              className="btn-glossy text-white px-8 py-4 rounded-full font-bold hover:shadow-lg transition-all duration-300 hover:scale-110"
             >
               Browse Collection
             </button>
@@ -126,7 +126,7 @@ Order ID: ${Date.now()}`;
           </p>
         </div>
 
-        <div className="flowing-card rounded-3xl overflow-hidden">
+        <div className="glass-card rounded-3xl overflow-hidden">
           {/* Customer name input */}
           <div className="p-8 border-b border-white/10 bg-gradient-to-r from-primary/10 to-accent/10">
             <label className="block text-foreground font-bold mb-3 text-lg">
@@ -145,7 +145,7 @@ Order ID: ${Date.now()}`;
           <div className="p-8">
             <div className="space-y-6">
               {cart.map(item => (
-                <div key={item.id} className="flex items-center gap-6 p-6 flowing-card rounded-2xl hover:scale-105 transition-all duration-300">
+                <div key={item.id} className="flex items-center gap-6 p-6 glass-card rounded-2xl hover:scale-105 transition-all duration-300">
                   <div className="text-4xl">{item.image}</div>
                   <div className="flex-1">
                     <h3 className="font-bold text-foreground text-lg text-shadow-gold">{item.name}</h3>

@@ -183,8 +183,8 @@ const DiwaliSweetsMenu = () => {
               onClick={() => setSelectedCategory(category.id)}
               className={`px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 ${
                 selectedCategory === category.id
-                  ? 'gold-gradient text-accent-foreground shadow-lg scale-105'
-                  : 'flowing-card text-foreground hover:scale-105 hover:shadow-lg'
+                  ? 'btn-glossy text-white shadow-lg scale-105'
+                  : 'glass-card text-foreground hover:scale-105 hover:shadow-lg'
               }`}
             >
               <span className="flex items-center space-x-2">
@@ -200,7 +200,7 @@ const DiwaliSweetsMenu = () => {
           {filteredSweets.map((sweet, index) => (
             <div
               key={sweet.id}
-              className="flowing-card rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
+              className="glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="p-6">
@@ -241,7 +241,7 @@ const DiwaliSweetsMenu = () => {
                   </div>
                   <Button
                     onClick={() => addToCart(sweet)}
-                    className="w-full gold-gradient text-accent-foreground font-bold py-3 px-6 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg group-hover:-translate-y-1"
+                    className="btn-glossy w-full text-white font-bold py-3 px-6 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg group-hover:-translate-y-1"
                   >
                     <Plus className="h-4 w-4 mr-2" />
                     Add to Cart

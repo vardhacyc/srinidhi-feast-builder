@@ -47,19 +47,19 @@ const DiwaliHero = () => {
 
         {/* Feature Highlights - Flowing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
-          <div className="flowing-card rounded-2xl p-6 text-center backdrop-blur-sm transition-all duration-300 hover:scale-105">
+          <div className="glass-card rounded-2xl p-6 text-center backdrop-blur-sm transition-all duration-300 hover:scale-105">
             <Award className="h-8 w-8 text-primary mx-auto mb-4" />
             <h3 className="text-lg font-bold text-foreground mb-2">Premium Quality</h3>
             <p className="text-muted-foreground text-sm">Authentic recipes passed down through generations</p>
           </div>
           
-          <div className="flowing-card rounded-2xl p-6 text-center backdrop-blur-sm transition-all duration-300 hover:scale-105">
+          <div className="glass-card rounded-2xl p-6 text-center backdrop-blur-sm transition-all duration-300 hover:scale-105">
             <Sparkles className="h-8 w-8 text-primary mx-auto mb-4" />
             <h3 className="text-lg font-bold text-foreground mb-2">Festive Gifting</h3>
             <p className="text-muted-foreground text-sm">Beautiful packaging perfect for celebrations</p>
           </div>
           
-          <div className="flowing-card rounded-2xl p-6 text-center backdrop-blur-sm transition-all duration-300 hover:scale-105">
+          <div className="glass-card rounded-2xl p-6 text-center backdrop-blur-sm transition-all duration-300 hover:scale-105">
             <Heart className="h-8 w-8 text-primary mx-auto mb-4" />
             <h3 className="text-lg font-bold text-foreground mb-2">Made with Love</h3>
             <p className="text-muted-foreground text-sm">Fresh daily with finest ingredients</p>
@@ -70,7 +70,7 @@ const DiwaliHero = () => {
         <div className="space-y-6">
           <button
             onClick={scrollToSweets}
-            className="gold-gradient text-accent-foreground px-8 py-4 rounded-full text-lg font-bold shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 hover:-translate-y-1"
+            className="btn-glossy text-white px-8 py-4 rounded-full text-lg font-bold shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 hover:-translate-y-1"
           >
             <span className="flex items-center space-x-2">
               <span>Explore Collection</span>
@@ -84,7 +84,7 @@ const DiwaliHero = () => {
         </div>
 
         {/* Festive Message */}
-        <div className="mt-16 flowing-card rounded-2xl p-8 backdrop-blur-sm border border-primary/20">
+        <div className="mt-16 glass-card rounded-2xl p-8 backdrop-blur-sm border border-primary/20">
           <p className="text-lg font-semibold text-primary text-shadow-gold">
             🪔 May this Diwali illuminate your life with joy, prosperity, and endless sweetness 🪔
           </p>
