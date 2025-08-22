@@ -19,11 +19,6 @@ const DiwaliCart = () => {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleWhatsAppOrder = () => {
-    if (!customerName.trim()) {
-      alert('Please enter your name before proceeding');
-      return;
-    }
-
     if (cart.length === 0) {
       alert('Your cart is empty');
       return;
@@ -49,7 +44,7 @@ const DiwaliCart = () => {
     const message = `🪔 *Diwali Sweet Order* 🪔
 Order Time: ${timestamp}
 
-👋 Hi! I'm ${customerName}
+${customerName ? `👋 Hi! I'm ${customerName}` : '👋 Hi there!'}
 
 *My Order:*
 ${orderDetails}
@@ -128,54 +123,61 @@ Order ID: ${Date.now()}`;
 
         <div className="diwali-glass-card rounded-3xl overflow-hidden diwali-shadow-lg">
           {/* Customer name input */}
-          <div className="p-8 border-b border-yellow-200/20 diwali-molten-honey">
-            <label className="block font-bold mb-3 text-lg" style={{ color: 'hsl(var(--diwali-dark))' }}>
-              👤 Your Name (Required)
+          <div className="p-6 border-b border-yellow-200/20 diwali-molten-honey">
+            <label className="block font-bold mb-3" style={{ color: 'hsl(var(--diwali-dark))' }}>
+              👤 Your Name (Optional)
             </label>
             <Input
               type="text"
               value={customerName}
               onChange={(e) => setCustomerName(e.target.value)}
-              placeholder="Enter your full name"
-              className="w-full p-4 border-2 border-yellow-200/30 rounded-xl text-lg diwali-glass"
+              placeholder="Enter your name (optional)"
+              className="w-full p-3 border-2 border-yellow-200/30 rounded-xl diwali-glass"
               style={{ color: 'hsl(var(--diwali-dark))' }}
             />
           </div>
 
           {/* Cart items */}
-          <div className="p-8">
-            <div className="space-y-6">
+          <div className="p-6">
+            <div className="space-y-4">
               {cart.map(item => (
-                <div key={item.id} className="flex items-center gap-6 p-6 glass-card rounded-2xl hover:scale-105 transition-all duration-300">
-                  <div className="text-4xl">{item.image}</div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-foreground text-lg text-shadow-gold">{item.name}</h3>
-                    <p className="text-muted-foreground text-sm">{item.description}</p>
-                    <p className="text-primary font-semibold text-lg">₹{item.price}/kg</p>
+                <div key={item.id} className="flex items-center gap-4 p-4 diwali-glass-card rounded-xl hover:scale-102 transition-all duration-300">
+                  <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                    <img 
+                      src={item.image} 
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-bold diwali-text-gradient text-lg truncate">{item.name}</h3>
+                    <p className="text-sm" style={{ color: 'hsl(var(--diwali-subtle))' }}>₹{item.price}/kg</p>
                   </div>
                   
                   {/* Quantity controls */}
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="flowing-card hover:bg-primary/20 text-foreground p-2 rounded-full transition-all duration-300 hover:scale-110"
+                      className="w-8 h-8 rounded-full diwali-glass-card flex items-center justify-center hover:scale-110 transition-all duration-300"
+                      style={{ color: 'hsl(var(--diwali-dark))' }}
                     >
                       <Minus className="h-4 w-4" />
                     </button>
-                    <span className="bg-card px-4 py-2 rounded-full font-bold text-foreground min-w-[80px] text-center border border-white/20">
+                    <span className="px-3 py-1 rounded-full font-bold text-center min-w-[60px] diwali-glass-card">
                       {item.quantity}kg
                     </span>
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="flowing-card hover:bg-primary/20 text-foreground p-2 rounded-full transition-all duration-300 hover:scale-110"
+                      className="w-8 h-8 rounded-full diwali-glass-card flex items-center justify-center hover:scale-110 transition-all duration-300"
+                      style={{ color: 'hsl(var(--diwali-dark))' }}
                     >
                       <Plus className="h-4 w-4" />
                     </button>
                   </div>
                   
                   {/* Item total */}
-                  <div className="text-right min-w-[100px]">
-                    <div className="font-bold text-primary text-xl text-shadow-gold">
+                  <div className="text-right min-w-[80px]">
+                    <div className="font-bold diwali-text-gradient text-lg">
                       ₹{item.price * item.quantity}
                     </div>
                   </div>
@@ -183,40 +185,42 @@ Order ID: ${Date.now()}`;
                   {/* Remove button */}
                   <button
                     onClick={() => removeFromCart(item.id)}
-                    className="text-red-400 hover:text-red-300 p-2 rounded-full hover:bg-red-500/20 transition-all duration-300"
+                    className="w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
+                    style={{ color: 'hsl(var(--diwali-red))' }}
                   >
-                    <Trash2 className="h-5 w-5" />
+                    <Trash2 className="h-4 w-4" />
                   </button>
                 </div>
               ))}
             </div>
 
             {/* Cart summary */}
-            <div className="mt-8 p-6 gold-gradient rounded-2xl">
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-accent-foreground font-semibold text-lg">Total Items:</span>
-                <span className="text-accent-foreground font-bold text-lg">{getTotalItems()}kg</span>
+            <div className="mt-6 p-4 diwali-glass-card rounded-xl">
+              <div className="flex justify-between items-center mb-2">
+                <span className="font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>Total Items:</span>
+                <span className="font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>{getTotalItems()}kg</span>
               </div>
-              <div className="flex justify-between items-center text-2xl">
-                <span className="text-accent-foreground font-bold">Total Amount:</span>
-                <span className="text-accent-foreground font-bold">₹{getTotalPrice()}</span>
+              <div className="flex justify-between items-center text-xl">
+                <span className="font-bold diwali-text-gradient">Total Amount:</span>
+                <span className="font-bold diwali-text-gradient">₹{getTotalPrice()}</span>
               </div>
             </div>
 
             {/* Action buttons */}
-            <div className="mt-8 flex flex-col sm:flex-row gap-6">
+            <div className="mt-6 flex flex-col sm:flex-row gap-4">
               <Button
                 onClick={clearCart}
                 variant="outline"
-                className="flex-1 border-2 border-white/30 text-foreground hover:bg-white/10 py-4 text-lg font-semibold rounded-xl"
+                className="flex-1 border-2 border-yellow-300/50 hover:bg-yellow-100/20 py-3 font-semibold rounded-xl"
+                style={{ color: 'hsl(var(--diwali-dark))' }}
               >
-                <Trash2 className="h-5 w-5 mr-2" />
+                <Trash2 className="h-4 w-4 mr-2" />
                 Clear Cart
               </Button>
               <Button
                 onClick={handleWhatsAppOrder}
-                disabled={isProcessing || !customerName.trim()}
-                className="flex-1 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-lg"
+                disabled={isProcessing}
+                className="flex-1 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50"
               >
                 {isProcessing ? (
                   <>
@@ -233,8 +237,8 @@ Order ID: ${Date.now()}`;
             </div>
 
             {/* Delivery note */}
-            <div className="mt-8 p-6 flowing-card rounded-2xl border border-blue-500/30">
-              <p className="text-foreground text-sm leading-relaxed">
+            <div className="mt-6 p-4 diwali-glass-card rounded-xl border border-blue-400/30">
+              <p className="text-sm leading-relaxed" style={{ color: 'hsl(var(--diwali-dark))' }}>
                 📞 <strong>Note:</strong> After clicking "Order via WhatsApp", you'll be redirected to WhatsApp 
                 where you can confirm your order details, delivery address, and payment method with us directly.
               </p>
