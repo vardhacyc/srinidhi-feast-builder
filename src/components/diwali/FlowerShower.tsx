@@ -29,18 +29,6 @@ const FlowerShower = () => {
           </div>
         </div>
       ))}
-      
-      {/* Welcome message overlay */}
-      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
-        <div className="text-center text-white p-8 rounded-xl bg-gradient-to-r from-orange-600 to-pink-600 shadow-2xl">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-pulse">
-            🪔 Happy Diwali! 🪔
-          </h1>
-          <p className="text-xl md:text-2xl font-medium">
-            Welcome to Sri Nidhi's Premium Diwali Sweets
-          </p>
-        </div>
-      </div>
     </div>
   );
 };
