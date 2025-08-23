@@ -398,6 +398,13 @@ All colors MUST be HSL.
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 
+  /* Gold gradient text legibility enhancement */
+  .gradient-heading {
+    text-shadow:
+      0 2px 8px rgba(120, 80, 0, 0.14),   /* very subtle diffuse brown */
+      0 0.5px 1.5px rgba(0,0,0,0.18);      /* faint black outline for crispness */
+  }
+
   /* ===================================================================
      SCRIBBLE UNDERLINE ANIMATIONS
      ================================================================= */

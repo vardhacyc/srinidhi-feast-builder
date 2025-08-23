@@ -29,9 +29,9 @@ const DiwaliHero = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-            <span className="diwali-text-gradient">Sri Nidhi</span>
+            <span className="diwali-text-gradient gradient-heading">Sri Nidhi</span>
             <br />
-            <span className="diwali-text-gradient">Diwali Sweets</span>
+            <span className="diwali-text-gradient gradient-heading">Diwali Sweets</span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed" style={{ color: 'hsl(var(--diwali-text))' }}>
