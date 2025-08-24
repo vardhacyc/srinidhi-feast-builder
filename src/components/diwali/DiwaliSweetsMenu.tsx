@@ -8,150 +8,226 @@ const DiwaliSweetsMenu = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const sweetCategories = [
-    { id: 'all', name: 'All Sweets', emoji: '🍯' },
-    { id: 'milk-based', name: 'Milk Based', emoji: '🥛' },
-    { id: 'fried', name: 'Fried Delights', emoji: '🍥' },
-    { id: 'dry-fruits', name: 'Dry Fruit Special', emoji: '🌰' },
-    { id: 'regional', name: 'Regional Specials', emoji: '🏛️' }
+    { id: 'all', name: 'All Items', emoji: '🍯' },
+    { id: 'diwali-sweets', name: 'Diwali Sweets', emoji: '🪔' },
+    { id: 'ghee-sweets', name: 'Ghee Sweets', emoji: '🧈' },
+    { id: 'special-ghee', name: 'Special Ghee', emoji: '👑' },
+    { id: 'dryfruit', name: 'Dryfruit', emoji: '🌰' },
+    { id: 'assorted', name: 'Assorted', emoji: '🎁' },
+    { id: 'savouries', name: 'Savouries', emoji: '🥨' }
   ];
 
   const sweetsData: Sweet[] = [
-    // Milk-based sweets
+    // Diwali Sweets Menu with Prices (₹600/kg)
     {
-      id: 'rasgulla',
-      name: 'Bengali Rasgulla',
-      description: 'Soft, spongy cottage cheese balls in sugar syrup',
-      price: 450,
-      image: '/lovable-uploads/a7c240ca-9638-4f9a-b530-e2a2e1696347.png',
-      category: 'milk-based'
-    },
-    {
-      id: 'rasmalai',
-      name: 'Rasmalai',
-      description: 'Delicate cottage cheese dumplings in sweetened milk',
-      price: 550,
-      image: '/lovable-uploads/90e0608c-b5fa-480e-9dfa-0a8173cd3f7e.png',
-      category: 'milk-based'
-    },
-    {
-      id: 'kheer',
-      name: 'Royal Kheer',
-      description: 'Creamy rice pudding with nuts and cardamom',
-      price: 350,
-      image: '/lovable-uploads/3f9c1eba-d27c-4ca8-bff6-452efdb026dd.png',
-      category: 'milk-based'
-    },
-    {
-      id: 'kulfi',
-      name: 'Kulfi Falooda',
-      description: 'Traditional Indian ice cream with vermicelli',
-      price: 250,
-      image: '/lovable-uploads/8a25412c-6bca-463c-a2f9-cd4ba98905e6.png',
-      category: 'milk-based'
-    },
-    
-    // Fried delights
-    {
-      id: 'jalebi',
-      name: 'Crispy Jalebi',
-      description: 'Golden spirals soaked in sugar syrup',
-      price: 300,
+      id: 'laddu',
+      name: 'Laddu',
+      description: 'Traditional round sweets made with flour, ghee and sugar',
+      price: 600,
       image: '/lovable-uploads/63e67f13-ca1f-4971-9c1e-b7c7b3bec5cc.png',
-      category: 'fried'
+      category: 'diwali-sweets'
     },
     {
-      id: 'gulab-jamun',
-      name: 'Gulab Jamun',
-      description: 'Soft milk solid balls in rose-flavored syrup',
-      price: 400,
-      image: '/lovable-uploads/83c09900-3531-4b73-80e6-69da609f6f92.png',
-      category: 'fried'
+      id: 'badhusha',
+      name: 'Badhusha',
+      description: 'Flaky, layered sweet pastry soaked in sugar syrup',
+      price: 600,
+      image: '/placeholder-sweet.jpg',
+      category: 'diwali-sweets'
     },
     {
-      id: 'imarti',
-      name: 'Imarti',
-      description: 'Flower-shaped crispy sweet in saffron syrup',
-      price: 450,
+      id: 'mysorepak',
+      name: 'Mysorepak',
+      description: 'Rich, buttery sweet from Karnataka made with ghee',
+      price: 600,
       image: '/lovable-uploads/be4a8a1a-e952-4710-8111-60ee6ed7eb78.png',
-      category: 'fried'
+      category: 'diwali-sweets'
     },
     {
-      id: 'balushahi',
-      name: 'Balushahi',
-      description: 'Flaky pastry glazed with sugar syrup',
-      price: 350,
-      image: '/lovable-uploads/8f7791bb-208a-4778-9f6a-21441f9bfaff.png',
-      category: 'fried'
+      id: 'bombay-halwa',
+      name: 'Bombay Halwa',
+      description: 'Colorful, translucent sweet made with corn flour',
+      price: 600,
+      image: '/placeholder-sweet.jpg',
+      category: 'diwali-sweets'
+    },
+    {
+      id: 'gulkandh-burfi',
+      name: 'Gulkandh Burfi',
+      description: 'Rose petal preserve flavored milk fudge squares',
+      price: 600,
+      image: '/lovable-uploads/3f9c1eba-d27c-4ca8-bff6-452efdb026dd.png',
+      category: 'diwali-sweets'
     },
 
-    // Dry fruit specials
+    // Ghee Sweets (₹650/kg)
     {
-      id: 'kaju-katli',
-      name: 'Kaju Katli',
-      description: 'Diamond-shaped cashew fudge with silver leaf',
-      price: 800,
-      image: '/lovable-uploads/90e0608c-b5fa-480e-9dfa-0a8173cd3f7e.png',
-      category: 'dry-fruits'
-    },
-    {
-      id: 'badam-halwa',
-      name: 'Badam Halwa',
-      description: 'Rich almond pudding with ghee and cardamom',
+      id: 'special-laddu',
+      name: 'Special Laddu',
+      description: 'Premium laddus made with pure ghee and finest ingredients',
       price: 650,
-      image: '/lovable-uploads/be4a8a1a-e952-4710-8111-60ee6ed7eb78.png',
-      category: 'dry-fruits'
+      image: '/lovable-uploads/63e67f13-ca1f-4971-9c1e-b7c7b3bec5cc.png',
+      category: 'ghee-sweets'
     },
     {
-      id: 'anjeer-roll',
-      name: 'Anjeer Roll',
-      description: 'Fig and nut rolls with pure ghee',
-      price: 750,
-      image: '/lovable-uploads/3f9c1eba-d27c-4ca8-bff6-452efdb026dd.png',
-      category: 'dry-fruits',
-      isVegan: true
+      id: 'carrot-mysore-pak',
+      name: 'Carrot Mysore Pak',
+      description: 'Traditional Mysore Pak enhanced with fresh carrots',
+      price: 650,
+      image: '/placeholder-sweet.jpg',
+      category: 'ghee-sweets'
     },
     {
-      id: 'pista-roll',
-      name: 'Pista Roll',
-      description: 'Pistachio rolls with sweetened milk',
-      price: 900,
-      image: '/lovable-uploads/8a25412c-6bca-463c-a2f9-cd4ba98905e6.png',
-      category: 'dry-fruits'
+      id: 'dry-fruit-halwa',
+      name: 'Dry Fruit Halwa',
+      description: 'Rich halwa loaded with assorted dry fruits and ghee',
+      price: 650,
+      image: '/placeholder-sweet.jpg',
+      category: 'ghee-sweets'
+    },
+    {
+      id: 'soan-papdi-ghee',
+      name: 'Soan Papdi',
+      description: 'Flaky, melt-in-mouth sweet made with pure ghee',
+      price: 650,
+      image: '/lovable-uploads/8f7791bb-208a-4778-9f6a-21441f9bfaff.png',
+      category: 'ghee-sweets'
     },
 
-    // Regional specials
+    // Special Ghee Sweets (₹1400/kg)
     {
-      id: 'mysore-pak',
-      name: 'Mysore Pak',
-      description: 'Karnataka\'s famous ghee-rich sweet',
-      price: 500,
-      image: '/lovable-uploads/be4a8a1a-e952-4710-8111-60ee6ed7eb78.png',
-      category: 'regional'
+      id: 'cashew-cake',
+      name: 'Cashew Cake',
+      description: 'Premium cake-style sweet made with cashews and ghee',
+      price: 1400,
+      image: '/placeholder-sweet.jpg',
+      category: 'special-ghee'
     },
     {
-      id: 'soan-papdi',
-      name: 'Soan Papdi',
-      description: 'Flaky, crispy sweet with cardamom',
+      id: 'gulkand-ball',
+      name: 'Gulkand Ball',
+      description: 'Rose petal preserve filled sweet balls',
+      price: 1400,
+      image: '/placeholder-sweet.jpg',
+      category: 'special-ghee'
+    },
+    {
+      id: 'strawberry-pista-roll',
+      name: 'Strawberry Pista Roll',
+      description: 'Pistachio rolls with strawberry flavor',
+      price: 1400,
+      image: '/lovable-uploads/8a25412c-6bca-463c-a2f9-cd4ba98905e6.png',
+      category: 'special-ghee'
+    },
+    {
+      id: 'fig-roll',
+      name: 'Fig Roll',
+      description: 'Premium fig and nut rolls with ghee',
+      price: 1400,
+      image: '/placeholder-sweet.jpg',
+      category: 'special-ghee'
+    },
+    {
+      id: 'kaju-cassata',
+      name: 'Kaju Cassata',
+      description: 'Layered cashew sweet with multiple flavors',
+      price: 1400,
+      image: '/placeholder-sweet.jpg',
+      category: 'special-ghee'
+    },
+    {
+      id: 'kaju-anjeer-burfi',
+      name: 'Kaju Anjeer Burfi',
+      description: 'Cashew and fig fudge squares',
+      price: 1400,
+      image: '/placeholder-sweet.jpg',
+      category: 'special-ghee'
+    },
+    {
+      id: 'strawberry-choco-burfi',
+      name: 'Strawberry Choco Burfi',
+      description: 'Chocolate and strawberry flavored milk fudge',
+      price: 1400,
+      image: '/placeholder-sweet.jpg',
+      category: 'special-ghee'
+    },
+
+    // Dryfruit Sweets
+    {
+      id: 'royal',
+      name: 'Royal',
+      description: 'Premium dry fruit sweet collection',
+      price: 600,
+      image: '/placeholder-sweet.jpg',
+      category: 'dryfruit'
+    },
+    {
+      id: 'supreme',
+      name: 'Supreme',
+      description: 'Superior quality dry fruit sweet assortment',
+      price: 650,
+      image: '/placeholder-sweet.jpg',
+      category: 'dryfruit'
+    },
+    {
+      id: 'grandeur',
+      name: 'Grandeur',
+      description: 'Luxurious dry fruit sweet collection',
+      price: 1400,
+      image: '/placeholder-sweet.jpg',
+      category: 'dryfruit'
+    },
+
+    // Assorted Sweets
+    {
+      id: 'kc-special-mixture',
+      name: 'KC Special Mixture',
+      description: 'House special assorted sweet mixture',
       price: 400,
-      image: '/lovable-uploads/8f7791bb-208a-4778-9f6a-21441f9bfaff.png',
-      category: 'regional'
+      image: '/placeholder-sweet.jpg',
+      category: 'assorted'
+    },
+
+    // Savouries
+    {
+      id: 'butter-murukku',
+      name: 'Butter Murukku',
+      description: 'Crispy spiral snacks made with butter',
+      price: 400,
+      image: '/placeholder-sweet.jpg',
+      category: 'savouries'
     },
     {
-      id: 'motichoor-laddu',
-      name: 'Motichoor Laddu',
-      description: 'Golden droplet laddus with nuts',
-      price: 450,
-      image: '/lovable-uploads/63e67f13-ca1f-4971-9c1e-b7c7b3bec5cc.png',
-      category: 'regional'
+      id: 'ragi-pakoda',
+      name: 'Ragi Pakoda',
+      description: 'Healthy finger millet fritters',
+      price: 400,
+      image: '/placeholder-sweet.jpg',
+      category: 'savouries'
     },
     {
-      id: 'coconut-barfi',
-      name: 'Coconut Barfi',
-      description: 'Fresh coconut fudge squares',
+      id: 'ribbon-pakoda',
+      name: 'Ribbon Pakoda',
+      description: 'Ribbon-shaped crispy savory snacks',
+      price: 400,
+      image: '/placeholder-sweet.jpg',
+      category: 'savouries'
+    },
+    {
+      id: 'assorted-bites-10',
+      name: 'Assorted Bites (10 pcs)',
+      description: 'Mixed savory bites - pack of 10 pieces',
       price: 350,
-      image: '/lovable-uploads/3f9c1eba-d27c-4ca8-bff6-452efdb026dd.png',
-      category: 'regional',
-      isVegan: true
+      image: '/placeholder-sweet.jpg',
+      category: 'savouries'
+    },
+    {
+      id: 'assorted-bites-25',
+      name: 'Assorted Bites (25 pcs)',
+      description: 'Mixed savory bites - pack of 25 pieces',
+      price: 700,
+      image: '/placeholder-sweet.jpg',
+      category: 'savouries'
     }
   ];
 
