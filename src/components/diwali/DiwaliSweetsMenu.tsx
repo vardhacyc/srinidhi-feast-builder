@@ -241,12 +241,12 @@ const DiwaliSweetsMenu = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center mb-6">
             <Star className="h-8 w-8 mr-2" style={{ color: 'hsl(var(--diwali-gold))' }} />
-            <h2 className="text-4xl md:text-6xl font-bold diwali-text-gradient">
+            <h2 className="text-4xl md:text-6xl font-bold diwali-text-gradient diwali-text-border-gold">
               Premium Collection
             </h2>
             <Star className="h-8 w-8 ml-2" style={{ color: 'hsl(var(--diwali-gold))' }} />
           </div>
-          <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: 'hsl(var(--diwali-text))' }}>
+          <p className="text-xl max-w-3xl mx-auto leading-relaxed diwali-text-border-light" style={{ color: 'hsl(var(--diwali-text))' }}>
             Handcrafted with the finest ingredients and traditional recipes passed down through generations
           </p>
         </div>
@@ -296,10 +296,10 @@ const DiwaliSweetsMenu = () => {
                 </div>
                 
                 {/* Sweet Info */}
-                <h3 className="text-xl font-bold mb-2 text-center diwali-text-gradient">
+                <h3 className="text-xl font-bold mb-2 text-center diwali-text-gradient diwali-text-border-gold">
                   {sweet.name}
                 </h3>
-                <p className="text-sm mb-4 text-center h-12 leading-relaxed" style={{ color: 'hsl(var(--diwali-text))' }}>
+                <p className="text-sm mb-4 text-center h-12 leading-relaxed diwali-text-border-light" style={{ color: 'hsl(var(--diwali-text))' }}>
                   {sweet.description}
                 </p>
                 
@@ -321,9 +321,9 @@ const DiwaliSweetsMenu = () => {
 
                 {/* Price and Add to Cart */}
                 <div className="text-center space-y-4">
-                  <div className="text-2xl font-bold diwali-text-gradient">
+                  <div className="text-2xl font-bold diwali-text-gradient diwali-text-border-gold">
                     ₹{sweet.price}
-                    <span className="text-sm font-normal" style={{ color: 'hsl(var(--diwali-subtle))' }}>/kg</span>
+                    <span className="text-sm font-normal diwali-text-border-light" style={{ color: 'hsl(var(--diwali-subtle))' }}>/kg</span>
                   </div>
                   <Button
                     onClick={() => addToCart(sweet)}
@@ -341,7 +341,7 @@ const DiwaliSweetsMenu = () => {
         {filteredSweets.length === 0 && (
           <div className="text-center py-16">
             <div className="text-8xl mb-6 opacity-50">🍯</div>
-            <p className="text-xl" style={{ color: 'hsl(var(--diwali-subtle))' }}>No sweets found in this category</p>
+            <p className="text-xl diwali-text-border-light" style={{ color: 'hsl(var(--diwali-subtle))' }}>No sweets found in this category</p>
           </div>
         )}
       </div>

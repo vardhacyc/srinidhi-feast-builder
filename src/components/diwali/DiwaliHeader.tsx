@@ -25,10 +25,10 @@ const DiwaliHeader = () => {
               <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-yellow-400 animate-sparkle" />
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-bold diwali-text-gradient">
+              <h1 className="text-xl md:text-2xl font-bold diwali-text-gradient diwali-text-border-gold">
                 Sri Nidhi
               </h1>
-              <p className="text-xs md:text-sm" style={{ color: 'hsl(var(--diwali-text))' }}>
+              <p className="text-xs md:text-sm diwali-text-border-light" style={{ color: 'hsl(var(--diwali-text))' }}>
                 Premium Diwali Sweets
               </p>
             </div>
@@ -38,7 +38,7 @@ const DiwaliHeader = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection('sweets')}
-              className="font-medium transition-all duration-300 hover:scale-105"
+              className="font-medium transition-all duration-300 hover:scale-105 diwali-text-border-light"
               style={{ color: 'hsl(var(--diwali-text))' }}
             >
               Collection
@@ -84,7 +84,7 @@ const DiwaliHeader = () => {
           <div className="md:hidden mt-4 py-4 border-t border-yellow-200/20">
             <button
               onClick={() => scrollToSection('sweets')}
-              className="block w-full text-left font-medium py-2 transition-colors hover:scale-105"
+              className="block w-full text-left font-medium py-2 transition-colors hover:scale-105 diwali-text-border-light"
               style={{ color: 'hsl(var(--diwali-text))' }}
             >
               Sweet Collection
