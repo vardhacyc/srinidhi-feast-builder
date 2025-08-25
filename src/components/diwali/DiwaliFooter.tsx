@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Phone, MessageCircle, MapPin, Clock } from 'lucide-react';
+import { DELIVERY_CONFIG } from '../../config/deliveryConfig';
 
 const DiwaliFooter = () => {
   return (
@@ -64,8 +65,8 @@ const DiwaliFooter = () => {
           <div className="text-center md:text-left">
             <h4 className="text-lg font-bold mb-4">Diwali Special</h4>
             <div className="bg-white/10 rounded-lg p-4 mb-4">
-              <p className="text-yellow-300 font-bold">🎁 FREE DELIVERY</p>
-              <p className="text-orange-200 text-sm">On orders above ₹1000</p>
+              <p className="text-yellow-300 font-bold">🎁 PREMIUM QUALITY</p>
+              <p className="text-orange-200 text-sm">Handcrafted with traditional recipes</p>
             </div>
             <div className="bg-white/10 rounded-lg p-4">
               <p className="text-yellow-300 font-bold">🍯 BULK ORDERS</p>
@@ -76,6 +77,23 @@ const DiwaliFooter = () => {
 
         {/* Bottom section */}
         <div className="border-t border-orange-600 mt-8 pt-6 text-center">
+          {/* Delivery and GST Information */}
+          <div className="bg-white/10 rounded-lg p-6 mb-6 max-w-2xl mx-auto">
+            <div className="space-y-3">
+              <p className="text-yellow-300 font-bold text-lg">
+                🚚 Free delivery inside {DELIVERY_CONFIG.deliveryArea} for orders above ₹{DELIVERY_CONFIG.freeDeliveryAmount}
+              </p>
+              <div className="border-t border-orange-400/30 pt-3 space-y-2">
+                <p className="text-orange-200 text-sm">
+                  📦 All items are subject to availability
+                </p>
+                <p className="text-orange-200 text-sm">
+                  💰 GST extra: {DELIVERY_CONFIG.gstRates.sweets}% on Sweets & {DELIVERY_CONFIG.gstRates.savouries}% on Savouries
+                </p>
+              </div>
+            </div>
+          </div>
+          
           <p className="text-orange-200 mb-2">
             © 2024 Sri Nidhi Diwali Sweets. Continuing the legacy of premium catering services.
           </p>
