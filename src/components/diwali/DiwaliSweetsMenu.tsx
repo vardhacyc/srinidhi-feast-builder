@@ -273,16 +273,16 @@ const DiwaliSweetsMenu = () => {
         </div>
 
         {/* Sweets Grid - Flowing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredSweets.map((sweet, index) => (
             <div
               key={sweet.id}
-              className="diwali-glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 diwali-shadow-lg group"
+              className="diwali-glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 diwali-shadow-lg group flex flex-col h-full"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="p-6">
+              <div className="p-4 flex flex-col h-full">
                 {/* Sweet Image */}
-                <div className="relative w-full h-48 mb-4 rounded-xl overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <div className="relative w-full h-40 mb-3 rounded-xl overflow-hidden group-hover:scale-105 transition-transform duration-300">
                   <img 
                     src={sweet.image} 
                     alt={sweet.name}
@@ -295,41 +295,43 @@ const DiwaliSweetsMenu = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
                 </div>
                 
-                {/* Sweet Info */}
-                <h3 className="text-xl font-bold mb-2 text-center diwali-text-gradient">
-                  {sweet.name}
-                </h3>
-                <p className="text-sm mb-4 text-center h-12 leading-relaxed" style={{ color: 'hsl(var(--diwali-text))' }}>
-                  {sweet.description}
-                </p>
-                
-                {/* Badges */}
-                <div className="flex justify-center gap-2 mb-4">
-                  {sweet.isVegan && (
-                    <span className="diwali-badge px-3 py-1 rounded-full text-xs flex items-center gap-1">
-                      <Leaf className="h-3 w-3" />
-                      Vegan
-                    </span>
-                  )}
-                  {sweet.isSugarFree && (
-                    <span className="diwali-badge px-3 py-1 rounded-full text-xs flex items-center gap-1">
-                      <Heart className="h-3 w-3" />
-                      Sugar Free
-                    </span>
-                  )}
+                {/* Sweet Info - Flexible content area */}
+                <div className="flex-1 flex flex-col">
+                  <h3 className="text-lg font-bold mb-2 text-center diwali-text-gradient line-clamp-2">
+                    {sweet.name}
+                  </h3>
+                  <p className="text-sm mb-3 text-center leading-relaxed flex-1 line-clamp-3" style={{ color: 'hsl(var(--diwali-text))' }}>
+                    {sweet.description}
+                  </p>
+                  
+                  {/* Badges */}
+                  <div className="flex justify-center gap-2 mb-3 min-h-[24px]">
+                    {sweet.isVegan && (
+                      <span className="diwali-badge px-2 py-1 rounded-full text-xs flex items-center gap-1">
+                        <Leaf className="h-3 w-3" />
+                        Vegan
+                      </span>
+                    )}
+                    {sweet.isSugarFree && (
+                      <span className="diwali-badge px-2 py-1 rounded-full text-xs flex items-center gap-1">
+                        <Heart className="h-3 w-3" />
+                        Sugar Free
+                      </span>
+                    )}
+                  </div>
                 </div>
 
-                {/* Price and Add to Cart */}
-                <div className="text-center space-y-4">
-                  <div className="text-2xl font-bold diwali-text-gradient">
+                {/* Price and Add to Cart - Fixed at bottom */}
+                <div className="text-center space-y-3 mt-auto">
+                  <div className="text-xl font-bold diwali-text-gradient">
                     ₹{sweet.price}
                     <span className="text-sm font-normal" style={{ color: 'hsl(var(--diwali-subtle))' }}>/kg</span>
                   </div>
                   <Button
                     onClick={() => addToCart(sweet)}
-                    className="diwali-btn w-full font-bold py-3 px-6 rounded-full transition-all duration-300 hover:scale-110 diwali-shadow group-hover:-translate-y-1"
+                    className="diwali-btn w-full font-semibold py-2.5 px-4 rounded-full transition-all duration-300 hover:scale-105 diwali-shadow text-sm"
                   >
-                    <Plus className="h-4 w-4 mr-2" />
+                    <Plus className="h-4 w-4 mr-1" />
                     Add to Cart
                   </Button>
                 </div>

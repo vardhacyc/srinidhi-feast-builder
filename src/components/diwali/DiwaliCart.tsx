@@ -195,40 +195,40 @@ Order ID: ${Date.now()}`;
             </div>
 
             {/* Cart summary */}
-            <div className="mt-6 p-4 diwali-glass-card rounded-xl">
-              <div className="flex justify-between items-center mb-2">
-                <span className="font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>Total Items:</span>
-                <span className="font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>{getTotalItems()}kg</span>
+            <div className="mt-8 p-6 diwali-glass-card rounded-xl border-2 border-yellow-300/30">
+              <div className="flex justify-between items-center mb-4 pb-3 border-b border-yellow-200/20">
+                <span className="text-lg font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>Total Items:</span>
+                <span className="text-lg font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>{getTotalItems()}kg</span>
               </div>
-              <div className="flex justify-between items-center text-xl">
-                <span className="font-bold diwali-text-gradient">Total Amount:</span>
-                <span className="font-bold diwali-text-gradient">₹{getTotalPrice()}</span>
+              <div className="flex justify-between items-center">
+                <span className="text-2xl font-bold diwali-text-gradient">Total Amount:</span>
+                <span className="text-2xl font-bold diwali-text-gradient">₹{getTotalPrice()}</span>
               </div>
             </div>
 
             {/* Action buttons */}
-            <div className="mt-6 flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Button
                 onClick={clearCart}
                 variant="outline"
-                className="flex-1 border-2 border-red-400/80 bg-red-50/20 hover:bg-red-100/30 hover:border-red-500 text-red-600 hover:text-red-700 py-3 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+                className="flex-1 border-2 border-red-400/80 bg-red-50/20 hover:bg-red-100/30 hover:border-red-500 text-red-600 hover:text-red-700 py-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
               >
-                <Trash2 className="h-4 w-4 mr-2" />
+                <Trash2 className="h-5 w-5 mr-2" />
                 Clear Cart
               </Button>
               <Button
                 onClick={handleWhatsAppOrder}
                 disabled={isProcessing}
-                className="flex-1 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50"
+                className="flex-1 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 text-lg"
               >
                 {isProcessing ? (
                   <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-2"></div>
                     Processing...
                   </>
                 ) : (
                   <>
-                    <MessageCircle className="h-5 w-5 mr-2" />
+                    <MessageCircle className="h-6 w-6 mr-2" />
                     Order via WhatsApp
                   </>
                 )}
@@ -236,7 +236,7 @@ Order ID: ${Date.now()}`;
             </div>
 
             {/* Delivery note */}
-            <div className="mt-6 p-4 diwali-glass-card rounded-xl border border-blue-400/30">
+            <div className="mt-6 mb-4 p-4 diwali-glass-card rounded-xl border border-blue-400/30">
               <p className="text-sm leading-relaxed" style={{ color: 'hsl(var(--diwali-dark))' }}>
                 📞 <strong>Note:</strong> After clicking "Order via WhatsApp", you'll be redirected to WhatsApp 
                 where you can confirm your order details, delivery address, and payment method with us directly.
