@@ -329,9 +329,9 @@ const DiwaliSweetsMenu = () => {
                   </div>
                   <Button
                     onClick={() => addToCart(sweet)}
-                    className="diwali-btn w-full font-semibold py-2.5 px-4 rounded-full transition-all duration-300 hover:scale-105 diwali-shadow text-sm"
+                    className="diwali-btn w-full font-semibold py-2.5 px-4 rounded-full transition-all duration-300 hover:scale-105 diwali-shadow text-sm flex items-center justify-center"
                   >
-                    <Plus className="h-4 w-4 mr-1" />
+                    <Plus className="h-4 w-4 mr-2" />
                     Add to Cart
                   </Button>
                 </div>
