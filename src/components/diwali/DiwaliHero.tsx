@@ -29,12 +29,12 @@ const DiwaliHero = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-            <span className="diwali-text-gradient gradient-heading diwali-text-border-gold">Sri Nidhi</span>
+            <span className="diwali-text-gradient gradient-heading">Sri Nidhi</span>
             <br />
-            <span className="diwali-text-gradient gradient-heading diwali-text-border-gold">Diwali Sweets</span>
+            <span className="diwali-text-gradient gradient-heading">Diwali Sweets</span>
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed diwali-text-border-light" style={{ color: 'hsl(var(--diwali-text))' }}>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed" style={{ color: 'hsl(var(--diwali-text))' }}>
             Celebrate the festival of lights with our handcrafted traditional sweets. 
             <br className="hidden md:block" />
             Made with love, tradition, and the finest ingredients.
@@ -45,20 +45,20 @@ const DiwaliHero = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
           <div className="diwali-glass-card rounded-2xl p-6 text-center transition-all duration-300 hover:scale-105 diwali-shadow">
             <Award className="h-8 w-8 mx-auto mb-4" style={{ color: 'hsl(var(--diwali-gold))' }} />
-            <h3 className="text-lg font-bold mb-2 diwali-text-border-light" style={{ color: 'hsl(var(--diwali-dark))' }}>Premium Quality</h3>
-            <p className="text-sm diwali-text-border-light" style={{ color: 'hsl(var(--diwali-text))' }}>Authentic recipes passed down through generations</p>
+            <h3 className="text-lg font-bold mb-2" style={{ color: 'hsl(var(--diwali-dark))' }}>Premium Quality</h3>
+            <p className="text-sm" style={{ color: 'hsl(var(--diwali-text))' }}>Authentic recipes passed down through generations</p>
           </div>
           
           <div className="diwali-glass-card rounded-2xl p-6 text-center transition-all duration-300 hover:scale-105 diwali-shadow">
             <Sparkles className="h-8 w-8 mx-auto mb-4" style={{ color: 'hsl(var(--diwali-gold))' }} />
-            <h3 className="text-lg font-bold mb-2 diwali-text-border-light" style={{ color: 'hsl(var(--diwali-dark))' }}>Festive Gifting</h3>
-            <p className="text-sm diwali-text-border-light" style={{ color: 'hsl(var(--diwali-text))' }}>Beautiful packaging perfect for celebrations</p>
+            <h3 className="text-lg font-bold mb-2" style={{ color: 'hsl(var(--diwali-dark))' }}>Festive Gifting</h3>
+            <p className="text-sm" style={{ color: 'hsl(var(--diwali-text))' }}>Beautiful packaging perfect for celebrations</p>
           </div>
           
           <div className="diwali-glass-card rounded-2xl p-6 text-center transition-all duration-300 hover:scale-105 diwali-shadow">
             <Heart className="h-8 w-8 mx-auto mb-4" style={{ color: 'hsl(var(--diwali-gold))' }} />
-            <h3 className="text-lg font-bold mb-2 diwali-text-border-light" style={{ color: 'hsl(var(--diwali-dark))' }}>Made with Love</h3>
-            <p className="text-sm diwali-text-border-light" style={{ color: 'hsl(var(--diwali-text))' }}>Fresh daily with finest ingredients</p>
+            <h3 className="text-lg font-bold mb-2" style={{ color: 'hsl(var(--diwali-dark))' }}>Made with Love</h3>
+            <p className="text-sm" style={{ color: 'hsl(var(--diwali-text))' }}>Fresh daily with finest ingredients</p>
           </div>
         </div>
 
@@ -74,14 +74,14 @@ const DiwaliHero = () => {
             </span>
           </button>
           
-          <p className="text-sm diwali-text-border-light" style={{ color: 'hsl(var(--diwali-subtle))' }}>
+          <p className="text-sm" style={{ color: 'hsl(var(--diwali-subtle))' }}>
             ✨ Free delivery for orders above ₹1000 ✨
           </p>
         </div>
 
         {/* Festive Message */}
         <div className="mt-16 diwali-glass-card rounded-2xl p-8 diwali-shadow">
-          <p className="text-lg font-semibold diwali-text-gradient diwali-text-border-gold">
+          <p className="text-lg font-semibold diwali-text-gradient">
             🪔 May this Diwali illuminate your life with joy, prosperity, and endless sweetness 🪔
           </p>
         </div>

@@ -405,35 +405,6 @@ All colors MUST be HSL.
       0 0.5px 1.5px rgba(0,0,0,0.18);      /* faint black outline for crispness */
   }
 
-  /* Diwali Text Border Utilities */
-  .diwali-text-border {
-    text-shadow:
-      0 0 2px hsl(var(--diwali-dark) / 0.8),
-      0 0 4px hsl(var(--diwali-dark) / 0.6),
-      0 1px 2px hsl(var(--diwali-shadow) / 0.4);
-  }
-
-  .diwali-text-border-light {
-    text-shadow:
-      0 0 1px hsl(var(--diwali-dark) / 0.6),
-      0 0 3px hsl(var(--diwali-shadow) / 0.4),
-      0 1px 1px rgba(0, 0, 0, 0.2);
-  }
-
-  .diwali-text-border-gold {
-    text-shadow:
-      0 0 2px hsl(var(--diwali-bronze) / 0.9),
-      0 0 4px hsl(var(--diwali-dark) / 0.7),
-      0 1px 2px rgba(0, 0, 0, 0.3);
-  }
-
-  .diwali-text-border-white {
-    text-shadow:
-      0 0 1px rgba(255, 255, 255, 0.9),
-      0 0 3px rgba(255, 255, 255, 0.6),
-      0 1px 1px hsl(var(--diwali-dark) / 0.4);
-  }
-
   /* ===================================================================
      SCRIBBLE UNDERLINE ANIMATIONS
      ================================================================= */

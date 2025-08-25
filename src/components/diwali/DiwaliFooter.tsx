@@ -11,18 +11,18 @@ const DiwaliFooter = () => {
           <div className="text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
               <div className="text-3xl">🪔</div>
-              <h3 className="text-xl font-bold diwali-text-border-white">Sri Nidhi Diwali Sweets</h3>
+              <h3 className="text-xl font-bold">Sri Nidhi Diwali Sweets</h3>
             </div>
-            <p className="text-orange-200 mb-4 diwali-text-border-light">
+            <p className="text-orange-200 mb-4">
               Celebrating traditions with premium quality sweets, 
               handcrafted with love for your festive moments.
             </p>
-            <div className="text-2xl diwali-text-border-white">✨ Happy Diwali! ✨</div>
+            <div className="text-2xl">✨ Happy Diwali! ✨</div>
           </div>
 
           {/* Contact info */}
           <div className="text-center md:text-left">
-            <h4 className="text-lg font-bold mb-4 diwali-text-border-white">Contact Us</h4>
+            <h4 className="text-lg font-bold mb-4">Contact Us</h4>
             <div className="space-y-3">
               <a 
                 href="tel:9994316559"
@@ -47,7 +47,7 @@ const DiwaliFooter = () => {
 
           {/* Business hours */}
           <div className="text-center md:text-left">
-            <h4 className="text-lg font-bold mb-4 diwali-text-border-white">Diwali Hours</h4>
+            <h4 className="text-lg font-bold mb-4">Diwali Hours</h4>
             <div className="space-y-2 text-orange-200">
               <div className="flex items-center justify-center md:justify-start gap-2">
                 <Clock className="h-4 w-4" />
@@ -62,7 +62,7 @@ const DiwaliFooter = () => {
 
           {/* Special offers */}
           <div className="text-center md:text-left">
-            <h4 className="text-lg font-bold mb-4 diwali-text-border-white">Diwali Special</h4>
+            <h4 className="text-lg font-bold mb-4">Diwali Special</h4>
             <div className="bg-white/10 rounded-lg p-4 mb-4">
               <p className="text-yellow-300 font-bold">🎁 FREE DELIVERY</p>
               <p className="text-orange-200 text-sm">On orders above ₹1000</p>
