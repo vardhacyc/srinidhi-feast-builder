@@ -211,8 +211,7 @@ Order ID: ${Date.now()}`;
               <Button
                 onClick={clearCart}
                 variant="outline"
-                className="flex-1 border-2 border-yellow-300/50 hover:bg-yellow-100/20 py-3 font-semibold rounded-xl"
-                style={{ color: 'hsl(var(--diwali-dark))' }}
+                className="flex-1 border-2 border-red-400/80 bg-red-50/20 hover:bg-red-100/30 hover:border-red-500 text-red-600 hover:text-red-700 py-3 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
               >
                 <Trash2 className="h-4 w-4 mr-2" />
                 Clear Cart

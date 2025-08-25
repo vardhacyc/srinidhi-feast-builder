@@ -24,7 +24,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Laddu',
       description: 'Traditional round sweets made with flour, ghee and sugar',
       price: 600,
-      image: '/lovable-uploads/63e67f13-ca1f-4971-9c1e-b7c7b3bec5cc.png',
+      image: '/lovable-uploads/ladoo.png',
       category: 'diwali-sweets'
     },
     {
@@ -32,7 +32,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Badhusha',
       description: 'Flaky, layered sweet pastry soaked in sugar syrup',
       price: 600,
-      image: '/placeholder-sweet.jpg',
+      image: '/lovable-uploads/badusha.jpg',
       category: 'diwali-sweets'
     },
     {
@@ -40,7 +40,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Mysorepak',
       description: 'Rich, buttery sweet from Karnataka made with ghee',
       price: 600,
-      image: '/lovable-uploads/be4a8a1a-e952-4710-8111-60ee6ed7eb78.png',
+      image: '/lovable-uploads/MysorePak.png',
       category: 'diwali-sweets'
     },
     {
@@ -48,7 +48,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Bombay Halwa',
       description: 'Colorful, translucent sweet made with corn flour',
       price: 600,
-      image: '/placeholder-sweet.jpg',
+      image: '/lovable-uploads/bombay_halwa.webp',
       category: 'diwali-sweets'
     },
     {
@@ -66,7 +66,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Special Laddu',
       description: 'Premium laddus made with pure ghee and finest ingredients',
       price: 650,
-      image: '/lovable-uploads/63e67f13-ca1f-4971-9c1e-b7c7b3bec5cc.png',
+      image: '/lovable-uploads/ladoo.png',
       category: 'ghee-sweets'
     },
     {
@@ -74,7 +74,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Carrot Mysore Pak',
       description: 'Traditional Mysore Pak enhanced with fresh carrots',
       price: 650,
-      image: '/placeholder-sweet.jpg',
+      image: '/lovable-uploads/CarrotMysorePak.webp',
       category: 'ghee-sweets'
     },
     {
@@ -82,7 +82,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Dry Fruit Halwa',
       description: 'Rich halwa loaded with assorted dry fruits and ghee',
       price: 650,
-      image: '/placeholder-sweet.jpg',
+      image: '/lovable-uploads/DryFruitHalwa',
       category: 'ghee-sweets'
     },
     {
@@ -90,7 +90,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Soan Papdi',
       description: 'Flaky, melt-in-mouth sweet made with pure ghee',
       price: 650,
-      image: '/lovable-uploads/8f7791bb-208a-4778-9f6a-21441f9bfaff.png',
+      image: '/lovable-uploads/soan-papdi.png',
       category: 'ghee-sweets'
     },
 
@@ -100,7 +100,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Cashew Cake',
       description: 'Premium cake-style sweet made with cashews and ghee',
       price: 1400,
-      image: '/placeholder-sweet.jpg',
+      image: '/lovable-uploads/CashewCake.webp',
       category: 'special-ghee'
     },
     {
@@ -108,7 +108,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Gulkand Ball',
       description: 'Rose petal preserve filled sweet balls',
       price: 1400,
-      image: '/placeholder-sweet.jpg',
+      image: '/lovable-uploads/gulkand-ball.jpg',
       category: 'special-ghee'
     },
     {
@@ -116,7 +116,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Strawberry Pista Roll',
       description: 'Pistachio rolls with strawberry flavor',
       price: 1400,
-      image: '/lovable-uploads/8a25412c-6bca-463c-a2f9-cd4ba98905e6.png',
+      image: '/lovable-uploads/Strawberry-pista-Roll.webp',
       category: 'special-ghee'
     },
     {
@@ -194,7 +194,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Butter Murukku',
       description: 'Crispy spiral snacks made with butter',
       price: 400,
-      image: '/placeholder-sweet.jpg',
+      image: '/lovable-uploads/butter-murukku.webp',
       category: 'savouries'
     },
     {
@@ -202,7 +202,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Ragi Pakoda',
       description: 'Healthy finger millet fritters',
       price: 400,
-      image: '/placeholder-sweet.jpg',
+      image: '/lovable-uploads/RagiPakoda.jpg',
       category: 'savouries'
     },
     {
@@ -210,7 +210,7 @@ const DiwaliSweetsMenu = () => {
       name: 'Ribbon Pakoda',
       description: 'Ribbon-shaped crispy savory snacks',
       price: 400,
-      image: '/placeholder-sweet.jpg',
+      image: '/lovable-uploads/ribbon-pakoda.jpg',
       category: 'savouries'
     },
     {

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Phone, MessageCircle, MapPin, Clock } from 'lucide-react';
+import { Phone, MessageCircle, MapPin, Clock, Mail } from 'lucide-react';
 import { DELIVERY_CONFIG } from '../../config/deliveryConfig';
 
 const DiwaliFooter = () => {
@@ -41,6 +41,13 @@ const DiwaliFooter = () => {
                 9994316559
               </a>
               <a 
+                href="mailto:yolocaterers@gmail.com"
+                className="flex items-center justify-center md:justify-start gap-2 text-orange-200 hover:text-white"
+              >
+                <Mail className="h-4 w-4" />
+                yolocaterers@gmail.com
+              </a>
+              <a 
                 href="https://wa.me/919994316559"
                 className="flex items-center justify-center md:justify-start gap-2 text-orange-200 hover:text-white"
               >
@@ -63,9 +70,6 @@ const DiwaliFooter = () => {
                 Extended Hours
               </div>
               <p>Mon - Sun: 8:00 AM - 11:00 PM</p>
-              <p className="text-yellow-300 font-semibold">
-                🎇 Special Diwali Orders: 24/7 WhatsApp Support
-              </p>
             </div>
           </div>
 
@@ -89,7 +93,7 @@ const DiwaliFooter = () => {
           <div className="bg-white/10 rounded-lg p-6 mb-6 max-w-2xl mx-auto">
             <div className="space-y-3">
               <p className="text-yellow-300 font-bold text-lg">
-                🚚 Free delivery inside {DELIVERY_CONFIG.deliveryArea} for orders above ₹{DELIVERY_CONFIG.freeDeliveryAmount}
+                🚚 {DELIVERY_CONFIG.messages.freeDelivery(DELIVERY_CONFIG.freeDeliveryAmount, DELIVERY_CONFIG.deliveryArea)}
               </p>
               <div className="border-t border-orange-400/30 pt-3 space-y-2">
                 <p className="text-orange-200 text-sm">

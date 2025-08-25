@@ -48,18 +48,25 @@ const DiwaliHeader = () => {
             >
               Collection
             </button>
-            <button
-              onClick={() => scrollToSection('cart')}
-              className="relative diwali-btn px-6 py-2 rounded-full font-bold diwali-shadow transition-all duration-300 hover:scale-105 flex items-center space-x-2"
-            >
-              <ShoppingCart className="h-5 w-5" />
-              <span>Cart</span>
+            <div className="relative desktop-cart-container">
+              <button
+                onClick={() => scrollToSection('cart')}
+                className="diwali-btn px-6 py-2 rounded-full font-bold diwali-shadow transition-all duration-300 hover:scale-105 flex items-center space-x-2"
+                aria-label={`View Cart - ${getTotalItems()} items`}
+              >
+                <ShoppingCart className="h-5 w-5" />
+                <span>Cart</span>
+              </button>
               {getTotalItems() > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold animate-bounce">
+                <span 
+                  className="cart-notification-badge"
+                  aria-label={`${getTotalItems()} items in cart`}
+                  role="status"
+                >
                   {getTotalItems()}
                 </span>
               )}
-            </button>
+            </div>
           </nav>
 
           {/* Mobile Menu */}
@@ -69,12 +76,17 @@ const DiwaliHeader = () => {
                 onClick={() => scrollToSection('cart')}
                 className="diwali-btn p-3 rounded-full flex items-center justify-center relative"
                 style={{ minWidth: '52px', minHeight: '52px' }}
-                aria-label="View Cart"
+                aria-label={`View Cart - ${getTotalItems()} items`}
               >
                 <ShoppingCart className="h-6 w-6" />
               </button>
               {getTotalItems() > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-bounce z-20 border-2 border-white shadow-lg">
+                <span 
+                  className="cart-notification-badge"
+                  style={{ top: '-2px', right: '-2px', width: '20px', height: '20px', fontSize: '11px' }}
+                  aria-label={`${getTotalItems()} items in cart`}
+                  role="status"
+                >
                   {getTotalItems()}
                 </span>
               )}

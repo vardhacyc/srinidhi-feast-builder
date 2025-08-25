@@ -1,6 +1,5 @@
 import React from 'react';
 import { Sparkles, Award, Heart } from 'lucide-react';
-import { DELIVERY_CONFIG, getDeliveryMessage, getGSTMessage, getAvailabilityMessage } from '../../config/deliveryConfig';
 
 const DiwaliHero = () => {
   const scrollToSweets = () => {
@@ -74,24 +73,6 @@ const DiwaliHero = () => {
               <Sparkles className="h-5 w-5" />
             </span>
           </button>
-          
-          {/* Delivery and GST Information */}
-          <div className="diwali-glass-card rounded-2xl p-6 diwali-shadow max-w-md mx-auto">
-            <div className="space-y-3 text-center">
-              <p className="text-sm font-semibold" style={{ color: 'hsl(var(--diwali-gold))' }}>
-                ✨ {getDeliveryMessage()} ✨
-              </p>
-              
-              <div className="border-t border-amber-200/30 pt-3 space-y-2">
-                <p className="text-xs" style={{ color: 'hsl(var(--diwali-text))' }}>
-                  {getAvailabilityMessage()}
-                </p>
-                <p className="text-xs" style={{ color: 'hsl(var(--diwali-text))' }}>
-                  {getGSTMessage()}
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Festive Message */}

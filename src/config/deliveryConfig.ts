@@ -20,7 +20,7 @@ export const DELIVERY_CONFIG = {
   // Message templates (for consistency across the app)
   messages: {
     freeDelivery: (amount: number, area: string) => 
-      `Free delivery inside ${area} for orders above ₹${amount}`,
+      `Free delivery within ${area} for orders above ₹${amount}`,
     
     gstInfo: (sweetRate: number, savouryRate: number) =>
       `GST extra: ${sweetRate}% on Sweets & ${savouryRate}% on Savouries.`,

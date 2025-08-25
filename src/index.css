@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -1033,5 +1032,262 @@ All colors MUST be HSL.
 
   .whatsapp-amber:hover {
     animation: whatsappAmberPulse 1.5s ease-in-out infinite;
+  }
+
+  /* Universal cart badge styles - applies to all screen sizes */
+  .cart-notification-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #ef4444;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    z-index: 999;
+    border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    animation: bounce 2s infinite;
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+  /* Desktop cart badge - ensure visibility */
+  @media (min-width: 769px) {
+    .desktop-cart-container {
+      position: relative;
+      overflow: visible;
+    }
+    
+    .cart-notification-badge {
+      top: -2px;
+      right: -2px;
+      width: 22px;
+      height: 22px;
+      font-size: 11px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cart-notification-badge {
+      top: -2px;
+      right: -2px;
+      width: 20px;
+      height: 20px;
+      font-size: 11px;
+    }
+  }
+
+  /* Ultra Enhanced Text Visibility - Aggressive contrast improvements */
+  .ultra-contrast-text {
+    background: linear-gradient(
+      135deg,
+      #8B4513 0%,
+      #A0522D 20%,
+      #CD853F 40%,
+      #DEB887 60%,
+      #F4A460 80%,
+      #D2691E 100%
+    ) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.8),
+      0 4px 8px rgba(0, 0, 0, 0.6),
+      0 1px 0 rgba(255, 255, 255, 0.5) !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8)) 
+            drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)) !important;
+    font-weight: 800 !important;
+    position: relative;
+    z-index: 10;
+  }
+
+  .ultra-contrast-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0.9) !important;
+    background-clip: initial !important;
+    text-shadow: none !important;
+    transform: translate(1px, 1px);
+    filter: none !important;
+  }
+
+  /* Strong backdrop for text */
+  .text-backdrop-strong {
+    position: relative;
+  }
+
+  .text-backdrop-strong::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -8px;
+    right: -8px;
+    bottom: -4px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.6) 50%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    border-radius: 6px;
+    z-index: -1;
+    backdrop-filter: blur(4px);
+    box-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  /* Enhanced product description */
+  .ultra-description-text {
+    color: #2c1810 !important;
+    text-shadow: 
+      0 1px 2px rgba(255, 255, 255, 0.8),
+      0 2px 4px rgba(0, 0, 0, 0.6) !important;
+    font-weight: 600 !important;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2px 4px;
+    border-radius: 4px;
+    backdrop-filter: blur(2px);
+  }
+
+  /* Enhanced price styling */
+  .ultra-price-text {
+    background: linear-gradient(
+      135deg,
+      #8B4513 0%,
+      #A0522D 30%,
+      #CD853F 70%,
+      #D2691E 100%
+    ) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.9),
+      0 4px 8px rgba(0, 0, 0, 0.7) !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9)) 
+            drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6)) !important;
+    font-weight: 900 !important;
+    font-size: 1.1em !important;
+  }
+
+  .ultra-price-text::before {
+    content: attr(data-price);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    color: rgba(0, 0, 0, 0.8) !important;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0.8) !important;
+    background: none !important;
+    text-shadow: none !important;
+    transform: translate(1px, 1px);
+    filter: none !important;
+  }
+
+  /* Card background adjustments for better contrast */
+  .contrast-card-bg {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 248, 220, 0.95) 0%,
+      rgba(255, 239, 213, 0.9) 30%,
+      rgba(245, 245, 220, 0.85) 70%,
+      rgba(250, 240, 190, 0.9) 100%
+    ) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 2px solid rgba(139, 69, 19, 0.3) !important;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.2),
+      0 4px 16px rgba(139, 69, 19, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+  }
+
+  /* Mobile specific enhancements */
+  @media (max-width: 768px) {
+    .ultra-contrast-text {
+      text-shadow: 
+        0 3px 6px rgba(0, 0, 0, 0.9),
+        0 6px 12px rgba(0, 0, 0, 0.7),
+        0 1px 0 rgba(255, 255, 255, 0.7) !important;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.9)) 
+              drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5)) !important;
+    }
+
+    .ultra-description-text {
+      background: rgba(255, 255, 255, 0.85);
+      text-shadow: 
+        0 2px 4px rgba(255, 255, 255, 0.9),
+        0 3px 6px rgba(0, 0, 0, 0.8) !important;
+    }
+
+    .text-backdrop-strong::after {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(0, 0, 0, 0.4) 100%
+      );
+    }
+  }
+}
+
+/* ===================================================================
+   MOBILE "EXPLORE COLLECTION" BUTTON CENTERING
+   ================================================================= */
+
+/* Mobile centering for Explore Collection buttons */
+@media (max-width: 600px) {
+  /* DiwaliHero.tsx button container centering */
+  .space-y-6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Diwali.tsx main page button centering */
+  .relative.z-10.max-w-6xl.mx-auto.px-6.text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Both buttons - ensure centered styling */
+  .diwali-btn,
+  .cta-btn {
+    margin: 16px auto !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Remove any conflicting float or position properties */
+  .diwali-btn,
+  .cta-btn {
+    float: none !important;
+    position: relative !important;
+  }
+  
+  /* Ensure button text is also centered */
+  .diwali-btn span,
+  .cta-btn span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
