@@ -141,95 +141,111 @@ Order ID: ${Date.now()}`;
           <div className="p-6">
             <div className="space-y-4">
               {cart.map(item => (
-                <div key={item.id} className="flex items-center gap-4 p-4 diwali-glass-card rounded-xl hover:scale-102 transition-all duration-300">
-                  <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                    <img 
-                      src={item.image} 
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-bold diwali-text-gradient text-lg truncate">{item.name}</h3>
-                    <p className="text-sm" style={{ color: 'hsl(var(--diwali-subtle))' }}>₹{item.price}/kg</p>
-                  </div>
-                  
-                  {/* Quantity controls */}
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="w-8 h-8 rounded-full diwali-glass-card flex items-center justify-center hover:scale-110 transition-all duration-300"
-                      style={{ color: 'hsl(var(--diwali-dark))' }}
-                    >
-                      <Minus className="h-4 w-4" />
-                    </button>
-                    <span className="px-3 py-1 rounded-full font-bold text-center min-w-[60px] diwali-glass-card">
-                      {item.quantity}kg
-                    </span>
-                    <button
-                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="w-8 h-8 rounded-full diwali-glass-card flex items-center justify-center hover:scale-110 transition-all duration-300"
-                      style={{ color: 'hsl(var(--diwali-dark))' }}
-                    >
-                      <Plus className="h-4 w-4" />
-                    </button>
-                  </div>
-                  
-                  {/* Item total */}
-                  <div className="text-right min-w-[80px]">
-                    <div className="font-bold diwali-text-gradient text-lg">
-                      ₹{item.price * item.quantity}
+                <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 diwali-glass-card rounded-xl hover:scale-102 transition-all duration-300">
+                  {/* Top row for mobile: Image and basic info */}
+                  <div className="flex items-center gap-3 w-full sm:w-auto">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden flex-shrink-0">
+                      <img 
+                        src={item.image} 
+                        alt={item.name}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold diwali-text-gradient text-base sm:text-lg truncate">{item.name}</h3>
+                      <p className="text-xs sm:text-sm" style={{ color: 'hsl(var(--diwali-subtle))' }}>₹{item.price}/kg</p>
+                    </div>
+                    {/* Remove button - visible on mobile */}
+                    <button
+                      onClick={() => removeFromCart(item.id)}
+                      className="w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 sm:hidden"
+                      style={{ color: 'hsl(var(--diwali-red))' }}
+                    >
+                      <Trash2 className="h-3 w-3" />
+                    </button>
                   </div>
                   
-                  {/* Remove button */}
-                  <button
-                    onClick={() => removeFromCart(item.id)}
-                    className="w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
-                    style={{ color: 'hsl(var(--diwali-red))' }}
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </button>
+                  {/* Bottom row for mobile: Controls and total */}
+                  <div className="flex items-center justify-between w-full sm:w-auto sm:flex-shrink-0">
+                    {/* Quantity controls */}
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full diwali-glass-card flex items-center justify-center hover:scale-110 transition-all duration-300"
+                        style={{ color: 'hsl(var(--diwali-dark))' }}
+                      >
+                        <Minus className="h-3 w-3 sm:h-4 sm:w-4" />
+                      </button>
+                      <span className="px-2 sm:px-3 py-1 rounded-full font-bold text-center min-w-[50px] sm:min-w-[60px] diwali-glass-card text-xs sm:text-sm">
+                        {item.quantity}kg
+                      </span>
+                      <button
+                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full diwali-glass-card flex items-center justify-center hover:scale-110 transition-all duration-300"
+                        style={{ color: 'hsl(var(--diwali-dark))' }}
+                      >
+                        <Plus className="h-3 w-3 sm:h-4 sm:w-4" />
+                      </button>
+                    </div>
+                    
+                    {/* Item total */}
+                    <div className="text-right">
+                      <div className="font-bold diwali-text-gradient text-base sm:text-lg">
+                        ₹{item.price * item.quantity}
+                      </div>
+                    </div>
+                    
+                    {/* Remove button - hidden on mobile, visible on desktop */}
+                    <button
+                      onClick={() => removeFromCart(item.id)}
+                      className="w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 hidden sm:flex ml-2"
+                      style={{ color: 'hsl(var(--diwali-red))' }}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
 
             {/* Cart summary */}
-            <div className="mt-8 p-6 diwali-glass-card rounded-xl border-2 border-yellow-300/30">
-              <div className="flex justify-between items-center mb-4 pb-3 border-b border-yellow-200/20">
-                <span className="text-lg font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>Total Items:</span>
-                <span className="text-lg font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>{getTotalItems()}kg</span>
+            <div className="mt-6 sm:mt-8 p-4 sm:p-6 diwali-glass-card rounded-xl border-2 border-yellow-300/30">
+              <div className="flex justify-between items-center mb-3 sm:mb-4 pb-2 sm:pb-3 border-b border-yellow-200/20">
+                <span className="text-base sm:text-lg font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>Total Items:</span>
+                <span className="text-base sm:text-lg font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>{getTotalItems()}kg</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-2xl font-bold diwali-text-gradient">Total Amount:</span>
-                <span className="text-2xl font-bold diwali-text-gradient">₹{getTotalPrice()}</span>
+                <span className="text-xl sm:text-2xl font-bold diwali-text-gradient">Total Amount:</span>
+                <span className="text-xl sm:text-2xl font-bold diwali-text-gradient">₹{getTotalPrice()}</span>
               </div>
             </div>
 
             {/* Action buttons */}
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button
                 onClick={clearCart}
                 variant="outline"
-                className="flex-1 border-2 border-red-400/80 bg-red-50/20 hover:bg-red-100/30 hover:border-red-500 text-red-600 hover:text-red-700 py-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+                className="flex-1 border-2 border-red-400/80 bg-red-50/20 hover:bg-red-100/30 hover:border-red-500 text-red-600 hover:text-red-700 py-3 sm:py-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
               >
-                <Trash2 className="h-5 w-5 mr-2" />
+                <Trash2 className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                 Clear Cart
               </Button>
               <Button
                 onClick={handleWhatsAppOrder}
                 disabled={isProcessing}
-                className="flex-1 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 text-lg"
+                className="flex-1 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 text-sm sm:text-lg"
               >
                 {isProcessing ? (
                   <>
-                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-2"></div>
-                    Processing...
+                    <div className="animate-spin rounded-full h-5 w-5 sm:h-6 sm:w-6 border-b-2 border-white mr-2"></div>
+                    <span className="hidden sm:inline">Processing...</span>
+                    <span className="sm:hidden">Processing</span>
                   </>
                 ) : (
                   <>
-                    <MessageCircle className="h-6 w-6 mr-2" />
-                    Order via WhatsApp
+                    <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
+                    <span className="hidden sm:inline">Order via WhatsApp</span>
+                    <span className="sm:hidden">WhatsApp Order</span>
                   </>
                 )}
               </Button>
