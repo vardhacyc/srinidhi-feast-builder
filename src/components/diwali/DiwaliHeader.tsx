@@ -16,12 +16,17 @@ const DiwaliHeader = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 diwali-glass border-b border-yellow-200/20 diwali-shadow">
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-4 py-4 safe-area-mobile" style={{ paddingRight: '1.5rem' }}>
         <div className="flex justify-between items-center">
           {/* Premium Logo */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 flex-1">
             <div className="relative">
-              <div className="text-3xl animate-pulse-glow">🪔</div>
+              {/* High-quality logo matching main page */}
+              <img 
+                src="/cateringLogo.png?v=2024" 
+                alt="Sri Nidhi Catering Logo" 
+                className="h-12 w-12 object-contain logo-hover cursor-pointer"
+              />
               <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-yellow-400 animate-sparkle" />
             </div>
             <div>
@@ -58,21 +63,27 @@ const DiwaliHeader = () => {
           </nav>
 
           {/* Mobile Menu */}
-          <div className="md:hidden flex items-center space-x-4">
-            <button
-              onClick={() => scrollToSection('cart')}
-              className="relative diwali-btn p-2 rounded-full"
-            >
-              <ShoppingCart className="h-5 w-5" />
+          <div className="md:hidden flex items-center space-x-2 pr-2">
+            <div className="relative">
+              <button
+                onClick={() => scrollToSection('cart')}
+                className="diwali-btn p-3 rounded-full flex items-center justify-center relative"
+                style={{ minWidth: '52px', minHeight: '52px' }}
+                aria-label="View Cart"
+              >
+                <ShoppingCart className="h-6 w-6" />
+              </button>
               {getTotalItems() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
+                <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-bounce z-20 border-2 border-white shadow-lg">
                   {getTotalItems()}
                 </span>
               )}
-            </button>
+            </div>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              style={{ color: 'hsl(var(--diwali-text))' }}
+              style={{ color: 'hsl(var(--diwali-text))', minWidth: '48px', minHeight: '48px' }}
+              className="flex items-center justify-center p-3 rounded-full hover:bg-yellow-200/20 transition-colors"
+              aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>

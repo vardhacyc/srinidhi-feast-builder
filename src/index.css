@@ -740,6 +740,54 @@ All colors MUST be HSL.
     opacity: 1;
   }
 
+  /* Mobile cart button fixes */
+  .safe-area-mobile {
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-left: max(1rem, env(safe-area-inset-left));
+  }
+
+  @media (max-width: 768px) {
+    .diwali-btn {
+      min-width: 48px;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+    }
+    
+    /* Prevent cart button and notification from being cut off */
+    .mobile-cart-container {
+      margin-right: 8px;
+    }
+    
+    /* Ensure proper spacing for mobile buttons */
+    .mobile-button-group {
+      gap: 12px;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
+    }
+
+    /* Mobile header container with extra padding for notification badges */
+    header .container {
+      padding-right: 1.5rem;
+    }
+
+    /* Ensure notification badges are always visible */
+    .mobile-cart-notification {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      min-width: 20px;
+      height: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      z-index: 30;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+  }
+
   /* ===================================================================
      PREMIUM YELLOW DIWALI THEME UTILITIES
      ================================================================= */

@@ -10,9 +10,17 @@ const DiwaliFooter = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company info */}
           <div className="text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
-              <div className="text-3xl">🪔</div>
-              <h3 className="text-xl font-bold">Sri Nidhi Diwali Sweets</h3>
+            <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
+              {/* High-clarity logo matching main page - forced cache refresh */}
+              <img 
+                src="/cateringLogo.png?v=2024" 
+                alt="Sri Nidhi Catering Logo" 
+                className="h-16 w-16 object-contain logo-hover cursor-pointer"
+              />
+              <div>
+                <h3 className="text-xl font-bold">Sri Nidhi Diwali Sweets</h3>
+                <div className="text-lg">🪔 Premium Quality 🪔</div>
+              </div>
             </div>
             <p className="text-orange-200 mb-4">
               Celebrating traditions with premium quality sweets, 
