@@ -152,7 +152,7 @@ Order ID: ${Date.now()}`;
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-bold diwali-text-gradient text-base sm:text-lg truncate">{item.name}</h3>
+                      <h3 className="font-bold diwali-text-gradient text-base sm:text-lg leading-snug">{item.name}</h3>
                       <p className="text-xs sm:text-sm" style={{ color: 'hsl(var(--diwali-subtle))' }}>₹{item.price}/kg</p>
                     </div>
                     {/* Remove button - visible on mobile */}

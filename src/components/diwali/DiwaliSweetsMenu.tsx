@@ -329,11 +329,10 @@ const DiwaliSweetsMenu = () => {
                   </div>
                   <Button
                     onClick={() => addToCart(sweet)}
-                    className="diwali-btn w-full font-semibold py-2.5 px-3 rounded-full transition-all duration-300 hover:scale-105 diwali-shadow text-xs sm:text-sm flex items-center justify-center whitespace-nowrap"
+                    className="diwali-btn w-full rounded-full h-10 sm:h-11 px-3 sm:px-4 font-semibold text-xs sm:text-sm diwali-shadow transition-all duration-300 hover:scale-105"
                   >
-                    <Plus className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 flex-shrink-0" />
-                    <span className="hidden xs:inline">Add to Cart</span>
-                    <span className="xs:hidden">Add</span>
+                    <Plus className="size-4" />
+                    Add to Cart
                   </Button>
                 </div>
               </div>

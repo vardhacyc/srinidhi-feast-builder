@@ -749,7 +749,7 @@ All colors MUST be HSL.
     .diwali-btn {
       min-width: 48px;
       min-height: 48px;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       touch-action: manipulation;
@@ -1268,7 +1268,6 @@ All colors MUST be HSL.
   }
   
   /* Both buttons - ensure centered styling */
-  .diwali-btn,
   .cta-btn {
     margin: 16px auto !important;
     display: block !important;
@@ -1277,14 +1276,12 @@ All colors MUST be HSL.
   }
   
   /* Remove any conflicting float or position properties */
-  .diwali-btn,
   .cta-btn {
     float: none !important;
     position: relative !important;
   }
   
   /* Ensure button text is also centered */
-  .diwali-btn span,
   .cta-btn span {
     display: flex;
     align-items: center;
