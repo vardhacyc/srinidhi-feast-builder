@@ -923,16 +923,15 @@ All colors MUST be HSL.
     background: linear-gradient(
       135deg,
       #FFD700 0%,    /* Pure gold start */
-      #FFA500 25%,   /* Rich orange-gold */
-      #FF8C00 50%,   /* Deep orange */
-      #DAA520 75%,   /* Goldenrod */
-      #B8860B 100%   /* Dark goldenrod end */
+      #FFA500 35%,   /* Rich orange-gold */
+      #FFB347 70%,   /* Peach gold */
+      #FFD700 100%   /* Back to pure gold - no muddy end */
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     /* Enhanced visibility with royal gold glow */
-    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 12px rgba(255, 215, 0, 0.6));
     /* Ensure crisp rendering */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -972,6 +971,35 @@ All colors MUST be HSL.
 
   .diwali-particle {
     animation: diwali-particle-float 4s ease-in-out infinite;
+  }
+
+  /* Hanging Lantern Animations */
+  @keyframes lantern-sway {
+    0%, 100% {
+      transform: rotate(-2deg) translateY(0px);
+    }
+    50% {
+      transform: rotate(2deg) translateY(-5px);
+    }
+  }
+
+  @keyframes lantern-sway-reverse {
+    0%, 100% {
+      transform: rotate(2deg) translateY(0px);
+    }
+    50% {
+      transform: rotate(-2deg) translateY(-3px);
+    }
+  }
+
+  .hanging-lantern {
+    animation: lantern-sway 3s ease-in-out infinite;
+    transform-origin: top center;
+  }
+
+  .hanging-lantern-reverse {
+    animation: lantern-sway-reverse 3.5s ease-in-out infinite;
+    transform-origin: top center;
   }
 
   /* Diwali Shadows */
