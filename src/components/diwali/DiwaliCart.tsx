@@ -3,6 +3,7 @@ import { Minus, Plus, Trash2, ShoppingBag, MessageCircle, Star } from 'lucide-re
 import { useCart } from '../../contexts/CartContext';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
+import { DELIVERY_CONFIG } from '../../config/deliveryConfig';
 
 const DiwaliCart = () => {
   const {
@@ -18,6 +19,27 @@ const DiwaliCart = () => {
 
   const [isProcessing, setIsProcessing] = useState(false);
 
+  // GST calculation functions
+  const getItemGST = (item: any) => {
+    const gstRate = item.category?.toLowerCase() === 'sweets' 
+      ? DELIVERY_CONFIG.gstRates.sweets 
+      : DELIVERY_CONFIG.gstRates.savouries;
+    const itemTotal = item.price * item.quantity;
+    return (itemTotal * gstRate) / 100;
+  };
+
+  const getSubtotal = () => {
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+  };
+
+  const getTotalGST = () => {
+    return cart.reduce((total, item) => total + getItemGST(item), 0);
+  };
+
+  const getFinalTotal = () => {
+    return getSubtotal() + getTotalGST();
+  };
+
   const handleWhatsAppOrder = () => {
     if (cart.length === 0) {
       alert('Your cart is empty');
@@ -27,11 +49,18 @@ const DiwaliCart = () => {
     setIsProcessing(true);
 
     // Create WhatsApp message with timestamp to ensure uniqueness
-    const orderDetails = cart.map(item => 
-      `• ${item.name} - ${item.quantity}kg × ₹${item.price} = ₹${item.price * item.quantity}`
-    ).join('\n');
+    const orderDetails = cart.map(item => {
+      const itemTotal = item.price * item.quantity;
+      const gstAmount = getItemGST(item);
+      const gstRate = item.category?.toLowerCase() === 'sweets' 
+        ? DELIVERY_CONFIG.gstRates.sweets 
+        : DELIVERY_CONFIG.gstRates.savouries;
+      return `• ${item.name} - ${item.quantity}kg × ₹${item.price} = ₹${itemTotal} (+ ₹${gstAmount.toFixed(2)} GST @${gstRate}%)`;
+    }).join('\n');
 
-    const totalAmount = getTotalPrice();
+    const subtotal = getSubtotal();
+    const totalGST = getTotalGST();
+    const finalTotal = getFinalTotal();
     const timestamp = new Date().toLocaleString('en-IN', { 
       timeZone: 'Asia/Kolkata',
       day: '2-digit',
@@ -49,7 +78,10 @@ ${customerName ? `👋 Hi! I'm ${customerName}` : '👋 Hi there!'}
 *My Order:*
 ${orderDetails}
 
-*Total Amount: ₹${totalAmount}*
+*Order Summary:*
+Subtotal: ₹${subtotal}
+GST: ₹${totalGST.toFixed(2)}
+*Final Total: ₹${finalTotal.toFixed(2)}*
 *Total Items: ${getTotalItems()}kg*
 
 📱 Please confirm my order and let me know:
@@ -210,13 +242,21 @@ Order ID: ${Date.now()}`;
 
             {/* Cart summary */}
             <div className="mt-6 sm:mt-8 p-4 sm:p-6 diwali-glass-card rounded-xl border-2 border-yellow-300/30">
-              <div className="flex justify-between items-center mb-3 sm:mb-4 pb-2 sm:pb-3 border-b border-yellow-200/20">
+              <div className="flex justify-between items-center mb-2 pb-2 border-b border-yellow-200/20">
                 <span className="text-base sm:text-lg font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>Total Items:</span>
                 <span className="text-base sm:text-lg font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>{getTotalItems()}kg</span>
               </div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-base sm:text-lg font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>Subtotal:</span>
+                <span className="text-base sm:text-lg font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>₹{getSubtotal()}</span>
+              </div>
+              <div className="flex justify-between items-center mb-3 pb-2 border-b border-yellow-200/20">
+                <span className="text-base sm:text-lg font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>GST:</span>
+                <span className="text-base sm:text-lg font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>₹{getTotalGST().toFixed(2)}</span>
+              </div>
               <div className="flex justify-between items-center">
-                <span className="text-xl sm:text-2xl font-bold diwali-text-gradient">Total Amount:</span>
-                <span className="text-xl sm:text-2xl font-bold diwali-text-gradient">₹{getTotalPrice()}</span>
+                <span className="text-xl sm:text-2xl font-bold diwali-text-gradient">Final Total:</span>
+                <span className="text-xl sm:text-2xl font-bold diwali-text-gradient">₹{getFinalTotal().toFixed(2)}</span>
               </div>
             </div>
 
