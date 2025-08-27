@@ -918,31 +918,32 @@ All colors MUST be HSL.
     box-shadow: 0 4px 12px hsla(var(--diwali-gold), 0.3);
   }
 
-  /* Diwali Text Gradient – embossed metallic gold */
+  /* Diwali Text Gradient – strong embossed metallic gold */
   .diwali-text-gradient {
     background: linear-gradient(
       135deg,
       hsl(var(--diwali-cream)) 0%,
-      hsl(var(--diwali-gold)) 22%,
-      hsl(var(--diwali-bright)) 46%,
+      hsl(var(--diwali-gold)) 25%,
+      hsl(var(--diwali-bright)) 45%,
       hsl(var(--diwali-cream)) 50%,  /* razor-thin specular highlight */
-      hsl(var(--diwali-bright)) 52%,
-      hsl(var(--diwali-gold)) 74%,
+      hsl(var(--diwali-bright)) 55%,
+      hsl(var(--diwali-gold)) 75%,
       hsl(var(--diwali-cream)) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.15);
-    transform: translateY(-8px);
-    /* Embossed effect with raised shadows */
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
+    transform: translateY(-12px);
+    /* Strong embossed effect with pronounced raised shadows */
     text-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.8),        /* top highlight */
-      0 -1px 0 rgba(0, 0, 0, 0.3),             /* top dark edge */
-      1px 1px 0 rgba(255, 255, 255, 0.6),      /* right-top highlight */
-      -1px -1px 0 rgba(0, 0, 0, 0.25),         /* left-top dark */
-      0 3px 8px hsla(var(--diwali-gold), 0.4), /* warm glow */
-      0 6px 12px rgba(0, 0, 0, 0.2);           /* depth shadow */
+      0 2px 0 rgba(255, 255, 255, 0.9),        /* strong top highlight */
+      0 -2px 0 rgba(0, 0, 0, 0.4),             /* strong top dark edge */
+      2px 2px 0 rgba(255, 255, 255, 0.7),      /* right-top highlight */
+      -2px -2px 0 rgba(0, 0, 0, 0.35),         /* left-top dark */
+      0 4px 12px hsla(var(--diwali-gold), 0.6), /* warm glow */
+      0 8px 20px rgba(0, 0, 0, 0.3),           /* strong depth shadow */
+      0 12px 30px rgba(0, 0, 0, 0.15);         /* extended depth */
   }
 
   /* Diwali Animations */
