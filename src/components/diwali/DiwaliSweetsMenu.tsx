@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Plus, Leaf, Heart, Star } from 'lucide-react';
 import { useCart, Sweet } from '../../contexts/CartContext';
 import { Button } from '../ui/button';
+import { DELIVERY_CONFIG } from '../../config/deliveryConfig';
 
 const DiwaliSweetsMenu = () => {
   const { addToCart } = useCart();
@@ -17,8 +18,20 @@ const DiwaliSweetsMenu = () => {
     { id: 'savouries', name: 'Savouries', emoji: '🥨' }
   ];
 
+  // Helper function to calculate price with GST
+  const calculatePriceWithGST = (basePrice: number, category: string) => {
+    const gstRate = category === 'savouries' ? DELIVERY_CONFIG.gstRates.savouries : DELIVERY_CONFIG.gstRates.sweets;
+    const gstAmount = (basePrice * gstRate) / 100;
+    return {
+      basePrice,
+      gstRate,
+      gstAmount: Math.round(gstAmount),
+      finalPrice: Math.round(basePrice + gstAmount)
+    };
+  };
+
   const sweetsData: Sweet[] = [
-    // Diwali Sweets Menu with Prices (₹600/kg)
+    // Diwali Sweets Menu with Base Prices (GST will be added)
     {
       id: 'laddu',
       name: 'Laddu',
@@ -323,10 +336,21 @@ const DiwaliSweetsMenu = () => {
 
                 {/* Price and Add to Cart - Fixed at bottom */}
                 <div className="text-center space-y-3 mt-auto">
-                  <div className="text-xl font-bold diwali-text-gradient">
-                    ₹{sweet.price}
-                    <span className="text-sm font-normal" style={{ color: 'hsl(var(--diwali-subtle))' }}>/kg</span>
-                  </div>
+                  {(() => {
+                    const priceInfo = calculatePriceWithGST(sweet.price, sweet.category);
+                    return (
+                      <div className="bg-white/95 backdrop-blur-sm rounded-xl p-3 border border-amber-200/50 shadow-lg">
+                        <div className="text-lg font-bold text-amber-900 mb-1">
+                          ₹{priceInfo.finalPrice}
+                          <span className="text-sm font-normal text-amber-700">/kg</span>
+                        </div>
+                        <div className="text-xs text-amber-600 space-y-0.5">
+                          <div>Base: ₹{priceInfo.basePrice} + GST {priceInfo.gstRate}%</div>
+                          <div className="text-amber-500">(GST: ₹{priceInfo.gstAmount})</div>
+                        </div>
+                      </div>
+                    );
+                  })()}
                   <Button
                     onClick={() => addToCart(sweet)}
                     className="diwali-btn w-full rounded-full h-10 sm:h-11 px-3 sm:px-4 font-semibold text-xs sm:text-sm diwali-shadow transition-all duration-300 hover:scale-105"

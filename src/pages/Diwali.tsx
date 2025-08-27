@@ -7,6 +7,7 @@ import {
   Star, Phone, Crown, ShoppingCart, Plus, Minus, X, ArrowRight, 
   Leaf, Users, Award
 } from 'lucide-react';
+import { DELIVERY_CONFIG } from '@/config/deliveryConfig';
 
 interface DiwaliSweet {
   id: string;
@@ -194,6 +195,18 @@ export default function Diwali() {
   
   const totalCustomers = 2847;
   const customerCount = 9847;
+
+  // Helper function to calculate price with GST
+  const calculatePriceWithGST = (basePrice: number) => {
+    const gstRate = DELIVERY_CONFIG.gstRates.sweets; // All items in this collection are sweets
+    const gstAmount = (basePrice * gstRate) / 100;
+    return {
+      basePrice,
+      gstRate,
+      gstAmount: Math.round(gstAmount),
+      finalPrice: Math.round(basePrice + gstAmount)
+    };
+  };
 
   const filteredSweets = sweetItems.filter(sweet => 
     selectedCategory === "All" || 
@@ -402,15 +415,29 @@ export default function Diwali() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="pt-0">
-                    <div className="mb-4">
-                      <Badge className="bg-[#1d1604]/70 text-[#FFEFA8] font-medium border-0 text-[10px] tracking-[0.15em]">{sweet.specialty}</Badge>
-                    </div>
-                    <div className="flex items-center gap-3 mb-6">
-                      <span className="text-2xl font-extrabold" style={{background:'linear-gradient(90deg,#FFE148,#F5C800 40%,#B07600)',WebkitBackgroundClip:'text',color:'transparent'}}>₹{sweet.price}</span>
-                      {sweet.originalPrice && (
-                        <span className="text-xs line-through text-[#8c7a4d]">₹{sweet.originalPrice}</span>
-                      )}
-                    </div>
+                     <div className="mb-4">
+                       <Badge className="bg-[#1d1604]/70 text-[#FFEFA8] font-medium border-0 text-[10px] tracking-[0.15em]">{sweet.specialty}</Badge>
+                     </div>
+                     <div className="flex items-center gap-3 mb-6">
+                       {(() => {
+                         const priceInfo = calculatePriceWithGST(sweet.price);
+                         return (
+                           <div className="bg-white/95 backdrop-blur-sm rounded-xl p-3 border border-amber-200/50 shadow-lg flex-1">
+                             <div className="text-lg font-bold text-amber-900 mb-1">
+                               ₹{priceInfo.finalPrice}
+                               <span className="text-sm font-normal text-amber-700"> /kg</span>
+                             </div>
+                             <div className="text-xs text-amber-600 space-y-0.5">
+                               <div>Base: ₹{priceInfo.basePrice} + GST {priceInfo.gstRate}%</div>
+                               <div className="text-amber-500">(GST: ₹{priceInfo.gstAmount})</div>
+                             </div>
+                           </div>
+                         );
+                       })()}
+                       {sweet.originalPrice && (
+                         <span className="text-xs line-through text-[#8c7a4d]">₹{sweet.originalPrice}</span>
+                       )}
+                     </div>
                     {hoveredSweet===sweet.id && (
                       <div className="mb-6 p-4 rounded-xl border border-[#FFE14833] bg-[linear-gradient(160deg,#3b2e08,#6d5605)]">
                         <p className="text-[10px] font-semibold tracking-[0.2em] text-[#FFE148] mb-2">TASTING NOTES</p>
