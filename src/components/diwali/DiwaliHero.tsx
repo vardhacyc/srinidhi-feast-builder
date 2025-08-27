@@ -21,17 +21,16 @@ const DiwaliHero = () => {
         <div className="absolute top-1/3 right-1/3 text-3xl diwali-particle opacity-30" style={{ animationDelay: '1.5s' }}>🏮</div>
       </div>
 
-      <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Main Hero Content */}
-        <div className="mb-12">
+        <div className="mb-12 py-8">
           <div className="inline-flex items-center justify-center mb-6">
-            <div className="text-8xl md:text-9xl animate-diwali-glow diwali-shimmer">🪔</div>
+            <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl animate-diwali-glow diwali-shimmer">🪔</div>
           </div>
           
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-            <span className="diwali-text-gradient gradient-heading">Sri Nidhi</span>
-            <br />
-            <span className="diwali-text-gradient gradient-heading">Diwali Sweets</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight">
+            <span className="diwali-text-gradient gradient-heading block">Sri Nidhi</span>
+            <span className="diwali-text-gradient gradient-heading block">Diwali Sweets</span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed" style={{ color: 'hsl(var(--diwali-text))' }}>
