@@ -918,21 +918,27 @@ All colors MUST be HSL.
     box-shadow: 0 4px 12px hsla(var(--diwali-gold), 0.3);
   }
 
-  /* Diwali Text Gradients - Fixed for clarity */
+  /* Diwali Text Gradient – crisp metallic gold without tail glow */
   .diwali-text-gradient {
     background: linear-gradient(
       90deg,
-      hsl(45, 100%, 65%) 0%,
-      hsl(43, 95%, 58%) 35%,
-      hsl(41, 90%, 55%) 65%,
-      hsl(45, 100%, 65%) 100%
+      hsl(var(--diwali-cream)) 0%,
+      hsl(var(--diwali-gold)) 22%,
+      hsl(var(--diwali-bright)) 46%,
+      hsl(var(--diwali-cream)) 50%,  /* razor-thin specular highlight */
+      hsl(var(--diwali-bright)) 52%,
+      hsl(var(--diwali-gold)) 74%,
+      hsl(var(--diwali-cream)) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: contrast(1.2) saturate(1.1);
-    /* Enhanced visibility with subtle shadow and glow */
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 8px rgba(225, 162, 0, 0.4));
+    -webkit-text-stroke: 0.35px rgba(0, 0, 0, 0.12);
+    /* Gentle, tight shadows for crispness (no global filter to avoid smudge) */
+    text-shadow:
+      0 1px 0 hsla(var(--diwali-cream), 0.6),
+      0 2px 6px hsla(var(--diwali-gold), 0.28),
+      0 0 1px rgba(0, 0, 0, 0.22);
   }
 
   /* Diwali Animations */
