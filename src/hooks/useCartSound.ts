@@ -30,7 +30,7 @@ export const useCartSound = () => {
 
   const playCartSound = useCallback(() => {
     try {
-      // Create a subtle "gizzz" sound like a fast-moving star
+      // Create a very subtle sparkle/water gush sound
       const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
       const oscillator = audioContext.createOscillator();
       const gainNode = audioContext.createGain();
@@ -38,17 +38,17 @@ export const useCartSound = () => {
       oscillator.connect(gainNode);
       gainNode.connect(audioContext.destination);
       
-      // Fast swoosh sound - high to low frequency quickly
-      oscillator.frequency.setValueAtTime(1200, audioContext.currentTime);
-      oscillator.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.15);
+      // Very gentle sparkle sound - soft mid-range frequency
+      oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(300, audioContext.currentTime + 0.2);
       
-      // Quick fade in and out
+      // Very soft and gentle fade
       gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-      gainNode.gain.linearRampToValueAtTime(0.15, audioContext.currentTime + 0.02);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+      gainNode.gain.linearRampToValueAtTime(0.05, audioContext.currentTime + 0.05);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
       
       oscillator.start();
-      oscillator.stop(audioContext.currentTime + 0.15);
+      oscillator.stop(audioContext.currentTime + 0.2);
     } catch (error) {
       console.log('Audio not supported');
     }
