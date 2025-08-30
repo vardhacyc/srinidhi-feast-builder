@@ -30,15 +30,29 @@ export const useCartSound = () => {
 
   const playCartSound = useCallback(() => {
     try {
-      const audioData = initAudio();
-      if (audioData) {
-        audioData.oscillator.start();
-        audioData.oscillator.stop(audioData.audioContext.currentTime + 0.4);
-      }
+      // Create a subtle "gizzz" sound like a fast-moving star
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      // Fast swoosh sound - high to low frequency quickly
+      oscillator.frequency.setValueAtTime(1200, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.15);
+      
+      // Quick fade in and out
+      gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+      gainNode.gain.linearRampToValueAtTime(0.15, audioContext.currentTime + 0.02);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+      
+      oscillator.start();
+      oscillator.stop(audioContext.currentTime + 0.15);
     } catch (error) {
       console.log('Audio not supported');
     }
-  }, [initAudio]);
+  }, []);
 
   return { playCartSound };
 };
