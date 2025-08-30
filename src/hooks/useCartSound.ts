@@ -1,82 +1,99 @@
 import { useCallback, useRef } from 'react';
 
 export const useCartSound = () => {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const isPlayingRef = useRef(false);
 
-  const initAudio = useCallback(() => {
-    if (!audioRef.current) {
-      // Create a subtle bell-like sound using Web Audio API
-      audioRef.current = new Audio();
-      audioRef.current.volume = 0.3;
-      
-      // Generate a pleasant chime sound
-      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      
-      oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-      oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.3);
-      
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4);
-      
-      return { oscillator, audioContext };
+  const initAudioContext = useCallback(() => {
+    if (!audioContextRef.current) {
+      audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
     }
-    return null;
+    return audioContextRef.current;
   }, []);
 
   const playCartSound = useCallback(() => {
+    // Check for accessibility preferences
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    // Prevent overlapping sounds
+    if (isPlayingRef.current) {
+      return;
+    }
+
     try {
-      // Create a sword unsheathing sound effect
-      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const audioContext = initAudioContext();
+      if (!audioContext) return;
+
+      isPlayingRef.current = true;
+
+      // Create a more sophisticated sword unsheathing sound
+      const now = audioContext.currentTime;
       
-      // Main scraping sound
+      // Main metallic scraping sound
       const oscillator1 = audioContext.createOscillator();
       const gainNode1 = audioContext.createGain();
+      const filter1 = audioContext.createBiquadFilter();
       
-      // Final metallic "ting" sound
+      // Sharp metallic "cling" at the end
       const oscillator2 = audioContext.createOscillator();
       const gainNode2 = audioContext.createGain();
+      const filter2 = audioContext.createBiquadFilter();
       
-      // Connect main scraping sound
-      oscillator1.connect(gainNode1);
+      // Setup main scraping sound chain
+      oscillator1.connect(filter1);
+      filter1.connect(gainNode1);
       gainNode1.connect(audioContext.destination);
       
-      // Connect ting sound
-      oscillator2.connect(gainNode2);
+      // Setup cling sound chain
+      oscillator2.connect(filter2);
+      filter2.connect(gainNode2);
       gainNode2.connect(audioContext.destination);
       
-      // Main scraping sound - starts high, goes down (metallic scraping)
-      oscillator1.frequency.setValueAtTime(800, audioContext.currentTime);
-      oscillator1.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.3);
+      // Configure main scraping sound - metallic swoosh
+      oscillator1.type = 'sawtooth'; // More metallic than sine
+      oscillator1.frequency.setValueAtTime(1000, now);
+      oscillator1.frequency.exponentialRampToValueAtTime(300, now + 0.25);
       
-      // Scraping sound volume envelope
-      gainNode1.gain.setValueAtTime(0, audioContext.currentTime);
-      gainNode1.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.05);
-      gainNode1.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
+      filter1.type = 'highpass';
+      filter1.frequency.setValueAtTime(200, now);
+      filter1.Q.setValueAtTime(2, now);
       
-      // Final "ting" sound - sharp metallic ring
-      oscillator2.frequency.setValueAtTime(1200, audioContext.currentTime + 0.25);
-      oscillator2.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.4);
+      gainNode1.gain.setValueAtTime(0, now);
+      gainNode1.gain.linearRampToValueAtTime(0.12, now + 0.02);
+      gainNode1.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
       
-      // Ting sound volume envelope - quick bright ring
-      gainNode2.gain.setValueAtTime(0, audioContext.currentTime + 0.25);
-      gainNode2.gain.linearRampToValueAtTime(0.08, audioContext.currentTime + 0.27);
-      gainNode2.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.4);
+      // Configure sharp metallic cling
+      oscillator2.type = 'square'; // Sharp metallic sound
+      oscillator2.frequency.setValueAtTime(1800, now + 0.2);
+      oscillator2.frequency.exponentialRampToValueAtTime(1200, now + 0.35);
       
-      // Start sounds
-      oscillator1.start();
-      oscillator1.stop(audioContext.currentTime + 0.3);
+      filter2.type = 'bandpass';
+      filter2.frequency.setValueAtTime(1500, now + 0.2);
+      filter2.Q.setValueAtTime(8, now + 0.2);
       
-      oscillator2.start(audioContext.currentTime + 0.25);
-      oscillator2.stop(audioContext.currentTime + 0.4);
+      gainNode2.gain.setValueAtTime(0, now + 0.2);
+      gainNode2.gain.linearRampToValueAtTime(0.15, now + 0.22);
+      gainNode2.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+      
+      // Start and stop oscillators
+      oscillator1.start(now);
+      oscillator1.stop(now + 0.25);
+      
+      oscillator2.start(now + 0.2);
+      oscillator2.stop(now + 0.35);
+      
+      // Reset playing flag after sound completes
+      setTimeout(() => {
+        isPlayingRef.current = false;
+      }, 400);
+      
     } catch (error) {
       console.log('Audio not supported');
+      isPlayingRef.current = false;
     }
-  }, []);
+  }, [initAudioContext]);
 
   return { playCartSound };
 };

@@ -132,20 +132,6 @@ export default {
 						height: '0'
 					}
 				},
-				'rayToCart': {
-					'0%': { 
-						transform: 'translate(-50%, -50%) scale(1)', 
-						opacity: '1' 
-					},
-					'70%': { 
-						transform: 'translate(-50%, -50%) translate(var(--target-x), var(--target-y)) scale(0.6)', 
-						opacity: '0.8' 
-					},
-					'100%': { 
-						transform: 'translate(-50%, -50%) translate(var(--target-x), var(--target-y)) scale(0.2)', 
-						opacity: '0' 
-					}
-				},
 				'cart-bounce': {
 					'0%, 100%': { transform: 'scale(1)' },
 					'25%': { transform: 'scale(1.1)' },
@@ -156,7 +142,6 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'rayToCart': 'rayToCart 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
 				'cart-bounce': 'cart-bounce 0.6s ease-out'
 			}
 		}
