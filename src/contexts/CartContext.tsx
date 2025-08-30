@@ -1,5 +1,6 @@
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useCallback } from 'react';
+import { useCartSound } from '../hooks/useCartSound';
 
 export interface Sweet {
   id: string;
@@ -20,12 +21,14 @@ interface CartContextType {
   cart: CartItem[];
   customerName: string;
   setCustomerName: (name: string) => void;
-  addToCart: (sweet: Sweet) => void;
+  addToCart: (sweet: Sweet, sourceElement?: HTMLElement) => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
   getTotalPrice: () => number;
   getTotalItems: () => number;
+  isAnimating: boolean;
+  animationSource: HTMLElement | null;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -41,8 +44,23 @@ export const useCart = () => {
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [customerName, setCustomerName] = useState('');
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [animationSource, setAnimationSource] = useState<HTMLElement | null>(null);
+  const { playCartSound } = useCartSound();
 
-  const addToCart = (sweet: Sweet) => {
+  const addToCart = useCallback((sweet: Sweet, sourceElement?: HTMLElement) => {
+    // Trigger animation and sound
+    if (sourceElement) {
+      setAnimationSource(sourceElement);
+      setIsAnimating(true);
+      playCartSound();
+      
+      // Reset animation after a delay
+      setTimeout(() => {
+        setIsAnimating(false);
+        setAnimationSource(null);
+      }, 1200);
+    }
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === sweet.id);
       if (existingItem) {
@@ -54,7 +72,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
       return [...prevCart, { ...sweet, quantity: 1 }];
     });
-  };
+  }, [playCartSound]);
 
   const removeFromCart = (id: string) => {
     setCart(prevCart => prevCart.filter(item => item.id !== id));
@@ -95,7 +113,9 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       updateQuantity,
       clearCart,
       getTotalPrice,
-      getTotalItems
+      getTotalItems,
+      isAnimating,
+      animationSource
     }}>
       {children}
     </CartContext.Provider>

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { ShoppingCart, Menu, X, Sparkles } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
+import CartRayAnimation from '../ui/CartRayAnimation';
 
 const DiwaliHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { getTotalItems } = useCart();
+  const { getTotalItems, isAnimating, animationSource } = useCart();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -51,7 +52,7 @@ const DiwaliHeader = () => {
             <div className="relative desktop-cart-container">
               <button
                 onClick={() => scrollToSection('cart')}
-                className="diwali-btn px-6 py-2 rounded-full font-bold diwali-shadow transition-all duration-300 hover:scale-105 flex items-center space-x-2"
+                className={`diwali-btn px-6 py-2 rounded-full font-bold diwali-shadow transition-all duration-300 hover:scale-105 flex items-center space-x-2 ${isAnimating ? 'animate-cart-bounce' : ''}`}
                 aria-label={`View Cart - ${getTotalItems()} items`}
               >
                 <ShoppingCart className="h-5 w-5" />
@@ -74,7 +75,7 @@ const DiwaliHeader = () => {
             <div className="relative">
               <button
                 onClick={() => scrollToSection('cart')}
-                className="diwali-btn p-3 rounded-full flex items-center justify-center relative"
+                className={`diwali-btn p-3 rounded-full flex items-center justify-center relative ${isAnimating ? 'animate-cart-bounce' : ''}`}
                 style={{ minWidth: '52px', minHeight: '52px' }}
                 aria-label={`View Cart - ${getTotalItems()} items`}
               >
@@ -115,6 +116,12 @@ const DiwaliHeader = () => {
           </div>
         )}
       </div>
+      
+      {/* Cart Ray Animation */}
+      <CartRayAnimation 
+        isAnimating={isAnimating}
+        sourceElement={animationSource}
+      />
     </header>
   );
 };

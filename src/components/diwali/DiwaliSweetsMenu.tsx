@@ -352,7 +352,7 @@ const DiwaliSweetsMenu = () => {
                     );
                   })()}
                   <Button
-                    onClick={() => addToCart(sweet)}
+                    onClick={(e) => addToCart(sweet, e.currentTarget)}
                     className="diwali-btn w-full rounded-full h-10 sm:h-11 px-3 sm:px-4 font-semibold text-xs sm:text-sm diwali-shadow transition-all duration-300 hover:scale-105"
                   >
                     <Plus className="size-4" />

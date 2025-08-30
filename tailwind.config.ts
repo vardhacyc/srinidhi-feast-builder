@@ -131,11 +131,33 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'ray-to-cart': {
+					'0%': { 
+						transform: 'translate(-50%, -50%) scale(1)', 
+						opacity: '1' 
+					},
+					'50%': { 
+						transform: 'translate(-50%, -50%) translate(200px, -100px) scale(0.8)', 
+						opacity: '0.8' 
+					},
+					'100%': { 
+						transform: 'translate(-50%, -50%) translate(400px, -200px) scale(0.3)', 
+						opacity: '0' 
+					}
+				},
+				'cart-bounce': {
+					'0%, 100%': { transform: 'scale(1)' },
+					'25%': { transform: 'scale(1.1)' },
+					'50%': { transform: 'scale(1.05)' },
+					'75%': { transform: 'scale(1.08)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'ray-to-cart': 'ray-to-cart 1.2s ease-out forwards',
+				'cart-bounce': 'cart-bounce 0.6s ease-out'
 			}
 		}
 	},
