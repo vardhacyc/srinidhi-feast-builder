@@ -34,11 +34,11 @@ const DiwaliFooter = () => {
             <h4 className="text-lg font-bold mb-4">Contact Us</h4>
             <div className="space-y-3">
               <a 
-                href="tel:9994316559"
+                href="tel:8760101010"
                 className="flex items-center justify-center md:justify-start gap-2 text-orange-200 hover:text-white"
               >
                 <Phone className="h-4 w-4" />
-                9994316559
+                8760101010
               </a>
               <a 
                 href="mailto:yolocaterers@gmail.com"
@@ -48,11 +48,11 @@ const DiwaliFooter = () => {
                 yolocaterers@gmail.com
               </a>
               <a 
-                href="https://wa.me/919994316559"
+                href="https://wa.me/918760101010"
                 className="flex items-center justify-center md:justify-start gap-2 text-orange-200 hover:text-white"
               >
                 <MessageCircle className="h-4 w-4" />
-                WhatsApp Orders
+                WhatsApp: 8760101010
               </a>
               <div className="flex items-center justify-center md:justify-start gap-2 text-orange-200">
                 <MapPin className="h-4 w-4" />

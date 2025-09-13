@@ -49,7 +49,7 @@ Message: ${formData.message}
 Please provide a detailed quote for this event.
     `;
 
-    const whatsappUrl = `https://wa.me/919994316559?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappUrl = `https://wa.me/918760101010?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, '_blank');
 
     toast({
@@ -80,8 +80,8 @@ Please provide a detailed quote for this event.
     {
       icon: MessageCircle,
       title: "WhatsApp",
-      details: ["9994316559"],
-      link: "https://wa.me/919994316559"
+      details: ["8760101010"],
+      link: "https://wa.me/918760101010"
     },
     {
       icon: Mail,
@@ -350,7 +350,7 @@ Please provide a detailed quote for this event.
               Call Now
             </a>
             <a
-              href="https://wa.me/919994316559"
+              href="https://wa.me/918760101010"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-gradient-primary px-10 py-5 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center hover:scale-105"

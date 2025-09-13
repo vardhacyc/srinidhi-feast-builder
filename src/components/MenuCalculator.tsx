@@ -79,7 +79,7 @@ Total Amount: ₹${calculateTotal()}
 Please confirm availability and provide final quote.
     `;
     
-    const whatsappUrl = `https://wa.me/919994316559?text=${encodeURIComponent(summary)}`;
+    const whatsappUrl = `https://wa.me/918760101010?text=${encodeURIComponent(summary)}`;
     window.open(whatsappUrl, '_blank');
   };
 

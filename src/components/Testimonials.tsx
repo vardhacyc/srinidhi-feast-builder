@@ -167,7 +167,7 @@ const Testimonials = () => {
                 Book Your Event
               </button>
               <a 
-                href="https://wa.me/919994316559"
+                href="https://wa.me/918760101010"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border-4 border-white text-white px-10 py-4 rounded-xl font-black text-lg hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105"

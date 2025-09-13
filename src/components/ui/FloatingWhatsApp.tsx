@@ -8,7 +8,7 @@ interface FloatingWhatsAppProps {
 }
 
 const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({
-  phoneNumber = "919994316559",
+  phoneNumber = "918760101010",
   message = "Hi! I'm interested in ordering Diwali sweets from Sri Nidhi. Could you please help me with the menu and pricing?",
   className = ""
 }) => {

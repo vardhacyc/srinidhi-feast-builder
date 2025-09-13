@@ -51,7 +51,7 @@ const DiwaliIndex = () => {
             "name": "Sri Nidhi Catering",
             "description": "Premium Diwali sweets and catering services in Coimbatore",
             "url": "https://kovai.food/diwali",
-            "telephone": "+919994316559",
+            "telephone": "+918760101010",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Coimbatore",
@@ -78,7 +78,7 @@ const DiwaliIndex = () => {
         <DiwaliCart />
         <DiwaliFooter />
         <FloatingWhatsApp 
-          phoneNumber="919994316559"
+          phoneNumber="918760101010"
           message="🪔 Hi! I'm interested in your premium Diwali sweets collection. Can you help me with more information? ✨"
         />
       </main>

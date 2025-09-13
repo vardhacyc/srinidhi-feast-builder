@@ -255,7 +255,7 @@ export default function Diwali() {
 
   const handleOrderWhatsApp = (sweetName: string) => {
     const message = `Hi! I'd like to order ${sweetName} from Sri Nidhi Diwali Collection. Please confirm availability and delivery details.`;
-    const whatsappUrl = `https://wa.me/919994316559?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/918760101010?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -268,7 +268,7 @@ export default function Diwali() {
     
     const message = `🎊 *Sri Nidhi Diwali Order* 🎊\n\n${orderDetails}\n\n*Total: ₹${cartTotal}*\n\nPlease confirm availability and delivery time for this Diwali order. Thank you!`;
     
-    const whatsappUrl = `https://wa.me/919994316559?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/918760101010?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 

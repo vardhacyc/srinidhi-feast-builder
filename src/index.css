@@ -145,18 +145,18 @@ All colors MUST be HSL.
     animation: float 4s ease-in-out infinite 2s;
   }
 
-  /* Enhanced Diwali animations with food colors */
+  /* Enhanced Diwali animations with improved colors and smoother transitions */
   @keyframes diwali-glow {
     0%, 100% {
-      box-shadow: 0 0 8px hsl(45 100% 50% / 0.6), 0 0 16px hsl(15 70% 55% / 0.4), 0 0 24px hsl(25 60% 45% / 0.3);
+      box-shadow: 0 0 12px hsl(45 100% 60% / 0.7), 0 0 24px hsl(15 80% 65% / 0.5), 0 0 36px hsl(25 70% 55% / 0.4);
     }
     50% {
-      box-shadow: 0 0 16px hsl(45 100% 50% / 0.9), 0 0 32px hsl(15 70% 55% / 0.7), 0 0 48px hsl(25 60% 45% / 0.5);
+      box-shadow: 0 0 20px hsl(45 100% 60% / 1), 0 0 40px hsl(15 80% 65% / 0.8), 0 0 60px hsl(25 70% 55% / 0.6);
     }
   }
 
   .animate-diwali-glow {
-    animation: diwali-glow 2s ease-in-out infinite;
+    animation: diwali-glow 2.5s ease-in-out infinite;
   }
 
   @keyframes sparkle {
@@ -236,18 +236,18 @@ All colors MUST be HSL.
     animation: fadeInUp 0.8s ease-out forwards;
   }
 
-  /* Pulse glow effect */
+  /* Enhanced pulse glow effect with more vibrant colors */
   @keyframes pulseGlow {
     0%, 100% {
-      box-shadow: 0 0 5px rgba(255, 199, 0, 0.3);
+      box-shadow: 0 0 8px rgba(255, 199, 0, 0.4), 0 0 15px rgba(255, 162, 0, 0.3);
     }
     50% {
-      box-shadow: 0 0 20px rgba(255, 199, 0, 0.6), 0 0 30px rgba(255, 199, 0, 0.4);
+      box-shadow: 0 0 25px rgba(255, 199, 0, 0.8), 0 0 40px rgba(255, 162, 0, 0.6), 0 0 60px rgba(255, 140, 0, 0.4);
     }
   }
 
   .animate-pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite;
+    animation: pulseGlow 2.2s ease-in-out infinite;
   }
 
   /* Gradient animation */
