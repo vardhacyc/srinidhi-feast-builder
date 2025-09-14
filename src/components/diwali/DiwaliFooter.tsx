@@ -41,11 +41,11 @@ const DiwaliFooter = () => {
                 8760101010
               </a>
               <a 
-                href="mailto:yolocaterers@gmail.com"
+                href="mailto:srinidhicatering10@gmail.com"
                 className="flex items-center justify-center md:justify-start gap-2 text-orange-200 hover:text-white"
               >
                 <Mail className="h-4 w-4" />
-                yolocaterers@gmail.com
+                srinidhicatering10@gmail.com
               </a>
               <a 
                 href="https://wa.me/918760101010"

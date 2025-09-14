@@ -95,7 +95,7 @@ Thank you! 🙏
 
 Order ID: ${Date.now()}`;
 
-    const phoneRaw = '9994316559';
+    const phoneRaw = '8760101010';
     const sanitized = phoneRaw.replace(/\D/g, '');
     const withCountry = sanitized.length === 10 ? `91${sanitized}` : sanitized;
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${withCountry}&text=${encodeURIComponent(message)}`;

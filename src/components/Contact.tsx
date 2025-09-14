@@ -74,8 +74,8 @@ Please provide a detailed quote for this event.
     {
       icon: Phone,
       title: "Phone",
-      details: ["9994316559"],
-      link: "tel:9994316559"
+      details: ["8760101010"],
+      link: "tel:8760101010"
     },
     {
       icon: MessageCircle,
@@ -86,8 +86,8 @@ Please provide a detailed quote for this event.
     {
       icon: Mail,
       title: "Email",
-      details: ["info@srinidhicatering.com", "booking@srinidhicatering.com"],
-      link: "mailto:info@srinidhicatering.com"
+      details: ["srinidhicatering10@gmail.com", "booking@srinidhicatering.com"],
+      link: "mailto:srinidhicatering10@gmail.com"
     },
     {
       icon: MapPin,
@@ -343,7 +343,7 @@ Please provide a detailed quote for this event.
           <h3 className="text-3xl font-black text-gray-900 mb-8">Need Immediate Assistance?</h3>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <a
-              href="tel:9994316559"
+              href="tel:8760101010"
               className="bg-header-bar text-white px-10 py-5 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center hover:scale-105 text-shadow-medium"
             >
               <Phone className="h-6 w-6 mr-3" />
