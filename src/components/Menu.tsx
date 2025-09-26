@@ -67,131 +67,133 @@ const Menu = () => {
   };
 
   return (
-    <section id="menu" className="py-24 bg-bg-neutral">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8">
+    <section id="menu" className="section-spacing bg-bg-neutral">
+      <div className="container mx-auto container-padding">
+        <div className="text-center mb-24">
+          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-10 text-balance">
             Our{' '}
             <span className="relative inline-block">
               <ScribbleUnderline variant="wavy" delay={1.2} color="#464646">
-                <span className="text-primary">Menu</span>
+                <span className="text-gradient">Menu</span>
               </ScribbleUnderline>
-              {/* Hand-drawn yellow underline effect */}
-              <div className="absolute -bottom-2 left-0 w-full h-4 bg-accent opacity-60 transform rotate-1 rounded-lg"></div>
+              {/* Enhanced underline effect */}
+              <div className="absolute -bottom-3 left-0 w-full h-5 bg-gradient-to-r from-accent/40 via-primary/60 to-gold/40 transform rotate-1 rounded-lg blur-sm"></div>
             </span>
           </h2>
-          <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
+          <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed text-balance">
             Authentic South Indian flavors with modern presentation and competitive pricing
           </p>
+          <div className="divider-elegant max-w-md mx-auto"></div>
         </div>
 
-        {/* Signature Dishes Gallery */}
-        <div className="mb-20 bg-white rounded-3xl p-12 shadow-xl border-2 border-primary/20">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-black text-gray-900 mb-4">
-              Signature <span className="text-primary">Dishes</span>
+        {/* Enhanced Signature Dishes Gallery */}
+        <div className="mb-32 card-elevated bg-white p-16 border-2 border-primary/20">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 text-balance">
+              Signature <span className="text-gradient">Dishes</span>
             </h3>
-            <p className="text-lg text-gray-700">Our most loved traditional preparations</p>
+            <p className="text-lg text-gray-700 text-balance">Our most loved traditional preparations</p>
+            <div className="divider-elegant max-w-sm mx-auto"></div>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+          <div className="grid-cards">
+            <div className="group relative overflow-hidden card-elevated hover:scale-105 transition-all duration-300">
               <img 
                 src="/a3_demo.jpg" 
                 alt="Traditional South Indian Thali - Sri Nidhi Catering"
-                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h4 className="font-bold text-lg">Traditional Thali</h4>
-                <p className="text-sm opacity-90">₹120 per plate</p>
+              <div className="absolute bottom-6 left-6 right-6 text-white">
+                <h4 className="font-bold text-xl mb-2 text-balance">Traditional Thali</h4>
+                <p className="text-base opacity-90 text-balance">₹120 per plate</p>
               </div>
             </div>
             
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+            <div className="group relative overflow-hidden card-elevated hover:scale-105 transition-all duration-300">
               <img 
                 src="/a2.jpg" 
                 alt="Vegetable Biryani - Sri Nidhi Catering"
-                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h4 className="font-bold text-lg">Vegetable Biryani</h4>
-                <p className="text-sm opacity-90">₹80 per plate</p>
+              <div className="absolute bottom-6 left-6 right-6 text-white">
+                <h4 className="font-bold text-xl mb-2 text-balance">Vegetable Biryani</h4>
+                <p className="text-base opacity-90 text-balance">₹80 per plate</p>
               </div>
             </div>
             
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+            <div className="group relative overflow-hidden card-elevated hover:scale-105 transition-all duration-300">
               <img 
                 src="/a4_outdoor.jpg" 
                 alt="Live Counter Setup - Sri Nidhi Catering"
-                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h4 className="font-bold text-lg">Live Counters</h4>
-                <p className="text-sm opacity-90">Interactive Experience</p>
+              <div className="absolute bottom-6 left-6 right-6 text-white">
+                <h4 className="font-bold text-xl mb-2 text-balance">Live Counters</h4>
+                <p className="text-base opacity-90 text-balance">Interactive Experience</p>
               </div>
             </div>
             
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+            <div className="group relative overflow-hidden card-elevated hover:scale-105 transition-all duration-300">
               <img 
                 src="/a1_award.jpg" 
                 alt="Award-Winning Preparations - Sri Nidhi Catering"
-                className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h4 className="font-bold text-lg">Award Winners</h4>
-                <p className="text-sm opacity-90">Excellence Recognized</p>
+              <div className="absolute bottom-6 left-6 right-6 text-white">
+                <h4 className="font-bold text-xl mb-2 text-balance">Award Winners</h4>
+                <p className="text-base opacity-90 text-balance">Excellence Recognized</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Category tabs with vibrant styling */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        {/* Enhanced Category tabs */}
+        <div className="flex flex-wrap justify-center gap-6 mb-20">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`flex items-center space-x-3 px-8 py-4 rounded-xl font-black text-lg transition-all transform ${
+              className={`flex items-center space-x-4 px-10 py-5 rounded-xl font-black text-lg transition-all transform ${
                 activeCategory === category.id
-                  ? 'btn-gradient-primary shadow-2xl scale-105'
-                  : 'bg-white text-gray-700 hover:bg-primary/10 shadow-lg hover:scale-102 border-2 border-primary/20'
+                  ? 'btn-primary-modern shadow-2xl scale-105'
+                  : 'btn-secondary-modern bg-white text-gray-700 hover:bg-primary/10 hover:scale-102 border-2 border-primary/20'
               }`}
             >
-              <category.icon className="h-6 w-6" />
+              <category.icon className="h-7 w-7" />
               <span>{category.label}</span>
             </button>
           ))}
         </div>
 
-        {/* Menu items with bold styling */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Enhanced Menu items */}
+        <div className="grid-cards">
           {menuItems[activeCategory as keyof typeof menuItems].map((item, index) => (
             <div 
               key={index}
-              className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 group border-2 border-primary/20 hover:border-primary/40 hover:-translate-y-2"
+              className="card-elevated bg-white p-10 group border-2 border-primary/20 hover:border-primary/40"
             >
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-black text-gray-900 group-hover:text-primary transition-colors flex-1 mr-4">
+              <div className="flex justify-between items-start mb-6">
+                <h3 className="text-2xl font-black text-gray-900 group-hover:text-primary transition-colors flex-1 mr-4 text-balance">
                   {item.name}
                 </h3>
-                <span className="text-3xl font-black text-primary bg-accent/20 px-4 py-2 rounded-xl">₹{item.rate}</span>
+                <span className="text-3xl font-black text-primary bg-gradient-to-r from-accent/20 to-primary/20 px-6 py-3 rounded-xl shadow-sm">₹{item.rate}</span>
               </div>
-              <p className="text-gray-700 mb-6 text-lg font-medium leading-relaxed">{item.description}</p>
-              <div className="text-sm text-gray-500 font-semibold bg-gray-100 px-3 py-1 rounded-lg inline-block">
+              <p className="text-gray-700 mb-8 text-lg font-medium leading-relaxed text-balance">{item.description}</p>
+              <div className="text-sm text-gray-500 font-semibold bg-gradient-to-r from-gray-100 to-gray-50 px-4 py-2 rounded-lg inline-block border border-gray-200">
                 Per plate
               </div>
             </div>
           ))}
         </div>
 
-        {/* Note section with vibrant styling */}
-        <div className="text-center mt-16">
-          <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-primary/20 max-w-2xl mx-auto mb-8">
-            <p className="text-gray-700 mb-6 text-lg font-medium">
+        {/* Enhanced Note section */}
+        <div className="text-center mt-24">
+          <div className="card-elevated bg-white p-12 border-2 border-primary/20 max-w-2xl mx-auto mb-8">
+            <p className="text-gray-700 mb-8 text-lg font-medium text-balance">
               * Prices may vary based on quantity and customization requirements
             </p>
             <button 
@@ -199,7 +201,7 @@ const Menu = () => {
                 const element = document.querySelector('#calculator');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="btn-gradient-multicolor px-10 py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              className="btn-primary-modern text-lg hover:scale-105 transition-all duration-300 shadow-xl"
             >
               Calculate Your Order
             </button>

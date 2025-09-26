@@ -74,110 +74,110 @@ const Hero = () => {
         <div className="max-w-6xl mx-auto">
           
           {/* Premium Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-header-bar px-8 py-4 rounded-full text-sm font-bold mb-12 shadow-2xl border border-yellow-200 hover:scale-105 transition-transform duration-300">
-            <Award className="w-4 h-4" />
-            Building on Kovai Catering Legacy Since 2008
+          <div className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-md text-header-bar px-10 py-5 rounded-full text-sm font-bold mb-16 shadow-2xl border border-yellow-200/50 hover:scale-105 transition-all duration-300 animate-fade-in-up">
+            <Award className="w-5 h-5 text-gold animate-pulse" />
+            <span className="text-balance">Building on Kovai Catering Legacy Since 2008</span>
           </div>
           
           {/* Main Hero Title */}
-          <div className="mb-16">
-            <h1 className="text-7xl md:text-9xl font-black mb-8 leading-none tracking-tight">
-              <span className="block text-white drop-shadow-lg text-shadow-strong">
+          <div className="mb-20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <h1 className="text-7xl md:text-9xl font-black mb-10 leading-none tracking-tight">
+              <span className="block text-white drop-shadow-lg text-shadow-strong text-balance">
                 Sri Nidhi
               </span>
               <span className="relative block">
                 <ScribbleUnderline variant="wavy" className="text-primary opacity-80">
-                  <span className="text-white drop-shadow-lg text-shadow-strong">
+                  <span className="text-white drop-shadow-lg text-shadow-strong text-balance">
                     Catering
                   </span>
                 </ScribbleUnderline>
-                {/* Premium underline effect */}
-                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-80 h-6 bg-gradient-to-r from-accent/60 via-gold/60 to-primary/60 rounded-full blur-sm"></div>
+                {/* Enhanced underline effect */}
+                <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-96 h-8 bg-gradient-to-r from-accent/60 via-gold/80 to-primary/60 rounded-full blur-md opacity-80 animate-pulse"></div>
               </span>
             </h1>
             
-            <p className="text-2xl md:text-3xl text-white mb-12 max-w-5xl mx-auto font-medium leading-relaxed drop-shadow-lg text-shadow-medium">
+            <p className="text-2xl md:text-3xl text-white mb-16 max-w-5xl mx-auto font-medium leading-relaxed drop-shadow-lg text-shadow-medium text-balance">
               Creating extraordinary culinary experiences with 
-              <span className="text-header-bar font-bold"> premium service</span> and 
-              <span className="text-primary font-bold"> authentic flavors</span>.
+              <span className="text-gradient font-bold bg-gradient-to-r from-accent to-gold bg-clip-text text-transparent"> premium service</span> and 
+              <span className="text-gradient font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"> authentic flavors</span>.
               <br className="hidden md:block" />
               A unit of <span className="text-gold font-bold">Sri Nidhi Catering</span>, continuing the legacy of excellence.
             </p>
           </div>
 
           {/* Premium CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-8 justify-center mb-20">
+          <div className="flex flex-col sm:flex-row gap-8 justify-center mb-24 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <Button 
               onClick={() => scrollToSection('#contact')}
               size="lg"
-              className="group btn-gradient-primary px-12 py-8 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 border-0"
+              className="group btn-primary-modern px-14 py-8 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-3 transition-all duration-300 border-0 bg-gradient-to-r from-primary to-accent"
             >
               <span>Book Your Event</span>
-              <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
             </Button>
             <Button 
               onClick={() => scrollToSection('#menu')}
               variant="outline" 
               size="lg"
-              className="group border-3 border-header-bar/20 bg-white/80 backdrop-blur-sm text-header-bar hover:bg-header-bar hover:text-white px-12 py-8 text-xl font-bold rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300"
+              className="group btn-secondary-modern border-3 border-white/30 bg-white/90 backdrop-blur-md text-header-bar hover:bg-white hover:text-header-bar px-14 py-8 text-xl font-bold rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-3 transition-all duration-300"
             >
               <span>Explore Menu</span>
-              <ChefHat className="ml-3 w-5 h-5 group-hover:rotate-12 transition-transform" />
+              <ChefHat className="ml-3 w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
             </Button>
           </div>
 
           {/* Premium Statistics Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid-cards animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
             <div className="group text-center">
-              <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-yellow-100 hover:scale-105">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl"></div>
+              <div className="card-elevated bg-white/90 backdrop-blur-md p-10 hover:scale-105 transition-all duration-300 border border-yellow-100/50">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl"></div>
                 <div className="relative">
-                  <div className="bg-gradient-to-br from-primary to-accent rounded-2xl p-4 w-16 h-16 mx-auto mb-6 shadow-lg flex items-center justify-center group-hover:rotate-6 transition-transform duration-300">
-                    <ChefHat className="h-8 w-8 text-white" />
+                  <div className="bg-gradient-to-br from-primary to-accent rounded-2xl p-5 w-20 h-20 mx-auto mb-8 shadow-lg flex items-center justify-center group-hover:rotate-6 transition-transform duration-300">
+                    <ChefHat className="h-10 w-10 text-white" />
                   </div>
                   <ScribbleUnderline variant="zigzag" delay={1.5}>
-                    <h3 className="text-3xl font-black text-gray-800 mb-2">500+</h3>
+                    <h3 className="text-4xl font-black text-gray-800 mb-3">500+</h3>
                   </ScribbleUnderline>
-                  <p className="text-gray-600 font-medium">Events Catered</p>
+                  <p className="text-lg text-gray-600 font-medium">Events Catered</p>
                 </div>
               </div>
             </div>
             
             <div className="group text-center">
-              <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:scale-105">
-                <div className="absolute inset-0 bg-gradient-to-br from-header-bar/5 to-gray-600/5 rounded-3xl"></div>
+              <div className="card-elevated bg-white/90 backdrop-blur-md p-10 hover:scale-105 transition-all duration-300 border border-gray-100/50">
+                <div className="absolute inset-0 bg-gradient-to-br from-header-bar/5 to-gray-600/5 rounded-2xl"></div>
                 <div className="relative">
-                  <div className="bg-gradient-to-br from-header-bar to-gray-600 rounded-2xl p-4 w-16 h-16 mx-auto mb-6 shadow-lg flex items-center justify-center group-hover:rotate-6 transition-transform duration-300">
-                    <Users className="h-8 w-8 text-white" />
+                  <div className="bg-gradient-to-br from-header-bar to-gray-600 rounded-2xl p-5 w-20 h-20 mx-auto mb-8 shadow-lg flex items-center justify-center group-hover:rotate-6 transition-transform duration-300">
+                    <Users className="h-10 w-10 text-white" />
                   </div>
-                  <h3 className="text-3xl font-black text-gray-800 mb-2">50,000+</h3>
-                  <p className="text-gray-600 font-medium">Happy Guests</p>
+                  <h3 className="text-4xl font-black text-gray-800 mb-3">50,000+</h3>
+                  <p className="text-lg text-gray-600 font-medium">Happy Guests</p>
                 </div>
               </div>
             </div>
             
             <div className="group text-center">
-              <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-yellow-100 hover:scale-105">
-                <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-yellow-500/5 rounded-3xl"></div>
+              <div className="card-elevated bg-white/90 backdrop-blur-md p-10 hover:scale-105 transition-all duration-300 border border-yellow-100/50">
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-yellow-500/5 rounded-2xl"></div>
                 <div className="relative">
-                  <div className="bg-gradient-to-br from-gold to-yellow-500 rounded-2xl p-4 w-16 h-16 mx-auto mb-6 shadow-lg flex items-center justify-center group-hover:rotate-6 transition-transform duration-300">
-                    <Clock className="h-8 w-8 text-white" />
+                  <div className="bg-gradient-to-br from-gold to-yellow-500 rounded-2xl p-5 w-20 h-20 mx-auto mb-8 shadow-lg flex items-center justify-center group-hover:rotate-6 transition-transform duration-300">
+                    <Clock className="h-10 w-10 text-white" />
                   </div>
-                  <h3 className="text-3xl font-black text-gray-800 mb-2">15+</h3>
-                  <p className="text-gray-600 font-medium">Years Experience</p>
+                  <h3 className="text-4xl font-black text-gray-800 mb-3">15+</h3>
+                  <p className="text-lg text-gray-600 font-medium">Years Experience</p>
                 </div>
               </div>
             </div>
             
             <div className="group text-center">
-              <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-green-100 hover:scale-105">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 rounded-3xl"></div>
+              <div className="card-elevated bg-white/90 backdrop-blur-md p-10 hover:scale-105 transition-all duration-300 border border-green-100/50">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 rounded-2xl"></div>
                 <div className="relative">
-                  <div className="bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl p-4 w-16 h-16 mx-auto mb-6 shadow-lg flex items-center justify-center group-hover:rotate-6 transition-transform duration-300">
-                    <Award className="h-8 w-8 text-white" />
+                  <div className="bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl p-5 w-20 h-20 mx-auto mb-8 shadow-lg flex items-center justify-center group-hover:rotate-6 transition-transform duration-300">
+                    <Award className="h-10 w-10 text-white" />
                   </div>
-                  <h3 className="text-3xl font-black text-gray-800 mb-2">100%</h3>
-                  <p className="text-gray-600 font-medium">Quality Assured</p>
+                  <h3 className="text-4xl font-black text-gray-800 mb-3">100%</h3>
+                  <p className="text-lg text-gray-600 font-medium">Quality Assured</p>
                 </div>
               </div>
             </div>
