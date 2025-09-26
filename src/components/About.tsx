@@ -27,114 +27,120 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8">
+    <section id="about" className="section-spacing gradient-subtle">
+      <div className="container mx-auto container-padding">
+        <div className="text-center mb-24">
+          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-10 text-balance">
             About{' '}
             <span className="relative inline-block">
               <ScribbleUnderline variant="smooth" delay={0.8}>
-                <span className="text-primary">Sri Nidhi Catering</span>
+                <span className="text-gradient">Sri Nidhi Catering</span>
               </ScribbleUnderline>
-              {/* Hand-drawn yellow underline effect */}
-              <div className="absolute -bottom-2 left-0 w-full h-4 bg-accent opacity-60 transform rotate-1 rounded-lg"></div>
-              {/* Added gold accent border for premium touch */}
-              <div className="absolute -bottom-4 left-2 w-20 h-1 bg-gold rounded-full"></div>
+              {/* Enhanced underline effect */}
+              <div className="absolute -bottom-3 left-0 w-full h-5 bg-gradient-to-r from-accent/40 via-primary/60 to-gold/40 transform rotate-1 rounded-lg blur-sm"></div>
+              <div className="absolute -bottom-5 left-4 w-24 h-2 bg-gold rounded-full opacity-80"></div>
             </span>
           </h2>
-          <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
+          <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed text-balance">
             A unit of Sri Nidhi Catering - Creating delightful memories that your taste buds will fondly remember forever
           </p>
+          <div className="divider-elegant max-w-md mx-auto"></div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+        <div className="grid lg:grid-cols-2 gap-20 items-center mb-32">
           <div>
-            <div className="bg-gradient-to-br from-primary/10 to-accent/20 rounded-3xl p-12 h-96 flex items-center justify-center border-4 border-primary/20 shadow-2xl">
+            <div className="card-elevated gradient-warm p-16 h-auto flex items-center justify-center border-4 border-primary/20">
               <div className="text-center">
-                <div className="bg-white rounded-full p-8 w-32 h-32 mx-auto mb-6 shadow-xl flex items-center justify-center border-4 border-primary">
-                  <Heart className="h-16 w-16 text-primary" />
+                <div className="bg-white rounded-full p-10 w-40 h-40 mx-auto mb-8 shadow-xl flex items-center justify-center border-4 border-primary/30">
+                  <Heart className="h-20 w-20 text-primary animate-pulse" />
                 </div>
-                <h3 className="text-3xl font-black text-gray-900 mb-2">15+ Years</h3>
-                <p className="text-gray-700 font-semibold text-lg">of Culinary Excellence</p>
+                <h3 className="text-4xl font-black text-gray-900 mb-4 text-balance">15+ Years</h3>
+                <p className="text-gray-700 font-semibold text-xl text-balance">of Culinary Excellence</p>
+                <div className="w-20 h-1.5 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mt-6"></div>
               </div>
             </div>
           </div>
 
-          <div className="space-y-8">
-            <h3 className="text-4xl font-black text-gray-900 mb-6">
-              Our <span className="text-primary">Story</span>
+          <div className="space-y-10">
+            <h3 className="text-4xl md:text-5xl font-black text-gray-900 mb-8 text-balance">
+              Our <span className="text-gradient">Story</span>
             </h3>
-            <div className="space-y-6">
-              <p className="text-gray-700 text-lg leading-relaxed">
-                <strong className="text-primary">Sri Nidhi Catering</strong> is an independent Catering Company based in Coimbatore 
+            <div className="space-y-8">
+              <p className="text-gray-700 text-lg leading-relaxed text-balance">
+                <strong className="text-primary font-bold">Sri Nidhi Catering</strong> is an independent Catering Company based in Coimbatore 
                 providing professional catering services to private and corporate clients. Building on the 
-                legacy of <strong className="text-header-bar">Kovai Catering</strong>, our food creates a delightful memory that your taste buds will 
+                legacy of <strong className="text-header-bar font-bold">Kovai Catering</strong>, our food creates a delightful memory that your taste buds will 
                 fondly remember forever.
               </p>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                Ours is a <strong className="text-primary">mega food production set-up</strong> with a state-of-the-art kitchen and our outlet caters 
+              <p className="text-gray-700 text-lg leading-relaxed text-balance">
+                Ours is a <strong className="text-primary font-bold">mega food production set-up</strong> with a state-of-the-art kitchen and our outlet caters 
                 to the hunger pangs of thousands of people daily, creating a variety of dishes. With chefs 
                 who can cook a wide range of authentic, traditional dishes from any chosen cuisine and 
                 technology that brings menus at the click of a button.
               </p>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                Carrying forward the trusted reputation of <strong className="text-header-bar">Kovai Catering</strong>, Sri Nidhi Catering has the winning 
+              <p className="text-gray-700 text-lg leading-relaxed text-balance">
+                Carrying forward the trusted reputation of <strong className="text-header-bar font-bold">Kovai Catering</strong>, Sri Nidhi Catering has the winning 
                 combination to keep your tummy happy, whether it's intimate family gatherings, grand weddings, 
-                or corporate events. We bring <strong className="text-primary">excellence and flavor</strong> to every occasion with over 15 years of 
+                or corporate events. We bring <strong className="text-primary font-bold">excellence and flavor</strong> to every occasion with over 15 years of 
                 culinary expertise.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Values section with vibrant styling and gold accents */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Values section with modern styling */}
+        <div className="grid-cards mb-32">
           {values.map((value, index) => (
             <div 
               key={index}
-              className="bg-white rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-gold/30 hover:border-gold group hover:-translate-y-2"
+              className="card-elevated bg-white p-10 text-center border-2 border-gold/20 hover:border-gold/40 group"
             >
-              <div className="bg-gradient-to-br from-primary to-accent rounded-full p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform shadow-lg border-2 border-gold/20">
-                <value.icon className="h-8 w-8 text-white" />
+              <div className="bg-gradient-to-br from-primary to-accent rounded-full p-6 w-24 h-24 mx-auto mb-8 group-hover:scale-110 transition-transform shadow-lg border-2 border-gold/20">
+                <value.icon className="h-12 w-12 text-white" />
               </div>
-              <h4 className="text-xl font-black text-gray-900 mb-4">{value.title}</h4>
-              <p className="text-gray-700 leading-relaxed">{value.description}</p>
-              {/* Gold accent divider for premium touch */}
-              <div className="w-12 h-1 bg-gold rounded-full mx-auto mt-4"></div>
+              <h4 className="text-2xl font-black text-gray-900 mb-6 text-balance">{value.title}</h4>
+              <p className="text-gray-700 leading-relaxed text-lg text-balance">{value.description}</p>
+              {/* Enhanced accent divider */}
+              <div className="w-16 h-1.5 bg-gradient-to-r from-gold to-primary rounded-full mx-auto mt-6"></div>
             </div>
           ))}
         </div>
 
         {/* Awards & Achievements Section */}
-        <div className="mt-32 bg-gradient-to-br from-primary/5 to-accent/10 rounded-3xl p-12 border-2 border-gold/20">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-black text-gray-900 mb-6">
-              Awards & <span className="text-primary">Recognition</span>
+        <div className="gradient-warm rounded-3xl p-16 border-2 border-gold/20 backdrop-blur-sm">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl md:text-5xl font-black text-gray-900 mb-8 text-balance">
+              Awards & <span className="text-gradient">Recognition</span>
             </h3>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-medium leading-relaxed">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-medium leading-relaxed text-balance">
               Our commitment to excellence has been recognized with prestigious awards and certifications
             </p>
+            <div className="divider-elegant max-w-sm mx-auto"></div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
-              <div className="space-y-6">
-                <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-gold/30">
-                  <div className="flex items-center mb-4">
-                    <Trophy className="h-8 w-8 text-gold mr-4" />
-                    <h4 className="text-2xl font-black text-gray-900">Excellence Award</h4>
+              <div className="space-y-8">
+                <div className="card-elevated bg-white p-8 border-2 border-gold/30">
+                  <div className="flex items-center mb-6">
+                    <div className="bg-gradient-to-br from-gold to-accent rounded-xl p-3 mr-6 shadow-lg">
+                      <Trophy className="h-10 w-10 text-white" />
+                    </div>
+                    <h4 className="text-2xl font-black text-gray-900 text-balance">Excellence Award</h4>
                   </div>
-                  <p className="text-gray-700 text-lg leading-relaxed">
+                  <p className="text-gray-700 text-lg leading-relaxed text-balance">
                     Recognized for outstanding catering services and customer satisfaction across 500+ successful events.
                   </p>
                 </div>
 
-                <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-gold/30">
-                  <div className="flex items-center mb-4">
-                    <Shield className="h-8 w-8 text-primary mr-4" />
-                    <h4 className="text-2xl font-black text-gray-900">Quality Certification</h4>
+                <div className="card-elevated bg-white p-8 border-2 border-gold/30">
+                  <div className="flex items-center mb-6">
+                    <div className="bg-gradient-to-br from-primary to-accent rounded-xl p-3 mr-6 shadow-lg">
+                      <Shield className="h-10 w-10 text-white" />
+                    </div>
+                    <h4 className="text-2xl font-black text-gray-900 text-balance">Quality Certification</h4>
                   </div>
-                  <p className="text-gray-700 text-lg leading-relaxed">
+                  <p className="text-gray-700 text-lg leading-relaxed text-balance">
                     Certified for maintaining highest standards of food safety, hygiene, and quality assurance.
                   </p>
                 </div>
