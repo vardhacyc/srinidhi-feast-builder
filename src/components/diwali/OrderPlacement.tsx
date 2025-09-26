@@ -3,16 +3,17 @@ import { useCart } from '../../contexts/CartContext';
 import { orderService, authService, isSupabaseConnected } from '../../lib/supabase';
 import { DELIVERY_CONFIG } from '../../config/deliveryConfig';
 import OrderForm from './OrderForm';
-import OTPVerification from './OTPVerification';
 import SweetsConfetti from './SweetsConfetti';
 import { Button } from '../ui/button';
 import { ArrowLeft, CheckCircle, AlertCircle, ExternalLink } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-type OrderStep = 'form' | 'otp' | 'success';
+type OrderStep = 'form' | 'success';
 
 interface OrderFormData {
   name: string;
+  email: string;
+  password: string;
   mobile: string;
   address: string;
   specialInstructions?: string;
@@ -49,7 +50,7 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
               <ol className="text-sm space-y-2 list-decimal list-inside">
                 <li>Click the green <strong>Supabase</strong> button in the top-right corner</li>
                 <li>Follow the setup wizard to connect your project</li>
-                <li>Enable <strong>Phone Authentication</strong> in your Supabase dashboard</li>
+                <li>Enable <strong>Email Authentication</strong> in your Supabase dashboard</li>
                 <li>Create the required database tables (orders, user_roles)</li>
               </ol>
             </div>
@@ -79,7 +80,6 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
   const [currentStep, setCurrentStep] = useState<OrderStep>('form');
   const [formData, setFormData] = useState<OrderFormData | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [otpError, setOtpError] = useState('');
   const [showConfetti, setShowConfetti] = useState(false);
   const [orderId, setOrderId] = useState('');
 
@@ -106,42 +106,28 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
 
   const handleFormSubmit = async (data: OrderFormData) => {
     setIsSubmitting(true);
+    setFormData(data);
+    
     try {
-      // Send OTP
-      await authService.sendOTP(data.mobile);
-      setFormData(data);
-      setCurrentStep('otp');
-      toast({
-        title: "OTP Sent!",
-        description: `Verification code sent to +91 ${data.mobile}`,
-      });
-    } catch (error: any) {
-      toast({
-        title: "Error",
-        description: error.message || "Failed to send OTP. Please try again.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+      // Try to sign up the user first
+      let authResult;
+      try {
+        authResult = await authService.signUpWithEmail(data.email, data.password);
+      } catch (signUpError: any) {
+        // If user already exists, try to sign them in
+        if (signUpError.message?.includes('already registered')) {
+          authResult = await authService.signInWithEmail(data.email, data.password);
+        } else {
+          throw signUpError;
+        }
+      }
 
-  const handleOTPVerify = async (otp: string) => {
-    if (!formData) return;
-    
-    setIsSubmitting(true);
-    setOtpError('');
-    
-    try {
-      // Verify OTP
-      await authService.verifyOTP(formData.mobile, otp);
-      
       // Create order in database
       const orderData = {
-        customer_name: formData.name,
-        mobile: formData.mobile,
-        address: formData.address,
-        special_instructions: formData.specialInstructions || '',
+        customer_name: data.name,
+        mobile: data.mobile,
+        address: data.address,
+        special_instructions: data.specialInstructions || '',
         items: cart.map(item => ({
           id: item.id,
           name: item.name,
@@ -174,10 +160,9 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
       clearCart();
       
     } catch (error: any) {
-      setOtpError(error.message || "Invalid OTP. Please try again.");
       toast({
-        title: "Verification Failed",
-        description: "Please check your OTP and try again.",
+        title: "Order Failed",
+        description: error.message || "Failed to place order. Please try again.",
         variant: "destructive"
       });
     } finally {
@@ -185,38 +170,11 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
     }
   };
 
-  const handleResendOTP = async () => {
-    if (!formData) return;
-    
-    setIsSubmitting(true);
-    try {
-      await authService.sendOTP(formData.mobile);
-      setOtpError('');
-      toast({
-        title: "OTP Resent!",
-        description: `New verification code sent to +91 ${formData.mobile}`,
-      });
-    } catch (error: any) {
-      toast({
-        title: "Error",
-        description: error.message || "Failed to resend OTP. Please try again.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleBackToForm = () => {
-    setCurrentStep('form');
-    setOtpError('');
-  };
 
   const handleStartNewOrder = () => {
     setCurrentStep('form');
     setFormData(null);
     setOrderId('');
-    setOtpError('');
   };
 
   if (currentStep === 'form') {
@@ -242,31 +200,6 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
     );
   }
 
-  if (currentStep === 'otp') {
-    return (
-      <div className="max-w-4xl mx-auto p-6">
-        <div className="mb-6">
-          <Button
-            onClick={handleBackToForm}
-            variant="ghost"
-            className="text-diwali-gold hover:text-amber-600"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Form
-          </Button>
-        </div>
-        
-        <OTPVerification
-          mobile={formData?.mobile || ''}
-          onVerify={handleOTPVerify}
-          onResend={handleResendOTP}
-          isVerifying={isSubmitting}
-          isResending={isSubmitting}
-          error={otpError}
-        />
-      </div>
-    );
-  }
 
   if (currentStep === 'success') {
     return (
@@ -290,6 +223,7 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
                 <h3 className="font-semibold mb-2">Order Details:</h3>
                 <div className="space-y-1 text-sm">
                   <p><strong>Order ID:</strong> {orderId.slice(0, 8).toUpperCase()}</p>
+                  <p><strong>Email:</strong> {formData?.email}</p>
                   <p><strong>Mobile:</strong> +91 {formData?.mobile}</p>
                   <p><strong>Items:</strong> {getTotalItems()}kg</p>
                   <p><strong>Total:</strong> ₹{getFinalTotal().toFixed(2)}</p>

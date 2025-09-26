@@ -112,12 +112,14 @@ export const orderService = {
 
 // Auth functions
 export const authService = {
-  async sendOTP(phone: string) {
+  async signUpWithEmail(email: string, password: string) {
+    const redirectUrl = `${window.location.origin}/diwali`;
     
-    const { data, error } = await supabase.auth.signInWithOtp({
-      phone: `+91${phone}`,
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
       options: {
-        channel: 'sms'
+        emailRedirectTo: redirectUrl
       }
     });
 
@@ -125,12 +127,10 @@ export const authService = {
     return data;
   },
 
-  async verifyOTP(phone: string, token: string) {
-    
-    const { data, error } = await supabase.auth.verifyOtp({
-      phone: `+91${phone}`,
-      token,
-      type: 'sms'
+  async signInWithEmail(email: string, password: string) {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password
     });
 
     if (error) throw error;
@@ -138,20 +138,17 @@ export const authService = {
   },
 
   async signOut() {
-    
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
   },
 
   async getCurrentUser() {
-    
     const { data: { user }, error } = await supabase.auth.getUser();
     if (error) throw error;
     return user;
   },
 
   async isAdmin() {
-    
     try {
       const user = await this.getCurrentUser();
       if (!user) return false;

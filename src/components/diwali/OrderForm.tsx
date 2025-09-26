@@ -7,7 +7,7 @@ import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
 import { useCart } from '../../contexts/CartContext';
-import { Phone, User, MapPin, FileText, Loader2 } from 'lucide-react';
+import { Phone, User, MapPin, FileText, Loader2, Mail, Lock } from 'lucide-react';
 
 const orderSchema = z.object({
   name: z.string()
@@ -15,6 +15,12 @@ const orderSchema = z.object({
     .min(2, 'Name must be at least 2 characters')
     .max(100, 'Name must be less than 100 characters')
     .regex(/^[a-zA-Z\s]+$/, 'Name can only contain letters and spaces'),
+  email: z.string()
+    .trim()
+    .email('Please enter a valid email address'),
+  password: z.string()
+    .min(6, 'Password must be at least 6 characters')
+    .max(100, 'Password must be less than 100 characters'),
   mobile: z.string()
     .trim()
     .regex(/^[6-9]\d{9}$/, 'Please enter a valid 10-digit Indian mobile number'),
@@ -84,6 +90,50 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, isSubmitting }) => {
             />
             {errors.name && (
               <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+            )}
+          </div>
+
+          <div>
+            <Label htmlFor="email" className="text-diwali-dark font-medium">
+              Email Address *
+            </Label>
+            <div className="relative mt-2">
+              <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
+                <Mail className="h-4 w-4 text-diwali-subtle" />
+              </div>
+              <Input
+                id="email"
+                type="email"
+                {...register('email')}
+                placeholder="Enter your email address"
+                className="pl-10 diwali-glass border-diwali-gold/30 focus:border-diwali-gold"
+                disabled={isSubmitting}
+              />
+            </div>
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+            )}
+          </div>
+
+          <div>
+            <Label htmlFor="password" className="text-diwali-dark font-medium">
+              Password *
+            </Label>
+            <div className="relative mt-2">
+              <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
+                <Lock className="h-4 w-4 text-diwali-subtle" />
+              </div>
+              <Input
+                id="password"
+                type="password"
+                {...register('password')}
+                placeholder="Create a secure password"
+                className="pl-10 diwali-glass border-diwali-gold/30 focus:border-diwali-gold"
+                disabled={isSubmitting}
+              />
+            </div>
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
             )}
           </div>
 
@@ -196,14 +246,14 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, isSubmitting }) => {
               Processing Order...
             </>
           ) : (
-            'Proceed to OTP Verification'
+            'Create Account & Place Order'
           )}
         </Button>
       </form>
 
       <div className="mt-6 p-4 diwali-glass-card rounded-xl border border-blue-400/30">
         <p className="text-sm text-diwali-dark leading-relaxed">
-          🔒 <strong>Secure Ordering:</strong> We'll send an OTP to your mobile number to verify your order. 
+          🔒 <strong>Secure Ordering:</strong> We'll create an account for you and place your order securely. 
           Your information is kept secure and will only be used for order processing.
         </p>
       </div>
