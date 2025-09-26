@@ -18,7 +18,11 @@ interface OrderFormData {
   specialInstructions?: string;
 }
 
-const OrderPlacement: React.FC = () => {
+interface OrderPlacementProps {
+  onClose?: () => void;
+}
+
+const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
   const { cart, clearCart, getTotalItems } = useCart();
   const { toast } = useToast();
   
@@ -218,6 +222,18 @@ const OrderPlacement: React.FC = () => {
   if (currentStep === 'form') {
     return (
       <div className="max-w-4xl mx-auto p-6">
+        <div className="mb-6 flex items-center justify-between">
+          <h1 className="text-3xl font-bold diwali-text-gradient">Place Your Order</h1>
+          {onClose && (
+            <Button
+              onClick={onClose}
+              variant="ghost"
+              className="text-diwali-gold hover:text-amber-600"
+            >
+              ✕ Close
+            </Button>
+          )}
+        </div>
         <OrderForm
           onSubmit={handleFormSubmit}
           isSubmitting={isSubmitting}
@@ -298,7 +314,10 @@ const OrderPlacement: React.FC = () => {
               </Button>
               
               <Button
-                onClick={() => window.location.href = '/diwali'}
+                onClick={() => {
+                  if (onClose) onClose();
+                  window.location.href = '/diwali';
+                }}
                 className="bg-gradient-to-r from-diwali-gold to-amber-500 hover:from-amber-500 hover:to-diwali-gold text-white"
               >
                 Continue Shopping
