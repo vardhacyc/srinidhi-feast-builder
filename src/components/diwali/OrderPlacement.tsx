@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useCart } from '../../contexts/CartContext';
-import { orderService, authService } from '../../lib/supabase';
+import { orderService, authService, isSupabaseConnected } from '../../lib/supabase';
 import { DELIVERY_CONFIG } from '../../config/deliveryConfig';
 import OrderForm from './OrderForm';
 import OTPVerification from './OTPVerification';
 import SweetsConfetti from './SweetsConfetti';
 import { Button } from '../ui/button';
-import { ArrowLeft, CheckCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle, AlertCircle, ExternalLink } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 type OrderStep = 'form' | 'otp' | 'success';
@@ -21,6 +21,56 @@ interface OrderFormData {
 const OrderPlacement: React.FC = () => {
   const { cart, clearCart, getTotalItems } = useCart();
   const { toast } = useToast();
+  
+  // Check if Supabase is connected
+  if (!isSupabaseConnected()) {
+    return (
+      <div className="max-w-2xl mx-auto p-6 text-center">
+        <div className="diwali-glass-card rounded-3xl p-8">
+          <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <AlertCircle className="h-8 w-8 text-white" />
+          </div>
+          
+          <h2 className="text-2xl font-bold diwali-text-gradient mb-4">
+            Supabase Connection Required
+          </h2>
+          
+          <div className="space-y-4 text-diwali-dark text-left">
+            <p>
+              To enable online ordering with OTP verification, you need to connect your Supabase project.
+            </p>
+            
+            <div className="diwali-glass-card rounded-xl p-4 border border-blue-400/30">
+              <h3 className="font-semibold mb-2">📋 Setup Instructions:</h3>
+              <ol className="text-sm space-y-2 list-decimal list-inside">
+                <li>Click the green <strong>Supabase</strong> button in the top-right corner</li>
+                <li>Follow the setup wizard to connect your project</li>
+                <li>Enable <strong>Phone Authentication</strong> in your Supabase dashboard</li>
+                <li>Create the required database tables (orders, user_roles)</li>
+              </ol>
+            </div>
+            
+            <div className="diwali-glass-card rounded-xl p-4 border border-green-400/30">
+              <p className="text-sm">
+                💡 <strong>Alternative:</strong> You can still use <strong>WhatsApp ordering</strong> 
+                which doesn't require Supabase setup. Just close this dialog and use the WhatsApp option.
+              </p>
+            </div>
+          </div>
+          
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              onClick={() => window.location.reload()}
+              className="bg-gradient-to-r from-diwali-gold to-amber-500 hover:from-amber-500 hover:to-diwali-gold text-white"
+            >
+              <ExternalLink className="h-4 w-4 mr-2" />
+              Refresh After Setup
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
   
   const [currentStep, setCurrentStep] = useState<OrderStep>('form');
   const [formData, setFormData] = useState<OrderFormData | null>(null);

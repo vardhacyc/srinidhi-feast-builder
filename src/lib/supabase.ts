@@ -3,7 +3,13 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Check if Supabase credentials are available
+const isSupabaseConfigured = supabaseUrl && supabaseAnonKey;
+
+// Create client only if credentials are available
+export const supabase = isSupabaseConfigured 
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null;
 
 // Database types
 export interface Order {
@@ -35,6 +41,10 @@ export interface OrderItem {
 // Order management functions
 export const orderService = {
   async createOrder(orderData: Omit<Order, 'id' | 'created_at' | 'updated_at'>) {
+    if (!supabase) {
+      throw new Error('Supabase is not configured. Please connect your Supabase project.');
+    }
+    
     const { data, error } = await supabase
       .from('orders')
       .insert([orderData])
@@ -46,6 +56,10 @@ export const orderService = {
   },
 
   async getOrders() {
+    if (!supabase) {
+      throw new Error('Supabase is not configured. Please connect your Supabase project.');
+    }
+    
     const { data, error } = await supabase
       .from('orders')
       .select('*')
@@ -56,6 +70,10 @@ export const orderService = {
   },
 
   async updateOrderStatus(orderId: string, status: Order['status']) {
+    if (!supabase) {
+      throw new Error('Supabase is not configured. Please connect your Supabase project.');
+    }
+    
     const { data, error } = await supabase
       .from('orders')
       .update({ 
@@ -71,6 +89,10 @@ export const orderService = {
   },
 
   async deleteOrder(orderId: string) {
+    if (!supabase) {
+      throw new Error('Supabase is not configured. Please connect your Supabase project.');
+    }
+    
     const { error } = await supabase
       .from('orders')
       .delete()
@@ -83,6 +105,10 @@ export const orderService = {
 // Auth functions
 export const authService = {
   async sendOTP(phone: string) {
+    if (!supabase) {
+      throw new Error('Supabase is not configured. Please connect your Supabase project to enable OTP verification.');
+    }
+    
     const { data, error } = await supabase.auth.signInWithOtp({
       phone: `+91${phone}`,
       options: {
@@ -95,6 +121,10 @@ export const authService = {
   },
 
   async verifyOTP(phone: string, token: string) {
+    if (!supabase) {
+      throw new Error('Supabase is not configured. Please connect your Supabase project to enable OTP verification.');
+    }
+    
     const { data, error } = await supabase.auth.verifyOtp({
       phone: `+91${phone}`,
       token,
@@ -106,27 +136,46 @@ export const authService = {
   },
 
   async signOut() {
+    if (!supabase) {
+      throw new Error('Supabase is not configured. Please connect your Supabase project.');
+    }
+    
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
   },
 
   async getCurrentUser() {
+    if (!supabase) {
+      throw new Error('Supabase is not configured. Please connect your Supabase project.');
+    }
+    
     const { data: { user }, error } = await supabase.auth.getUser();
     if (error) throw error;
     return user;
   },
 
   async isAdmin() {
-    const user = await this.getCurrentUser();
-    if (!user) return false;
+    if (!supabase) return false;
+    
+    try {
+      const user = await this.getCurrentUser();
+      if (!user) return false;
 
-    const { data, error } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', user.id)
-      .single();
+      const { data, error } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', user.id)
+        .single();
 
-    if (error) return false;
-    return data?.role === 'admin';
+      if (error) return false;
+      return data?.role === 'admin';
+    } catch {
+      return false;
+    }
   }
+};
+
+// Helper function to check if Supabase is configured
+export const isSupabaseConnected = () => {
+  return isSupabaseConfigured;
 };

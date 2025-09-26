@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { orderService, authService, Order } from '../lib/supabase';
+import { orderService, authService, isSupabaseConnected, Order } from '../lib/supabase';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
@@ -42,6 +42,17 @@ const AdminDashboard: React.FC = () => {
 
   const checkAdminAccess = async () => {
     try {
+      // Check if Supabase is configured first
+      if (!isSupabaseConnected()) {
+        toast({
+          title: "Supabase Not Connected",
+          description: "Please connect your Supabase project to access the admin dashboard.",
+          variant: "destructive"
+        });
+        navigate('/diwali');
+        return;
+      }
+
       const adminStatus = await authService.isAdmin();
       if (!adminStatus) {
         toast({
