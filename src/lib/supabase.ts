@@ -1,15 +1,10 @@
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@/integrations/supabase/client';
+import type { Json } from '@/integrations/supabase/types';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
-
-// Check if Supabase credentials are available
-const isSupabaseConfigured = supabaseUrl && supabaseAnonKey;
-
-// Create client only if credentials are available
-export const supabase = isSupabaseConfigured 
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : null;
+// Helper function to check if Supabase is configured
+export const isSupabaseConnected = () => {
+  return true; // Always connected since we're using the integrated client
+};
 
 // Database types
 export interface Order {
@@ -38,42 +33,59 @@ export interface OrderItem {
   image: string;
 }
 
+// Database row type (what comes from Supabase)
+interface OrderRow {
+  id: string;
+  customer_name: string;
+  mobile: string;
+  address: string;
+  special_instructions?: string;
+  items: Json;
+  subtotal: number;
+  gst_amount: number;
+  total_amount: number;
+  total_items: number;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
+
+// Helper function to convert database row to Order
+const convertRowToOrder = (row: OrderRow): Order => ({
+  ...row,
+  items: row.items as unknown as OrderItem[],
+  status: row.status as Order['status']
+});
+
 // Order management functions
 export const orderService = {
   async createOrder(orderData: Omit<Order, 'id' | 'created_at' | 'updated_at'>) {
-    if (!supabase) {
-      throw new Error('Supabase is not configured. Please connect your Supabase project.');
-    }
+    const dbData = {
+      ...orderData,
+      items: orderData.items as unknown as Json
+    };
     
     const { data, error } = await supabase
       .from('orders')
-      .insert([orderData])
+      .insert([dbData])
       .select()
       .single();
 
     if (error) throw error;
-    return data;
+    return convertRowToOrder(data as OrderRow);
   },
 
-  async getOrders() {
-    if (!supabase) {
-      throw new Error('Supabase is not configured. Please connect your Supabase project.');
-    }
-    
+  async getOrders(): Promise<Order[]> {
     const { data, error } = await supabase
       .from('orders')
       .select('*')
       .order('created_at', { ascending: false });
 
     if (error) throw error;
-    return data;
+    return (data as OrderRow[]).map(convertRowToOrder);
   },
 
   async updateOrderStatus(orderId: string, status: Order['status']) {
-    if (!supabase) {
-      throw new Error('Supabase is not configured. Please connect your Supabase project.');
-    }
-    
     const { data, error } = await supabase
       .from('orders')
       .update({ 
@@ -85,14 +97,10 @@ export const orderService = {
       .single();
 
     if (error) throw error;
-    return data;
+    return convertRowToOrder(data as OrderRow);
   },
 
   async deleteOrder(orderId: string) {
-    if (!supabase) {
-      throw new Error('Supabase is not configured. Please connect your Supabase project.');
-    }
-    
     const { error } = await supabase
       .from('orders')
       .delete()
@@ -105,9 +113,6 @@ export const orderService = {
 // Auth functions
 export const authService = {
   async sendOTP(phone: string) {
-    if (!supabase) {
-      throw new Error('Supabase is not configured. Please connect your Supabase project to enable OTP verification.');
-    }
     
     const { data, error } = await supabase.auth.signInWithOtp({
       phone: `+91${phone}`,
@@ -121,9 +126,6 @@ export const authService = {
   },
 
   async verifyOTP(phone: string, token: string) {
-    if (!supabase) {
-      throw new Error('Supabase is not configured. Please connect your Supabase project to enable OTP verification.');
-    }
     
     const { data, error } = await supabase.auth.verifyOtp({
       phone: `+91${phone}`,
@@ -136,18 +138,12 @@ export const authService = {
   },
 
   async signOut() {
-    if (!supabase) {
-      throw new Error('Supabase is not configured. Please connect your Supabase project.');
-    }
     
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
   },
 
   async getCurrentUser() {
-    if (!supabase) {
-      throw new Error('Supabase is not configured. Please connect your Supabase project.');
-    }
     
     const { data: { user }, error } = await supabase.auth.getUser();
     if (error) throw error;
@@ -155,7 +151,6 @@ export const authService = {
   },
 
   async isAdmin() {
-    if (!supabase) return false;
     
     try {
       const user = await this.getCurrentUser();
@@ -173,9 +168,4 @@ export const authService = {
       return false;
     }
   }
-};
-
-// Helper function to check if Supabase is configured
-export const isSupabaseConnected = () => {
-  return isSupabaseConfigured;
 };
