@@ -8,6 +8,7 @@ import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import Index from "./pages/Index";
 import DiwaliIndex from "./pages/DiwaliIndex";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminLogin from "./pages/AdminLogin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/diwali" element={<DiwaliIndex />} />
           <Route path="/catering" element={<Index />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

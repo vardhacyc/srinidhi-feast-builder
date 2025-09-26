@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingCart, Menu, X, Sparkles } from 'lucide-react';
+import { ShoppingCart, Menu, X, Sparkles, Shield } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
 import CartRayAnimation from '../ui/CartRayAnimation';
 
@@ -49,6 +49,14 @@ const DiwaliHeader = () => {
             >
               Collection
             </button>
+            <a
+              href="/admin-login"
+              className="font-medium transition-all duration-300 hover:scale-105 flex items-center space-x-1 text-xs opacity-60 hover:opacity-100"
+              style={{ color: 'hsl(var(--diwali-text))' }}
+            >
+              <Shield className="h-3 w-3" />
+              <span>Admin</span>
+            </a>
             <div className="relative desktop-cart-container">
               <button
                 onClick={() => scrollToSection('cart')}
@@ -113,6 +121,14 @@ const DiwaliHeader = () => {
             >
               Sweet Collection
             </button>
+            <a
+              href="/admin-login"
+              className="flex items-center space-x-2 w-full text-left py-2 mt-2 text-xs opacity-60 hover:opacity-100 transition-all"
+              style={{ color: 'hsl(var(--diwali-text))' }}
+            >
+              <Shield className="h-3 w-3" />
+              <span>Admin Login</span>
+            </a>
           </div>
         )}
       </div>
