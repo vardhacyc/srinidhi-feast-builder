@@ -27,6 +27,7 @@ interface CartContextType {
   clearCart: () => void;
   getTotalPrice: () => number;
   getTotalItems: () => number;
+  getFinalTotal: () => number;
   isAnimating: boolean;
   animationSource: HTMLElement | null;
 }
@@ -103,6 +104,10 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     return cart.reduce((total, item) => total + item.quantity, 0);
   };
 
+  const getFinalTotal = () => {
+    return getTotalPrice(); // For now, same as total price - can be enhanced with GST later
+  };
+
   return (
     <CartContext.Provider value={{
       cart,
@@ -114,6 +119,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       clearCart,
       getTotalPrice,
       getTotalItems,
+      getFinalTotal,
       isAnimating,
       animationSource
     }}>

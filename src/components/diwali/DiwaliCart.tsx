@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Minus, Plus, Trash2, ShoppingBag, MessageCircle, Star } from 'lucide-react';
+import { Minus, Plus, Trash2, ShoppingBag, MessageCircle, Star, CreditCard } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { DELIVERY_CONFIG } from '../../config/deliveryConfig';
+import OrderPlacement from './OrderPlacement';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../ui/dialog';
 
 const DiwaliCart = () => {
   const {
@@ -18,6 +20,8 @@ const DiwaliCart = () => {
   } = useCart();
 
   const [isProcessing, setIsProcessing] = useState(false);
+  const [showOrderOptions, setShowOrderOptions] = useState(false);
+  const [showOrderPlacement, setShowOrderPlacement] = useState(false);
 
   // GST calculation functions
   const getItemGST = (item: any) => {
@@ -271,36 +275,88 @@ Order ID: ${Date.now()}`;
                 Clear Cart
               </Button>
               <Button
-                onClick={handleWhatsAppOrder}
-                disabled={isProcessing}
-                className="flex-1 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 text-sm sm:text-lg"
+                onClick={() => setShowOrderOptions(true)}
+                className="flex-1 bg-gradient-to-r from-diwali-gold to-amber-500 hover:from-amber-500 hover:to-diwali-gold text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-lg"
               >
-                {isProcessing ? (
-                  <>
-                    <div className="animate-spin rounded-full h-5 w-5 sm:h-6 sm:w-6 border-b-2 border-white mr-2"></div>
-                    <span className="hidden sm:inline">Processing...</span>
-                    <span className="sm:hidden">Processing</span>
-                  </>
-                ) : (
-                  <>
-                    <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
-                    <span className="hidden sm:inline">Order via WhatsApp</span>
-                    <span className="sm:hidden">WhatsApp Order</span>
-                  </>
-                )}
+                <ShoppingBag className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
+                <span className="hidden sm:inline">Choose Order Method</span>
+                <span className="sm:hidden">Order Now</span>
               </Button>
             </div>
 
             {/* Delivery note */}
             <div className="mt-6 mb-4 p-4 diwali-glass-card rounded-xl border border-blue-400/30">
               <p className="text-sm leading-relaxed" style={{ color: 'hsl(var(--diwali-dark))' }}>
-                📞 <strong>Note:</strong> After clicking "Order via WhatsApp", you'll be redirected to WhatsApp 
-                where you can confirm your order details, delivery address, and payment method with us directly.
+              📞 <strong>Note:</strong> Choose your preferred ordering method. WhatsApp for quick orders 
+                or online placement for a more detailed checkout experience.
               </p>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Order Options Modal */}
+      <Dialog open={showOrderOptions} onOpenChange={setShowOrderOptions}>
+        <DialogContent className="diwali-glass-card border-diwali-gold/30 max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl diwali-text-gradient text-center mb-4">
+              Choose Order Method
+            </DialogTitle>
+          </DialogHeader>
+          
+          <div className="space-y-4">
+            <Button
+              onClick={() => {
+                setShowOrderOptions(false);
+                setShowOrderPlacement(true);
+              }}
+              className="w-full bg-gradient-to-r from-diwali-gold to-amber-500 hover:from-amber-500 hover:to-diwali-gold text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:scale-105"
+            >
+              <CreditCard className="h-5 w-5 mr-3" />
+              <div className="text-left flex-1">
+                <div className="text-lg">Place Order Online</div>
+                <div className="text-xs opacity-90">OTP verification • Detailed form</div>
+              </div>
+            </Button>
+            
+            <Button
+              onClick={() => {
+                setShowOrderOptions(false);
+                handleWhatsAppOrder();
+              }}
+              disabled={isProcessing}
+              className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50"
+            >
+              {isProcessing ? (
+                <>
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                  <div className="text-left flex-1">
+                    <div className="text-lg">Processing...</div>
+                    <div className="text-xs opacity-90">Opening WhatsApp</div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <MessageCircle className="h-5 w-5 mr-3" />
+                  <div className="text-left flex-1">
+                    <div className="text-lg">Order via WhatsApp</div>
+                    <div className="text-xs opacity-90">Quick & easy chat order</div>
+                  </div>
+                </>
+              )}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Order Placement Modal */}
+      <Dialog open={showOrderPlacement} onOpenChange={setShowOrderPlacement}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0 bg-transparent border-none">
+          <div className="bg-gradient-to-br from-orange-50 to-amber-50 min-h-full p-6">
+            <OrderPlacement />
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Top Wave Divider */}
       <div className="absolute top-0 left-0 right-0">
