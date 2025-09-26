@@ -122,6 +122,15 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
         }
       }
 
+      // Wait a moment for auth state to update
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // Verify user is authenticated before creating order
+      const currentUser = await authService.getCurrentUser();
+      if (!currentUser) {
+        throw new Error('Authentication failed. Please try again.');
+      }
+
       // Create order in database
       const orderData = {
         customer_name: data.name,
