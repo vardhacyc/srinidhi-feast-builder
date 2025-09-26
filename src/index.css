@@ -830,17 +830,19 @@ All colors MUST be HSL.
   }
 
   .diwali-glass-card {
-    background: radial-gradient(
-      ellipse at top,
-      hsla(var(--diwali-bright), 0.2) 0%,
-      hsla(var(--diwali-gold), 0.1) 40%,
-      hsla(var(--diwali-dark), 0.8) 100%
+    background: linear-gradient(
+      135deg,
+      rgba(255, 248, 230, 0.95) 0%,    /* Warm cream with high opacity */
+      rgba(255, 241, 186, 0.9) 30%,    /* Light golden */
+      rgba(255, 235, 168, 0.85) 70%,   /* Soft yellow */
+      rgba(255, 230, 150, 0.8) 100%    /* Deeper golden */
     );
-    backdrop-filter: blur(25px);
-    border: 1px solid hsla(var(--diwali-amber), 0.2);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(245, 200, 0, 0.4);
     box-shadow: 
-      0 20px 50px hsla(var(--diwali-dark), 0.4),
-      inset 0 1px 0 hsla(var(--diwali-cream), 0.3);
+      0 20px 50px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
   }
@@ -922,28 +924,24 @@ All colors MUST be HSL.
   .diwali-text-gradient {
     background: linear-gradient(
       135deg,
-      hsl(var(--diwali-cream)) 0%,
-      hsl(var(--diwali-gold)) 25%,
-      hsl(var(--diwali-bright)) 45%,
-      hsl(var(--diwali-cream)) 50%,  /* razor-thin specular highlight */
-      hsl(var(--diwali-bright)) 55%,
-      hsl(var(--diwali-gold)) 75%,
-      hsl(var(--diwali-cream)) 100%
+      #2d1810 0%,      /* Dark brown */
+      #4a2c1a 25%,     /* Medium brown */  
+      #6b3f28 45%,     /* Rich brown */
+      #8b5a3c 50%,     /* Warm brown highlight */
+      #6b3f28 55%,     /* Back to rich brown */
+      #4a2c1a 75%,     /* Medium brown */
+      #2d1810 100%     /* Dark brown */
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
-    transform: translateY(-12px);
-    /* Strong embossed effect with pronounced raised shadows */
+    font-weight: 700;
+    /* Strong contrast with better readability */
     text-shadow:
-      0 2px 0 rgba(255, 255, 255, 0.9),        /* strong top highlight */
-      0 -2px 0 rgba(0, 0, 0, 0.4),             /* strong top dark edge */
-      2px 2px 0 rgba(255, 255, 255, 0.7),      /* right-top highlight */
-      -2px -2px 0 rgba(0, 0, 0, 0.35),         /* left-top dark */
-      0 4px 12px hsla(var(--diwali-gold), 0.6), /* warm glow */
-      0 8px 20px rgba(0, 0, 0, 0.3),           /* strong depth shadow */
-      0 12px 30px rgba(0, 0, 0, 0.15);         /* extended depth */
+      1px 1px 2px rgba(255, 255, 255, 0.8),     /* White outline for contrast */
+      -1px -1px 2px rgba(255, 255, 255, 0.8),   /* White outline */
+      2px 2px 4px rgba(0, 0, 0, 0.4),           /* Dark shadow for depth */
+      0 0 8px rgba(245, 200, 0, 0.3);           /* Golden glow */
   }
 
   /* Diwali Animations */

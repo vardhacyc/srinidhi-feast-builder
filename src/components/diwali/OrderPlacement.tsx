@@ -109,29 +109,7 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
     setFormData(data);
     
     try {
-      // Try to sign up the user first
-      let authResult;
-      try {
-        authResult = await authService.signUpWithEmail(data.email, data.password);
-      } catch (signUpError: any) {
-        // If user already exists, try to sign them in
-        if (signUpError.message?.includes('already registered')) {
-          authResult = await authService.signInWithEmail(data.email, data.password);
-        } else {
-          throw signUpError;
-        }
-      }
-
-      // Wait a moment for auth state to update
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      // Verify user is authenticated before creating order
-      const currentUser = await authService.getCurrentUser();
-      if (!currentUser) {
-        throw new Error('Authentication failed. Please try again.');
-      }
-
-      // Create order in database
+      // Create order in database (anonymous users allowed for now)
       const orderData = {
         customer_name: data.name,
         mobile: data.mobile,
@@ -156,6 +134,14 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
       const order = await orderService.createOrder(orderData);
       setOrderId(order.id);
       
+      // Try to create user account for future orders (optional)
+      try {
+        await authService.signUpWithEmail(data.email, data.password);
+      } catch (authError) {
+        // Ignore auth errors - order is already placed successfully
+        console.log('Auth signup failed, but order placed successfully:', authError);
+      }
+      
       // Show success with confetti
       setCurrentStep('success');
       setShowConfetti(true);
@@ -178,7 +164,6 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
       setIsSubmitting(false);
     }
   };
-
 
   const handleStartNewOrder = () => {
     setCurrentStep('form');
@@ -208,7 +193,6 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
       </div>
     );
   }
-
 
   if (currentStep === 'success') {
     return (
