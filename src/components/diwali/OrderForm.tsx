@@ -238,7 +238,13 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, isSubmitting }) => {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-diwali-gold to-amber-500 hover:from-amber-500 hover:to-diwali-gold text-white font-bold py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50"
+          className="w-full font-bold py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50"
+          style={{
+            background: 'linear-gradient(135deg, #D97706 0%, #F59E0B 50%, #D97706 100%)',
+            color: '#FFFFFF',
+            boxShadow: '0 4px 12px rgba(217, 119, 6, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2)',
+            border: 'none'
+          }}
         >
           {isSubmitting ? (
             <>

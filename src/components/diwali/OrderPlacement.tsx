@@ -175,12 +175,21 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
     return (
       <div className="max-w-4xl mx-auto p-6">
         <div className="mb-6 flex items-center justify-between">
-          <h1 className="text-3xl font-bold diwali-text-gradient">Place Your Order</h1>
+          <h1 
+            className="text-3xl font-bold"
+            style={{
+              color: '#8B5A3C',
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2)',
+              fontFamily: "'Playfair Display', serif"
+            }}
+          >
+            Place Your Order
+          </h1>
           {onClose && (
             <Button
               onClick={onClose}
               variant="ghost"
-              className="text-diwali-gold hover:text-amber-600"
+              className="text-amber-700 hover:text-amber-800 font-semibold"
             >
               ✕ Close
             </Button>
