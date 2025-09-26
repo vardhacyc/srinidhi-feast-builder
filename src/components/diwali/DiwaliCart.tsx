@@ -122,10 +122,10 @@ Order ID: ${Date.now()}`;
     return (
       <section id="cart" className="relative py-20">
         <div className="container mx-auto text-center px-6">
-          <div className="diwali-glass-card rounded-3xl p-16 max-w-md mx-auto diwali-shadow-lg">
+          <div className="bg-amber-50/95 backdrop-blur-sm rounded-3xl p-16 max-w-md mx-auto shadow-xl border-2 border-amber-200">
             <div className="text-8xl mb-6 opacity-60">🛒</div>
-            <h2 className="text-3xl font-bold mb-4 diwali-text-gradient">Your Cart is Empty</h2>
-            <p className="mb-8 leading-relaxed" style={{ color: 'hsl(var(--diwali-text))' }}>
+            <h2 className="text-3xl font-bold mb-4 text-amber-900" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' }}>Your Cart is Empty</h2>
+            <p className="mb-8 leading-relaxed text-amber-800 font-medium">
               Start adding some delicious sweets to your cart!
             </p>
             <button
@@ -145,21 +145,21 @@ Order ID: ${Date.now()}`;
       <div className="container mx-auto max-w-5xl px-6">
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center mb-6">
-            <ShoppingBag className="h-8 w-8 mr-2" style={{ color: 'hsl(var(--diwali-gold))' }} />
-            <h2 className="text-4xl md:text-6xl font-bold diwali-text-gradient">
+            <ShoppingBag className="h-8 w-8 mr-2 text-amber-700" />
+            <h2 className="text-4xl md:text-6xl font-bold text-amber-900" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)' }}>
               Your Sweet Cart
             </h2>
-            <ShoppingBag className="h-8 w-8 ml-2" style={{ color: 'hsl(var(--diwali-gold))' }} />
+            <ShoppingBag className="h-8 w-8 ml-2 text-amber-700" />
           </div>
-          <p className="text-xl" style={{ color: 'hsl(var(--diwali-text))' }}>
+          <p className="text-xl text-amber-800 font-semibold" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' }}>
             Review your selection and proceed to order via WhatsApp
           </p>
         </div>
 
-        <div className="diwali-glass-card rounded-3xl overflow-hidden diwali-shadow-lg">
+        <div className="bg-amber-50/95 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl border-2 border-amber-200">
           {/* Customer name input */}
-          <div className="p-6 border-b border-yellow-200/20 diwali-molten-honey">
-            <label className="block font-bold mb-3" style={{ color: 'hsl(var(--diwali-dark))' }}>
+          <div className="p-6 border-b border-amber-200 bg-amber-100/50">
+            <label className="block font-bold mb-3 text-amber-900">
               👤 Your Name (Optional)
             </label>
             <Input
@@ -167,8 +167,7 @@ Order ID: ${Date.now()}`;
               value={customerName}
               onChange={(e) => setCustomerName(e.target.value)}
               placeholder="Enter your name (optional)"
-              className="w-full p-3 border-2 border-yellow-200/30 rounded-xl diwali-glass"
-              style={{ color: 'hsl(var(--diwali-dark))' }}
+              className="w-full p-3 border-2 border-amber-300 rounded-xl bg-white/95 text-amber-900 placeholder:text-amber-600 font-medium"
             />
           </div>
 
@@ -176,7 +175,7 @@ Order ID: ${Date.now()}`;
           <div className="p-6">
             <div className="space-y-4">
               {cart.map(item => (
-                <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 diwali-glass-card rounded-xl hover:scale-102 transition-all duration-300">
+                <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/90 rounded-xl hover:scale-102 transition-all duration-300 border border-amber-200 shadow-sm">
                   {/* Top row for mobile: Image and basic info */}
                   <div className="flex items-center gap-3 w-full sm:w-auto">
                     <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden flex-shrink-0">
@@ -187,8 +186,8 @@ Order ID: ${Date.now()}`;
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-bold diwali-text-gradient text-base sm:text-lg leading-snug">{item.name}</h3>
-                      <p className="text-xs sm:text-sm" style={{ color: 'hsl(var(--diwali-subtle))' }}>₹{item.price}/kg</p>
+                      <h3 className="font-bold text-amber-900 text-base sm:text-lg leading-snug" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)' }}>{item.name}</h3>
+                      <p className="text-xs sm:text-sm text-amber-700 font-medium">₹{item.price}/kg</p>
                     </div>
                     {/* Remove button - visible on mobile */}
                     <button
@@ -206,18 +205,16 @@ Order ID: ${Date.now()}`;
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full diwali-glass-card flex items-center justify-center hover:scale-110 transition-all duration-300"
-                        style={{ color: 'hsl(var(--diwali-dark))' }}
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center hover:scale-110 transition-all duration-300 text-amber-900"
                       >
                         <Minus className="h-3 w-3 sm:h-4 sm:w-4" />
                       </button>
-                      <span className="px-2 sm:px-3 py-1 rounded-full font-bold text-center min-w-[50px] sm:min-w-[60px] diwali-glass-card text-xs sm:text-sm">
+                      <span className="px-2 sm:px-3 py-1 rounded-full font-bold text-center min-w-[50px] sm:min-w-[60px] bg-amber-100 border border-amber-300 text-amber-900 text-xs sm:text-sm">
                         {item.quantity}kg
                       </span>
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full diwali-glass-card flex items-center justify-center hover:scale-110 transition-all duration-300"
-                        style={{ color: 'hsl(var(--diwali-dark))' }}
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center hover:scale-110 transition-all duration-300 text-amber-900"
                       >
                         <Plus className="h-3 w-3 sm:h-4 sm:w-4" />
                       </button>
@@ -225,7 +222,7 @@ Order ID: ${Date.now()}`;
                     
                     {/* Item total */}
                     <div className="text-right">
-                      <div className="font-bold diwali-text-gradient text-base sm:text-lg">
+                      <div className="font-bold text-amber-900 text-base sm:text-lg" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)' }}>
                         ₹{item.price * item.quantity}
                       </div>
                     </div>
@@ -244,22 +241,22 @@ Order ID: ${Date.now()}`;
             </div>
 
             {/* Cart summary */}
-            <div className="mt-6 sm:mt-8 p-4 sm:p-6 diwali-glass-card rounded-xl border-2 border-yellow-300/30">
-              <div className="flex justify-between items-center mb-2 pb-2 border-b border-yellow-200/20">
-                <span className="text-base sm:text-lg font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>Total Items:</span>
-                <span className="text-base sm:text-lg font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>{getTotalItems()}kg</span>
+            <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-amber-100/80 rounded-xl border-2 border-amber-300">
+              <div className="flex justify-between items-center mb-2 pb-2 border-b border-amber-300">
+                <span className="text-base sm:text-lg font-semibold text-amber-900">Total Items:</span>
+                <span className="text-base sm:text-lg font-bold text-amber-900">{getTotalItems()}kg</span>
               </div>
               <div className="flex justify-between items-center mb-2">
-                <span className="text-base sm:text-lg font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>Subtotal:</span>
-                <span className="text-base sm:text-lg font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>₹{getSubtotal()}</span>
+                <span className="text-base sm:text-lg font-semibold text-amber-900">Subtotal:</span>
+                <span className="text-base sm:text-lg font-bold text-amber-900">₹{getSubtotal()}</span>
               </div>
-              <div className="flex justify-between items-center mb-3 pb-2 border-b border-yellow-200/20">
-                <span className="text-base sm:text-lg font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>GST:</span>
-                <span className="text-base sm:text-lg font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>₹{getTotalGST().toFixed(2)}</span>
+              <div className="flex justify-between items-center mb-3 pb-2 border-b border-amber-300">
+                <span className="text-base sm:text-lg font-semibold text-amber-900">GST:</span>
+                <span className="text-base sm:text-lg font-bold text-amber-900">₹{getTotalGST().toFixed(2)}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-xl sm:text-2xl font-bold diwali-text-gradient">Final Total:</span>
-                <span className="text-xl sm:text-2xl font-bold diwali-text-gradient">₹{getFinalTotal().toFixed(2)}</span>
+                <span className="text-xl sm:text-2xl font-bold text-amber-900" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' }}>Final Total:</span>
+                <span className="text-xl sm:text-2xl font-bold text-amber-900" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' }}>₹{getFinalTotal().toFixed(2)}</span>
               </div>
             </div>
 
@@ -304,8 +301,8 @@ Order ID: ${Date.now()}`;
             </div>
 
             {/* Delivery note */}
-            <div className="mt-6 mb-4 p-4 diwali-glass-card rounded-xl border border-blue-400/30">
-              <p className="text-sm leading-relaxed" style={{ color: 'hsl(var(--diwali-dark))' }}>
+            <div className="mt-6 mb-4 p-4 bg-blue-50/80 rounded-xl border-2 border-blue-300">
+              <p className="text-sm leading-relaxed text-blue-900 font-medium">
               📞 <strong>Note:</strong> Choose between online ordering (with detailed form and OTP verification) 
                 or quick WhatsApp ordering for immediate processing.
               </p>

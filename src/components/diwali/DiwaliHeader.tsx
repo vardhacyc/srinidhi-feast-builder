@@ -31,10 +31,10 @@ const DiwaliHeader = () => {
               <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-yellow-400 animate-sparkle" />
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-bold diwali-text-gradient">
+              <h1 className="text-xl md:text-2xl font-bold text-amber-900" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
                 Sri Nidhi
               </h1>
-              <p className="text-xs md:text-sm" style={{ color: 'hsl(var(--diwali-text))' }}>
+              <p className="text-xs md:text-sm text-amber-800 font-semibold">
                 Premium Diwali Sweets
               </p>
             </div>
@@ -44,15 +44,13 @@ const DiwaliHeader = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection('sweets')}
-              className="font-medium transition-all duration-300 hover:scale-105"
-              style={{ color: 'hsl(var(--diwali-text))' }}
+              className="font-bold transition-all duration-300 hover:scale-105 text-amber-900"
             >
               Collection
             </button>
             <a
               href="/admin-login"
-              className="font-medium transition-all duration-300 hover:scale-105 flex items-center space-x-1 text-xs opacity-60 hover:opacity-100"
-              style={{ color: 'hsl(var(--diwali-text))' }}
+              className="font-semibold transition-all duration-300 hover:scale-105 flex items-center space-x-1 text-xs opacity-80 hover:opacity-100 text-amber-800"
             >
               <Shield className="h-3 w-3" />
               <span>Admin</span>
@@ -102,8 +100,8 @@ const DiwaliHeader = () => {
             </div>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              style={{ color: 'hsl(var(--diwali-text))', minWidth: '48px', minHeight: '48px' }}
-              className="flex items-center justify-center p-3 rounded-full hover:bg-yellow-200/20 transition-colors"
+              className="flex items-center justify-center p-3 rounded-full hover:bg-amber-200/30 transition-colors text-amber-900" 
+              style={{ minWidth: '48px', minHeight: '48px' }}
               aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -116,15 +114,13 @@ const DiwaliHeader = () => {
           <div className="md:hidden mt-4 py-4 border-t border-yellow-200/20">
             <button
               onClick={() => scrollToSection('sweets')}
-              className="block w-full text-left font-medium py-2 transition-colors hover:scale-105"
-              style={{ color: 'hsl(var(--diwali-text))' }}
+              className="block w-full text-left font-bold py-2 transition-colors hover:scale-105 text-amber-900"
             >
               Sweet Collection
             </button>
             <a
               href="/admin-login"
-              className="flex items-center space-x-2 w-full text-left py-2 mt-2 text-xs opacity-60 hover:opacity-100 transition-all"
-              style={{ color: 'hsl(var(--diwali-text))' }}
+              className="flex items-center space-x-2 w-full text-left py-2 mt-2 text-xs opacity-80 hover:opacity-100 transition-all text-amber-800 font-semibold"
             >
               <Shield className="h-3 w-3" />
               <span>Admin Login</span>

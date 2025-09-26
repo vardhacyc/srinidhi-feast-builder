@@ -268,6 +268,447 @@ All colors MUST be HSL.
     animation: gradientShift 3s ease infinite;
   }
 
+  /* Premium shimmer animation for gold embossing */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Premium jewel sparkle animation */
+  @keyframes jewelSparkle {
+    0% {
+      box-shadow: 
+        0 6px 12px rgba(255, 215, 0, 0.5),
+        0 0 20px rgba(255, 215, 0, 0.3),
+        inset 0 3px 6px rgba(255, 255, 255, 0.8),
+        inset 0 -2px 4px rgba(184, 134, 11, 0.3);
+    }
+    100% {
+      box-shadow: 
+        0 8px 16px rgba(255, 215, 0, 0.7),
+        0 0 30px rgba(255, 215, 0, 0.5),
+        inset 0 4px 8px rgba(255, 255, 255, 0.9),
+        inset 0 -3px 6px rgba(184, 134, 11, 0.4);
+    }
+  }
+
+  /* Luxury Premium Banner Animations */
+  @keyframes goldParticles {
+    0% {
+      opacity: 0.8;
+      transform: scale(1) rotate(0deg);
+    }
+    25% {
+      opacity: 1;
+      transform: scale(1.1) rotate(90deg);
+    }
+    50% {
+      opacity: 0.9;
+      transform: scale(0.95) rotate(180deg);
+    }
+    75% {
+      opacity: 1;
+      transform: scale(1.05) rotate(270deg);
+    }
+    100% {
+      opacity: 0.8;
+      transform: scale(1) rotate(360deg);
+    }
+  }
+
+  @keyframes goldFrameShine {
+    0% {
+      background-position: -200% 0;
+      filter: brightness(1) saturate(1);
+    }
+    50% {
+      background-position: 200% 0;
+      filter: brightness(1.2) saturate(1.3);
+    }
+    100% {
+      background-position: -200% 0;
+      filter: brightness(1) saturate(1);
+    }
+  }
+
+  @keyframes screwRotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes screwGleam {
+    0% {
+      filter: brightness(1) saturate(1);
+      box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.5),
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 4px 8px rgba(255, 255, 255, 0.4),
+        inset 0 -4px 8px rgba(139, 105, 20, 0.6),
+        0 0 20px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+      filter: brightness(1.4) saturate(1.5);
+      box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.6),
+        0 6px 12px rgba(0, 0, 0, 0.4),
+        inset 0 6px 12px rgba(255, 255, 255, 0.7),
+        inset 0 -6px 12px rgba(139, 105, 20, 0.8),
+        0 0 40px rgba(255, 215, 0, 0.6);
+    }
+    100% {
+      filter: brightness(1) saturate(1);
+      box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.5),
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 4px 8px rgba(255, 255, 255, 0.4),
+        inset 0 -4px 8px rgba(139, 105, 20, 0.6),
+        0 0 20px rgba(255, 215, 0, 0.3);
+    }
+  }
+
+  @keyframes goldTextGlow {
+    0% {
+      text-shadow: 
+        3px 3px 6px rgba(0, 0, 0, 0.9),
+        0 0 15px rgba(255, 215, 0, 0.8),
+        0 0 30px rgba(255, 215, 0, 0.5),
+        0 0 45px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+      text-shadow: 
+        3px 3px 6px rgba(0, 0, 0, 0.9),
+        0 0 20px rgba(255, 215, 0, 1),
+        0 0 40px rgba(255, 215, 0, 0.7),
+        0 0 60px rgba(255, 215, 0, 0.5);
+    }
+    100% {
+      text-shadow: 
+        3px 3px 6px rgba(0, 0, 0, 0.9),
+        0 0 15px rgba(255, 215, 0, 0.8),
+        0 0 30px rgba(255, 215, 0, 0.5),
+        0 0 45px rgba(255, 215, 0, 0.3);
+    }
+  }
+
+  @keyframes highlightSweep {
+    0% {
+      background-position: -200% 0;
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      background-position: 200% 0;
+      opacity: 0.8;
+    }
+  }
+
+  /* ULTIMATE LUXURY GLASSMORPHISM ANIMATIONS */
+  @keyframes luxuryParticleDrift {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.8;
+    }
+    25% {
+      transform: translate(5px, -3px) scale(1.1);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(-3px, 2px) scale(0.9);
+      opacity: 0.9;
+    }
+    75% {
+      transform: translate(2px, -5px) scale(1.05);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes volumetricLight {
+    0% {
+      opacity: 0.7;
+      transform: rotate(0deg) scale(1);
+    }
+    33% {
+      opacity: 0.9;
+      transform: rotate(120deg) scale(1.05);
+    }
+    66% {
+      opacity: 0.8;
+      transform: rotate(240deg) scale(0.95);
+    }
+    100% {
+      opacity: 0.7;
+      transform: rotate(360deg) scale(1);
+    }
+  }
+
+  @keyframes glassShimmer {
+    0% {
+      background-position: -200% 0;
+      backdrop-filter: blur(25px) brightness(110%) saturate(120%);
+    }
+    50% {
+      background-position: 200% 0;
+      backdrop-filter: blur(30px) brightness(115%) saturate(130%);
+    }
+    100% {
+      background-position: -200% 0;
+      backdrop-filter: blur(25px) brightness(110%) saturate(120%);
+    }
+  }
+
+  @keyframes luxuryScrewRotate {
+    0% {
+      transform: translateZ(10px) rotate(0deg);
+    }
+    12.5% {
+      transform: translateZ(10px) rotate(45deg);
+    }
+    87.5% {
+      transform: translateZ(10px) rotate(315deg);
+    }
+    100% {
+      transform: translateZ(10px) rotate(360deg);
+    }
+  }
+
+  @keyframes luxuryScrewGleam {
+    0% {
+      filter: brightness(1) saturate(1) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+      box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.4),
+        0 6px 12px rgba(0, 0, 0, 0.25),
+        inset 0 6px 12px rgba(255, 255, 255, 0.5),
+        inset 0 -6px 12px rgba(139, 105, 20, 0.7),
+        0 0 30px rgba(255, 215, 0, 0.4);
+    }
+    50% {
+      filter: brightness(1.3) saturate(1.4) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+      box-shadow: 
+        0 16px 32px rgba(0, 0, 0, 0.5),
+        0 8px 16px rgba(0, 0, 0, 0.3),
+        inset 0 8px 16px rgba(255, 255, 255, 0.7),
+        inset 0 -8px 16px rgba(139, 105, 20, 0.9),
+        0 0 50px rgba(255, 215, 0, 0.7);
+    }
+    100% {
+      filter: brightness(1) saturate(1) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+      box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.4),
+        0 6px 12px rgba(0, 0, 0, 0.25),
+        inset 0 6px 12px rgba(255, 255, 255, 0.5),
+        inset 0 -6px 12px rgba(139, 105, 20, 0.7),
+        0 0 30px rgba(255, 215, 0, 0.4);
+    }
+  }
+
+  @keyframes luxuryTextEtch {
+    0% {
+      text-shadow: 
+        0 0 0 rgba(255, 215, 0, 0.8),
+        0 2px 4px rgba(255, 215, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 215, 0, 0.2);
+    }
+    50% {
+      text-shadow: 
+        0 0 0 rgba(255, 215, 0, 1),
+        0 3px 6px rgba(255, 215, 0, 0.5),
+        inset 0 2px 0 rgba(255, 255, 255, 0.7),
+        0 0 30px rgba(255, 215, 0, 0.4);
+    }
+    100% {
+      text-shadow: 
+        0 0 0 rgba(255, 215, 0, 0.8),
+        0 2px 4px rgba(255, 215, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 215, 0, 0.2);
+    }
+  }
+
+  /* Hover Enhancement for Glassmorphism */
+  .group:hover {
+    backdrop-filter: blur(30px) brightness(115%) saturate(125%) !important;
+    -webkit-backdrop-filter: blur(30px) brightness(115%) saturate(125%) !important;
+  }
+
+  /* Hardware Acceleration for Performance */
+  .group,
+  [style*="backdrop-filter"],
+  [style*="animation"] {
+    will-change: transform, filter, backdrop-filter;
+    transform: translateZ(0);
+  }
+
+  /* COMPACT LUXURY SWEET BOX ANIMATIONS */
+  @keyframes velvetSparkle {
+    0% {
+      opacity: 0.8;
+      transform: scale(1) rotate(0deg);
+    }
+    25% {
+      opacity: 1;
+      transform: scale(1.02) rotate(90deg);
+    }
+    50% {
+      opacity: 0.9;
+      transform: scale(0.98) rotate(180deg);
+    }
+    75% {
+      opacity: 1;
+      transform: scale(1.01) rotate(270deg);
+    }
+    100% {
+      opacity: 0.8;
+      transform: scale(1) rotate(360deg);
+    }
+  }
+
+  @keyframes compactGlassGlow {
+    0% {
+      box-shadow: 
+        0 12px 32px rgba(60, 36, 21, 0.3),
+        0 6px 16px rgba(60, 36, 21, 0.15),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3),
+        inset 0 -1px 2px rgba(212, 175, 55, 0.2),
+        0 0 40px rgba(212, 175, 55, 0.15);
+    }
+    50% {
+      box-shadow: 
+        0 16px 40px rgba(60, 36, 21, 0.4),
+        0 8px 20px rgba(60, 36, 21, 0.2),
+        inset 0 3px 6px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 4px rgba(212, 175, 55, 0.3),
+        0 0 60px rgba(212, 175, 55, 0.25);
+    }
+    100% {
+      box-shadow: 
+        0 12px 32px rgba(60, 36, 21, 0.3),
+        0 6px 16px rgba(60, 36, 21, 0.15),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3),
+        inset 0 -1px 2px rgba(212, 175, 55, 0.2),
+        0 0 40px rgba(212, 175, 55, 0.15);
+    }
+  }
+
+  @keyframes cornerBracketShine {
+    0% {
+      filter: brightness(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      box-shadow: 
+        0 4px 8px rgba(60, 36, 21, 0.3),
+        0 2px 4px rgba(60, 36, 21, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.4),
+        inset 0 -1px 2px rgba(139, 105, 20, 0.4),
+        0 0 12px rgba(212, 175, 55, 0.3);
+    }
+    50% {
+      filter: brightness(1.3) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+      box-shadow: 
+        0 6px 12px rgba(60, 36, 21, 0.4),
+        0 3px 6px rgba(60, 36, 21, 0.25),
+        inset 0 2px 4px rgba(255, 255, 255, 0.6),
+        inset 0 -2px 4px rgba(139, 105, 20, 0.6),
+        0 0 20px rgba(212, 175, 55, 0.5);
+    }
+    100% {
+      filter: brightness(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      box-shadow: 
+        0 4px 8px rgba(60, 36, 21, 0.3),
+        0 2px 4px rgba(60, 36, 21, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.4),
+        inset 0 -1px 2px rgba(139, 105, 20, 0.4),
+        0 0 12px rgba(212, 175, 55, 0.3);
+    }
+  }
+
+  /* Compact Sweet Box Hover Enhancement */
+  .group:hover {
+    backdrop-filter: blur(25px) brightness(108%) saturate(115%) !important;
+    -webkit-backdrop-filter: blur(25px) brightness(108%) saturate(115%) !important;
+  }
+
+  /* REFINED COMPACT LUXURY CARD ANIMATIONS */
+  @keyframes refinedGlassGlow {
+    0% {
+      box-shadow: 
+        0 6px 24px rgba(114, 47, 55, 0.2),
+        0 3px 12px rgba(114, 47, 55, 0.1),
+        inset 0 1px 2px rgba(255, 255, 255, 0.4),
+        0 0 20px rgba(201, 169, 97, 0.1);
+    }
+    50% {
+      box-shadow: 
+        0 8px 32px rgba(114, 47, 55, 0.25),
+        0 4px 16px rgba(114, 47, 55, 0.125),
+        inset 0 2px 4px rgba(255, 255, 255, 0.5),
+        0 0 30px rgba(201, 169, 97, 0.15);
+    }
+    100% {
+      box-shadow: 
+        0 6px 24px rgba(114, 47, 55, 0.2),
+        0 3px 12px rgba(114, 47, 55, 0.1),
+        inset 0 1px 2px rgba(255, 255, 255, 0.4),
+        0 0 20px rgba(201, 169, 97, 0.1);
+    }
+  }
+
+  @keyframes luxurySealGlow {
+    0% {
+      box-shadow: 
+        0 2px 6px rgba(114, 47, 55, 0.3),
+        0 1px 3px rgba(114, 47, 55, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3),
+        0 0 8px rgba(201, 169, 97, 0.2);
+    }
+    50% {
+      box-shadow: 
+        0 3px 8px rgba(114, 47, 55, 0.35),
+        0 2px 4px rgba(114, 47, 55, 0.25),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4),
+        0 0 12px rgba(201, 169, 97, 0.3);
+    }
+    100% {
+      box-shadow: 
+        0 2px 6px rgba(114, 47, 55, 0.3),
+        0 1px 3px rgba(114, 47, 55, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3),
+        0 0 8px rgba(201, 169, 97, 0.2);
+    }
+  }
+
+  /* Refined Card Hover Enhancement */
+  .group:hover {
+    backdrop-filter: blur(22px) brightness(110%) contrast(104%) !important;
+    -webkit-backdrop-filter: blur(22px) brightness(110%) contrast(104%) !important;
+    animation: refinedHoverGlow 1.5s ease-in-out infinite !important;
+  }
+
+  @keyframes refinedHoverGlow {
+    0%, 100% {
+      box-shadow: 
+        0 8px 32px rgba(114, 47, 55, 0.25),
+        0 0 40px rgba(201, 169, 97, 0.2);
+    }
+    50% {
+      box-shadow: 
+        0 12px 48px rgba(114, 47, 55, 0.3),
+        0 0 60px rgba(201, 169, 97, 0.3);
+    }
+  }
+
   /* Premium shadow utilities */
   .shadow-premium {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 

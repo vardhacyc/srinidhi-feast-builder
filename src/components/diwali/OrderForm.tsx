@@ -59,12 +59,12 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, isSubmitting }) => {
   };
 
   return (
-    <div className="diwali-glass-card rounded-3xl p-6 md:p-8 max-w-2xl mx-auto">
+    <div className="bg-gradient-to-br from-amber-50/90 to-amber-100/90 backdrop-blur-sm rounded-3xl p-6 md:p-8 max-w-2xl mx-auto border-2 border-amber-300 shadow-2xl">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold diwali-text-gradient mb-2">
+        <h2 className="text-3xl font-bold text-amber-900 mb-2" style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)' }}>
           Complete Your Order
         </h2>
-        <p className="text-diwali-text">
+        <p className="text-amber-800 font-medium">
           Please provide your details to proceed with the order
         </p>
       </div>
@@ -72,20 +72,20 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, isSubmitting }) => {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {/* Personal Details Section */}
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold diwali-text-gradient flex items-center gap-2">
-            <User className="h-5 w-5" />
+          <h3 className="text-xl font-bold text-amber-900 flex items-center gap-2" style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)' }}>
+            <User className="h-5 w-5 text-amber-700" />
             Personal Details
           </h3>
           
           <div>
-            <Label htmlFor="name" className="text-diwali-dark font-medium">
+            <Label htmlFor="name" className="text-amber-900 font-bold text-sm">
               Full Name *
             </Label>
             <Input
               id="name"
               {...register('name')}
               placeholder="Enter your full name"
-              className="mt-2 diwali-glass border-diwali-gold/30 focus:border-diwali-gold"
+              className="mt-2 bg-white/95 border-2 border-amber-300 focus:border-amber-500 text-amber-900 placeholder:text-amber-600 font-medium"
               disabled={isSubmitting}
             />
             {errors.name && (
@@ -94,19 +94,19 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, isSubmitting }) => {
           </div>
 
           <div>
-            <Label htmlFor="email" className="text-diwali-dark font-medium">
+            <Label htmlFor="email" className="text-amber-900 font-bold text-sm">
               Email Address *
             </Label>
             <div className="relative mt-2">
               <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
-                <Mail className="h-4 w-4 text-diwali-subtle" />
+                <Mail className="h-4 w-4 text-amber-700" />
               </div>
               <Input
                 id="email"
                 type="email"
                 {...register('email')}
                 placeholder="Enter your email address"
-                className="pl-10 diwali-glass border-diwali-gold/30 focus:border-diwali-gold"
+                className="pl-10 bg-white/95 border-2 border-amber-300 focus:border-amber-500 text-amber-900 placeholder:text-amber-600 font-medium"
                 disabled={isSubmitting}
               />
             </div>
@@ -116,19 +116,19 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, isSubmitting }) => {
           </div>
 
           <div>
-            <Label htmlFor="password" className="text-diwali-dark font-medium">
+            <Label htmlFor="password" className="text-amber-900 font-bold text-sm">
               Password *
             </Label>
             <div className="relative mt-2">
               <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
-                <Lock className="h-4 w-4 text-diwali-subtle" />
+                <Lock className="h-4 w-4 text-amber-700" />
               </div>
               <Input
                 id="password"
                 type="password"
                 {...register('password')}
                 placeholder="Create a secure password"
-                className="pl-10 diwali-glass border-diwali-gold/30 focus:border-diwali-gold"
+                className="pl-10 bg-white/95 border-2 border-amber-300 focus:border-amber-500 text-amber-900 placeholder:text-amber-600 font-medium"
                 disabled={isSubmitting}
               />
             </div>
@@ -138,13 +138,13 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, isSubmitting }) => {
           </div>
 
           <div>
-            <Label htmlFor="mobile" className="text-diwali-dark font-medium">
+            <Label htmlFor="mobile" className="text-amber-900 font-bold text-sm">
               Mobile Number *
             </Label>
             <div className="relative mt-2">
-              <div className="absolute left-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2 text-diwali-subtle">
+              <div className="absolute left-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2 text-amber-700">
                 <Phone className="h-4 w-4" />
-                <span className="text-sm">+91</span>
+                <span className="text-sm font-bold">+91</span>
               </div>
               <Input
                 id="mobile"
@@ -154,7 +154,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, isSubmitting }) => {
                   }
                 })}
                 placeholder="Enter 10-digit mobile number"
-                className="pl-16 diwali-glass border-diwali-gold/30 focus:border-diwali-gold"
+                className="pl-16 bg-white/95 border-2 border-amber-300 focus:border-amber-500 text-amber-900 placeholder:text-amber-600 font-medium"
                 maxLength={10}
                 disabled={isSubmitting}
               />
@@ -167,20 +167,20 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, isSubmitting }) => {
 
         {/* Delivery Details Section */}
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold diwali-text-gradient flex items-center gap-2">
-            <MapPin className="h-5 w-5" />
+          <h3 className="text-xl font-bold text-amber-900 flex items-center gap-2" style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)' }}>
+            <MapPin className="h-5 w-5 text-amber-700" />
             Delivery Details
           </h3>
           
           <div>
-            <Label htmlFor="address" className="text-diwali-dark font-medium">
+            <Label htmlFor="address" className="text-amber-900 font-bold text-sm">
               Delivery Address *
             </Label>
             <Textarea
               id="address"
               {...register('address')}
               placeholder="Enter complete delivery address including landmarks"
-              className="mt-2 diwali-glass border-diwali-gold/30 focus:border-diwali-gold min-h-[100px]"
+              className="mt-2 bg-white/95 border-2 border-amber-300 focus:border-amber-500 text-amber-900 placeholder:text-amber-600 font-medium min-h-[100px]"
               disabled={isSubmitting}
             />
             {errors.address && (
@@ -190,19 +190,19 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, isSubmitting }) => {
         </div>
 
         {/* Order Summary Section */}
-        <div className="diwali-glass-card rounded-xl p-4 border-2 border-diwali-gold/30">
-          <h3 className="text-lg font-semibold diwali-text-gradient mb-3">
+        <div className="bg-amber-50/80 backdrop-blur-sm rounded-xl p-4 border-2 border-amber-400">
+          <h3 className="text-lg font-bold text-amber-900 mb-3" style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)' }}>
             Order Summary
           </h3>
           <div className="space-y-2 text-sm">
             {cart.map(item => (
               <div key={item.id} className="flex justify-between">
-                <span className="text-diwali-dark">{item.name} ({item.quantity}kg)</span>
-                <span className="font-medium text-diwali-dark">₹{item.price * item.quantity}</span>
+                <span className="text-amber-900 font-medium">{item.name} ({item.quantity}kg)</span>
+                <span className="font-bold text-amber-900">₹{item.price * item.quantity}</span>
               </div>
             ))}
-            <div className="border-t border-diwali-gold/20 pt-2 mt-2">
-              <div className="flex justify-between font-bold text-diwali-dark">
+            <div className="border-t border-amber-400 pt-2 mt-2">
+              <div className="flex justify-between font-bold text-amber-900 text-base">
                 <span>Total Items: {getTotalItems()}kg</span>
                 <span>₹{getFinalTotal().toFixed(2)}</span>
               </div>
@@ -212,20 +212,20 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, isSubmitting }) => {
 
         {/* Special Instructions Section */}
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold diwali-text-gradient flex items-center gap-2">
-            <FileText className="h-5 w-5" />
+          <h3 className="text-xl font-bold text-amber-900 flex items-center gap-2" style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)' }}>
+            <FileText className="h-5 w-5 text-amber-700" />
             Special Instructions (Optional)
           </h3>
           
           <div>
-            <Label htmlFor="specialInstructions" className="text-diwali-dark font-medium">
+            <Label htmlFor="specialInstructions" className="text-amber-900 font-bold text-sm">
               Any special requests or delivery instructions?
             </Label>
             <Textarea
               id="specialInstructions"
               {...register('specialInstructions')}
               placeholder="E.g., Contactless delivery, specific delivery time, packaging preferences..."
-              className="mt-2 diwali-glass border-diwali-gold/30 focus:border-diwali-gold"
+              className="mt-2 bg-white/95 border-2 border-amber-300 focus:border-amber-500 text-amber-900 placeholder:text-amber-600 font-medium"
               disabled={isSubmitting}
             />
             {errors.specialInstructions && (
@@ -251,8 +251,8 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, isSubmitting }) => {
         </Button>
       </form>
 
-      <div className="mt-6 p-4 diwali-glass-card rounded-xl border border-blue-400/30">
-        <p className="text-sm text-diwali-dark leading-relaxed">
+      <div className="mt-6 p-4 bg-blue-50/80 backdrop-blur-sm rounded-xl border-2 border-blue-300">
+        <p className="text-sm text-blue-900 font-medium leading-relaxed">
           🔒 <strong>Secure Ordering:</strong> We'll create an account for you and place your order securely. 
           Your information is kept secure and will only be used for order processing.
         </p>

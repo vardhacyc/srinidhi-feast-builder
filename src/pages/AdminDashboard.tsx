@@ -19,7 +19,7 @@ import {
   Mail,
   Clock,
   Package,
-  DollarSign,
+  IndianRupee,
   Users,
   TrendingUp,
   LogOut
@@ -218,18 +218,25 @@ const AdminDashboard: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold diwali-text-gradient">
-              🪔 Diwali Orders Dashboard
-            </h1>
-            <p className="text-diwali-text mt-2">
-              Manage your sweet orders efficiently
-            </p>
+          <div className="flex items-center gap-4">
+            <img 
+              src="/cateringLogo.png" 
+              alt="Sri Nidhi Catering Logo" 
+              className="h-12 w-auto logo-hover"
+            />
+            <div>
+              <h1 className="text-3xl font-bold text-gray-800">
+                🪔 Diwali Orders Dashboard
+              </h1>
+              <p className="text-gray-600 mt-2">
+                Manage your sweet orders efficiently
+              </p>
+            </div>
           </div>
           <Button
             onClick={handleLogout}
             variant="outline"
-            className="border-diwali-gold text-diwali-gold hover:bg-diwali-gold hover:text-white"
+            className="border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white"
           >
             <LogOut className="h-4 w-4 mr-2" />
             Logout
@@ -238,49 +245,49 @@ const AdminDashboard: React.FC = () => {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <Card className="diwali-glass-card border-diwali-gold/30">
+          <Card className="bg-white/90 backdrop-blur-sm border-amber-200 shadow-lg">
             <CardContent className="p-6">
               <div className="flex items-center">
-                <Package className="h-8 w-8 text-diwali-gold" />
+                <Package className="h-8 w-8 text-amber-600" />
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-diwali-subtle">Total Orders</p>
-                  <p className="text-2xl font-bold text-diwali-dark">{stats.total}</p>
+                  <p className="text-sm font-medium text-gray-600">Total Orders</p>
+                  <p className="text-2xl font-bold text-gray-800">{stats.total}</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="diwali-glass-card border-diwali-gold/30">
+          <Card className="bg-white/90 backdrop-blur-sm border-amber-200 shadow-lg">
             <CardContent className="p-6">
               <div className="flex items-center">
-                <DollarSign className="h-8 w-8 text-green-600" />
+                <IndianRupee className="h-8 w-8 text-green-600" />
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-diwali-subtle">Total Revenue</p>
-                  <p className="text-2xl font-bold text-diwali-dark">₹{stats.revenue.toFixed(2)}</p>
+                  <p className="text-sm font-medium text-gray-600">Total Revenue</p>
+                  <p className="text-2xl font-bold text-gray-800">₹{stats.revenue.toFixed(2)}</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="diwali-glass-card border-diwali-gold/30">
+          <Card className="bg-white/90 backdrop-blur-sm border-amber-200 shadow-lg">
             <CardContent className="p-6">
               <div className="flex items-center">
                 <Clock className="h-8 w-8 text-yellow-600" />
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-diwali-subtle">Pending</p>
-                  <p className="text-2xl font-bold text-diwali-dark">{stats.pending}</p>
+                  <p className="text-sm font-medium text-gray-600">Pending</p>
+                  <p className="text-2xl font-bold text-gray-800">{stats.pending}</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="diwali-glass-card border-diwali-gold/30">
+          <Card className="bg-white/90 backdrop-blur-sm border-amber-200 shadow-lg">
             <CardContent className="p-6">
               <div className="flex items-center">
                 <TrendingUp className="h-8 w-8 text-green-600" />
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-diwali-subtle">Completed</p>
-                  <p className="text-2xl font-bold text-diwali-dark">{stats.completed}</p>
+                  <p className="text-sm font-medium text-gray-600">Completed</p>
+                  <p className="text-2xl font-bold text-gray-800">{stats.completed}</p>
                 </div>
               </div>
             </CardContent>
@@ -288,10 +295,10 @@ const AdminDashboard: React.FC = () => {
         </div>
 
         {/* Orders Management */}
-        <Card className="diwali-glass-card border-diwali-gold/30">
+        <Card className="bg-white/90 backdrop-blur-sm border-amber-200 shadow-lg">
           <CardHeader>
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <CardTitle className="text-2xl diwali-text-gradient">
+              <CardTitle className="text-2xl text-gray-800 font-bold">
                 Order Management
               </CardTitle>
               
@@ -301,10 +308,10 @@ const AdminDashboard: React.FC = () => {
                     placeholder="Search orders..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-64 diwali-glass border-diwali-gold/30"
+                    className="w-64 bg-white/80 border-amber-300 text-gray-800"
                   />
                   <Select value={statusFilter} onValueChange={setStatusFilter}>
-                    <SelectTrigger className="w-40 diwali-glass border-diwali-gold/30">
+                    <SelectTrigger className="w-40 bg-white/80 border-amber-300 text-gray-800">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -320,7 +327,7 @@ const AdminDashboard: React.FC = () => {
                 <Button
                   onClick={exportToCSV}
                   variant="outline"
-                  className="border-diwali-gold text-diwali-gold hover:bg-diwali-gold hover:text-white"
+                  className="border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white"
                 >
                   <Download className="h-4 w-4 mr-2" />
                   Export CSV
@@ -332,36 +339,36 @@ const AdminDashboard: React.FC = () => {
           <CardContent>
             {loading ? (
               <div className="text-center py-8">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-diwali-gold mx-auto"></div>
-                <p className="mt-4 text-diwali-text">Loading orders...</p>
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-600 mx-auto"></div>
+                <p className="mt-4 text-gray-600">Loading orders...</p>
               </div>
             ) : filteredOrders.length === 0 ? (
               <div className="text-center py-8">
-                <Package className="h-12 w-12 text-diwali-subtle mx-auto mb-4" />
-                <p className="text-diwali-text">No orders found.</p>
+                <Package className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                <p className="text-gray-600">No orders found.</p>
               </div>
             ) : (
               <div className="space-y-4">
                 {filteredOrders.map((order) => (
                   <div
                     key={order.id}
-                    className="diwali-glass-card rounded-xl p-4 hover:shadow-lg transition-all duration-300"
+                    className="bg-white/80 backdrop-blur-sm border border-amber-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300"
                   >
                     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-start justify-between mb-2">
                           <div>
-                            <h3 className="font-semibold text-diwali-dark">
+                            <h3 className="font-semibold text-gray-800">
                               {order.customer_name}
                             </h3>
-                            <p className="text-sm text-diwali-subtle">
+                            <p className="text-sm text-gray-600">
                               Order #{order.id.slice(0, 8).toUpperCase()}
                             </p>
                           </div>
                           {getStatusBadge(order.status)}
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-sm text-diwali-dark">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-sm text-gray-700">
                           <div className="flex items-center gap-1">
                             <Phone className="h-3 w-3" />
                             +91 {order.mobile}
@@ -371,12 +378,12 @@ const AdminDashboard: React.FC = () => {
                             {order.total_items}kg items
                           </div>
                           <div className="flex items-center gap-1">
-                            <DollarSign className="h-3 w-3" />
+                            <IndianRupee className="h-3 w-3" />
                             ₹{order.total_amount}
                           </div>
                         </div>
                         
-                        <p className="text-xs text-diwali-subtle mt-1">
+                        <p className="text-xs text-gray-500 mt-1">
                           {new Date(order.created_at).toLocaleString('en-IN')}
                         </p>
                       </div>
@@ -388,7 +395,7 @@ const AdminDashboard: React.FC = () => {
                             handleStatusUpdate(order.id, value)
                           }
                         >
-                          <SelectTrigger className="w-32 h-8 text-xs border-diwali-gold/30">
+                          <SelectTrigger className="w-32 h-8 text-xs border-amber-300 bg-white/80 text-gray-700">
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
