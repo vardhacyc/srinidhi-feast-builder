@@ -209,57 +209,82 @@ const DiwaliSweetsMenu = () => {
     : sweetsData.filter(sweet => sweet.category === selectedCategory);
 
   return (
-    <section id="sweets" className="relative py-20 bg-gradient-to-br from-amber-50/30 via-transparent to-amber-100/30">
-      <div className="container mx-auto px-6">
+    <section 
+      id="sweets" 
+      className="relative py-20" 
+      style={{
+        background: 'linear-gradient(to bottom, #FDE68A 0%, #F9F3E7 100%)'
+      }}
+    >
+      {/* Luxury Hero Section Container */}
+      <div className="luxury-hero-section scroll-fade-in">
         
-        {/* Premium Collection Header */}
-        <div className="relative mb-12 flex justify-center">
-          <div className="relative w-[350px] h-[200px] group">
+        {/* Premium Collection Hero Card */}
+        <div className="premium-hero-card">
+          <div className="glassmorphism-panel h-full p-8 flex flex-col justify-center">
             
-            <div className="absolute inset-0 rounded-lg overflow-hidden bg-gradient-to-br from-amber-900 to-amber-600 shadow-2xl">
-            </div>
-        
-            <div className="relative rounded-lg p-8 h-full flex flex-col justify-center bg-white/10 backdrop-blur-md border border-amber-300/50">
+            {/* Royal Emblem */}
+            <div className="royal-emblem"></div>
+            
+            {/* Premium Content */}
+            <div className="text-center">
+              <h2 className="premium-headline">
+                Premium Collection
+              </h2>
               
-              <div className="absolute top-3 right-3 w-4 h-4 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-md"></div>
-              
-              <div className="relative text-center">
-                <h2 className="text-2xl font-serif mb-3 text-amber-900 font-bold tracking-wide">
-                  Premium Collection
-                </h2>
-                
-                <p className="text-sm text-amber-700 italic">
-                  Handcrafted with finest ingredients and traditional recipes
-                  <br />
-                  passed down through generations
-                </p>
-              </div>
+              <p className="premium-tagline">
+                Handcrafted with finest ingredients and traditional recipes
+                <br />
+                passed down through generations
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {sweetCategories.map((category) => {
+        {/* Luxury Category Filters */}
+        <div className="luxury-filters">
+          {sweetCategories.map((category, index) => {
             const IconComponent = category.icon;
             return (
               <button
                 key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center ${
-                  selectedCategory === category.id
-                    ? 'bg-amber-600 text-white shadow-lg scale-105'
-                    : 'bg-white/80 text-amber-800 hover:bg-amber-50 hover:scale-105'
+                onClick={(e) => {
+                  setSelectedCategory(category.id);
+                  // Add ripple effect
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const ripple = document.createElement('span');
+                  const size = Math.max(rect.width, rect.height);
+                  const x = e.clientX - rect.left - size / 2;
+                  const y = e.clientY - rect.top - size / 2;
+                  
+                  ripple.style.width = ripple.style.height = size + 'px';
+                  ripple.style.left = x + 'px';
+                  ripple.style.top = y + 'px';
+                  ripple.classList.add('ripple');
+                  
+                  e.currentTarget.appendChild(ripple);
+                  
+                  setTimeout(() => {
+                    ripple.remove();
+                  }, 600);
+                }}
+                className={`luxury-pill ${
+                  selectedCategory === category.id ? 'selected' : ''
                 }`}
+                style={{
+                  animationDelay: `${index * 0.1}s`
+                }}
               >
-                <IconComponent className={`w-4 h-4 mr-2 ${selectedCategory === category.id ? 'text-white' : category.color}`} />
+                <IconComponent className="gold-icon" />
                 {category.name}
               </button>
             );
           })}
         </div>
+      </div>
 
-        {/* Sweets Grid */}
+      {/* Sweets Grid - Outside luxury section */}
+      <div className="container mx-auto px-6 mt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filteredSweets.map((sweet) => {
             const priceInfo = calculatePriceWithGST(sweet.price, sweet.category);

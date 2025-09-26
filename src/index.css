@@ -1696,48 +1696,296 @@ All colors MUST be HSL.
       );
     }
   }
-}
 
-/* ===================================================================
-   MOBILE "EXPLORE COLLECTION" BUTTON CENTERING
-   ================================================================= */
+  /* Luxury Royal Design System */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:ital,wght@0,400;1,400&family=Lato:wght@400;500;600&display=swap');
 
-/* Mobile centering for Explore Collection buttons */
-@media (max-width: 600px) {
-  /* DiwaliHero.tsx button container centering */
-  .space-y-6 {
+  /* Royal Color Palette CSS Variables */
+  :root {
+    --gold-bright: #FFD700;
+    --gold-deep: #E6C200;
+    --gold-soft: #E3C07A;
+    --chocolate-dark: #37251D;
+    --ivory-highlight: #F9F3E7;
+    --chocolate-medium: #3A1F0B;
+  }
+
+  /* Luxury Hero Section Container */
+  .luxury-hero-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 40px;
+    position: relative;
   }
-  
-  /* Diwali.tsx main page button centering */
-  .relative.z-10.max-w-6xl.mx-auto.px-6.text-center {
+
+  /* Textured Background Overlay */
+  .luxury-hero-section::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    right: -40px;
+    bottom: -40px;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 215, 0, 0.02) 0%, transparent 50%),
+      linear-gradient(45deg, rgba(255, 215, 0, 0.01) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255, 215, 0, 0.01) 25%, transparent 25%);
+    background-size: 120px 120px, 80px 80px, 40px 40px, 40px 40px;
+    opacity: 0.5;
+    z-index: -1;
+    border-radius: 20px;
+  }
+
+  /* Premium Collection Hero Card */
+  .premium-hero-card {
+    width: 400px;
+    height: 260px;
+    transform: translateY(-20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .premium-hero-card:hover {
+    transform: translateY(-20px) scale(1.02);
+    filter: contrast(1.1);
+  }
+
+  /* Glassmorphism Panel */
+  .glassmorphism-panel {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 215, 0, 0.6);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 0 0 1px rgba(255, 215, 0, 0.1);
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Corner Royal Emblem */
+  .royal-emblem {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #FFD700, #E6C200);
+    box-shadow: 
+      inset 0 0 4px rgba(0, 0, 0, 0.1),
+      0 2px 6px rgba(0, 0, 0, 0.2),
+      0 0 12px rgba(255, 215, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .royal-emblem::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, transparent 50%);
+    filter: blur(0.5px);
+  }
+
+  /* Glint Animation */
+  @keyframes glintSweep {
+    0% { transform: translateX(-100%) skewX(-25deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(100%) skewX(-25deg); opacity: 0; }
+  }
+
+  .royal-emblem:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -2px;
+    right: -2px;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%);
+    animation: glintSweep 1s ease-out;
+  }
+
+  /* Premium Typography */
+  .premium-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--chocolate-dark);
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 32px;
+    line-height: 1.3;
+  }
+
+  .premium-tagline {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--gold-soft);
+    margin-top: 12px;
+    line-height: 1.4;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Luxury Filter Pills Container */
+  .luxury-filters {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
     justify-content: center;
+    align-items: center;
   }
-  
-  /* Both buttons - ensure centered styling */
-  .cta-btn {
-    margin: 16px auto !important;
-    display: block !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  
-  /* Remove any conflicting float or position properties */
-  .cta-btn {
-    float: none !important;
-    position: relative !important;
-  }
-  
-  /* Ensure button text is also centered */
-  .cta-btn span {
+
+  /* Individual Filter Pill */
+  .luxury-pill {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 8px 20px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--chocolate-medium);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .luxury-pill:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Selected Pill State */
+  .luxury-pill.selected {
+    background: linear-gradient(135deg, #FFD700, #E6C200);
+    color: var(--chocolate-medium);
+    border-color: #FFD700;
+    box-shadow: 0 4px 14px rgba(255, 215, 0, 0.4);
+  }
+
+  /* Ripple Effect */
+  @keyframes ripple {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.6);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+  }
+
+  /* Custom Gold SVG Icons */
+  .gold-icon {
+    width: 18px;
+    height: 18px;
+    fill: rgba(58, 31, 11, 0.8);
+    transition: fill 0.3s ease;
+  }
+
+  .luxury-pill.selected .gold-icon {
+    fill: var(--chocolate-medium);
+  }
+
+  /* Scroll-in Animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .scroll-fade-in {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .luxury-hero-section {
+      margin: 40px auto;
+      padding: 0 16px;
+      gap: 32px;
+    }
+    
+    .premium-hero-card {
+      width: 320px;
+      height: 200px;
+    }
+    
+    .premium-headline {
+      font-size: 24px;
+      margin-top: 24px;
+    }
+    
+    .premium-tagline {
+      font-size: 14px;
+    }
+    
+    .luxury-filters {
+      gap: 12px;
+    }
+    
+    .luxury-pill {
+      flex: 1 1 calc(50% - 6px);
+      max-width: calc(50% - 6px);
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .luxury-hero-section {
+      padding: 0 16px;
+    }
+    
+    .luxury-pill {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  }
+
+  /* Accessibility Enhancements */
+  @media (prefers-reduced-motion: reduce) {
+    .premium-hero-card,
+    .luxury-pill,
+    .royal-emblem {
+      transition: none;
+    }
+    
+    .scroll-fade-in {
+      animation: none;
+    }
   }
 }
