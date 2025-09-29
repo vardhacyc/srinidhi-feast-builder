@@ -9,13 +9,13 @@ const DiwaliSweetsMenu = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const sweetCategories = [
-    { id: 'all', name: 'All Items', icon: Sparkles, color: 'text-amber-600' },
-    { id: 'diwali-sweets', name: 'Diwali Sweets', icon: Star, color: 'text-orange-600' },
-    { id: 'ghee-sweets', name: 'Ghee Sweets', icon: Heart, color: 'text-yellow-600' },
-    { id: 'special-ghee', name: 'Special Ghee', icon: Crown, color: 'text-purple-600' },
-    { id: 'dryfruit', name: 'Dryfruit', icon: Leaf, color: 'text-green-600' },
-    { id: 'assorted', name: 'Assorted', icon: Gift, color: 'text-pink-600' },
-    { id: 'savouries', name: 'Savouries', icon: Cookie, color: 'text-red-600' }
+    { id: 'all', name: 'All Items', icon: Sparkles, color: 'hsl(var(--diwali-gold))' },
+    { id: 'diwali-sweets', name: 'Diwali Sweets', icon: Star, color: 'hsl(var(--diwali-amber))' },
+    { id: 'ghee-sweets', name: 'Ghee Sweets', icon: Heart, color: 'hsl(var(--diwali-bright))' },
+    { id: 'special-ghee', name: 'Special Ghee', icon: Crown, color: 'hsl(var(--diwali-bronze))' },
+    { id: 'dryfruit', name: 'Dryfruit', icon: Leaf, color: 'hsl(var(--diwali-muted))' },
+    { id: 'assorted', name: 'Assorted', icon: Gift, color: 'hsl(var(--diwali-gold))' },
+    { id: 'savouries', name: 'Savouries', icon: Cookie, color: 'hsl(var(--diwali-dark))' }
   ];
 
   // Helper function to calculate price with GST
@@ -213,34 +213,12 @@ const DiwaliSweetsMenu = () => {
       id="sweets" 
       className="relative py-20" 
       style={{
-        background: 'linear-gradient(to bottom, #FDE68A 0%, #F9F3E7 100%)'
+        background: 'linear-gradient(to bottom, hsl(var(--diwali-light)) 0%, hsl(var(--diwali-cream)) 100%)'
       }}
     >
       {/* Luxury Hero Section Container */}
       <div className="luxury-hero-section scroll-fade-in">
         
-        {/* Premium Collection Hero Card */}
-        <div className="premium-hero-card">
-          <div className="glassmorphism-panel h-full p-8 flex flex-col justify-center">
-            
-            {/* Royal Emblem */}
-            <div className="royal-emblem"></div>
-            
-            {/* Premium Content */}
-            <div className="text-center">
-              <h2 className="premium-headline">
-                Premium Collection
-              </h2>
-              
-              <p className="premium-tagline">
-                Handcrafted with finest ingredients and traditional recipes
-                <br />
-                passed down through generations
-              </p>
-            </div>
-          </div>
-        </div>
-
         {/* Luxury Category Filters */}
         <div className="luxury-filters">
           {sweetCategories.map((category, index) => {
@@ -292,7 +270,7 @@ const DiwaliSweetsMenu = () => {
             return (
               <div
                 key={sweet.id}
-                className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:scale-105"
+                className="diwali-glass-card hover:shadow-xl transition-all duration-300 overflow-hidden group hover:scale-105"
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -301,7 +279,7 @@ const DiwaliSweetsMenu = () => {
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute top-4 right-4">
-                    <div className="bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                    <div className="diwali-badge px-2 py-1 rounded-full text-xs font-medium">
                       <Star className="w-3 h-3 inline mr-1" />
                       Premium
                     </div>
@@ -309,23 +287,23 @@ const DiwaliSweetsMenu = () => {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-amber-900 mb-2">
+                  <h3 className="text-xl font-semibold mb-2" style={{ color: 'hsl(var(--diwali-dark))' }}>
                     {sweet.name}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4">
+                  <p className="text-sm mb-4" style={{ color: 'hsl(var(--diwali-text))' }}>
                     {sweet.description}
                   </p>
 
                   <div className="space-y-2 mb-4">
                     <div className="flex justify-between items-center text-sm">
-                      <span className="text-gray-500">Base Price:</span>
-                      <span className="font-medium">₹{priceInfo.basePrice}/kg</span>
+                      <span style={{ color: 'hsl(var(--diwali-subtle))' }}>Base Price:</span>
+                      <span className="font-medium" style={{ color: 'hsl(var(--diwali-text))' }}>₹{priceInfo.basePrice}/kg</span>
                     </div>
                     <div className="flex justify-between items-center text-sm">
-                      <span className="text-gray-500">GST ({priceInfo.gstRate}%):</span>
-                      <span className="font-medium">₹{priceInfo.gstAmount}</span>
+                      <span style={{ color: 'hsl(var(--diwali-subtle))' }}>GST ({priceInfo.gstRate}%):</span>
+                      <span className="font-medium" style={{ color: 'hsl(var(--diwali-text))' }}>₹{priceInfo.gstAmount}</span>
                     </div>
-                    <div className="flex justify-between items-center text-lg font-bold text-amber-700 border-t pt-2">
+                    <div className="flex justify-between items-center text-lg font-bold border-t pt-2" style={{ borderColor: 'hsla(var(--diwali-gold), 0.3)', color: 'hsl(var(--diwali-bronze))' }}>
                       <span>Final Price:</span>
                       <span>₹{priceInfo.finalPrice}/kg</span>
                     </div>
@@ -333,7 +311,7 @@ const DiwaliSweetsMenu = () => {
 
                   <Button
                     onClick={() => addToCart(sweet)}
-                    className="w-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
+                    className="w-full diwali-btn text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
                   >
                     <Plus className="w-4 h-4 mr-2" />
                     Add to Cart
@@ -346,7 +324,7 @@ const DiwaliSweetsMenu = () => {
 
         {filteredSweets.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No sweets found in this category.</p>
+            <p className="text-lg" style={{ color: 'hsl(var(--diwali-subtle))' }}>No sweets found in this category.</p>
           </div>
         )}
       </div>

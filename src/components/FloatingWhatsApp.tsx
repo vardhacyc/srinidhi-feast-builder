@@ -266,191 +266,70 @@ const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({
           box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
         }
 
-        /* Bubble 1 - Moves UP-LEFT (2nd quadrant) */
+        /* Bubble 1 - Moves UP-LEFT */
         .bubble:nth-child(1) {
-          animation: gentle-bubble-up-left-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          animation: gentle-bubble-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          animation-delay: 0s;
         }
 
-        @keyframes gentle-bubble-up-left-q2 {
-          0% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(0.4);
-          }
-          40% {
-            opacity: 0.95;
-            transform: translate(-20px, -20px) scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: translate(-40px, -50px) scale(0.7);
-          }
-        }
-
-        /* Bubble 2 - Moves LEFT (2nd quadrant) */
+        /* Bubble 2 - Moves UP-LEFT */
         .bubble:nth-child(2) {
-          animation: gentle-bubble-left-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          animation-delay: 0.4s;
+          animation: gentle-bubble-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          animation-delay: 0.3s;
         }
 
-        @keyframes gentle-bubble-left-q2 {
-          0% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(0.4);
-          }
-          40% {
-            opacity: 0.95;
-            transform: translate(-30px, 10px) scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: translate(-60px, 5px) scale(0.7);
-          }
-        }
-
-        /* Bubble 3 - Moves UP (2nd quadrant) */
+        /* Bubble 3 - Moves UP-LEFT */
         .bubble:nth-child(3) {
-          animation: gentle-bubble-up-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          animation-delay: 0.8s;
+          animation: gentle-bubble-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          animation-delay: 0.6s;
         }
 
-        @keyframes gentle-bubble-up-q2 {
-          0% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(0.4);
-          }
-          40% {
-            opacity: 0.95;
-            transform: translate(10px, -25px) scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: translate(5px, -55px) scale(0.7);
-          }
-        }
-
-        /* Bubble 4 - Moves DIAGONAL UP-LEFT (2nd quadrant) */
+        /* Bubble 4 - Moves UP-LEFT */
         .bubble:nth-child(4) {
-          animation: gentle-bubble-diagonal-ul-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          animation: gentle-bubble-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          animation-delay: 0.9s;
+        }
+
+        /* Bubble 5 - Moves UP-LEFT */
+        .bubble:nth-child(5) {
+          animation: gentle-bubble-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           animation-delay: 1.2s;
         }
 
-        @keyframes gentle-bubble-diagonal-ul-q2 {
-          0% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(0.4);
-          }
-          40% {
-            opacity: 0.95;
-            transform: translate(-35px, -15px) scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: translate(-70px, -35px) scale(0.7);
-          }
-        }
-
-        /* Bubble 5 - Moves LEFT-UP (2nd quadrant) */
-        .bubble:nth-child(5) {
-          animation: gentle-bubble-left-up-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          animation-delay: 1.6s;
-        }
-
-        @keyframes gentle-bubble-left-up-q2 {
-          0% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(0.4);
-          }
-          40% {
-            opacity: 0.95;
-            transform: translate(-45px, -5px) scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: translate(-85px, -15px) scale(0.7);
-          }
-        }
-
-        /* Bubble 6 - Moves UP-LEFT CLOSE (2nd quadrant) */
+        /* Bubble 6 - Moves UP-LEFT */
         .bubble:nth-child(6) {
-          animation: gentle-bubble-up-left-close-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          animation-delay: 2.0s;
+          animation: gentle-bubble-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          animation-delay: 1.5s;
         }
 
-        @keyframes gentle-bubble-up-left-close-q2 {
-          0% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(0.4);
-          }
-          40% {
-            opacity: 0.95;
-            transform: translate(-15px, -30px) scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: translate(-30px, -60px) scale(0.7);
-          }
-        }
-
-        /* Bubble 7 - Moves UP-FAR (2nd quadrant) */
+        /* Bubble 7 - Moves UP-LEFT */
         .bubble:nth-child(7) {
-          animation: gentle-bubble-up-far-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          animation: gentle-bubble-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          animation-delay: 1.8s;
+        }
+
+        /* Bubble 8 - Moves UP-LEFT */
+        .bubble:nth-child(8) {
+          animation: gentle-bubble-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          animation-delay: 2.1s;
+        }
+
+        /* Bubble 9 - Moves UP-LEFT */
+        .bubble:nth-child(9) {
+          animation: gentle-bubble-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           animation-delay: 2.4s;
         }
 
-        @keyframes gentle-bubble-up-far-q2 {
+        /* Unified Keyframe for all bubbles */
+        @keyframes gentle-bubble-q2 {
           0% {
             opacity: 1;
             transform: translate(-50%, -50%) scale(0.4);
           }
-          40% {
-            opacity: 0.95;
-            transform: translate(-5px, -40px) scale(1);
-          }
           100% {
             opacity: 0;
-            transform: translate(-10px, -80px) scale(0.7);
-          }
-        }
-
-        /* Bubble 8 - Moves LEFT-HORIZONTAL (2nd quadrant) */
-        .bubble:nth-child(8) {
-          animation: gentle-bubble-left-horizontal-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          animation-delay: 2.8s;
-        }
-
-        @keyframes gentle-bubble-left-horizontal-q2 {
-          0% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(0.4);
-          }
-          40% {
-            opacity: 0.95;
-            transform: translate(-50px, 5px) scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: translate(-90px, 0px) scale(0.7);
-          }
-        }
-
-        /* Bubble 9 - Moves DIAGONAL LEFT-UP-FAR (2nd quadrant) */
-        .bubble:nth-child(9) {
-          animation: gentle-bubble-diagonal-far-q2 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          animation-delay: 3.2s;
-        }
-
-        @keyframes gentle-bubble-diagonal-far-q2 {
-          0% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(0.4);
-          }
-          40% {
-            opacity: 0.95;
-            transform: translate(-60px, -25px) scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: translate(-100px, -50px) scale(0.7);
+            /* Randomized end position within the top-left quadrant */
+            transform: translate(calc(-30px - 50 * var(--rand-x)), calc(-30px - 50 * var(--rand-y))) scale(0.8);
           }
         }
 

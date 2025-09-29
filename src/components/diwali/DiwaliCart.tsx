@@ -122,10 +122,10 @@ Order ID: ${Date.now()}`;
     return (
       <section id="cart" className="relative py-20">
         <div className="container mx-auto text-center px-6">
-          <div className="bg-amber-50/95 backdrop-blur-sm rounded-3xl p-16 max-w-md mx-auto shadow-xl border-2 border-amber-200">
+          <div className="diwali-glass-card p-16 max-w-md mx-auto shadow-xl">
             <div className="text-8xl mb-6 opacity-60">🛒</div>
-            <h2 className="text-3xl font-bold mb-4 text-amber-900" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' }}>Your Cart is Empty</h2>
-            <p className="mb-8 leading-relaxed text-amber-800 font-medium">
+            <h2 className="text-3xl font-bold mb-4" style={{ color: 'hsl(var(--diwali-dark))', textShadow: '1px 1px 2px hsla(var(--diwali-shadow), 0.2)' }}>Your Cart is Empty</h2>
+            <p className="mb-8 leading-relaxed font-medium" style={{ color: 'hsl(var(--diwali-text))' }}>
               Start adding some delicious sweets to your cart!
             </p>
             <button
@@ -145,21 +145,21 @@ Order ID: ${Date.now()}`;
       <div className="container mx-auto max-w-5xl px-6">
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center mb-6">
-            <ShoppingBag className="h-8 w-8 mr-2 text-amber-700" />
-            <h2 className="text-4xl md:text-6xl font-bold text-amber-900" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)' }}>
+            <ShoppingBag className="h-8 w-8 mr-2" style={{ color: 'hsl(var(--diwali-bronze))' }} />
+            <h2 className="text-4xl md:text-6xl font-bold" style={{ color: 'hsl(var(--diwali-dark))', textShadow: '2px 2px 4px hsla(var(--diwali-shadow), 0.3)' }}>
               Your Sweet Cart
             </h2>
-            <ShoppingBag className="h-8 w-8 ml-2 text-amber-700" />
+            <ShoppingBag className="h-8 w-8 ml-2" style={{ color: 'hsl(var(--diwali-bronze))' }} />
           </div>
-          <p className="text-xl text-amber-800 font-semibold" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' }}>
+          <p className="text-xl font-semibold" style={{ color: 'hsl(var(--diwali-text))', textShadow: '1px 1px 2px hsla(var(--diwali-shadow), 0.2)' }}>
             Review your selection and proceed to order via WhatsApp
           </p>
         </div>
 
-        <div className="bg-amber-50/95 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl border-2 border-amber-200">
+        <div className="diwali-glass-card overflow-hidden shadow-xl">
           {/* Customer name input */}
-          <div className="p-6 border-b border-amber-200 bg-amber-100/50">
-            <label className="block font-bold mb-3 text-amber-900">
+          <div className="p-6 border-b" style={{ borderColor: 'hsla(var(--diwali-gold), 0.3)', background: 'hsla(var(--diwali-light), 0.5)' }}>
+            <label className="block font-bold mb-3" style={{ color: 'hsl(var(--diwali-dark))' }}>
               👤 Your Name (Optional)
             </label>
             <Input
@@ -167,7 +167,12 @@ Order ID: ${Date.now()}`;
               value={customerName}
               onChange={(e) => setCustomerName(e.target.value)}
               placeholder="Enter your name (optional)"
-              className="w-full p-3 border-2 border-amber-300 rounded-xl bg-white/95 text-amber-900 placeholder:text-amber-600 font-medium"
+              className="w-full p-3 border-2 rounded-xl font-medium"
+              style={{ 
+                borderColor: 'hsl(var(--diwali-gold))', 
+                background: 'hsl(var(--diwali-cream))', 
+                color: 'hsl(var(--diwali-dark))',
+              }}
             />
           </div>
 
@@ -175,7 +180,7 @@ Order ID: ${Date.now()}`;
           <div className="p-6">
             <div className="space-y-4">
               {cart.map(item => (
-                <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/90 rounded-xl hover:scale-102 transition-all duration-300 border border-amber-200 shadow-sm">
+                <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl hover:scale-102 transition-all duration-300 shadow-sm" style={{ background: 'hsla(var(--diwali-cream), 0.9)', border: '1px solid hsla(var(--diwali-gold), 0.3)'}}>
                   {/* Top row for mobile: Image and basic info */}
                   <div className="flex items-center gap-3 w-full sm:w-auto">
                     <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden flex-shrink-0">
@@ -186,14 +191,14 @@ Order ID: ${Date.now()}`;
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-amber-900 text-base sm:text-lg leading-snug" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)' }}>{item.name}</h3>
-                      <p className="text-xs sm:text-sm text-amber-700 font-medium">₹{item.price}/kg</p>
+                      <h3 className="font-bold text-base sm:text-lg leading-snug" style={{ color: 'hsl(var(--diwali-dark))', textShadow: '1px 1px 2px hsla(var(--diwali-shadow), 0.1)' }}>{item.name}</h3>
+                      <p className="text-xs sm:text-sm font-medium" style={{ color: 'hsl(var(--diwali-text))' }}>₹{item.price}/kg</p>
                     </div>
                     {/* Remove button - visible on mobile */}
                     <button
                       onClick={() => removeFromCart(item.id)}
                       className="w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 sm:hidden"
-                      style={{ color: 'hsl(var(--diwali-red))' }}
+                      style={{ color: 'hsl(var(--diwali-dark))' }}
                     >
                       <Trash2 className="h-3 w-3" />
                     </button>
@@ -205,16 +210,18 @@ Order ID: ${Date.now()}`;
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center hover:scale-110 transition-all duration-300 text-amber-900"
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
+                        style={{ background: 'hsl(var(--diwali-light))', border: '1px solid hsl(var(--diwali-gold))', color: 'hsl(var(--diwali-dark))' }}
                       >
                         <Minus className="h-3 w-3 sm:h-4 sm:w-4" />
                       </button>
-                      <span className="px-2 sm:px-3 py-1 rounded-full font-bold text-center min-w-[50px] sm:min-w-[60px] bg-amber-100 border border-amber-300 text-amber-900 text-xs sm:text-sm">
+                      <span className="px-2 sm:px-3 py-1 rounded-full font-bold text-center min-w-[50px] sm:min-w-[60px] text-xs sm:text-sm" style={{ background: 'hsl(var(--diwali-light))', border: '1px solid hsl(var(--diwali-gold))', color: 'hsl(var(--diwali-dark))' }}>
                         {item.quantity}kg
                       </span>
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center hover:scale-110 transition-all duration-300 text-amber-900"
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
+                        style={{ background: 'hsl(var(--diwali-light))', border: '1px solid hsl(var(--diwali-gold))', color: 'hsl(var(--diwali-dark))' }}
                       >
                         <Plus className="h-3 w-3 sm:h-4 sm:w-4" />
                       </button>
@@ -222,7 +229,7 @@ Order ID: ${Date.now()}`;
                     
                     {/* Item total */}
                     <div className="text-right">
-                      <div className="font-bold text-amber-900 text-base sm:text-lg" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)' }}>
+                      <div className="font-bold text-base sm:text-lg" style={{ color: 'hsl(var(--diwali-dark))', textShadow: '1px 1px 2px hsla(var(--diwali-shadow), 0.1)' }}>
                         ₹{item.price * item.quantity}
                       </div>
                     </div>
@@ -231,7 +238,7 @@ Order ID: ${Date.now()}`;
                     <button
                       onClick={() => removeFromCart(item.id)}
                       className="w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 hidden sm:flex ml-2"
-                      style={{ color: 'hsl(var(--diwali-red))' }}
+                      style={{ color: 'hsl(var(--diwali-dark))' }}
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>
@@ -241,22 +248,22 @@ Order ID: ${Date.now()}`;
             </div>
 
             {/* Cart summary */}
-            <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-amber-100/80 rounded-xl border-2 border-amber-300">
-              <div className="flex justify-between items-center mb-2 pb-2 border-b border-amber-300">
-                <span className="text-base sm:text-lg font-semibold text-amber-900">Total Items:</span>
-                <span className="text-base sm:text-lg font-bold text-amber-900">{getTotalItems()}kg</span>
+            <div className="mt-6 sm:mt-8 p-4 sm:p-6 rounded-xl" style={{ background: 'hsla(var(--diwali-light), 0.8)', border: '2px solid hsl(var(--diwali-gold))' }}>
+              <div className="flex justify-between items-center mb-2 pb-2" style={{ borderBottom: '1px solid hsl(var(--diwali-gold))' }}>
+                <span className="text-base sm:text-lg font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>Total Items:</span>
+                <span className="text-base sm:text-lg font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>{getTotalItems()}kg</span>
               </div>
               <div className="flex justify-between items-center mb-2">
-                <span className="text-base sm:text-lg font-semibold text-amber-900">Subtotal:</span>
-                <span className="text-base sm:text-lg font-bold text-amber-900">₹{getSubtotal()}</span>
+                <span className="text-base sm:text-lg font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>Subtotal:</span>
+                <span className="text-base sm:text-lg font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>₹{getSubtotal()}</span>
               </div>
-              <div className="flex justify-between items-center mb-3 pb-2 border-b border-amber-300">
-                <span className="text-base sm:text-lg font-semibold text-amber-900">GST:</span>
-                <span className="text-base sm:text-lg font-bold text-amber-900">₹{getTotalGST().toFixed(2)}</span>
+              <div className="flex justify-between items-center mb-3 pb-2" style={{ borderBottom: '1px solid hsl(var(--diwali-gold))' }}>
+                <span className="text-base sm:text-lg font-semibold" style={{ color: 'hsl(var(--diwali-dark))' }}>GST:</span>
+                <span className="text-base sm:text-lg font-bold" style={{ color: 'hsl(var(--diwali-dark))' }}>₹{getTotalGST().toFixed(2)}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-xl sm:text-2xl font-bold text-amber-900" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' }}>Final Total:</span>
-                <span className="text-xl sm:text-2xl font-bold text-amber-900" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' }}>₹{getFinalTotal().toFixed(2)}</span>
+                <span className="text-xl sm:text-2xl font-bold" style={{ color: 'hsl(var(--diwali-dark))', textShadow: '1px 1px 2px hsla(var(--diwali-shadow), 0.2)' }}>Final Total:</span>
+                <span className="text-xl sm:text-2xl font-bold" style={{ color: 'hsl(var(--diwali-dark))', textShadow: '1px 1px 2px hsla(var(--diwali-shadow), 0.2)' }}>₹{getFinalTotal().toFixed(2)}</span>
               </div>
             </div>
 
@@ -296,21 +303,22 @@ Order ID: ${Date.now()}`;
                     {/* Button content */}
                     <Button
                       onClick={() => setShowOrderPlacement(true)}
-                      className="relative w-full bg-transparent hover:bg-transparent text-amber-900 font-black py-7 px-8 rounded-2xl transition-all duration-200 hover:scale-[0.98] active:scale-[0.96] transform text-lg shadow-none border-0 group-active:translate-y-0.5"
+                      className="relative w-full bg-transparent hover:bg-transparent font-black py-7 px-8 rounded-2xl transition-all duration-200 hover:scale-[0.98] active:scale-[0.96] transform text-lg shadow-none border-0 group-active:translate-y-0.5"
+                      style={{ color: 'hsl(var(--diwali-dark))' }}
                     >
                       <div className="flex items-center justify-center space-x-4">
                         <div className="p-2 rounded-full bg-white/30 shadow-inner">
-                          <CreditCard className="h-6 w-6 text-amber-900" />
+                          <CreditCard className="h-6 w-6" style={{ color: 'hsl(var(--diwali-dark))' }} />
                         </div>
                         <div className="flex flex-col items-start text-left">
-                          <span className="text-xl font-black tracking-wide text-amber-900">Place Order Online</span>
-                          <span className="text-sm font-bold text-amber-800">🎯 Instant Confirmation • SMS Updates</span>
+                          <span className="text-xl font-black tracking-wide" style={{ color: 'hsl(var(--diwali-dark))' }}>Place Order Online</span>
+                          <span className="text-sm font-bold" style={{ color: 'hsl(var(--diwali-text))' }}>🎯 Instant Confirmation • SMS Updates</span>
                         </div>
                         <div className="flex flex-col items-center">
                           <div className="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs px-3 py-1.5 rounded-full font-black shadow-lg">
                             RECOMMENDED
                           </div>
-                          <span className="text-xs text-amber-700 font-bold mt-1">⭐ 487 Reviews</span>
+                          <span className="text-xs font-bold mt-1" style={{ color: 'hsl(var(--diwali-muted))' }}>⭐ 487 Reviews</span>
                         </div>
                       </div>
                       
@@ -338,33 +346,34 @@ Order ID: ${Date.now()}`;
                     <Button
                       onClick={handleWhatsAppOrder}
                       disabled={isProcessing}
-                      className="relative w-full bg-transparent hover:bg-transparent text-green-900 font-black py-7 px-8 rounded-2xl transition-all duration-200 hover:scale-[0.98] active:scale-[0.96] transform text-lg shadow-none border-0 disabled:opacity-50 group-active:translate-y-0.5"
+                      className="relative w-full bg-transparent hover:bg-transparent font-black py-7 px-8 rounded-2xl transition-all duration-200 hover:scale-[0.98] active:scale-[0.96] transform text-lg shadow-none border-0 disabled:opacity-50 group-active:translate-y-0.5"
+                      style={{ color: 'hsl(var(--diwali-dark))' }}
                     >
                       <div className="flex items-center justify-center space-x-4">
                         {isProcessing ? (
                           <>
                             <div className="p-2 rounded-full bg-white/30 shadow-inner">
-                              <div className="animate-spin rounded-full h-6 w-6 border-3 border-green-900 border-t-transparent"></div>
+                              <div className="animate-spin rounded-full h-6 w-6 border-3 border-t-transparent" style={{ borderColor: 'hsl(var(--diwali-dark))', borderTopColor: 'transparent' }}></div>
                             </div>
                             <div className="flex flex-col items-start text-left">
-                              <span className="text-xl font-black text-green-900">Connecting to WhatsApp...</span>
-                              <span className="text-sm font-bold text-green-800">🔄 Opening chat window</span>
+                              <span className="text-xl font-black" style={{ color: 'hsl(var(--diwali-dark))' }}>Connecting to WhatsApp...</span>
+                              <span className="text-sm font-bold" style={{ color: 'hsl(var(--diwali-text))' }}>🔄 Opening chat window</span>
                             </div>
                           </>
                         ) : (
                           <>
                             <div className="p-2 rounded-full bg-white/30 shadow-inner">
-                              <MessageCircle className="h-6 w-6 text-green-900" />
+                              <MessageCircle className="h-6 w-6" style={{ color: 'hsl(var(--diwali-dark))' }} />
                             </div>
                             <div className="flex flex-col items-start text-left">
-                              <span className="text-xl font-black tracking-wide text-green-900">Order via WhatsApp</span>
-                              <span className="text-sm font-bold text-green-800">⚡ Direct Chat • Instant Support</span>
+                              <span className="text-xl font-black tracking-wide" style={{ color: 'hsl(var(--diwali-dark))' }}>Order via WhatsApp</span>
+                              <span className="text-sm font-bold" style={{ color: 'hsl(var(--diwali-text))' }}>⚡ Direct Chat • Instant Support</span>
                             </div>
                             <div className="flex flex-col items-center">
                               <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs px-3 py-1.5 rounded-full font-black shadow-lg">
                                 INSTANT
                               </div>
-                              <span className="text-xs text-green-700 font-bold mt-1">📱 Live Chat</span>
+                              <span className="text-xs font-bold mt-1" style={{ color: 'hsl(var(--diwali-muted))' }}>📱 Live Chat</span>
                             </div>
                           </>
                         )}
@@ -471,11 +480,12 @@ Order ID: ${Date.now()}`;
                 </div>
 
                 {/* Crisp Clear Cart */}
-                <div className="pt-2 border-t-2 border-amber-200/60">
+                <div className="pt-2" style={{ borderTop: '2px solid hsla(var(--diwali-gold), 0.6)' }}>
                   <Button
                     onClick={clearCart}
                     variant="ghost"
-                    className="w-full text-red-600 hover:text-red-700 hover:bg-red-500/15 py-3 font-bold rounded-xl transition-all duration-200 text-sm border-2 border-red-200/40 hover:border-red-300/60 shadow-sm hover:shadow-md active:scale-95"
+                    className="w-full hover:bg-red-500/15 py-3 font-bold rounded-xl transition-all duration-200 text-sm border-2 hover:border-red-300/60 shadow-sm hover:shadow-md active:scale-95"
+                    style={{ color: 'hsl(var(--diwali-dark))', borderColor: 'hsla(var(--diwali-gold), 0.4)' }}
                   >
                     <Trash2 className="h-4 w-4 mr-2" />
                     Clear Cart
@@ -494,8 +504,8 @@ Order ID: ${Date.now()}`;
             </div>
 
             {/* Delivery note */}
-            <div className="mt-6 mb-4 p-4 bg-blue-50/80 rounded-xl border-2 border-blue-300">
-              <p className="text-sm leading-relaxed text-blue-900 font-medium">
+            <div className="mt-6 mb-4 p-4 rounded-xl" style={{ background: 'hsla(var(--diwali-light), 0.8)', border: '2px solid hsl(var(--diwali-gold))' }}>
+              <p className="text-sm leading-relaxed font-medium" style={{ color: 'hsl(var(--diwali-dark))' }}>
               📞 <strong>Note:</strong> Choose between online ordering (with detailed form and OTP verification) 
                 or quick WhatsApp ordering for immediate processing.
               </p>
@@ -507,7 +517,7 @@ Order ID: ${Date.now()}`;
       {/* Order Placement Modal */}
       <Dialog open={showOrderPlacement} onOpenChange={setShowOrderPlacement}>
         <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto p-0 bg-transparent border-none">
-          <div className="bg-gradient-to-br from-orange-50 to-amber-50 min-h-full rounded-3xl">
+          <div className="min-h-full rounded-3xl" style={{ background: 'linear-gradient(to bottom right, hsl(var(--diwali-cream)), hsl(var(--diwali-light)))' }}>
             <OrderPlacement onClose={() => setShowOrderPlacement(false)} />
           </div>
         </DialogContent>
@@ -517,7 +527,7 @@ Order ID: ${Date.now()}`;
       <div className="absolute top-0 left-0 right-0">
         <svg viewBox="0 0 1200 120" className="w-full h-20 text-background rotate-180">
           <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="currentColor"></path>
-          <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="currentColor"></path>
+          <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39 116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="currentColor"></path>
           <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="currentColor"></path>
         </svg>
       </div>
