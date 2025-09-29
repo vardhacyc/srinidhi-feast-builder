@@ -10,36 +10,55 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Premium Dark Theme with Gold Accents */
-    --background: 220 20% 8%; /* Deep charcoal background */
-    --foreground: 0 0% 95%; /* Light text */
+    /* LUXURY FOOD-GRADE YELLOW & ROYAL DARK THEME */
+    
+    /* === FOOD-GRADE YELLOWS === */
+    --banana-yellow: 53 100% 61%; /* #FFE135 */
+    --mango-yellow: 44 100% 58%; /* #FFC324 */
+    --saffron-gold: 51 100% 50%; /* #FFD700 */
+    --amber: 45 100% 50%; /* #FFBF00 */
+    --goldenrod: 43 69% 49%; /* #DAA520 */
+    --honey: 45 100% 63%; /* #FFC300 */
+    --pale-gold: 53 86% 92%; /* #FFF9DB */
+    --mustard: 43 84% 45%; /* #E1AD01 */
+    
+    /* === ROYAL DARK BACKGROUNDS === */
+    --charcoal: 240 6% 14%; /* #231F20 */
+    --deep-black: 0 0% 9%; /* #181818 */
+    --royal-brown: 20 13% 22%; /* #3B2F2F */
+    --navy-blue: 218 45% 22%; /* #213159 */
+    --midnight-indigo: 240 100% 5%; /* #0D0D1A */
+    
+    /* === SHADCN MAPPINGS === */
+    --background: var(--charcoal); /* Deep charcoal background */
+    --foreground: var(--pale-gold); /* Pale gold text */
 
-    --card: 220 15% 12%; /* Dark card background */
-    --card-foreground: 0 0% 90%;
+    --card: var(--deep-black); /* Deep black cards */
+    --card-foreground: var(--banana-yellow);
 
-    --popover: 220 15% 10%;
-    --popover-foreground: 0 0% 95%;
+    --popover: var(--royal-brown);
+    --popover-foreground: var(--honey);
 
-    --primary: 45 95% 58%; /* Premium gold primary */
-    --primary-foreground: 220 20% 8%;
+    --primary: var(--saffron-gold); /* Saffron gold primary */
+    --primary-foreground: var(--charcoal);
 
-    --secondary: 220 15% 15%; /* Darker secondary */
-    --secondary-foreground: 0 0% 85%;
+    --secondary: var(--navy-blue); /* Navy blue secondary */
+    --secondary-foreground: var(--mango-yellow);
 
-    --muted: 220 15% 18%; /* Muted dark */
-    --muted-foreground: 0 0% 60%;
+    --muted: var(--royal-brown); /* Royal brown muted */
+    --muted-foreground: var(--goldenrod);
 
-    --accent: 45 90% 65%; /* Bright gold accent */
-    --accent-foreground: 220 20% 8%;
+    --accent: var(--amber); /* Amber accent */
+    --accent-foreground: var(--deep-black);
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--pale-gold);
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 41 100% 44%; /* Updated to match new primary amber */
+    --border: var(--mustard);
+    --input: var(--royal-brown);
+    --ring: var(--saffron-gold);
 
-    --radius: 0.5rem;
+    --radius: 12px; /* Rounded for luxury feel */
 
     /* Updated Sidebar Colors to Match New Palette */
     --sidebar-background: 60 9% 98%;
@@ -1706,6 +1725,8 @@ All colors MUST be HSL.
     backdrop-filter: blur(2px);
   }
 
+ 
+
   /* Enhanced price styling */
   .ultra-price-text {
     background: linear-gradient(
@@ -2153,4 +2174,282 @@ All colors MUST be HSL.
       animation: none;
     }
   }
+}
+
+/* === LUXURY FOOD-GRADE GRADIENT SYSTEM === */
+@layer components {
+  /* Hero Background Gradients */
+  .hero-royal-bg {
+    background: linear-gradient(135deg, hsl(var(--charcoal)), hsl(var(--royal-brown)));
+  }
+  
+  .hero-golden-bg {
+    background: linear-gradient(90deg, hsl(var(--banana-yellow)), hsl(var(--saffron-gold)));
+  }
+  
+  .hero-mango-amber {
+    background: linear-gradient(45deg, hsl(var(--mango-yellow)), hsl(var(--amber)));
+  }
+  
+  /* Card Luxury Backgrounds */
+  .card-royal-bg {
+    background: hsl(var(--charcoal));
+    border: 2px solid hsl(var(--saffron-gold));
+    color: hsl(var(--banana-yellow));
+    box-shadow: 
+      0 8px 32px hsla(var(--amber), 0.3),
+      0 4px 16px hsla(var(--saffron-gold), 0.2),
+      inset 0 1px 0 hsla(var(--honey), 0.1);
+  }
+  
+  .card-premium-glow {
+    background: linear-gradient(145deg, hsl(var(--deep-black)), hsl(var(--charcoal)));
+    border: 2px solid hsl(var(--goldenrod));
+    box-shadow: 
+      0 12px 40px hsla(var(--saffron-gold), 0.25),
+      0 0 20px hsla(var(--amber), 0.15),
+      inset 0 2px 4px hsla(var(--honey), 0.05);
+  }
+  
+  /* Button Gradients */
+  .cta-golden {
+    background: linear-gradient(90deg, hsl(var(--mango-yellow)), hsl(var(--amber)));
+    color: hsl(var(--charcoal));
+    border-radius: 12px;
+    font-weight: 700;
+    box-shadow: 
+      0 6px 24px hsla(var(--amber), 0.4),
+      0 2px 8px hsla(var(--saffron-gold), 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .cta-golden:hover {
+    background: linear-gradient(90deg, hsl(var(--amber)), hsl(var(--goldenrod)));
+    transform: translateY(-2px);
+    box-shadow: 
+      0 12px 32px hsla(var(--amber), 0.5),
+      0 4px 16px hsla(var(--saffron-gold), 0.4);
+  }
+  
+  /* Luxury Animations */
+  .golden-sparkle {
+    animation: goldParticles 3s ease-in-out infinite;
+  }
+  
+  .royal-glow {
+    box-shadow: 
+      0 0 20px hsla(var(--saffron-gold), 0.3),
+      0 0 40px hsla(var(--amber), 0.2),
+      0 0 60px hsla(var(--honey), 0.1);
+    animation: pulse 2s ease-in-out infinite alternate;
+  }
+  
+  /* Typography Enhancements */
+  .luxury-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    background: linear-gradient(135deg, hsl(var(--saffron-gold)), hsl(var(--amber)), hsl(var(--honey)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px hsla(var(--charcoal), 0.3);
+  }
+  
+  .royal-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: hsl(var(--pale-gold));
+    text-shadow: 0 2px 8px hsla(var(--charcoal), 0.6);
+  }
+  
+  /* Glassmorphism Effects */
+  .glass-golden {
+    background: hsla(var(--pale-gold), 0.1);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsla(var(--saffron-gold), 0.2);
+    box-shadow: 
+      0 8px 32px hsla(var(--amber), 0.1),
+      inset 0 1px 0 hsla(var(--honey), 0.1);
+  }
+  
+  /* Premium Overlays */
+  .luxury-overlay {
+    background: linear-gradient(
+      135deg, 
+      hsla(var(--pale-gold), 0.05) 0%,
+      hsla(var(--mustard), 0.1) 100%
+    );
+  }
+}
+
+/* ===================================================================
+   DIWALI CONTACT PAGE - GLASSMORPHISM THEME
+   ================================================================= */
+
+.diwali-contact-bg {
+  background-color: #1a1608; /* Deep dark blue/purple tone */
+  background-image: 
+    /* Subtle noise overlay */
+    url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/%3E%3C/svg%3E'),
+    /* Radial gradients for depth */
+    radial-gradient(ellipse at 50% 0%, rgba(255, 215, 0, 0.1), transparent 70%),
+    radial-gradient(ellipse at 50% 100%, rgba(255, 100, 0, 0.1), transparent 70%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Festive Lights */
+.diwali-lights-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150%;
+  height: 200px;
+  background-image: url('https://www.transparentpng.com/thumb/diwali-lights/diwali-lights-border-png-image-2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
+  opacity: 0.7;
+  filter: blur(1px) brightness(1.2);
+}
+
+/* Rangoli & Diyas */
+.diwali-rangoli-left, .diwali-rangoli-right, .diwali-diyas-bottom {
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  filter: blur(1.5px);
+}
+
+.diwali-rangoli-left {
+  left: -100px;
+  bottom: 20%;
+  width: 300px;
+  height: 300px;
+  background-image: url('https://png.pngtree.com/png-vector/20231016/ourmid/pngtree-diwali-rangoli-designs-png-image_10193507.png');
+  background-position: left center;
+}
+
+.diwali-rangoli-right {
+  right: -120px;
+  top: 15%;
+  width: 350px;
+  height: 350px;
+  background-image: url('https://png.pngtree.com/png-vector/20231016/ourmid/pngtree-diwali-rangoli-designs-png-image_10193507.png');
+  background-position: right center;
+  transform: rotate(90deg);
+}
+
+.diwali-diyas-bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 150px;
+  background-image: url('https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Decorative-Elements-PNG/Diwali_Diya_PNG_Clip_Art_Image.png?m=1599028802');
+  background-position: bottom center;
+  opacity: 0.8;
+}
+
+/* Twinkling Sparkles Animation */
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.animate-twinkle {
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+/* Glassmorphic Card */
+.glass-card {
+  background: rgba(28, 25, 23, 0.3); /* Semi-transparent dark base */
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 215, 0, 0.2); /* Golden border */
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
+              0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Fade-in Animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Contact Us Heading */
+.contact-heading {
+  background: linear-gradient(120deg, #FFD700, #E6C200, #FFD700);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
+  font-family: 'Playfair Display', serif;
+}
+
+/* Form Inputs */
+.glass-input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  color: #FFF;
+  padding: 12px 16px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #FFD700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3), inset 0 1px 3px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+/* Send Button */
+.send-button {
+  background: linear-gradient(120deg, #FFD700, #E6C200);
+  color: #1a1608;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.send-button:hover {
+  background: linear-gradient(120deg, #E6C200, #FFD700);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Call Button */
+.call-button {
+  background: transparent;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #FFD700;
+  border-radius: 9999px;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+.call-button:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: #FFD700;
+  color: #FFD700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
