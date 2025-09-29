@@ -5,25 +5,26 @@ import { Label } from '../ui/label';
 import { Loader2, Shield, RefreshCw } from 'lucide-react';
 
 interface OTPVerificationProps {
-  mobile: string;
+  email: string;
   onVerify: (otp: string) => Promise<void>;
   onResend: () => Promise<void>;
   isVerifying: boolean;
-  isResending: boolean;
+  onBack: () => void;
   error?: string;
 }
 
 const OTPVerification: React.FC<OTPVerificationProps> = ({
-  mobile,
+  email,
   onVerify,
   onResend,
   isVerifying,
-  isResending,
+  onBack,
   error
 }) => {
   const [otp, setOtp] = useState('');
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutes
   const [canResend, setCanResend] = useState(false);
+  const [isResending, setIsResending] = useState(false);
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -48,10 +49,15 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
   };
 
   const handleResend = async () => {
-    await onResend();
-    setTimeLeft(300);
-    setCanResend(false);
-    setOtp('');
+    setIsResending(true);
+    try {
+      await onResend();
+      setTimeLeft(300);
+      setCanResend(false);
+      setOtp('');
+    } finally {
+      setIsResending(false);
+    }
   };
 
   const formatTime = (seconds: number) => {
@@ -60,7 +66,7 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
-  const maskedMobile = `+91 ${mobile.slice(0, 2)}****${mobile.slice(-2)}`;
+  const maskedEmail = email.replace(/(.{2})(.*)(@.*)/, '$1****$3');
 
   return (
     <div className="diwali-glass-card rounded-3xl p-6 md:p-8 max-w-md mx-auto">
@@ -75,8 +81,16 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
           We've sent a 6-digit code to
         </p>
         <p className="font-semibold text-diwali-dark">
-          {maskedMobile}
+          {maskedEmail}
         </p>
+        <Button
+          type="button"
+          variant="ghost"
+          onClick={onBack}
+          className="text-sm text-diwali-gold hover:text-amber-600 mt-2"
+        >
+          ← Change Email
+        </Button>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
