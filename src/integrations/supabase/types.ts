@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      abandoned_carts: {
+        Row: {
+          address: string
+          cart_items: Json
+          created_at: string | null
+          customer_email: string
+          customer_name: string
+          gst_amount: number
+          id: string
+          mobile: string
+          special_instructions: string | null
+          subtotal: number
+          total_amount: number
+          total_items: number
+        }
+        Insert: {
+          address: string
+          cart_items: Json
+          created_at?: string | null
+          customer_email: string
+          customer_name: string
+          gst_amount: number
+          id?: string
+          mobile: string
+          special_instructions?: string | null
+          subtotal: number
+          total_amount: number
+          total_items: number
+        }
+        Update: {
+          address?: string
+          cart_items?: Json
+          created_at?: string | null
+          customer_email?: string
+          customer_name?: string
+          gst_amount?: number
+          id?: string
+          mobile?: string
+          special_instructions?: string | null
+          subtotal?: number
+          total_amount?: number
+          total_items?: number
+        }
+        Relationships: []
+      }
       features: {
         Row: {
           created_at: string | null
@@ -140,6 +185,33 @@ export type Database = {
         }
         Relationships: []
       }
+      otp_verifications: {
+        Row: {
+          created_at: string | null
+          email: string
+          expires_at: string
+          id: string
+          otp_code: string
+          verified: boolean | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          expires_at: string
+          id?: string
+          otp_code: string
+          verified?: boolean | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          expires_at?: string
+          id?: string
+          otp_code?: string
+          verified?: boolean | null
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           category: string
@@ -211,6 +283,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      cleanup_expired_otps: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
       is_admin: {
         Args: { user_id: string }
         Returns: boolean

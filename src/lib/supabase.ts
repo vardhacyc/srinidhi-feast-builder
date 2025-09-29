@@ -1,6 +1,9 @@
 import { supabase } from '@/integrations/supabase/client';
 import type { Json } from '@/integrations/supabase/types';
 
+// Export supabase client for use in components
+export { supabase };
+
 // Helper function to check if Supabase is configured
 export const isSupabaseConnected = () => {
   return true; // Always connected since we're using the integrated client

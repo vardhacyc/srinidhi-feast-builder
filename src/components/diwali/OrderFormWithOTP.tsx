@@ -8,7 +8,7 @@ import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
 import { useCart } from '../../contexts/CartContext';
 import { Phone, User, MapPin, FileText, Loader2, Mail } from 'lucide-react';
-import { authService, featureService } from '../../lib/supabase';
+import { featureService, supabase } from '../../lib/supabase';
 import { useToast } from '@/hooks/use-toast';
 import OTPVerification from './OTPVerification';
 
@@ -88,12 +88,24 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
 
   const handleFormSubmission = async (data: OrderFormData) => {
     if (requireOTP) {
+      // Save to abandoned cart before sending OTP
+      await saveToAbandonedCart(data);
+      
       // Send OTP and show verification screen
       setPendingFormData(data);
       setIsSendingOTP(true);
       
       try {
-        await authService.sendOTP(data.email);
+        const { data: otpData, error } = await supabase.functions.invoke('send-otp', {
+          body: { 
+            email: data.email,
+            customerName: data.name
+          }
+        });
+
+        if (error) throw error;
+        if (!otpData?.success) throw new Error(otpData?.error || 'Failed to send OTP');
+
         setShowOTP(true);
         toast({
           title: "OTP Sent! 📧",
@@ -114,12 +126,47 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
     }
   };
 
+  const saveToAbandonedCart = async (data: OrderFormData) => {
+    try {
+      const totalWeight = getTotalItems();
+      const finalTotal = getFinalTotal();
+      
+      const { error } = await supabase.from('abandoned_carts').insert([{
+        customer_email: data.email,
+        customer_name: data.name,
+        mobile: data.mobile,
+        address: `${data.address}, ${data.city}, ${data.state} - ${data.pincode}`,
+        special_instructions: data.specialInstructions || null,
+        cart_items: cart as any,
+        subtotal: finalTotal / 1.05, // Calculate subtotal (assuming 5% GST)
+        gst_amount: finalTotal * 0.05 / 1.05,
+        total_amount: finalTotal,
+        total_items: totalWeight,
+      }]);
+
+      if (error) {
+        console.error('Error saving to abandoned cart:', error);
+      }
+    } catch (err) {
+      console.error('Failed to save abandoned cart:', err);
+    }
+  };
+
   const handleOTPVerification = async (otp: string) => {
     if (!pendingFormData) return;
     
     setIsVerifyingOTP(true);
     try {
-      await authService.verifyOTP(pendingFormData.email, otp);
+      const { data, error } = await supabase.functions.invoke('verify-otp', {
+        body: { 
+          email: pendingFormData.email,
+          otp: otp
+        }
+      });
+
+      if (error) throw error;
+      if (!data?.success) throw new Error(data?.error || 'Invalid OTP');
+
       toast({
         title: "Email Verified! ✓",
         description: "Placing your order now...",
@@ -141,7 +188,16 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
     if (!pendingFormData) return;
     
     try {
-      await authService.sendOTP(pendingFormData.email);
+      const { data, error } = await supabase.functions.invoke('send-otp', {
+        body: { 
+          email: pendingFormData.email,
+          customerName: pendingFormData.name
+        }
+      });
+
+      if (error) throw error;
+      if (!data?.success) throw new Error(data?.error || 'Failed to resend OTP');
+
       toast({
         title: "OTP Resent! 📧",
         description: "Check your email for a new verification code",
