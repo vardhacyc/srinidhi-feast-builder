@@ -14,10 +14,86 @@ export type Database = {
   }
   public: {
     Tables: {
+      features: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          feature_name: string
+          id: string
+          is_enabled: boolean
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          feature_name: string
+          id?: string
+          is_enabled?: boolean
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          feature_name?: string
+          id?: string
+          is_enabled?: boolean
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      order_items: {
+        Row: {
+          created_at: string | null
+          gst_amount: number
+          id: string
+          order_id: string
+          price: number
+          product_id: string | null
+          product_name: string
+          quantity: number
+        }
+        Insert: {
+          created_at?: string | null
+          gst_amount?: number
+          id?: string
+          order_id: string
+          price: number
+          product_id?: string | null
+          product_name: string
+          quantity: number
+        }
+        Update: {
+          created_at?: string | null
+          gst_amount?: number
+          id?: string
+          order_id?: string
+          price?: number
+          product_id?: string | null
+          product_name?: string
+          quantity?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "order_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       orders: {
         Row: {
           address: string
           created_at: string
+          customer_email: string | null
           customer_name: string
           gst_amount: number
           id: string
@@ -33,6 +109,7 @@ export type Database = {
         Insert: {
           address: string
           created_at?: string
+          customer_email?: string | null
           customer_name: string
           gst_amount: number
           id?: string
@@ -48,6 +125,7 @@ export type Database = {
         Update: {
           address?: string
           created_at?: string
+          customer_email?: string | null
           customer_name?: string
           gst_amount?: number
           id?: string
@@ -59,6 +137,51 @@ export type Database = {
           total_amount?: number
           total_items?: number
           updated_at?: string
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          category: string
+          content: string | null
+          created_at: string | null
+          description: string | null
+          gst_percentage: number
+          hard_enabled: boolean
+          id: string
+          image_url: string | null
+          name: string
+          price: number
+          soft_enabled: boolean
+          updated_at: string | null
+        }
+        Insert: {
+          category?: string
+          content?: string | null
+          created_at?: string | null
+          description?: string | null
+          gst_percentage?: number
+          hard_enabled?: boolean
+          id?: string
+          image_url?: string | null
+          name: string
+          price: number
+          soft_enabled?: boolean
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string
+          content?: string | null
+          created_at?: string | null
+          description?: string | null
+          gst_percentage?: number
+          hard_enabled?: boolean
+          id?: string
+          image_url?: string | null
+          name?: string
+          price?: number
+          soft_enabled?: boolean
+          updated_at?: string | null
         }
         Relationships: []
       }

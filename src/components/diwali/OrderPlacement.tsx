@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useCart } from '../../contexts/CartContext';
 import { orderService, authService, isSupabaseConnected } from '../../lib/supabase';
 import { DELIVERY_CONFIG } from '../../config/deliveryConfig';
-import OrderForm from './OrderForm';
+import OrderFormWithOTP from './OrderFormWithOTP';
 import SweetsConfetti from './SweetsConfetti';
 import { Button } from '../ui/button';
 import { ArrowLeft, CheckCircle, AlertCircle, ExternalLink } from 'lucide-react';
@@ -13,10 +13,13 @@ type OrderStep = 'form' | 'success';
 interface OrderFormData {
   name: string;
   email: string;
-  password: string;
   mobile: string;
   address: string;
+  city: string;
+  state: string;
+  pincode: string;
   specialInstructions?: string;
+  otpVerified: boolean;
 }
 
 interface OrderPlacementProps {
@@ -109,11 +112,14 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
     setFormData(data);
     
     try {
-      // Create order in database (anonymous users allowed for now)
+      // Create order in database with complete address details
+      const fullAddress = `${data.address}, ${data.city}, ${data.state} - ${data.pincode}`;
+      
       const orderData = {
         customer_name: data.name,
+        customer_email: data.email,
         mobile: data.mobile,
-        address: data.address,
+        address: fullAddress,
         special_instructions: data.specialInstructions || '',
         items: cart.map(item => ({
           id: item.id,
@@ -133,14 +139,6 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
 
       const order = await orderService.createOrder(orderData);
       setOrderId(order.id);
-      
-      // Try to create user account for future orders (optional)
-      try {
-        await authService.signUpWithEmail(data.email, data.password);
-      } catch (authError) {
-        // Ignore auth errors - order is already placed successfully
-        console.log('Auth signup failed, but order placed successfully:', authError);
-      }
       
       // Show success with confetti
       setCurrentStep('success');
@@ -195,7 +193,7 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
             </Button>
           )}
         </div>
-        <OrderForm
+        <OrderFormWithOTP
           onSubmit={handleFormSubmit}
           isSubmitting={isSubmitting}
         />

@@ -10,6 +10,7 @@ export const isSupabaseConnected = () => {
 export interface Order {
   id: string;
   customer_name: string;
+  customer_email?: string;
   mobile: string;
   address: string;
   special_instructions?: string;
@@ -33,10 +34,35 @@ export interface OrderItem {
   image: string;
 }
 
+export interface Product {
+  id: string;
+  name: string;
+  price: number;
+  gst_percentage: number;
+  description?: string;
+  content?: string;
+  image_url?: string;
+  category: string;
+  soft_enabled: boolean;
+  hard_enabled: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Feature {
+  id: string;
+  feature_name: string;
+  is_enabled: boolean;
+  description?: string;
+  created_at: string;
+  updated_at: string;
+}
+
 // Database row type (what comes from Supabase)
 interface OrderRow {
   id: string;
   customer_name: string;
+  customer_email?: string;
   mobile: string;
   address: string;
   special_instructions?: string;
@@ -110,16 +136,105 @@ export const orderService = {
   }
 };
 
+// Product management functions
+export const productService = {
+  async getProducts(): Promise<Product[]> {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('hard_enabled', true)
+      .order('name');
+
+    if (error) throw error;
+    return data as Product[];
+  },
+
+  async getAllProducts(): Promise<Product[]> {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .order('name');
+
+    if (error) throw error;
+    return data as Product[];
+  },
+
+  async createProduct(product: Omit<Product, 'id' | 'created_at' | 'updated_at'>) {
+    const { data, error } = await supabase
+      .from('products')
+      .insert([product])
+      .select()
+      .single();
+
+    if (error) throw error;
+    return data as Product;
+  },
+
+  async updateProduct(id: string, updates: Partial<Product>) {
+    const { data, error } = await supabase
+      .from('products')
+      .update(updates)
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) throw error;
+    return data as Product;
+  },
+
+  async deleteProduct(id: string) {
+    const { error } = await supabase
+      .from('products')
+      .delete()
+      .eq('id', id);
+
+    if (error) throw error;
+  }
+};
+
+// Feature flags functions
+export const featureService = {
+  async getFeatures(): Promise<Feature[]> {
+    const { data, error } = await supabase
+      .from('features')
+      .select('*')
+      .order('feature_name');
+
+    if (error) throw error;
+    return data as Feature[];
+  },
+
+  async getFeature(featureName: string): Promise<Feature | null> {
+    const { data, error } = await supabase
+      .from('features')
+      .select('*')
+      .eq('feature_name', featureName)
+      .maybeSingle();
+
+    if (error) throw error;
+    return data as Feature | null;
+  },
+
+  async updateFeature(id: string, isEnabled: boolean) {
+    const { data, error } = await supabase
+      .from('features')
+      .update({ is_enabled: isEnabled })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) throw error;
+    return data as Feature;
+  }
+};
+
 // Auth functions
 export const authService = {
-  async signUpWithEmail(email: string, password: string) {
-    const redirectUrl = `${window.location.origin}/diwali`;
-    
-    const { data, error } = await supabase.auth.signUp({
+  async sendOTP(email: string) {
+    const { data, error } = await supabase.auth.signInWithOtp({
       email,
-      password,
       options: {
-        emailRedirectTo: redirectUrl
+        shouldCreateUser: true,
       }
     });
 
@@ -127,10 +242,11 @@ export const authService = {
     return data;
   },
 
-  async signInWithEmail(email: string, password: string) {
-    const { data, error } = await supabase.auth.signInWithPassword({
+  async verifyOTP(email: string, token: string) {
+    const { data, error } = await supabase.auth.verifyOtp({
       email,
-      password
+      token,
+      type: 'email'
     });
 
     if (error) throw error;
@@ -146,6 +262,16 @@ export const authService = {
     const { data: { user }, error } = await supabase.auth.getUser();
     if (error) throw error;
     return user;
+  },
+
+  async signInWithEmail(email: string, password: string) {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) throw error;
+    return data;
   },
 
   async isAdmin() {
