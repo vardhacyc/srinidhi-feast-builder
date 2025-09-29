@@ -593,6 +593,16 @@ const AdminDashboard: React.FC = () => {
     }
   };
 
+  const handleClearFilters = () => {
+    setSearchTerm('');
+    setStatusFilter('all');
+    setPaymentFilter('all');
+    toast({
+      title: "Filters Cleared",
+      description: "All search and filter criteria have been reset.",
+    });
+  };
+
   const exportToCSV = () => {
     const headers = [
       'Order ID', 'Customer Name', 'Mobile', 'Address', 'Items',
@@ -863,6 +873,13 @@ const AdminDashboard: React.FC = () => {
                       <SelectItem value="overdue">Overdue (over 24h)</SelectItem>
                     </SelectContent>
                   </Select>
+                  <Button
+                    onClick={handleClearFilters}
+                    variant="ghost"
+                    className="text-gray-600 hover:text-gray-800"
+                  >
+                    Clear Filters
+                  </Button>
                 </div>
                 
                 {selectedOrders.length > 0 && (
