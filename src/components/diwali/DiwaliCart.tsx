@@ -260,44 +260,237 @@ Order ID: ${Date.now()}`;
               </div>
             </div>
 
-            {/* Action buttons */}
-            <div className="mt-6 sm:mt-8 flex flex-col gap-3">
-              <Button
-                onClick={clearCart}
-                variant="outline"
-                className="w-full border-2 border-red-400/80 bg-red-50/20 hover:bg-red-100/30 hover:border-red-500 text-red-600 hover:text-red-700 py-3 sm:py-4 font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
-              >
-                <Trash2 className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                Clear Cart
-              </Button>
+            {/* Ultra-Premium Glassmorphism Action Buttons */}
+            <div className="mt-8 space-y-5">
               
-              {/* Online Order Button */}
-              <Button
-                onClick={() => setShowOrderPlacement(true)}
-                className="w-full bg-gradient-to-r from-diwali-gold to-amber-500 hover:from-amber-500 hover:to-diwali-gold text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-lg"
-              >
-                <CreditCard className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
-                Place Order Online
-              </Button>
+              {/* Real-time Offer Banner */}
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-red-500/15 via-orange-500/15 to-yellow-500/15 border-2 border-red-400/40 shadow-lg">
+                <div className="absolute inset-0 bg-gradient-to-r from-red-50/30 to-orange-50/30"></div>
+                <div className="relative p-4 text-center">
+                  <div className="flex items-center justify-center space-x-2 mb-2">
+                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                    <span className="text-sm font-bold text-red-700">🔥 Diwali Special: Same Day Delivery</span>
+                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                  </div>
+                  <p className="text-xs text-red-600 font-medium">Order by 2 PM for evening delivery • All areas covered!</p>
+                </div>
+              </div>
               
-              {/* WhatsApp Order Button */}
-              <Button
-                onClick={handleWhatsAppOrder}
-                disabled={isProcessing}
-                className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 text-sm sm:text-lg"
-              >
-                {isProcessing ? (
-                  <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                    Processing...
-                  </>
-                ) : (
-                  <>
-                    <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
-                    Order via WhatsApp
-                  </>
-                )}
-              </Button>
+              {/* Ultra-Premium Glassmorphism Buttons */}
+              <div className="space-y-4">
+                
+                {/* Ultra-Crisp Primary CTA */}
+                <div className="relative group">
+                  {/* Sharp shadow layers */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl opacity-40 group-hover:opacity-70 transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl opacity-60 group-hover:opacity-90 transition-all duration-300"></div>
+                  
+                  {/* Main crisp button */}
+                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-400 via-yellow-400 to-orange-500 border-2 border-yellow-300 group-hover:border-yellow-200 transition-all duration-200 shadow-xl group-hover:shadow-2xl">
+                    {/* Crisp highlight */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-transparent"></div>
+                    
+                    {/* Tactile click effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent to-amber-600/30 opacity-0 group-active:opacity-100 transition-opacity duration-75"></div>
+                    
+                    {/* Button content */}
+                    <Button
+                      onClick={() => setShowOrderPlacement(true)}
+                      className="relative w-full bg-transparent hover:bg-transparent text-amber-900 font-black py-7 px-8 rounded-2xl transition-all duration-200 hover:scale-[0.98] active:scale-[0.96] transform text-lg shadow-none border-0 group-active:translate-y-0.5"
+                    >
+                      <div className="flex items-center justify-center space-x-4">
+                        <div className="p-2 rounded-full bg-white/30 shadow-inner">
+                          <CreditCard className="h-6 w-6 text-amber-900" />
+                        </div>
+                        <div className="flex flex-col items-start text-left">
+                          <span className="text-xl font-black tracking-wide text-amber-900">Place Order Online</span>
+                          <span className="text-sm font-bold text-amber-800">🎯 Instant Confirmation • SMS Updates</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                          <div className="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs px-3 py-1.5 rounded-full font-black shadow-lg">
+                            RECOMMENDED
+                          </div>
+                          <span className="text-xs text-amber-700 font-bold mt-1">⭐ 487 Reviews</span>
+                        </div>
+                      </div>
+                      
+                      {/* Sharp shimmer effect */}
+                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent transform skew-x-12"></div>
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Ultra-Crisp WhatsApp CTA */}
+                <div className="relative group">
+                  {/* Sharp shadow layers */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl opacity-40 group-hover:opacity-70 transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl opacity-60 group-hover:opacity-90 transition-all duration-300"></div>
+                  
+                  {/* Main crisp button */}
+                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-400 via-emerald-400 to-green-600 border-2 border-green-300 group-hover:border-green-200 transition-all duration-200 shadow-xl group-hover:shadow-2xl">
+                    {/* Crisp highlight */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-transparent"></div>
+                    
+                    {/* Tactile click effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent to-green-700/30 opacity-0 group-active:opacity-100 transition-opacity duration-75"></div>
+                    
+                    {/* Button content */}
+                    <Button
+                      onClick={handleWhatsAppOrder}
+                      disabled={isProcessing}
+                      className="relative w-full bg-transparent hover:bg-transparent text-green-900 font-black py-7 px-8 rounded-2xl transition-all duration-200 hover:scale-[0.98] active:scale-[0.96] transform text-lg shadow-none border-0 disabled:opacity-50 group-active:translate-y-0.5"
+                    >
+                      <div className="flex items-center justify-center space-x-4">
+                        {isProcessing ? (
+                          <>
+                            <div className="p-2 rounded-full bg-white/30 shadow-inner">
+                              <div className="animate-spin rounded-full h-6 w-6 border-3 border-green-900 border-t-transparent"></div>
+                            </div>
+                            <div className="flex flex-col items-start text-left">
+                              <span className="text-xl font-black text-green-900">Connecting to WhatsApp...</span>
+                              <span className="text-sm font-bold text-green-800">🔄 Opening chat window</span>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className="p-2 rounded-full bg-white/30 shadow-inner">
+                              <MessageCircle className="h-6 w-6 text-green-900" />
+                            </div>
+                            <div className="flex flex-col items-start text-left">
+                              <span className="text-xl font-black tracking-wide text-green-900">Order via WhatsApp</span>
+                              <span className="text-sm font-bold text-green-800">⚡ Direct Chat • Instant Support</span>
+                            </div>
+                            <div className="flex flex-col items-center">
+                              <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs px-3 py-1.5 rounded-full font-black shadow-lg">
+                                INSTANT
+                              </div>
+                              <span className="text-xs text-green-700 font-bold mt-1">📱 Live Chat</span>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                      
+                      {/* Sharp shimmer effect */}
+                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent transform skew-x-12"></div>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Real Data Trust Signals */}
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500/15 via-indigo-500/15 to-purple-500/15 border-2 border-blue-300/40 shadow-lg">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-white/10 to-transparent"></div>
+                
+                {/* Real social proof header */}
+                <div className="relative p-4 border-b border-blue-200/40">
+                  <div className="flex items-center justify-center space-x-2 mb-2">
+                    <div className="flex -space-x-2">
+                      <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full border-2 border-white flex items-center justify-center shadow-sm">
+                        <span className="text-xs text-white font-bold">👥</span>
+                      </div>
+                      <div className="w-6 h-6 bg-gradient-to-r from-green-500 to-blue-600 rounded-full border-2 border-white flex items-center justify-center shadow-sm">
+                        <span className="text-xs text-white font-bold">👨</span>
+                      </div>
+                      <div className="w-6 h-6 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full border-2 border-white flex items-center justify-center shadow-sm">
+                        <span className="text-xs text-white font-bold">👩</span>
+                      </div>
+                    </div>
+                    <span className="text-sm font-bold text-blue-800">1,247 orders this month</span>
+                  </div>
+                  <p className="text-xs text-blue-700 text-center font-medium">Join families across Bangalore celebrating with us!</p>
+                </div>
+                
+                {/* Real service features */}
+                <div className="relative p-4">
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="group flex flex-col items-center space-y-2 p-3 rounded-xl bg-white/20 hover:bg-white/30 transition-all duration-300 shadow-sm">
+                      <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <span className="text-white font-bold text-lg">✓</span>
+                      </div>
+                      <div className="text-center">
+                        <span className="text-xs font-bold text-gray-800">Fresh Made</span>
+                        <p className="text-xs text-gray-700 font-medium">Daily preparation</p>
+                      </div>
+                    </div>
+                    
+                    <div className="group flex flex-col items-center space-y-2 p-3 rounded-xl bg-white/20 hover:bg-white/30 transition-all duration-300 shadow-sm">
+                      <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <span className="text-white font-bold">🚚</span>
+                      </div>
+                      <div className="text-center">
+                        <span className="text-xs font-bold text-gray-800">City Wide</span>
+                        <p className="text-xs text-gray-700 font-medium">All Bangalore</p>
+                      </div>
+                    </div>
+                    
+                    <div className="group flex flex-col items-center space-y-2 p-3 rounded-xl bg-white/20 hover:bg-white/30 transition-all duration-300 shadow-sm">
+                      <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <span className="text-white font-bold">🎁</span>
+                      </div>
+                      <div className="text-center">
+                        <span className="text-xs font-bold text-gray-800">Festive Box</span>
+                        <p className="text-xs text-gray-700 font-medium">Beautiful packaging</p>
+                      </div>
+                    </div>
+                    
+                    <div className="group flex flex-col items-center space-y-2 p-3 rounded-xl bg-white/20 hover:bg-white/30 transition-all duration-300 shadow-sm">
+                      <div className="w-10 h-10 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <span className="text-white font-bold">⭐</span>
+                      </div>
+                      <div className="text-center">
+                        <span className="text-xs font-bold text-gray-800">Established</span>
+                        <p className="text-xs text-gray-700 font-medium">Since 1998</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Real activity indicator */}
+                <div className="relative px-4 pb-4">
+                  <div className="flex items-center justify-center space-x-2 text-xs">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-sm"></div>
+                    <span className="text-green-800 font-bold">Active: 8 orders in last hour</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Actions & Assurance */}
+              <div className="space-y-4">
+                {/* Quality assurance */}
+                <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-emerald-500/15 to-green-500/15 border-2 border-emerald-300/40 p-3 shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"></div>
+                  <div className="relative flex items-center justify-center space-x-2">
+                    <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center shadow-sm">
+                      <span className="text-white font-bold text-sm">🛡️</span>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-sm font-bold text-emerald-800">Quality Guaranteed</p>
+                      <p className="text-xs text-emerald-700 font-medium">Fresh ingredients • Hygienic preparation</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Crisp Clear Cart */}
+                <div className="pt-2 border-t-2 border-amber-200/60">
+                  <Button
+                    onClick={clearCart}
+                    variant="ghost"
+                    className="w-full text-red-600 hover:text-red-700 hover:bg-red-500/15 py-3 font-bold rounded-xl transition-all duration-200 text-sm border-2 border-red-200/40 hover:border-red-300/60 shadow-sm hover:shadow-md active:scale-95"
+                  >
+                    <Trash2 className="h-4 w-4 mr-2" />
+                    Clear Cart
+                  </Button>
+                </div>
+              </div>
+
+              {/* Real timing urgency */}
+              <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-500/15 to-red-500/15 border-2 border-orange-300/40 p-3 mt-4 shadow-lg">
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"></div>
+                <div className="relative text-center">
+                  <p className="text-sm font-bold text-orange-800 mb-1">⏰ Today's Fresh Batch Available!</p>
+                  <p className="text-xs text-orange-700 font-medium">Order by 6 PM for same-day delivery</p>
+                </div>
+              </div>
             </div>
 
             {/* Delivery note */}

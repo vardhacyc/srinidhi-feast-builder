@@ -27,10 +27,28 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="about" className="relative py-24 bg-gradient-to-br from-amber-50/50 to-white overflow-hidden">
+      {/* Subtle Background Animation */}
+      <div className="absolute inset-0 opacity-5">
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute animate-gentle-float"
+            style={{
+              left: `${10 + i * 15}%`,
+              top: `${20 + i * 12}%`,
+              animationDelay: `${i * 2}s`,
+              animationDuration: `${8 + i}s`
+            }}
+          >
+            <div className="w-16 h-16 bg-gradient-to-br from-amber-300 to-yellow-400 rounded-full opacity-30"></div>
+          </div>
+        ))}
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8">
+          <h2 className="font-display text-5xl md:text-6xl font-black text-gray-900 mb-8">
             About{' '}
             <span className="relative inline-block">
               <ScribbleUnderline variant="smooth" delay={0.8}>
@@ -42,7 +60,7 @@ const About = () => {
               <div className="absolute -bottom-4 left-2 w-20 h-1 bg-gold rounded-full"></div>
             </span>
           </h2>
-          <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
+          <p className="font-serif text-xl text-gray-700 max-w-4xl mx-auto font-normal leading-relaxed">
             A unit of Sri Nidhi Catering - Creating delightful memories that your taste buds will fondly remember forever
           </p>
         </div>

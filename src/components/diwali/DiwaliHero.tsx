@@ -49,145 +49,182 @@ const DiwaliHero = () => {
         <div className="mb-12">
           <div className="inline-flex items-center justify-center mb-8">
             <div className="relative">
-              <div className="absolute inset-0 h-40 w-40 animate-ping opacity-15 rounded-full bg-yellow-300/40 blur-sm"></div>
+              <div className="absolute inset-0 h-44 w-44 animate-pulse opacity-20 rounded-full bg-gradient-to-r from-yellow-300 to-amber-400 shadow-2xl"></div>
               <img 
                 src="/cateringLogo.png" 
-                alt="Sri Nidhi Logo" 
-                className="relative z-10 h-40 w-40 object-contain filter brightness-125 contrast-125 saturate-110" 
+                alt="Sri Nidhi Catering Logo" 
+                className="relative z-10 h-44 w-44 object-contain" 
                 style={{
-                  filter: 'brightness(1.3) contrast(1.3) saturate(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5))',
+                  filter: 'brightness(1.4) contrast(1.4) saturate(1.3) drop-shadow(0 6px 16px rgba(0, 0, 0, 0.4)) drop-shadow(0 2px 8px rgba(139, 90, 60, 0.3))',
                   imageRendering: 'crisp-edges'
                 }}
               />
-              <div className="absolute inset-0 h-40 w-40 rounded-full bg-gradient-to-br from-yellow-400/20 via-transparent to-yellow-600/20 blur-xl"></div>
             </div>
           </div>
           
-          <h1 className="mb-6 leading-tight">
+          <h1 className="mb-8 leading-tight">
             <span 
-              className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-3"
+              className="block text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-4"
               style={{
                 color: '#FFFFFF',
-                textShadow: '4px 4px 8px rgba(0, 0, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 215, 0, 0.3)',
+                textShadow: '3px 3px 0px rgba(0, 0, 0, 0.8), 6px 6px 12px rgba(0, 0, 0, 0.6)',
                 fontFamily: "'Playfair Display', serif",
-                fontWeight: '800',
-                letterSpacing: '0.01em',
-                textRendering: 'optimizeLegibility'
+                fontWeight: '900',
+                letterSpacing: '-0.02em',
+                textRendering: 'optimizeLegibility',
+                WebkitTextStroke: '1px rgba(255, 215, 0, 0.3)'
               }}
             >
-              Sri Nidhi
+              SRI NIDHI
             </span>
             <span 
-              className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold"
+              className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold"
               style={{
-                color: '#FFFFFF',
-                textShadow: '4px 4px 8px rgba(0, 0, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 215, 0, 0.3)',
-                fontFamily: "'Playfair Display', serif",
-                fontWeight: '800',
-                letterSpacing: '0.03em',
-                textRendering: 'optimizeLegibility'
+                color: '#FFD700',
+                textShadow: '2px 2px 0px rgba(0, 0, 0, 0.7), 4px 4px 8px rgba(0, 0, 0, 0.5)',
+                fontFamily: "'Lato', sans-serif",
+                fontWeight: '700',
+                letterSpacing: '0.08em',
+                textRendering: 'optimizeLegibility',
+                textTransform: 'uppercase'
               }}
             >
-              Diwali Sweets
+              CATERING
             </span>
           </h1>
           
-          <p 
-            className="text-lg md:text-xl lg:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed font-semibold"
-            style={{ 
-              color: '#FFFFFF',
-              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7), 1px 1px 2px rgba(0, 0, 0, 0.5), 0 0 8px rgba(139, 90, 60, 0.4)',
-              fontFamily: "'Lato', sans-serif",
-              fontWeight: '600',
-              textRendering: 'optimizeLegibility'
-            }}
-          >
-            Celebrate the festival of lights with our handcrafted traditional sweets.
-            <br className="hidden md:block" />
-            Made with love, tradition, and the finest ingredients.
-          </p>
-        </div>
-
-        {/* Luxury Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-5xl mx-auto">
-          <div className="luxury-feature-card group">
-            <div className="relative p-8 rounded-2xl backdrop-blur-md bg-yellow-400/10 shadow-2xl transition-all duration-500 hover:scale-105 hover:bg-yellow-400/15" style={{ border: '1px solid rgba(255, 215, 0, 0.4)' }}>
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-yellow-400/8 to-transparent"></div>
-              <Award className="h-10 w-10 mx-auto mb-4" style={{ color: '#8B5A3C', filter: 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3))' }} />
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#FFFFFF', fontFamily: "'Playfair Display', serif", textShadow: '2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 8px rgba(139, 90, 60, 0.3)', fontWeight: '700' }}>
-                Premium Quality
-              </h3>
-              <p className="leading-relaxed font-medium" style={{ color: '#F3E8D0', textShadow: '1px 1px 3px rgba(0, 0, 0, 0.5)', fontWeight: '500' }}>
-                Authentic recipes passed down through generations
-              </p>
-            </div>
-          </div>
-          
-          <div className="luxury-feature-card group">
-            <div className="relative p-8 rounded-2xl backdrop-blur-md bg-yellow-400/10 shadow-2xl transition-all duration-500 hover:scale-105 hover:bg-yellow-400/15" style={{ border: '1px solid rgba(255, 215, 0, 0.4)' }}>
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-yellow-400/8 to-transparent"></div>
-              <Sparkles className="h-10 w-10 mx-auto mb-4" style={{ color: '#8B5A3C', filter: 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3))' }} />
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#FFFFFF', fontFamily: "'Playfair Display', serif", textShadow: '2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 8px rgba(139, 90, 60, 0.3)', fontWeight: '700' }}>
-                Festive Gifting
-              </h3>
-              <p className="leading-relaxed font-medium" style={{ color: '#F3E8D0', textShadow: '1px 1px 3px rgba(0, 0, 0, 0.5)', fontWeight: '500' }}>
-                Beautiful packaging perfect for celebrations
-              </p>
-            </div>
-          </div>
-          
-          <div className="luxury-feature-card group">
-            <div className="relative p-8 rounded-2xl backdrop-blur-md bg-yellow-400/10 shadow-2xl transition-all duration-500 hover:scale-105 hover:bg-yellow-400/15" style={{ border: '1px solid rgba(255, 215, 0, 0.4)' }}>
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-yellow-400/8 to-transparent"></div>
-              <Heart className="h-10 w-10 mx-auto mb-4" style={{ color: '#8B5A3C', filter: 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3))' }} />
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#FFFFFF', fontFamily: "'Playfair Display', serif", textShadow: '2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 8px rgba(139, 90, 60, 0.3)', fontWeight: '700' }}>
-                Made with Love
-              </h3>
-              <p className="leading-relaxed font-medium" style={{ color: '#F3E8D0', textShadow: '1px 1px 3px rgba(0, 0, 0, 0.5)', fontWeight: '500' }}>
-                Fresh daily with finest ingredients
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Premium CTA */}
-        <div className="space-y-6">
-          <button
-            onClick={scrollToSweets}
-            className="group relative px-10 py-4 rounded-full text-lg font-bold transition-all duration-500 transform hover:scale-110 hover:-translate-y-2"
-            style={{
-              background: 'linear-gradient(135deg, #FFD700 0%, #F59E0B 50%, #D97706 100%)',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 215, 0, 0.4)',
-              color: '#451A03',
-              fontFamily: "'Lato', sans-serif",
-              fontWeight: '700'
-            }}
-          >
-            <span className="relative z-10 flex items-center space-x-3">
-              <span>Explore Collection</span>
-              <Sparkles className="h-5 w-5 group-hover:animate-spin transition-transform duration-500" />
-            </span>
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-300 to-yellow-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-          </button>
-        </div>
-
-        {/* Elegant Festive Message */}
-        <div className="mt-16">
-          <div className="relative p-6 rounded-2xl backdrop-blur-md bg-yellow-400/10 shadow-xl max-w-4xl mx-auto" style={{ border: '1px solid rgba(255, 215, 0, 0.3)' }}>
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-yellow-400/8 via-transparent to-yellow-400/8"></div>
+          <div className="mb-10">
             <p 
-              className="text-lg md:text-xl font-semibold relative z-10"
+              className="text-xl md:text-2xl lg:text-3xl mb-6 max-w-5xl mx-auto leading-tight font-bold"
               style={{ 
                 color: '#FFFFFF',
-                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.6), 1px 1px 2px rgba(0, 0, 0, 0.4), 0 0 8px rgba(139, 90, 60, 0.3)',
-                fontFamily: "'Lora', serif",
-                fontStyle: 'italic',
-                fontWeight: '600',
+                textShadow: '2px 2px 0px rgba(0, 0, 0, 0.8), 4px 4px 8px rgba(0, 0, 0, 0.6)',
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: '700',
+                textRendering: 'optimizeLegibility',
+                letterSpacing: '0.02em'
+              }}
+            >
+              Premium Diwali Sweets & Traditional Delicacies
+            </p>
+            <p 
+              className="text-lg md:text-xl max-w-4xl mx-auto leading-relaxed font-medium"
+              style={{ 
+                color: '#FEF3C7',
+                textShadow: '1px 1px 0px rgba(0, 0, 0, 0.7), 2px 2px 4px rgba(0, 0, 0, 0.5)',
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: '500',
                 textRendering: 'optimizeLegibility'
               }}
             >
-              🪔 May this Diwali illuminate your life with joy, prosperity, and endless sweetness 🪔
+              Handcrafted with authentic recipes • Premium ingredients • Made fresh daily
+              <br className="hidden md:block" />
+              Celebrating 25+ years of sweet traditions in Bangalore
             </p>
+          </div>
+        </div>
+
+        {/* Professional Feature Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-6xl mx-auto">
+          <div className="group">
+            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-amber-500/20 to-orange-600/20 border-2 border-amber-400/30 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 to-white/5"></div>
+              <div className="relative">
+                <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                  <Award className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-black mb-4 text-center" style={{ color: '#FFFFFF', fontFamily: "'Inter', sans-serif", textShadow: '2px 2px 0px rgba(0, 0, 0, 0.7)', letterSpacing: '0.02em' }}>
+                  PREMIUM QUALITY
+                </h3>
+                <p className="text-center font-semibold leading-relaxed" style={{ color: '#FEF3C7', textShadow: '1px 1px 0px rgba(0, 0, 0, 0.6)', fontFamily: "'Inter', sans-serif" }}>
+                  Authentic traditional recipes perfected over 25 years
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="group">
+            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-amber-500/20 to-orange-600/20 border-2 border-amber-400/30 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 to-white/5"></div>
+              <div className="relative">
+                <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                  <Sparkles className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-black mb-4 text-center" style={{ color: '#FFFFFF', fontFamily: "'Inter', sans-serif", textShadow: '2px 2px 0px rgba(0, 0, 0, 0.7)', letterSpacing: '0.02em' }}>
+                  FESTIVAL READY
+                </h3>
+                <p className="text-center font-semibold leading-relaxed" style={{ color: '#FEF3C7', textShadow: '1px 1px 0px rgba(0, 0, 0, 0.6)', fontFamily: "'Inter', sans-serif" }}>
+                  Premium packaging perfect for gifting and celebrations
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="group">
+            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-amber-500/20 to-orange-600/20 border-2 border-amber-400/30 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 to-white/5"></div>
+              <div className="relative">
+                <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                  <Heart className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-black mb-4 text-center" style={{ color: '#FFFFFF', fontFamily: "'Inter', sans-serif", textShadow: '2px 2px 0px rgba(0, 0, 0, 0.7)', letterSpacing: '0.02em' }}>
+                  FRESH DAILY
+                </h3>
+                <p className="text-center font-semibold leading-relaxed" style={{ color: '#FEF3C7', textShadow: '1px 1px 0px rgba(0, 0, 0, 0.6)', fontFamily: "'Inter', sans-serif" }}>
+                  Made fresh every morning with finest quality ingredients
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Professional CTA */}
+        <div className="space-y-8">
+          <button
+            onClick={scrollToSweets}
+            className="group relative px-12 py-5 rounded-2xl text-xl font-black transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-2xl"
+            style={{
+              background: 'linear-gradient(135deg, #FFD700 0%, #F59E0B 30%, #D97706 70%, #92400E 100%)',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
+              color: '#FFFFFF',
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: '900',
+              textShadow: '1px 1px 0px rgba(0, 0, 0, 0.7)',
+              letterSpacing: '0.05em'
+            }}
+          >
+            <span className="relative z-10 flex items-center space-x-4">
+              <span>EXPLORE OUR COLLECTION</span>
+              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                <Sparkles className="h-5 w-5 group-hover:rotate-180 transition-transform duration-500" />
+              </div>
+            </span>
+          </button>
+        </div>
+
+        {/* Professional Festive Message */}
+        <div className="mt-20">
+          <div className="relative p-8 rounded-3xl bg-gradient-to-br from-amber-500/25 to-orange-600/25 border-2 border-amber-400/40 shadow-2xl max-w-5xl mx-auto">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/15 to-white/5"></div>
+            <div className="relative text-center">
+              <div className="text-4xl mb-4">🪔</div>
+              <p 
+                className="text-xl md:text-2xl font-bold leading-relaxed"
+                style={{ 
+                  color: '#FFFFFF',
+                  textShadow: '2px 2px 0px rgba(0, 0, 0, 0.7), 4px 4px 8px rgba(0, 0, 0, 0.5)',
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: '700',
+                  textRendering: 'optimizeLegibility',
+                  letterSpacing: '0.02em'
+                }}
+              >
+                Wishing you a Diwali filled with
+                <br />
+                <span style={{ color: '#FFD700' }}>Joy • Prosperity • Sweet Moments</span>
+              </p>
+              <div className="text-4xl mt-4">🌟</div>
+            </div>
           </div>
         </div>
       </div>

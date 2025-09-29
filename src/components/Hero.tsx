@@ -12,7 +12,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
       {/* Hero Background Image */}
       <div className="absolute inset-0">
         <img 
@@ -52,20 +52,69 @@ const Hero = () => {
         </svg>
       </div>
 
-      {/* Animated background particles */}
-      <div className="absolute inset-0 opacity-20">
+      {/* DRAMATIC Animated Background Elements - More Visible */}
+      <div className="absolute inset-0 opacity-25">
+        {/* Large Geometric floating elements */}
         {[...Array(6)].map((_, i) => (
           <div
-            key={i}
-            className="absolute animate-float"
+            key={`geometric-${i}`}
+            className="absolute animate-geometric-float"
+            style={{
+              left: `${10 + i * 15}%`,
+              top: `${15 + i * 12}%`,
+              animationDelay: `${i * 1}s`,
+              animationDuration: `${4 + Math.random() * 2}s`
+            }}
+          >
+            <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl opacity-80 shadow-2xl blur-sm"></div>
+          </div>
+        ))}
+        
+        {/* Bright orbiting elements */}
+        {[...Array(4)].map((_, i) => (
+          <div
+            key={`orbit-${i}`}
+            className="absolute animate-elegant-orbit"
+            style={{
+              left: `${20 + i * 25}%`,
+              top: `${25 + i * 15}%`,
+              animationDelay: `${i * 1.5}s`,
+              animationDuration: `${6 + i}s`
+            }}
+          >
+            <div className="w-6 h-6 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full shadow-lg blur-sm"></div>
+          </div>
+        ))}
+        
+        {/* Large Morphing shape elements */}
+        {[...Array(4)].map((_, i) => (
+          <div
+            key={`morph-${i}`}
+            className="absolute animate-morphing-shape"
+            style={{
+              left: `${15 + i * 22}%`,
+              top: `${20 + i * 15}%`,
+              animationDelay: `${i * 2}s`,
+              animationDuration: `${8 + Math.random() * 2}s`
+            }}
+          >
+            <div className="w-16 h-16 bg-gradient-to-bl from-emerald-300/60 to-teal-400/60 backdrop-blur-sm border-2 border-emerald-200/50 shadow-lg"></div>
+          </div>
+        ))}
+        
+        {/* Bright sparkle accents */}
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={`sparkle-${i}`}
+            className="absolute animate-pulse"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${i * 0.8}s`,
-              animationDuration: `${3 + Math.random() * 2}s`
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${1.5 + Math.random()}s`
             }}
           >
-            <Sparkles className="w-4 h-4 text-yellow-400" />
+            <Sparkles className="w-5 h-5 text-yellow-300" />
           </div>
         ))}
       </div>
@@ -74,34 +123,42 @@ const Hero = () => {
         <div className="max-w-6xl mx-auto">
           
           {/* Premium Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-header-bar px-8 py-4 rounded-full text-sm font-bold mb-12 shadow-2xl border border-yellow-200 hover:scale-105 transition-transform duration-300">
-            <Award className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md text-header-bar px-8 py-4 rounded-full font-sans text-sm font-semibold mb-12 shadow-2xl border border-amber-200 hover:scale-105 transition-all duration-300 tracking-wide">
+            <Award className="w-4 h-4 text-amber-600" />
             Building on Kovai Catering Legacy Since 2008
           </div>
           
           {/* Main Hero Title */}
           <div className="mb-16">
-            <h1 className="text-7xl md:text-9xl font-black mb-8 leading-none tracking-tight">
-              <span className="block text-white drop-shadow-lg text-shadow-strong">
+            <h1 className="font-display text-7xl md:text-9xl font-black mb-8 leading-none tracking-tight transform hover:scale-105 transition-all duration-500">
+              <span className="block text-transparent bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-400 bg-clip-text animate-pulse" style={{
+                textShadow: '0 4px 8px rgba(0,0,0,0.8), 0 8px 16px rgba(0,0,0,0.6), 0 2px 0 rgba(255,255,255,0.3)',
+                WebkitTextStroke: '2px rgba(255,255,255,0.8)'
+              }}>
                 Sri Nidhi
               </span>
               <span className="relative block">
                 <ScribbleUnderline variant="wavy" className="text-primary opacity-80">
-                  <span className="text-white drop-shadow-lg text-shadow-strong">
+                  <span className="text-transparent bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text animate-pulse" style={{
+                    textShadow: '0 4px 8px rgba(0,0,0,0.8), 0 8px 16px rgba(0,0,0,0.6), 0 2px 0 rgba(255,255,255,0.3)',
+                    WebkitTextStroke: '2px rgba(255,255,255,0.8)'
+                  }}>
                     Catering
                   </span>
                 </ScribbleUnderline>
                 {/* Premium underline effect */}
-                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-80 h-6 bg-gradient-to-r from-accent/60 via-gold/60 to-primary/60 rounded-full blur-sm"></div>
+                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-80 h-6 bg-gradient-to-r from-purple-500/60 via-pink-500/60 to-red-500/60 rounded-full blur-sm animate-pulse"></div>
               </span>
             </h1>
             
-            <p className="text-2xl md:text-3xl text-white mb-12 max-w-5xl mx-auto font-medium leading-relaxed drop-shadow-lg text-shadow-medium">
+            <p className="font-serif text-2xl md:text-3xl text-white mb-12 max-w-5xl mx-auto font-normal leading-relaxed" style={{
+              textShadow: '0 2px 4px rgba(0,0,0,0.8), 0 4px 8px rgba(0,0,0,0.5)'
+            }}>
               Creating extraordinary culinary experiences with 
-              <span className="text-header-bar font-bold"> premium service</span> and 
-              <span className="text-primary font-bold"> authentic flavors</span>.
+              <span className="font-display text-amber-200 font-semibold"> premium service</span> and 
+              <span className="font-display text-yellow-300 font-semibold"> authentic flavors</span>.
               <br className="hidden md:block" />
-              A unit of <span className="text-gold font-bold">Sri Nidhi Catering</span>, continuing the legacy of excellence.
+              A unit of <span className="font-display text-amber-300 font-bold">Sri Nidhi Catering</span>, continuing the legacy of excellence.
             </p>
           </div>
 
@@ -110,7 +167,7 @@ const Hero = () => {
             <Button 
               onClick={() => scrollToSection('#contact')}
               size="lg"
-              className="group btn-gradient-primary px-12 py-8 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 border-0"
+              className="group btn-gradient-primary px-12 py-8 font-sans text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 border-0 tracking-wide"
             >
               <span>Book Your Event</span>
               <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -119,7 +176,7 @@ const Hero = () => {
               onClick={() => scrollToSection('#menu')}
               variant="outline" 
               size="lg"
-              className="group border-3 border-header-bar/20 bg-white/80 backdrop-blur-sm text-header-bar hover:bg-header-bar hover:text-white px-12 py-8 text-xl font-bold rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300"
+              className="group border-3 border-white/30 bg-white/90 backdrop-blur-md text-header-bar hover:bg-amber-50 hover:border-amber-300 px-12 py-8 font-sans text-xl font-bold rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 tracking-wide"
             >
               <span>Explore Menu</span>
               <ChefHat className="ml-3 w-5 h-5 group-hover:rotate-12 transition-transform" />
@@ -136,9 +193,9 @@ const Hero = () => {
                     <ChefHat className="h-8 w-8 text-white" />
                   </div>
                   <ScribbleUnderline variant="zigzag" delay={1.5}>
-                    <h3 className="text-3xl font-black text-gray-800 mb-2">500+</h3>
+                    <h3 className="font-display text-3xl font-black text-gray-800 mb-2">500+</h3>
                   </ScribbleUnderline>
-                  <p className="text-gray-600 font-medium">Events Catered</p>
+                  <p className="font-sans text-gray-600 font-medium">Events Catered</p>
                 </div>
               </div>
             </div>
@@ -150,8 +207,8 @@ const Hero = () => {
                   <div className="bg-gradient-to-br from-header-bar to-gray-600 rounded-2xl p-4 w-16 h-16 mx-auto mb-6 shadow-lg flex items-center justify-center group-hover:rotate-6 transition-transform duration-300">
                     <Users className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-3xl font-black text-gray-800 mb-2">50,000+</h3>
-                  <p className="text-gray-600 font-medium">Happy Guests</p>
+                  <h3 className="font-display text-3xl font-black text-gray-800 mb-2">50,000+</h3>
+                  <p className="font-sans text-gray-600 font-medium">Happy Guests</p>
                 </div>
               </div>
             </div>
@@ -163,8 +220,8 @@ const Hero = () => {
                   <div className="bg-gradient-to-br from-gold to-yellow-500 rounded-2xl p-4 w-16 h-16 mx-auto mb-6 shadow-lg flex items-center justify-center group-hover:rotate-6 transition-transform duration-300">
                     <Clock className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-3xl font-black text-gray-800 mb-2">15+</h3>
-                  <p className="text-gray-600 font-medium">Years Experience</p>
+                  <h3 className="font-display text-3xl font-black text-gray-800 mb-2">15+</h3>
+                  <p className="font-sans text-gray-600 font-medium">Years Experience</p>
                 </div>
               </div>
             </div>
@@ -176,8 +233,8 @@ const Hero = () => {
                   <div className="bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl p-4 w-16 h-16 mx-auto mb-6 shadow-lg flex items-center justify-center group-hover:rotate-6 transition-transform duration-300">
                     <Award className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-3xl font-black text-gray-800 mb-2">100%</h3>
-                  <p className="text-gray-600 font-medium">Quality Assured</p>
+                  <h3 className="font-display text-3xl font-black text-gray-800 mb-2">100%</h3>
+                  <p className="font-sans text-gray-600 font-medium">Quality Assured</p>
                 </div>
               </div>
             </div>

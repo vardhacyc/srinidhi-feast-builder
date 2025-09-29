@@ -67,10 +67,28 @@ const Menu = () => {
   };
 
   return (
-    <section id="menu" className="py-24 bg-bg-neutral">
-      <div className="container mx-auto px-4">
+    <section id="menu" className="relative py-24 bg-gradient-to-br from-amber-50/30 to-bg-neutral overflow-hidden">
+      {/* Elegant floating background elements */}
+      <div className="absolute inset-0 opacity-4">
+        {[...Array(4)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute animate-ethereal-drift"
+            style={{
+              left: `${20 + i * 25}%`,
+              top: `${15 + i * 20}%`,
+              animationDelay: `${i * 3}s`,
+              animationDuration: `${12 + i * 2}s`
+            }}
+          >
+            <div className="w-20 h-20 bg-gradient-to-br from-amber-200 to-yellow-300 rounded-full opacity-25"></div>
+          </div>
+        ))}
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8">
+          <h2 className="font-display text-5xl md:text-6xl font-black text-gray-900 mb-8">
             Our{' '}
             <span className="relative inline-block">
               <ScribbleUnderline variant="wavy" delay={1.2} color="#464646">
