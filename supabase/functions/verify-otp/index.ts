@@ -67,7 +67,7 @@ const handler = async (req: Request): Promise<Response> => {
           error: "Too many attempts. Please try again later." 
         }),
         {
-          status: 429,
+          status: 200,
           headers: { "Content-Type": "application/json", ...corsHeaders },
         }
       );
@@ -97,7 +97,7 @@ const handler = async (req: Request): Promise<Response> => {
           error: "Invalid or expired OTP" 
         }),
         {
-          status: 400,
+          status: 200,
           headers: { "Content-Type": "application/json", ...corsHeaders },
         }
       );
@@ -130,11 +130,11 @@ const handler = async (req: Request): Promise<Response> => {
     console.error("Error in verify-otp function:", error);
     return new Response(
       JSON.stringify({ 
-        error: error.message || "Failed to verify OTP",
-        success: false 
+        success: false,
+        error: error.message || "Failed to verify OTP"
       }),
       {
-        status: 500,
+        status: 200,
         headers: { "Content-Type": "application/json", ...corsHeaders },
       }
     );
