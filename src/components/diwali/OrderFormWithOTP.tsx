@@ -114,8 +114,7 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
       } catch (error: any) {
         toast({
           title: "Failed to Send OTP",
-          description:
-            "Email delivery blocked by Resend test mode. Verify a domain at resend.com/domains and use a sender from it, or test using your Resend account email.",
+          description: error.message || "Please try again",
           variant: "destructive",
         });
       } finally {
@@ -206,8 +205,7 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
     } catch (error: any) {
       toast({
         title: "Failed to Resend OTP",
-        description:
-          "Email delivery blocked by Resend test mode. Verify a domain at resend.com/domains and use a sender from it, or test using your Resend account email.",
+        description: error.message || "Please try again",
         variant: "destructive",
       });
       throw error;
