@@ -89,19 +89,17 @@ const convertRowToOrder = (row: OrderRow): Order => ({
 // Order management functions
 export const orderService = {
   async createOrder(orderData: Omit<Order, 'id' | 'created_at' | 'updated_at'>) {
-    const dbData = {
-      ...orderData,
-      items: orderData.items as unknown as Json
-    };
-    
-    const { data, error } = await supabase
-      .from('orders')
-      .insert([dbData])
-      .select()
-      .single();
+    // Use Edge Function to bypass client RLS for inserts while keeping server-side validation
+    const { data, error } = await supabase.functions.invoke('create-order', {
+      body: {
+        ...orderData,
+        items: orderData.items,
+      }
+    });
 
     if (error) throw error;
-    return convertRowToOrder(data as OrderRow);
+    if (!data?.success) throw new Error(data?.error || 'Failed to create order');
+    return convertRowToOrder(data.order as OrderRow);
   },
 
   async getOrders(): Promise<Order[]> {
