@@ -166,8 +166,25 @@ const handler = async (req: Request): Promise<Response> => {
     // Check for Resend errors
     if (emailResponse.error) {
       console.error("Resend API error:", emailResponse.error);
-      throw new Error(
-        emailResponse.error.message || "Failed to send email via Resend"
+      const message = emailResponse.error.message || "Failed to send email via Resend";
+      const status = (emailResponse.error as any).statusCode ?? 500;
+
+      // Surface a friendly actionable message in dev/test mode without throwing
+      if (status === 403 && message.includes("verify a domain")) {
+        return new Response(
+          JSON.stringify({
+            success: false,
+            error: message,
+            code: "RESEND_DOMAIN_UNVERIFIED",
+            hint: "Verify your domain in Resend and use a matching 'from' address, or send to your test inbox for now."
+          }),
+          { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
+        );
+      }
+
+      return new Response(
+        JSON.stringify({ success: false, error: message }),
+        { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
 
