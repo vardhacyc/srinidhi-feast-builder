@@ -108,7 +108,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send OTP email
     const emailResponse = await resend.emails.send({
-      from: "Sri Nidhi Catering <onboarding@resend.dev>",
+      from: "Sri Nidhi Catering <sales@berk-carp.com>",
       to: [email],
       subject: "Your Order Verification Code - Sri Nidhi",
       html: `
