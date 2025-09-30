@@ -178,7 +178,7 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
         description: error.message || "Please check your code and try again",
         variant: "destructive"
       });
-      throw error;
+      // handled via toast
     } finally {
       setIsVerifyingOTP(false);
     }
@@ -208,7 +208,7 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
         description: error.message || "Please try again",
         variant: "destructive",
       });
-      throw error;
+       // handled via toast
     }
   };
 
