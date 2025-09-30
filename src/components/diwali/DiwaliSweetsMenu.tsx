@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Plus, Star, Sparkles, Crown, Leaf, Heart, Gift, Cookie } from 'lucide-react';
+import { Plus, Star, Sparkles, Crown, Leaf, Heart, Gift, Cookie, Cake, Zap } from 'lucide-react';
 import { useCart, Sweet } from '../../contexts/CartContext';
 import { Button } from '../ui/button';
-import { DELIVERY_CONFIG } from '../../config/deliveryConfig';
+import { DIWALI_MENU_DATA, CATEGORY_GROUPS, getProductsByCategory } from '../../data/diwaliMenu';
 
 const DiwaliSweetsMenu = () => {
   const { addToCart } = useCart();
@@ -10,199 +10,38 @@ const DiwaliSweetsMenu = () => {
 
   const sweetCategories = [
     { id: 'all', name: 'All Items', icon: Sparkles, color: 'hsl(var(--diwali-gold))' },
-    { id: 'diwali-sweets', name: 'Diwali Sweets', icon: Star, color: 'hsl(var(--diwali-amber))' },
-    { id: 'ghee-sweets', name: 'Ghee Sweets', icon: Heart, color: 'hsl(var(--diwali-bright))' },
-    { id: 'special-ghee', name: 'Special Ghee', icon: Crown, color: 'hsl(var(--diwali-bronze))' },
-    { id: 'dryfruit', name: 'Dryfruit', icon: Leaf, color: 'hsl(var(--diwali-muted))' },
-    { id: 'assorted', name: 'Assorted', icon: Gift, color: 'hsl(var(--diwali-gold))' },
-    { id: 'savouries', name: 'Savouries', icon: Cookie, color: 'hsl(var(--diwali-dark))' }
+    { id: 'Dry Fruit Sweets', name: 'Dry Fruit Sweets', icon: Leaf, color: 'hsl(var(--diwali-bronze))' },
+    { id: 'Ghee Sweets', name: 'Ghee Sweets', icon: Heart, color: 'hsl(var(--diwali-bright))' },
+    { id: 'Premium Cakes & Sweets', name: 'Premium Cakes', icon: Cake, color: 'hsl(var(--diwali-amber))' },
+    { id: 'Bites', name: 'Bites', icon: Zap, color: 'hsl(var(--diwali-gold))' },
+    { id: 'Milk Sweets', name: 'Milk Sweets', icon: Star, color: 'hsl(var(--diwali-bright))' },
+    { id: 'Savouries', name: 'Savouries', icon: Cookie, color: 'hsl(var(--diwali-dark))' },
+    { id: 'Assorted & Combo Gift Boxes', name: 'Gift Boxes', icon: Gift, color: 'hsl(var(--diwali-gold))' }
   ];
 
-  // Helper function to calculate price with GST
-  const calculatePriceWithGST = (basePrice: number, category: string) => {
-    const gstRate = category === 'savouries' ? DELIVERY_CONFIG.gstRates.savouries : DELIVERY_CONFIG.gstRates.sweets;
-    const gstAmount = (basePrice * gstRate) / 100;
-    return {
-      basePrice,
-      gstRate,
-      gstAmount: Math.round(gstAmount),
-      finalPrice: Math.round(basePrice + gstAmount)
-    };
+  // Convert menu data to Sweet format for cart compatibility
+  const convertToSweets = (): Sweet[] => {
+    const allSweets: Sweet[] = [];
+    
+    DIWALI_MENU_DATA.categories.forEach(category => {
+      category.products.forEach(product => {
+        if (product.price) {
+          allSweets.push({
+            id: product.id,
+            name: product.name,
+            description: product.description || `Premium ${product.name}`,
+            price: product.price,
+            image: product.image || '/placeholder-sweet.jpg',
+            category: category.name
+          });
+        }
+      });
+    });
+    
+    return allSweets;
   };
 
-  const sweetsData: Sweet[] = [
-    // Diwali Sweets Menu with Base Prices (GST will be added)
-    {
-      id: 'laddu',
-      name: 'Laddu',
-      description: 'Traditional round sweets made with flour, ghee and sugar',
-      price: 600,
-      image: '/lovable-uploads/ladoo.png',
-      category: 'diwali-sweets'
-    },
-    {
-      id: 'badhusha',
-      name: 'Badhusha',
-      description: 'Flaky, layered sweet pastry soaked in sugar syrup',
-      price: 600,
-      image: '/lovable-uploads/badusha.jpg',
-      category: 'diwali-sweets'
-    },
-    {
-      id: 'mysorepak',
-      name: 'Mysorepak',
-      description: 'Rich, buttery sweet from Karnataka made with ghee',
-      price: 600,
-      image: '/lovable-uploads/MysorePak.png',
-      category: 'diwali-sweets'
-    },
-    {
-      id: 'bombay-halwa',
-      name: 'Bombay Halwa',
-      description: 'Colorful, translucent sweet made with corn flour',
-      price: 600,
-      image: '/lovable-uploads/bombay_halwa.webp',
-      category: 'diwali-sweets'
-    },
-    {
-      id: 'gulkandh-burfi',
-      name: 'Gulkandh Burfi',
-      description: 'Rose petal preserve flavored milk fudge squares',
-      price: 600,
-      image: '/lovable-uploads/3f9c1eba-d27c-4ca8-bff6-452efdb026dd.png',
-      category: 'diwali-sweets'
-    },
-
-    // Ghee Sweets (₹650/kg)
-    {
-      id: 'special-laddu',
-      name: 'Special Laddu',
-      description: 'Premium laddus made with pure ghee and finest ingredients',
-      price: 650,
-      image: '/lovable-uploads/ladoo.png',
-      category: 'ghee-sweets'
-    },
-    {
-      id: 'carrot-mysore-pak',
-      name: 'Carrot Mysore Pak',
-      description: 'Traditional Mysore Pak enhanced with fresh carrots',
-      price: 650,
-      image: '/lovable-uploads/CarrotMysorePak.webp',
-      category: 'ghee-sweets'
-    },
-    {
-      id: 'dry-fruit-halwa',
-      name: 'Dry Fruit Halwa',
-      description: 'Rich halwa loaded with assorted dry fruits and ghee',
-      price: 650,
-      image: '/lovable-uploads/DryFruitHalwa',
-      category: 'ghee-sweets'
-    },
-    {
-      id: 'besan-burfi',
-      name: 'Besan Burfi',
-      description: 'Classic gram flour fudge squares made with pure ghee',
-      price: 650,
-      image: '/lovable-uploads/BesanBurfi.jpg',
-      category: 'ghee-sweets'
-    },
-
-    // Special Ghee (₹700/kg)
-    {
-      id: 'ghee-khoha-burfi',
-      name: 'Ghee Khoha Burfi',
-      description: 'Premium milk solid squares enriched with pure ghee',
-      price: 700,
-      image: '/lovable-uploads/ghee-khoha-burfi.jpg',
-      category: 'special-ghee'
-    },
-    {
-      id: 'ghee-burfi',
-      name: 'Ghee Burfi',
-      description: 'Rich, melt-in-mouth squares made with premium ghee',
-      price: 700,
-      image: '/lovable-uploads/ghee-burfi.jpg',
-      category: 'special-ghee'
-    },
-
-    // Dryfruit (₹800/kg)
-    {
-      id: 'dryfruit-burfi',
-      name: 'Dryfruit Burfi',
-      description: 'Luxurious squares packed with premium nuts and dry fruits',
-      price: 800,
-      image: '/lovable-uploads/dryfruit-burfi.jpg',
-      category: 'dryfruit'
-    },
-    {
-      id: 'dryfruit-laddu',
-      name: 'Dryfruit Laddu',
-      description: 'Premium round sweets loaded with assorted dry fruits',
-      price: 800,
-      image: '/lovable-uploads/dryfruit-laddu.jpg',
-      category: 'dryfruit'
-    },
-
-    // Assorted Sweets (Special Mix)
-    {
-      id: 'assorted-box-500g',
-      name: 'Assorted Sweet Box (500g)',
-      description: 'Curated selection of our finest sweets - perfect for gifting',
-      price: 450,
-      image: '/placeholder-sweet.jpg',
-      category: 'assorted'
-    },
-    {
-      id: 'assorted-box-1kg',
-      name: 'Assorted Sweet Box (1kg)',
-      description: 'Premium collection of assorted traditional sweets',
-      price: 850,
-      image: '/placeholder-sweet.jpg',
-      category: 'assorted'
-    },
-
-    // Savouries
-    {
-      id: 'butter-murukku',
-      name: 'Butter Murukku',
-      description: 'Crispy spiral snacks made with butter',
-      price: 400,
-      image: '/lovable-uploads/butter-murukku.webp',
-      category: 'savouries'
-    },
-    {
-      id: 'ragi-pakoda',
-      name: 'Ragi Pakoda',
-      description: 'Healthy finger millet fritters',
-      price: 400,
-      image: '/lovable-uploads/RagiPakoda.jpg',
-      category: 'savouries'
-    },
-    {
-      id: 'ribbon-pakoda',
-      name: 'Ribbon Pakoda',
-      description: 'Ribbon-shaped crispy savory snacks',
-      price: 400,
-      image: '/lovable-uploads/ribbon-pakoda.jpg',
-      category: 'savouries'
-    },
-    {
-      id: 'assorted-bites-10',
-      name: 'Assorted Bites (10 pcs)',
-      description: 'Mixed savory bites - pack of 10 pieces',
-      price: 350,
-      image: '/placeholder-sweet.jpg',
-      category: 'savouries'
-    },
-    {
-      id: 'assorted-bites-25',
-      name: 'Assorted Bites (25 pcs)',
-      description: 'Mixed savory bites - pack of 25 pieces',
-      price: 700,
-      image: '/placeholder-sweet.jpg',
-      category: 'savouries'
-    }
-  ];
+  const sweetsData = convertToSweets();
 
   const filteredSweets = selectedCategory === 'all' 
     ? sweetsData 
@@ -261,12 +100,36 @@ const DiwaliSweetsMenu = () => {
         </div>
       </div>
 
-      {/* Sweets Grid - Outside luxury section */}
-      <div className="container mx-auto px-6 mt-12">
+      {/* Menu Section Header */}
+      <div className="container mx-auto px-6 mt-8">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold mb-4" style={{ color: 'hsl(var(--diwali-dark))' }}>
+            {selectedCategory === 'all' ? 'Complete Diwali Collection' : selectedCategory}
+          </h2>
+          {selectedCategory !== 'all' && (
+            <p className="text-lg mb-4" style={{ color: 'hsl(var(--diwali-text))' }}>
+              {DIWALI_MENU_DATA.categories.find(cat => cat.name === selectedCategory)?.products.length || 0} items available
+            </p>
+          )}
+          
+          {/* Menu Notes */}
+          <div className="bg-amber-50/80 backdrop-blur-sm rounded-xl p-4 max-w-4xl mx-auto border-2 border-amber-200">
+            <div className="space-y-2 text-sm">
+              {DIWALI_MENU_DATA.meta.notes.map((note, index) => (
+                <p key={index} className="text-amber-800 font-medium">
+                  {index === 0 && "📦 "}{index === 1 && "₹ "}{index === 2 && "🎁 "}{index === 3 && "🚚 "}
+                  {note}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Sweets Grid */}
+      <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filteredSweets.map((sweet) => {
-            const priceInfo = calculatePriceWithGST(sweet.price, sweet.category);
-            
             return (
               <div
                 key={sweet.id}
@@ -277,6 +140,10 @@ const DiwaliSweetsMenu = () => {
                     src={sweet.image}
                     alt={sweet.name}
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    onError={(e) => {
+                      const img = e.target as HTMLImageElement;
+                      img.src = '/placeholder-sweet.jpg';
+                    }}
                   />
                   <div className="absolute top-4 right-4">
                     <div className="diwali-badge px-2 py-1 rounded-full text-xs font-medium">
@@ -293,20 +160,37 @@ const DiwaliSweetsMenu = () => {
                   <p className="text-sm mb-4" style={{ color: 'hsl(var(--diwali-text))' }}>
                     {sweet.description}
                   </p>
+                  
+                  {/* Show selection details for gift boxes */}
+                  {(sweet.name.includes('Royal') || sweet.name.includes('Supreme') || sweet.name.includes('Grandeur')) && (
+                    <div className="mb-3 p-2 bg-amber-50 rounded-lg border border-amber-200">
+                      <p className="text-xs font-semibold text-amber-800 mb-1">Includes:</p>
+                      <p className="text-xs text-amber-700">
+                        {sweet.name.includes('Royal') && DIWALI_MENU_DATA.selections.Royal.items.join(', ')}
+                        {sweet.name.includes('Supreme') && DIWALI_MENU_DATA.selections.Supreme.items.join(', ')}
+                        {sweet.name.includes('Grandeur') && DIWALI_MENU_DATA.selections.Grandeur.items.join(', ')}
+                      </p>
+                    </div>
+                  )}
 
-                  <div className="space-y-2 mb-4">
-                    <div className="flex justify-between items-center text-sm">
-                      <span style={{ color: 'hsl(var(--diwali-subtle))' }}>Base Price:</span>
-                      <span className="font-medium" style={{ color: 'hsl(var(--diwali-text))' }}>₹{priceInfo.basePrice}/kg</span>
-                    </div>
-                    <div className="flex justify-between items-center text-sm">
-                      <span style={{ color: 'hsl(var(--diwali-subtle))' }}>GST ({priceInfo.gstRate}%):</span>
-                      <span className="font-medium" style={{ color: 'hsl(var(--diwali-text))' }}>₹{priceInfo.gstAmount}</span>
-                    </div>
-                    <div className="flex justify-between items-center text-lg font-bold border-t pt-2" style={{ borderColor: 'hsla(var(--diwali-gold), 0.3)', color: 'hsl(var(--diwali-bronze))' }}>
-                      <span>Final Price:</span>
-                      <span>₹{priceInfo.finalPrice}/kg</span>
-                    </div>
+                  <div className="mb-4">
+                    {sweet.price ? (
+                      <>
+                        <div className="flex justify-between items-center text-xl font-bold" style={{ color: 'hsl(var(--diwali-bronze))' }}>
+                          <span>Price:</span>
+                          <span>
+                            ₹{sweet.price}/
+                            {sweet.category === 'Bites' || sweet.name.includes('pcs') || sweet.name.includes('Box') ? 'box' : 'kg'}
+                          </span>
+                        </div>
+                        <p className="text-xs text-center mt-2" style={{ color: 'hsl(var(--diwali-subtle))' }}>*GST will be added at checkout</p>
+                      </>
+                    ) : (
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-amber-600 mb-2">Price on Availability</div>
+                        <p className="text-xs" style={{ color: 'hsl(var(--diwali-subtle))' }}>Contact us for pricing</p>
+                      </div>
+                    )}
                   </div>
 
                   <Button

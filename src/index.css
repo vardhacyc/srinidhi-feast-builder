@@ -1275,6 +1275,17 @@ All colors MUST be HSL.
     padding-left: max(1rem, env(safe-area-inset-left));
   }
 
+  /* Mobile alignment improvements */
+  .mobile-cart-container {
+    position: relative;
+    z-index: 20;
+  }
+
+  .mobile-cart-notification {
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+    border: 2px solid white;
+  }
+
   @media (max-width: 768px) {
     .diwali-btn {
       min-width: 48px;

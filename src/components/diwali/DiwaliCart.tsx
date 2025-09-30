@@ -180,14 +180,18 @@ Order ID: ${Date.now()}`;
           <div className="p-6">
             <div className="space-y-4">
               {cart.map(item => (
-                <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl hover:scale-102 transition-all duration-300 shadow-sm" style={{ background: 'hsla(var(--diwali-cream), 0.9)', border: '1px solid hsla(var(--diwali-gold), 0.3)'}}>
+                <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-4 rounded-xl hover:scale-102 transition-all duration-300 shadow-sm" style={{ background: 'hsla(var(--diwali-cream), 0.9)', border: '1px solid hsla(var(--diwali-gold), 0.3)'}}>
                   {/* Top row for mobile: Image and basic info */}
                   <div className="flex items-center gap-3 w-full sm:w-auto">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden flex-shrink-0">
+                    <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                       <img 
                         src={item.image} 
                         alt={item.name}
                         className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const img = e.target as HTMLImageElement;
+                          img.src = '/placeholder-sweet.jpg';
+                        }}
                       />
                     </div>
                     <div className="flex-1 min-w-0">
