@@ -69,25 +69,25 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
   const maskedEmail = email.replace(/(.{2})(.*)(@.*)/, '$1****$3');
 
   return (
-    <div className="diwali-glass-card rounded-3xl p-6 md:p-8 max-w-md mx-auto">
+    <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 md:p-8 max-w-md mx-auto border-2 border-amber-400 shadow-2xl">
       <div className="text-center mb-8">
-        <div className="w-16 h-16 bg-gradient-to-r from-diwali-gold to-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
           <Shield className="h-8 w-8 text-white" />
         </div>
-        <h2 className="text-2xl font-bold diwali-text-gradient mb-2">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">
           OTP Verification
         </h2>
-        <p className="text-diwali-text text-sm">
+        <p className="text-gray-700 text-sm font-medium">
           We've sent a 6-digit code to
         </p>
-        <p className="font-semibold text-diwali-dark">
+        <p className="font-bold text-gray-900">
           {maskedEmail}
         </p>
         <Button
           type="button"
           variant="ghost"
           onClick={onBack}
-          className="text-sm text-diwali-gold hover:text-amber-600 mt-2"
+          className="text-sm text-amber-700 hover:text-amber-900 mt-2 font-medium hover:bg-amber-100"
         >
           ← Change Email
         </Button>
@@ -95,7 +95,7 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <Label htmlFor="otp" className="text-diwali-dark font-medium">
+          <Label htmlFor="otp" className="text-gray-900 font-bold text-sm">
             Enter OTP *
           </Label>
           <Input
@@ -104,7 +104,7 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
             value={otp}
             onChange={(e) => handleOTPChange(e.target.value)}
             placeholder="Enter 6-digit OTP"
-            className="mt-2 text-center text-2xl font-mono tracking-widest diwali-glass border-diwali-gold/30 focus:border-diwali-gold"
+            className="mt-2 text-center text-2xl font-mono tracking-widest bg-white border-2 border-amber-400 focus:border-amber-600 text-gray-900 placeholder:text-gray-500 font-bold shadow-inner"
             maxLength={6}
             disabled={isVerifying}
             autoComplete="one-time-code"
@@ -117,7 +117,7 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
         <Button
           type="submit"
           disabled={otp.length !== 6 || isVerifying}
-          className="w-full bg-gradient-to-r from-diwali-gold to-amber-500 hover:from-amber-500 hover:to-diwali-gold text-white font-bold py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50"
+          className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 shadow-lg"
         >
           {isVerifying ? (
             <>
@@ -131,7 +131,7 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
 
         <div className="text-center">
           {!canResend ? (
-            <p className="text-sm text-diwali-subtle">
+            <p className="text-sm text-gray-700 font-medium">
               Resend OTP in {formatTime(timeLeft)}
             </p>
           ) : (
@@ -140,7 +140,7 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
               variant="ghost"
               onClick={handleResend}
               disabled={isResending}
-              className="text-diwali-gold hover:text-amber-600 hover:bg-diwali-gold/10"
+              className="text-amber-700 hover:text-amber-900 hover:bg-amber-100 font-medium"
             >
               {isResending ? (
                 <>
@@ -158,8 +158,8 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
         </div>
       </form>
 
-      <div className="mt-6 p-4 diwali-glass-card rounded-xl border border-blue-400/30">
-        <p className="text-xs text-diwali-dark leading-relaxed">
+      <div className="mt-6 p-4 bg-blue-50 rounded-xl border-2 border-blue-200">
+        <p className="text-xs text-blue-900 font-medium leading-relaxed">
           🔒 <strong>Security Note:</strong> This OTP is valid for 5 minutes. 
           Don't share it with anyone. Our team will never ask for your OTP.
         </p>
