@@ -213,12 +213,12 @@ const DiwaliSweetsMenu = () => {
                   {/* Price */}
                   <div className="mb-4">
                     {sweet.price ? (
-                      <div className="flex items-center justify-between">
+                      <div className="text-left">
                         <span className="text-2xl font-bold text-amber-900">
                           ₹{sweet.price}
-                        </span>
-                        <span className="text-sm text-amber-600 font-medium">
-                          /{sweet.category === 'Bites' || sweet.name.includes('pcs') || sweet.name.includes('Box') ? 'box' : 'kg'}
+                          <span className="text-sm text-amber-600 font-medium ml-1">
+                            /{sweet.category === 'Bites' || sweet.name.includes('pcs') || sweet.name.includes('Box') ? 'box' : 'kg'}
+                          </span>
                         </span>
                       </div>
                     ) : (

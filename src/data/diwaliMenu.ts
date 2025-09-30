@@ -235,36 +235,48 @@ export const DIWALI_MENU_DATA: MenuData = {
         {
           "id": "SN202519",
           "name": "Mewa Bites",
+          "price": 80,
+          "unit": "piece",
           "description": "Premium mixed dry fruit bites",
           "image": "/lovable-uploads/mewa-bites.jpg"
         },
         {
           "id": "SN202520",
           "name": "Rose Bites",
+          "price": 75,
+          "unit": "piece",
           "description": "Delicate rose-flavored bite-sized sweets",
           "image": "/lovable-uploads/rose-bites.jpg"
         },
         {
           "id": "SN202521",
           "name": "Orange Bites",
+          "price": 75,
+          "unit": "piece",
           "description": "Citrusy orange-flavored sweet bites",
           "image": "/lovable-uploads/orange-bites.jpg"
         },
         {
           "id": "SN202522",
           "name": "Mango Bites",
+          "price": 75,
+          "unit": "piece",
           "description": "Tropical mango-flavored sweet treats",
           "image": "/lovable-uploads/mango-bites.jpg"
         },
         {
           "id": "SN202523",
           "name": "Kesar Pista Bites",
+          "price": 85,
+          "unit": "piece",
           "description": "Saffron and pistachio flavored premium bites",
           "image": "/lovable-uploads/kesar-pista-bites.jpg"
         },
         {
           "id": "SN202524",
           "name": "Chocolate Bites",
+          "price": 70,
+          "unit": "piece",
           "description": "Rich chocolate flavored sweet bites",
           "image": "/lovable-uploads/chocolate-bites.jpg"
         },

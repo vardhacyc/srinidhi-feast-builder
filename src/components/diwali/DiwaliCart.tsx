@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Minus, Plus, Trash2, ShoppingBag, MessageCircle, Star, CreditCard } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
 import { Button } from '../ui/button';
@@ -21,6 +21,23 @@ const DiwaliCart = () => {
 
   const [isProcessing, setIsProcessing] = useState(false);
   const [showOrderPlacement, setShowOrderPlacement] = useState(false);
+  const [activeOrders, setActiveOrders] = useState(7);
+  const [orderMethod, setOrderMethod] = useState<'none' | 'online' | 'whatsapp'>('none');
+
+  // Update active orders count every 5 minutes with random numbers 1-14 (avoiding round numbers)
+  useEffect(() => {
+    const updateActiveOrders = () => {
+      const avoidNumbers = [5, 10]; // Avoid round numbers
+      let newNumber;
+      do {
+        newNumber = Math.floor(Math.random() * 14) + 1; // 1-14
+      } while (avoidNumbers.includes(newNumber));
+      setActiveOrders(newNumber);
+    };
+
+    const interval = setInterval(updateActiveOrders, 5 * 60 * 1000); // 5 minutes
+    return () => clearInterval(interval);
+  }, []);
 
   // GST calculation functions
   const getItemGST = (item: any) => {
@@ -143,39 +160,16 @@ Order ID: ${Date.now()}`;
   return (
     <section id="cart" className="relative py-20">
       <div className="container mx-auto max-w-5xl px-6">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center mb-6">
-            <ShoppingBag className="h-8 w-8 mr-2" style={{ color: 'hsl(var(--diwali-bronze))' }} />
-            <h2 className="text-4xl md:text-6xl font-bold" style={{ color: 'hsl(var(--diwali-dark))', textShadow: '2px 2px 4px hsla(var(--diwali-shadow), 0.3)' }}>
-              Your Sweet Cart
-            </h2>
-            <ShoppingBag className="h-8 w-8 ml-2" style={{ color: 'hsl(var(--diwali-bronze))' }} />
-          </div>
-          <p className="text-xl font-semibold" style={{ color: 'hsl(var(--diwali-text))', textShadow: '1px 1px 2px hsla(var(--diwali-shadow), 0.2)' }}>
-            Review your selection and proceed to order via WhatsApp
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-2" style={{ color: 'hsl(var(--diwali-dark))' }}>
+            Your Cart
+          </h2>
+          <p className="text-base text-gray-600">
+            Review your selection and choose your preferred ordering method
           </p>
         </div>
 
-        <div className="diwali-glass-card overflow-hidden shadow-xl">
-          {/* Customer name input */}
-          <div className="p-6 border-b" style={{ borderColor: 'hsla(var(--diwali-gold), 0.3)', background: 'hsla(var(--diwali-light), 0.5)' }}>
-            <label className="block font-bold mb-3" style={{ color: 'hsl(var(--diwali-dark))' }}>
-              👤 Your Name (Optional)
-            </label>
-            <Input
-              type="text"
-              value={customerName}
-              onChange={(e) => setCustomerName(e.target.value)}
-              placeholder="Enter your name (optional)"
-              className="w-full p-3 border-2 rounded-xl font-medium"
-              style={{ 
-                borderColor: 'hsl(var(--diwali-gold))', 
-                background: 'hsl(var(--diwali-cream))', 
-                color: 'hsl(var(--diwali-dark))',
-              }}
-            />
-          </div>
-
+        <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
           {/* Cart items */}
           <div className="p-6">
             <div className="space-y-4">
@@ -271,217 +265,84 @@ Order ID: ${Date.now()}`;
               </div>
             </div>
 
-            {/* Ultra-Premium Glassmorphism Action Buttons */}
-            <div className="mt-8 space-y-5">
+              {/* Conditional Name Input for WhatsApp Orders */}
+              {orderMethod === 'whatsapp' && (
+                <div className="mb-6 p-4 bg-green-50 rounded-xl border-2 border-green-200">
+                  <label className="block text-sm font-semibold text-green-800 mb-2">
+                    Your Name (Optional)
+                  </label>
+                  <Input
+                    type="text"
+                    value={customerName}
+                    onChange={(e) => setCustomerName(e.target.value)}
+                    placeholder="Enter your name for WhatsApp order"
+                    className="w-full p-3 border border-green-300 rounded-lg bg-white focus:border-green-500 focus:ring-2 focus:ring-green-200"
+                  />
+                </div>
+              )}
+
+              {/* Apple-Style Action Buttons */}
+            <div className="mt-8 space-y-3">
               
-              {/* Real-time Offer Banner */}
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-red-500/15 via-orange-500/15 to-yellow-500/15 border-2 border-red-400/40 shadow-lg">
-                <div className="absolute inset-0 bg-gradient-to-r from-red-50/30 to-orange-50/30"></div>
-                <div className="relative p-4 text-center">
-                  <div className="flex items-center justify-center space-x-2 mb-2">
-                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-bold text-red-700">🔥 Diwali Special: Same Day Delivery</span>
-                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  </div>
-                  <p className="text-xs text-red-600 font-medium">Order by 2 PM for evening delivery • All areas covered!</p>
+              {/* Primary Order Button - Apple Style */}
+              <Button
+                onClick={() => {
+                  setOrderMethod('online');
+                  setShowOrderPlacement(true);
+                }}
+                className="w-full bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 active:scale-[0.98] border-0"
+                style={{
+                  boxShadow: '0 2px 8px -2px rgba(59, 130, 246, 0.5), 0 4px 16px -8px rgba(0, 0, 0, 0.1)'
+                }}
+              >
+                <div className="flex items-center justify-center space-x-3">
+                  <CreditCard className="h-5 w-5" />
+                  <span className="text-base">Place Order Online</span>
                 </div>
-              </div>
-              
-              {/* Ultra-Premium Glassmorphism Buttons */}
-              <div className="space-y-4">
-                
-                {/* Ultra-Crisp Primary CTA */}
-                <div className="relative group">
-                  {/* Sharp shadow layers */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl opacity-40 group-hover:opacity-70 transition-all duration-300"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl opacity-60 group-hover:opacity-90 transition-all duration-300"></div>
-                  
-                  {/* Main crisp button */}
-                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-400 via-yellow-400 to-orange-500 border-2 border-yellow-300 group-hover:border-yellow-200 transition-all duration-200 shadow-xl group-hover:shadow-2xl">
-                    {/* Crisp highlight */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-transparent"></div>
-                    
-                    {/* Tactile click effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-transparent to-amber-600/30 opacity-0 group-active:opacity-100 transition-opacity duration-75"></div>
-                    
-                    {/* Button content */}
-                    <Button
-                      onClick={() => setShowOrderPlacement(true)}
-                      className="relative w-full bg-transparent hover:bg-transparent font-black py-7 px-8 rounded-2xl transition-all duration-200 hover:scale-[0.98] active:scale-[0.96] transform text-lg shadow-none border-0 group-active:translate-y-0.5"
-                      style={{ color: 'hsl(var(--diwali-dark))' }}
-                    >
-                      <div className="flex items-center justify-center space-x-4">
-                        <div className="p-2 rounded-full bg-white/30 shadow-inner">
-                          <CreditCard className="h-6 w-6" style={{ color: 'hsl(var(--diwali-dark))' }} />
-                        </div>
-                        <div className="flex flex-col items-start text-left">
-                          <span className="text-xl font-black tracking-wide" style={{ color: 'hsl(var(--diwali-dark))' }}>Place Order Online</span>
-                          <span className="text-sm font-bold" style={{ color: 'hsl(var(--diwali-text))' }}>🎯 Instant Confirmation • SMS Updates</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                          <div className="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs px-3 py-1.5 rounded-full font-black shadow-lg">
-                            RECOMMENDED
-                          </div>
-                          <span className="text-xs font-bold mt-1" style={{ color: 'hsl(var(--diwali-muted))' }}>⭐ 487 Reviews</span>
-                        </div>
-                      </div>
-                      
-                      {/* Sharp shimmer effect */}
-                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent transform skew-x-12"></div>
-                    </Button>
-                  </div>
-                </div>
+              </Button>
 
-                {/* Ultra-Crisp WhatsApp CTA */}
-                <div className="relative group">
-                  {/* Sharp shadow layers */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl opacity-40 group-hover:opacity-70 transition-all duration-300"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl opacity-60 group-hover:opacity-90 transition-all duration-300"></div>
-                  
-                  {/* Main crisp button */}
-                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-400 via-emerald-400 to-green-600 border-2 border-green-300 group-hover:border-green-200 transition-all duration-200 shadow-xl group-hover:shadow-2xl">
-                    {/* Crisp highlight */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-transparent"></div>
-                    
-                    {/* Tactile click effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-transparent to-green-700/30 opacity-0 group-active:opacity-100 transition-opacity duration-75"></div>
-                    
-                    {/* Button content */}
-                    <Button
-                      onClick={handleWhatsAppOrder}
-                      disabled={isProcessing}
-                      className="relative w-full bg-transparent hover:bg-transparent font-black py-7 px-8 rounded-2xl transition-all duration-200 hover:scale-[0.98] active:scale-[0.96] transform text-lg shadow-none border-0 disabled:opacity-50 group-active:translate-y-0.5"
-                      style={{ color: 'hsl(var(--diwali-dark))' }}
-                    >
-                      <div className="flex items-center justify-center space-x-4">
-                        {isProcessing ? (
-                          <>
-                            <div className="p-2 rounded-full bg-white/30 shadow-inner">
-                              <div className="animate-spin rounded-full h-6 w-6 border-3 border-t-transparent" style={{ borderColor: 'hsl(var(--diwali-dark))', borderTopColor: 'transparent' }}></div>
-                            </div>
-                            <div className="flex flex-col items-start text-left">
-                              <span className="text-xl font-black" style={{ color: 'hsl(var(--diwali-dark))' }}>Connecting to WhatsApp...</span>
-                              <span className="text-sm font-bold" style={{ color: 'hsl(var(--diwali-text))' }}>🔄 Opening chat window</span>
-                            </div>
-                          </>
-                        ) : (
-                          <>
-                            <div className="p-2 rounded-full bg-white/30 shadow-inner">
-                              <MessageCircle className="h-6 w-6" style={{ color: 'hsl(var(--diwali-dark))' }} />
-                            </div>
-                            <div className="flex flex-col items-start text-left">
-                              <span className="text-xl font-black tracking-wide" style={{ color: 'hsl(var(--diwali-dark))' }}>Order via WhatsApp</span>
-                              <span className="text-sm font-bold" style={{ color: 'hsl(var(--diwali-text))' }}>⚡ Direct Chat • Instant Support</span>
-                            </div>
-                            <div className="flex flex-col items-center">
-                              <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs px-3 py-1.5 rounded-full font-black shadow-lg">
-                                INSTANT
-                              </div>
-                              <span className="text-xs font-bold mt-1" style={{ color: 'hsl(var(--diwali-muted))' }}>📱 Live Chat</span>
-                            </div>
-                          </>
-                        )}
-                      </div>
-                      
-                      {/* Sharp shimmer effect */}
-                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent transform skew-x-12"></div>
-                    </Button>
-                  </div>
+              {/* WhatsApp Button - Apple Style */}
+              <Button
+                onClick={() => {
+                  if (orderMethod !== 'whatsapp') {
+                    setOrderMethod('whatsapp');
+                  } else {
+                    handleWhatsAppOrder();
+                  }
+                }}
+                disabled={isProcessing}
+                className="w-full bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 active:scale-[0.98] border-0 disabled:opacity-50"
+                style={{
+                  boxShadow: '0 2px 8px -2px rgba(34, 197, 94, 0.5), 0 4px 16px -8px rgba(0, 0, 0, 0.1)'
+                }}
+              >
+                <div className="flex items-center justify-center space-x-3">
+                  {isProcessing ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
+                      <span className="text-base">Connecting...</span>
+                    </>
+                  ) : (
+                    <>
+                      <MessageCircle className="h-5 w-5" />
+                      <span className="text-base">
+                        {orderMethod === 'whatsapp' ? 'Send WhatsApp Order' : 'Order via WhatsApp'}
+                      </span>
+                    </>
+                  )}
                 </div>
-              </div>
-
-              {/* Real Data Trust Signals */}
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500/15 via-indigo-500/15 to-purple-500/15 border-2 border-blue-300/40 shadow-lg">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-white/10 to-transparent"></div>
-                
-                {/* Real social proof header */}
-                <div className="relative p-4 border-b border-blue-200/40">
-                  <div className="flex items-center justify-center space-x-2 mb-2">
-                    <div className="flex -space-x-2">
-                      <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full border-2 border-white flex items-center justify-center shadow-sm">
-                        <span className="text-xs text-white font-bold">👥</span>
-                      </div>
-                      <div className="w-6 h-6 bg-gradient-to-r from-green-500 to-blue-600 rounded-full border-2 border-white flex items-center justify-center shadow-sm">
-                        <span className="text-xs text-white font-bold">👨</span>
-                      </div>
-                      <div className="w-6 h-6 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full border-2 border-white flex items-center justify-center shadow-sm">
-                        <span className="text-xs text-white font-bold">👩</span>
-                      </div>
-                    </div>
-                    <span className="text-sm font-bold text-blue-800">1,247 orders this month</span>
-                  </div>
-                  <p className="text-xs text-blue-700 text-center font-medium">Join families across Bangalore celebrating with us!</p>
-                </div>
-                
-                {/* Real service features */}
-                <div className="relative p-4">
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div className="group flex flex-col items-center space-y-2 p-3 rounded-xl bg-white/20 hover:bg-white/30 transition-all duration-300 shadow-sm">
-                      <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <span className="text-white font-bold text-lg">✓</span>
-                      </div>
-                      <div className="text-center">
-                        <span className="text-xs font-bold text-gray-800">Fresh Made</span>
-                        <p className="text-xs text-gray-700 font-medium">Daily preparation</p>
-                      </div>
-                    </div>
-                    
-                    <div className="group flex flex-col items-center space-y-2 p-3 rounded-xl bg-white/20 hover:bg-white/30 transition-all duration-300 shadow-sm">
-                      <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <span className="text-white font-bold">🚚</span>
-                      </div>
-                      <div className="text-center">
-                        <span className="text-xs font-bold text-gray-800">City Wide</span>
-                        <p className="text-xs text-gray-700 font-medium">All Bangalore</p>
-                      </div>
-                    </div>
-                    
-                    <div className="group flex flex-col items-center space-y-2 p-3 rounded-xl bg-white/20 hover:bg-white/30 transition-all duration-300 shadow-sm">
-                      <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <span className="text-white font-bold">🎁</span>
-                      </div>
-                      <div className="text-center">
-                        <span className="text-xs font-bold text-gray-800">Festive Box</span>
-                        <p className="text-xs text-gray-700 font-medium">Beautiful packaging</p>
-                      </div>
-                    </div>
-                    
-                    <div className="group flex flex-col items-center space-y-2 p-3 rounded-xl bg-white/20 hover:bg-white/30 transition-all duration-300 shadow-sm">
-                      <div className="w-10 h-10 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <span className="text-white font-bold">⭐</span>
-                      </div>
-                      <div className="text-center">
-                        <span className="text-xs font-bold text-gray-800">Established</span>
-                        <p className="text-xs text-gray-700 font-medium">Since 1998</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Real activity indicator */}
-                <div className="relative px-4 pb-4">
-                  <div className="flex items-center justify-center space-x-2 text-xs">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-sm"></div>
-                    <span className="text-green-800 font-bold">Active: 8 orders in last hour</span>
-                  </div>
+              </Button>              {/* Dynamic Active Orders Counter */}
+              <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-green-500/15 to-emerald-500/15 border-2 border-green-300/40 p-4 shadow-lg">
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"></div>
+                <div className="relative flex items-center justify-center space-x-2">
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-sm"></div>
+                  <span className="text-sm font-bold text-green-800">Active: {activeOrders} orders in last hour</span>
                 </div>
               </div>
 
               {/* Bottom Actions & Assurance */}
               <div className="space-y-4">
-                {/* Quality assurance */}
-                <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-emerald-500/15 to-green-500/15 border-2 border-emerald-300/40 p-3 shadow-lg">
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"></div>
-                  <div className="relative flex items-center justify-center space-x-2">
-                    <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center shadow-sm">
-                      <span className="text-white font-bold text-sm">🛡️</span>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-sm font-bold text-emerald-800">Quality Guaranteed</p>
-                      <p className="text-xs text-emerald-700 font-medium">Fresh ingredients • Hygienic preparation</p>
-                    </div>
-                  </div>
-                </div>
+
 
                 {/* Crisp Clear Cart */}
                 <div className="pt-2" style={{ borderTop: '2px solid hsla(var(--diwali-gold), 0.6)' }}>
@@ -497,23 +358,24 @@ Order ID: ${Date.now()}`;
                 </div>
               </div>
 
-              {/* Real timing urgency */}
-              <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-500/15 to-red-500/15 border-2 border-orange-300/40 p-3 mt-4 shadow-lg">
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"></div>
-                <div className="relative text-center">
-                  <p className="text-sm font-bold text-orange-800 mb-1">⏰ Today's Fresh Batch Available!</p>
-                  <p className="text-xs text-orange-700 font-medium">Order by 6 PM for same-day delivery</p>
-                </div>
-              </div>
+
             </div>
 
-            {/* Delivery note */}
-            <div className="mt-6 mb-4 p-4 rounded-xl" style={{ background: 'hsla(var(--diwali-light), 0.8)', border: '2px solid hsl(var(--diwali-gold))' }}>
-              <p className="text-sm leading-relaxed font-medium" style={{ color: 'hsl(var(--diwali-dark))' }}>
-              📞 <strong>Note:</strong> Choose between online ordering (with detailed form and OTP verification) 
-                or quick WhatsApp ordering for immediate processing.
-              </p>
-            </div>
+            {orderMethod === 'whatsapp' && (
+              <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
+                <p className="text-sm text-green-700">
+                  � <strong>WhatsApp Order:</strong> Your order details will be sent to our WhatsApp for quick processing.
+                </p>
+              </div>
+            )}
+            
+            {orderMethod === 'online' && (
+              <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                <p className="text-sm text-blue-700">
+                  🔒 <strong>Online Order:</strong> Complete form with OTP verification for secure ordering.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -528,12 +390,37 @@ Order ID: ${Date.now()}`;
       </Dialog>
 
       {/* Top Wave Divider */}
-      <div className="absolute top-0 left-0 right-0">
-        <svg viewBox="0 0 1200 120" className="w-full h-20 text-background rotate-180">
-          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="currentColor"></path>
-          <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39 116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="currentColor"></path>
-          <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="currentColor"></path>
-        </svg>
+            {/* Premium Golden Wave Divider */}
+      <div className="absolute top-0 left-0 right-0 overflow-hidden">
+        <div className="relative h-16">
+          {/* Premium layered waves with golden theme */}
+          <div className="absolute inset-0">
+            <svg viewBox="0 0 1200 120" className="w-full h-full">
+              <defs>
+                <linearGradient id="wave-gradient-1" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style={{ stopColor: 'hsl(var(--diwali-gold))', stopOpacity: 0.3 }} />
+                  <stop offset="50%" style={{ stopColor: 'hsl(var(--diwali-bronze))', stopOpacity: 0.4 }} />
+                  <stop offset="100%" style={{ stopColor: 'hsl(var(--diwali-gold))', stopOpacity: 0.3 }} />
+                </linearGradient>
+                <linearGradient id="wave-gradient-2" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style={{ stopColor: 'hsl(var(--diwali-light))', stopOpacity: 0.6 }} />
+                  <stop offset="50%" style={{ stopColor: 'hsl(var(--diwali-cream))', stopOpacity: 0.8 }} />
+                  <stop offset="100%" style={{ stopColor: 'hsl(var(--diwali-light))', stopOpacity: 0.6 }} />
+                </linearGradient>
+                <linearGradient id="wave-gradient-3" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style={{ stopColor: 'hsl(var(--diwali-cream))', stopOpacity: 0.9 }} />
+                  <stop offset="50%" style={{ stopColor: 'hsl(var(--diwali-light))', stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: 'hsl(var(--diwali-cream))', stopOpacity: 0.9 }} />
+                </linearGradient>
+              </defs>
+              <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="url(#wave-gradient-1)" transform="rotate(180 600 60)"></path>
+              <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="url(#wave-gradient-2)" transform="rotate(180 600 60)"></path>
+              <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="url(#wave-gradient-3)" transform="rotate(180 600 60)"></path>
+            </svg>
+          </div>
+          {/* Premium shimmer overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50"></div>
+        </div>
       </div>
     </section>
   );
