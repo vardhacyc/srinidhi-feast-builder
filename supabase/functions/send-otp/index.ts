@@ -163,6 +163,14 @@ const handler = async (req: Request): Promise<Response> => {
       `,
     });
 
+    // Check for Resend errors
+    if (emailResponse.error) {
+      console.error("Resend API error:", emailResponse.error);
+      throw new Error(
+        emailResponse.error.message || "Failed to send email via Resend"
+      );
+    }
+
     console.log("Email sent successfully:", emailResponse);
 
     return new Response(
