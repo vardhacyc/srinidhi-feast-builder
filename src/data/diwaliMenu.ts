@@ -190,34 +190,42 @@ export const DIWALI_MENU_DATA: MenuData = {
         {
           "id": "SN202515",
           "name": "Badam Chocolate Cake",
-          "price": null,
-          "unit": "POA",
-          "description": "Premium almond chocolate cake - Price on availability",
+          "description": "Premium almond chocolate cake",
           "image": "/lovable-uploads/badam-chocolate-cake.jpg"
         },
         {
           "id": "SN202516",
           "name": "Kaju Gulkand Ball",
-          "price": null,
-          "unit": "POA",
-          "description": "Cashew balls with rose petal preserve - Price on availability",
+          "description": "Cashew balls with rose petal preserve",
           "image": "/lovable-uploads/kaju-gulkand-ball.jpg"
         },
         {
           "id": "SN202517",
           "name": "Blueberry Kaju Cake",
-          "price": null,
-          "unit": "POA",
-          "description": "Cashew cake with blueberry flavoring - Price on availability",
+          "description": "Cashew cake with blueberry flavoring",
           "image": "/lovable-uploads/blueberry-kaju-cake.jpg"
         },
         {
           "id": "SN202518",
           "name": "Biscoff Kaju Cake",
-          "price": null,
-          "unit": "POA",
-          "description": "Premium cashew cake with Biscoff flavor - Price on availability",
+          "description": "Premium cashew cake with Biscoff flavor",
           "image": "/lovable-uploads/biscoff-kaju-cake.jpg"
+        },
+        {
+          "id": "SN202547",
+          "name": "Premium Collection (12pcs)",
+          "price": 600,
+          "unit": "box",
+          "description": "Premium selection: Badam Chocolate Cake, Kaju Gulkand Ball, Blueberry Kaju Cake, Biscoff Kaju Cake - 12 pieces",
+          "image": "/lovable-uploads/premium-12.jpg"
+        },
+        {
+          "id": "SN202548",
+          "name": "Premium Collection (25pcs)",
+          "price": 1200,
+          "unit": "box",
+          "description": "Premium selection: Badam Chocolate Cake, Kaju Gulkand Ball, Blueberry Kaju Cake, Biscoff Kaju Cake - 25 pieces",
+          "image": "/lovable-uploads/premium-25.jpg"
         }
       ]
     },
@@ -275,6 +283,14 @@ export const DIWALI_MENU_DATA: MenuData = {
           "unit": "box",
           "description": "Premium bite-sized sweets collection - 25 pieces",
           "image": "/lovable-uploads/premium-bites-25.jpg"
+        },
+        {
+          "id": "SN202549",
+          "name": "Dry Fruits Gift Box",
+          "price": 1199,
+          "unit": "box",
+          "description": "Assorted premium dry fruits in elegant gift packaging",
+          "image": "/lovable-uploads/dry-fruits-gift-box.jpg"
         }
       ]
     },
@@ -444,69 +460,16 @@ export const DIWALI_MENU_DATA: MenuData = {
           "description": "Grandeur dry fruit selection: Cashew Cake, Pista Roll, Kaju Cassata, Fig Roll, Badam Halwa, Strawberry Kaju Katli - 1 kg",
           "image": "/lovable-uploads/grandeur-full.jpg"
         },
-        {
-          "id": "SN202547",
-          "name": "Premium Collection (12pcs)",
-          "price": 600,
-          "description": "Premium selection: Badam Chocolate Cake, Kaju Gulkand Ball, Blueberry Kaju Cake, Biscoff Kaju Cake - 12 pieces",
-          "image": "/lovable-uploads/premium-12.jpg"
-        },
-        {
-          "id": "SN202548",
-          "name": "Premium Collection (25pcs)",
-          "price": 1200,
-          "description": "Premium selection: Badam Chocolate Cake, Kaju Gulkand Ball, Blueberry Kaju Cake, Biscoff Kaju Cake - 25 pieces",
-          "image": "/lovable-uploads/premium-25.jpg"
-        },
-        {
-          "id": "SN202549",
-          "name": "Dry Fruits Gift Box",
-          "price": 1199,
-          "description": "Assorted premium dry fruits in elegant gift packaging",
-          "image": "/lovable-uploads/dry-fruits-gift-box.jpg"
-        }
+
       ]
     }
   ],
   "selections": {
-    "Royal": {
-      "items": ["Laddu", "Mysurpa", "Badusha", "Bombay Halwa", "Gulkand Burfi", "Dry Jamun"],
-      "pricing": {
-        "quarter_kg": 150,
-        "half_kg": 300,
-        "one_kg": 600
-      }
-    },
-    "Supreme": {
-      "items": ["Spl. Laddu", "Carrot Mysurpa", "Soan Papdi", "Chocolate Burfi", "Dry Fruit Halwa", "Badam Mas Cake"],
-      "pricing": {
-        "quarter_kg": 170,
-        "half_kg": 330,
-        "one_kg": 650
-      }
-    },
-    "Grandeur": {
-      "items": ["Cashew Cake", "Pista Roll", "Kaju Cassata", "Fig Roll", "Badam Halwa", "Strawberry Kaju Katli"],
-      "pricing": {
-        "quarter_kg": 350,
-        "half_kg": 700,
-        "one_kg": 1400
-      }
-    },
-    "Premium": {
-      "items": ["Badam Chocolate Cake", "Kaju Gulkand Ball", "Blueberry Kaju Cake", "Biscoff Kaju Cake"],
-      "pricing": {
-        "twelve_pcs": 600,
-        "twenty_five_pcs": 1200
-      }
-    },
-    "Bites": {
-      "items": ["Mewa Bites", "Rose Bites", "Orange Bites", "Mango Bites", "Kesar Pista Bites", "Chocolate Bites"],
-      "pricing": {
-        "twelve_pcs": 499,
-        "twenty_five_pcs": 999
-      }
-    }
+    "Royal": ["Laddu", "Mysurpa", "Badusha", "Bombay Halwa", "Gulkand Burfi", "Dry Jamun"],
+    "Supreme": ["Spl. Laddu", "Carrot Mysurpa", "Soan Papdi", "Chocolate Burfi", "Dry Fruit Halwa", "Badam Mas Cake"],
+    "Grandeur": ["Cashew Cake", "Pista Roll", "Kaju Cassata", "Fig Roll", "Badam Halwa", "Strawberry Kaju Katli"],
+    "Premium": ["Badam Chocolate Cake", "Kaju Gulkand Ball", "Blueberry Kaju Cake", "Biscoff Kaju Cake"],
+    "Bites": ["Mewa Bites", "Rose Bites", "Orange Bites", "Mango Bites", "Kesar Pista Bites", "Chocolate Bites"]
   }
 };
 

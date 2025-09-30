@@ -9,14 +9,14 @@ const DiwaliSweetsMenu = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const sweetCategories = [
-    { id: 'all', name: 'All Items', icon: Sparkles, color: 'hsl(var(--diwali-gold))' },
-    { id: 'Dry Fruit Sweets', name: 'Dry Fruit Sweets', icon: Leaf, color: 'hsl(var(--diwali-bronze))' },
-    { id: 'Ghee Sweets', name: 'Ghee Sweets', icon: Heart, color: 'hsl(var(--diwali-bright))' },
-    { id: 'Premium Cakes & Sweets', name: 'Premium Cakes', icon: Cake, color: 'hsl(var(--diwali-amber))' },
-    { id: 'Bites', name: 'Bites', icon: Zap, color: 'hsl(var(--diwali-gold))' },
-    { id: 'Milk Sweets', name: 'Milk Sweets', icon: Star, color: 'hsl(var(--diwali-bright))' },
-    { id: 'Savouries', name: 'Savouries', icon: Cookie, color: 'hsl(var(--diwali-dark))' },
-    { id: 'Assorted & Combo Gift Boxes', name: 'Gift Boxes', icon: Gift, color: 'hsl(var(--diwali-gold))' }
+    { id: 'all', name: 'All Items', icon: Sparkles, color: 'hsl(var(--diwali-gold))', mobile: 'All' },
+    { id: 'Dry Fruit Sweets', name: 'Dry Fruit Sweets', icon: Leaf, color: 'hsl(var(--diwali-bronze))', mobile: 'Dry Fruit' },
+    { id: 'Ghee Sweets', name: 'Ghee Sweets', icon: Heart, color: 'hsl(var(--diwali-bright))', mobile: 'Ghee' },
+    { id: 'Milk Sweets', name: 'Milk Sweets', icon: Star, color: 'hsl(var(--diwali-bright))', mobile: 'Milk' },
+    { id: 'Premium Cakes & Sweets', name: 'Premium Cakes', icon: Cake, color: 'hsl(var(--diwali-amber))', mobile: 'Premium' },
+    { id: 'Bites', name: 'Bites', icon: Zap, color: 'hsl(var(--diwali-gold))', mobile: 'Bites' },
+    { id: 'Savouries', name: 'Savouries', icon: Cookie, color: 'hsl(var(--diwali-dark))', mobile: 'Savouries' },
+    { id: 'Assorted & Combo Gift Boxes', name: 'Gift Boxes & Combos', icon: Gift, color: 'hsl(var(--diwali-gold))', mobile: 'Combos' }
   ];
 
   // Convert menu data to Sweet format for cart compatibility
@@ -55,151 +55,211 @@ const DiwaliSweetsMenu = () => {
         background: 'linear-gradient(to bottom, hsl(var(--diwali-light)) 0%, hsl(var(--diwali-cream)) 100%)'
       }}
     >
-      {/* Luxury Hero Section Container */}
-      <div className="luxury-hero-section scroll-fade-in">
-        
-        {/* Luxury Category Filters */}
-        <div className="luxury-filters">
-          {sweetCategories.map((category, index) => {
-            const IconComponent = category.icon;
-            return (
-              <button
-                key={category.id}
-                onClick={(e) => {
-                  setSelectedCategory(category.id);
-                  // Add ripple effect
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const ripple = document.createElement('span');
-                  const size = Math.max(rect.width, rect.height);
-                  const x = e.clientX - rect.left - size / 2;
-                  const y = e.clientY - rect.top - size / 2;
-                  
-                  ripple.style.width = ripple.style.height = size + 'px';
-                  ripple.style.left = x + 'px';
-                  ripple.style.top = y + 'px';
-                  ripple.classList.add('ripple');
-                  
-                  e.currentTarget.appendChild(ripple);
-                  
-                  setTimeout(() => {
-                    ripple.remove();
-                  }, 600);
-                }}
-                className={`luxury-pill ${
-                  selectedCategory === category.id ? 'selected' : ''
-                }`}
-                style={{
-                  animationDelay: `${index * 0.1}s`
-                }}
-              >
-                <IconComponent className="gold-icon" />
-                {category.name}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Menu Section Header */}
-      <div className="container mx-auto px-6 mt-8">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold mb-4" style={{ color: 'hsl(var(--diwali-dark))' }}>
-            {selectedCategory === 'all' ? 'Complete Diwali Collection' : selectedCategory}
-          </h2>
-          {selectedCategory !== 'all' && (
-            <p className="text-lg mb-4" style={{ color: 'hsl(var(--diwali-text))' }}>
-              {DIWALI_MENU_DATA.categories.find(cat => cat.name === selectedCategory)?.products.length || 0} items available
-            </p>
-          )}
-          
-          {/* Menu Notes */}
-          <div className="bg-amber-50/80 backdrop-blur-sm rounded-xl p-4 max-w-4xl mx-auto border-2 border-amber-200">
-            <div className="space-y-2 text-sm">
-              {DIWALI_MENU_DATA.meta.notes.map((note, index) => (
-                <p key={index} className="text-amber-800 font-medium">
-                  {index === 0 && "📦 "}{index === 1 && "₹ "}{index === 2 && "🎁 "}{index === 3 && "🚚 "}
-                  {note}
-                </p>
-              ))}
-            </div>
+      {/* Engagement Banner */}
+      <div className="bg-gradient-to-r from-amber-100 to-amber-200 py-8 mb-8">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-3xl md:text-4xl font-bold text-amber-900 mb-4">
+            🪔 Premium Diwali Sweet Collection ✨
+          </h1>
+          <p className="text-lg text-amber-800 mb-6 max-w-3xl mx-auto">
+            Authentic traditional sweets handcrafted in Coimbatore • Premium ingredients • Fresh daily • Perfect for gifting
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm">
+            <span className="bg-white/80 px-4 py-2 rounded-full text-amber-800 font-semibold">
+              🎁 Gift boxes available
+            </span>
+            <span className="bg-white/80 px-4 py-2 rounded-full text-amber-800 font-semibold">
+              🚚 Free delivery ₹6000+
+            </span>
+            <span className="bg-white/80 px-4 py-2 rounded-full text-amber-800 font-semibold">
+              ⭐ 25+ years legacy
+            </span>
           </div>
         </div>
       </div>
 
+      {/* Smart Category Tabs - Mobile Optimized */}
+      <div className="category-tabs-container">
+          {/* Desktop Tabs */}
+          <div className="hidden md:flex justify-center mb-8">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-2 shadow-lg border-2 border-amber-200">
+              <div className="flex flex-wrap gap-2">
+                {sweetCategories.map((category) => {
+                  const IconComponent = category.icon;
+                  return (
+                    <button
+                      key={category.id}
+                      onClick={() => setSelectedCategory(category.id)}
+                      className={`flex items-center gap-2 px-4 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                        selectedCategory === category.id 
+                          ? 'bg-gradient-to-r from-amber-400 to-amber-500 text-white shadow-md' 
+                          : 'text-amber-800 hover:bg-amber-100'
+                      }`}
+                    >
+                      <IconComponent className="h-4 w-4" />
+                      <span className="whitespace-nowrap">{category.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Sticky Toolbar */}
+          <div className="md:hidden sticky top-0 z-30 bg-white/95 backdrop-blur-sm border-b-2 border-amber-200 mb-6">
+            <div className="px-4 py-3">
+              <div className="flex gap-2 overflow-x-auto scrollbar-hide">
+                {sweetCategories.map((category) => {
+                  const IconComponent = category.icon;
+                  return (
+                    <button
+                      key={category.id}
+                      onClick={() => setSelectedCategory(category.id)}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-full font-semibold whitespace-nowrap transition-all duration-300 ${
+                        selectedCategory === category.id 
+                          ? 'bg-gradient-to-r from-amber-400 to-amber-500 text-white shadow-md' 
+                          : 'bg-amber-100 text-amber-800 hover:bg-amber-200'
+                      }`}
+                    >
+                      <IconComponent className="h-4 w-4" />
+                      <span>{category.mobile}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+      </div>
+
+      {/* Simplified Section Header */}
+      <div className="container mx-auto px-4 md:px-6">
+        {selectedCategory !== 'all' && (
+          <div className="text-center mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-amber-900">
+              {selectedCategory} Collection 🪔
+            </h2>
+          </div>
+        )}
+      </div>
+
       {/* Sweets Grid */}
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 md:px-6">
+        {/* Minimalist Product Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
           {filteredSweets.map((sweet) => {
+            const isGiftBox = sweet.name.includes('Royal') || sweet.name.includes('Supreme') || sweet.name.includes('Grandeur') || sweet.name.includes('Premium') || sweet.category === 'Assorted & Combo Gift Boxes';
+            const isPremium = sweet.category === 'Dry Fruit Sweets' || sweet.category === 'Premium Cakes & Sweets' || sweet.price && sweet.price > 1000;
+            
             return (
               <div
                 key={sweet.id}
-                className="diwali-glass-card hover:shadow-xl transition-all duration-300 overflow-hidden group hover:scale-105"
+                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group border border-amber-200"
               >
-                <div className="relative overflow-hidden">
+                {/* Large Product Image */}
+                <div className="relative overflow-hidden aspect-square">
                   <img
                     src={sweet.image}
                     alt={sweet.name}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     onError={(e) => {
                       const img = e.target as HTMLImageElement;
                       img.src = '/placeholder-sweet.jpg';
                     }}
                   />
-                  <div className="absolute top-4 right-4">
-                    <div className="diwali-badge px-2 py-1 rounded-full text-xs font-medium">
-                      <Star className="w-3 h-3 inline mr-1" />
-                      Premium
+                  {/* Premium Badge */}
+                  {isPremium && (
+                    <div className="absolute top-3 left-3">
+                      <div className="bg-gradient-to-r from-amber-400 to-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
+                        ✨ Premium
+                      </div>
                     </div>
-                  </div>
+                  )}
+                  {/* Gift Box Badge */}
+                  {isGiftBox && (
+                    <div className="absolute top-3 right-3">
+                      <div className="bg-gradient-to-r from-red-400 to-red-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
+                        🎁 Gift Box
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2" style={{ color: 'hsl(var(--diwali-dark))' }}>
-                    {sweet.name}
+                {/* Product Info */}
+                <div className="p-4">
+                  {/* Product Name with Diwali Emoji */}
+                  <h3 className="text-lg font-bold text-amber-900 mb-1 line-clamp-2">
+                    {sweet.name} 🪔
                   </h3>
-                  <p className="text-sm mb-4" style={{ color: 'hsl(var(--diwali-text))' }}>
-                    {sweet.description}
-                  </p>
                   
-                  {/* Show selection details for gift boxes */}
-                  {(sweet.name.includes('Royal') || sweet.name.includes('Supreme') || sweet.name.includes('Grandeur')) && (
+                  {/* Short Description */}
+                  <p className="text-sm text-amber-700 mb-3 line-clamp-1">
+                    {sweet.description?.split('.')[0] || 'Authentic • Festive • Premium Quality'}
+                  </p>
+
+                  {/* Gift Box Contents */}
+                  {isGiftBox && (
                     <div className="mb-3 p-2 bg-amber-50 rounded-lg border border-amber-200">
-                      <p className="text-xs font-semibold text-amber-800 mb-1">Includes:</p>
-                      <p className="text-xs text-amber-700">
-                        {sweet.name.includes('Royal') && DIWALI_MENU_DATA.selections.Royal.items.join(', ')}
-                        {sweet.name.includes('Supreme') && DIWALI_MENU_DATA.selections.Supreme.items.join(', ')}
-                        {sweet.name.includes('Grandeur') && DIWALI_MENU_DATA.selections.Grandeur.items.join(', ')}
+                      <p className="text-xs font-semibold text-amber-800 mb-1">🎁 Includes:</p>
+                      <p className="text-xs text-amber-700 line-clamp-2">
+                        {sweet.name.includes('Royal') && DIWALI_MENU_DATA.selections.Royal.join(', ')}
+                        {sweet.name.includes('Supreme') && DIWALI_MENU_DATA.selections.Supreme.join(', ')}
+                        {sweet.name.includes('Grandeur') && DIWALI_MENU_DATA.selections.Grandeur.join(', ')}
+                        {sweet.name.includes('Premium') && 'Premium selection of specialty cakes and sweets'}
+                        {sweet.name.includes('Bites') && 'Assorted premium bite-sized sweets'}
                       </p>
                     </div>
                   )}
 
+                  {/* Price */}
                   <div className="mb-4">
                     {sweet.price ? (
-                      <>
-                        <div className="flex justify-between items-center text-xl font-bold" style={{ color: 'hsl(var(--diwali-bronze))' }}>
-                          <span>Price:</span>
-                          <span>
-                            ₹{sweet.price}/
-                            {sweet.category === 'Bites' || sweet.name.includes('pcs') || sweet.name.includes('Box') ? 'box' : 'kg'}
-                          </span>
-                        </div>
-                        <p className="text-xs text-center mt-2" style={{ color: 'hsl(var(--diwali-subtle))' }}>*GST will be added at checkout</p>
-                      </>
+                      <div className="flex items-center justify-between">
+                        <span className="text-2xl font-bold text-amber-900">
+                          ₹{sweet.price}
+                        </span>
+                        <span className="text-sm text-amber-600 font-medium">
+                          /{sweet.category === 'Bites' || sweet.name.includes('pcs') || sweet.name.includes('Box') ? 'box' : 'kg'}
+                        </span>
+                      </div>
                     ) : (
                       <div className="text-center">
-                        <div className="text-lg font-bold text-amber-600 mb-2">Price on Availability</div>
-                        <p className="text-xs" style={{ color: 'hsl(var(--diwali-subtle))' }}>Contact us for pricing</p>
+                        <div className="text-lg font-bold text-amber-600">Price on Request</div>
+                        <p className="text-xs text-amber-500">Contact for pricing</p>
                       </div>
+                    )}
+                    
+                    {/* Size Options */}
+                    {isGiftBox && (
+                      <p className="text-xs text-amber-600 mt-1">
+                        📦 1/4kg, 1/2kg, 1kg options available
+                      </p>
                     )}
                   </div>
 
-                  <Button
-                    onClick={() => addToCart(sweet)}
-                    className="w-full diwali-btn text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
-                  >
-                    <Plus className="w-4 h-4 mr-2" />
-                    Add to Cart
-                  </Button>
+                  {/* Action Buttons */}
+                  <div className="space-y-2">
+                    <Button
+                      onClick={() => addToCart(sweet)}
+                      className="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg"
+                    >
+                      <Plus className="w-4 h-4 mr-2" />
+                      Add to Cart
+                    </Button>
+                    
+                    {isGiftBox && (
+                      <Button
+                        variant="outline"
+                        className="w-full border-2 border-amber-400 text-amber-700 hover:bg-amber-50 font-semibold py-2 rounded-xl transition-all duration-300"
+                        onClick={() => {
+                          const message = `Hi! I'm interested in ${sweet.name} as a gift box. Please share available sizes and pricing details.`;
+                          const whatsappUrl = `https://wa.me/918760101010?text=${encodeURIComponent(message)}`;
+                          window.open(whatsappUrl, '_blank');
+                        }}
+                      >
+                        🎁 Buy for Gifting
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </div>
             );
