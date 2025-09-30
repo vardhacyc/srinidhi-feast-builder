@@ -7,6 +7,7 @@ import { DIWALI_MENU_DATA, CATEGORY_GROUPS, getProductsByCategory } from '../../
 const DiwaliSweetsMenu = () => {
   const { addToCart } = useCart();
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedVariants, setSelectedVariants] = useState<{[key: string]: string}>({});
 
   const sweetCategories = [
     { id: 'all', name: 'All Items', icon: Sparkles, color: 'hsl(var(--diwali-gold))', mobile: 'All' },
@@ -18,6 +19,80 @@ const DiwaliSweetsMenu = () => {
     { id: 'Savouries', name: 'Savouries', icon: Cookie, color: 'hsl(var(--diwali-dark))', mobile: 'Savouries' },
     { id: 'Assorted & Combo Gift Boxes', name: 'Gift Boxes & Combos', icon: Gift, color: 'hsl(var(--diwali-gold))', mobile: 'Combos' }
   ];
+
+  // Group products by family (base name without variants)
+  const groupProductsByFamily = (products: Sweet[]) => {
+    const families: {[key: string]: Sweet[]} = {};
+    
+    products.forEach(product => {
+      // Extract base name by removing variant indicators
+      let baseName = product.name
+        .replace(/\s*\(\d+pcs\)/gi, '')
+        .replace(/\s*\(1\/[24]kg\)/gi, '')
+        .replace(/\s*\(1kg\)/gi, '')
+        .replace(/\s*12pcs$/gi, '')
+        .replace(/\s*25pcs$/gi, '')
+        .trim();
+      
+      // Special handling for collections
+      if (baseName.includes('Collection')) {
+        baseName = baseName.replace(/\s*(12pcs|25pcs).*$/gi, '').trim();
+      }
+      
+      if (!families[baseName]) {
+        families[baseName] = [];
+      }
+      families[baseName].push(product);
+    });
+    
+    return families;
+  };
+
+  // Get variant display info with weight/quantity value for sorting
+  const getVariantInfo = (product: Sweet) => {
+    if (product.name.includes('12pcs') || product.name.includes('(12pcs)')) {
+      return { label: '12 pieces', value: '12pcs', sortOrder: 12 };
+    }
+    if (product.name.includes('25pcs') || product.name.includes('(25pcs)')) {
+      return { label: '25 pieces', value: '25pcs', sortOrder: 25 };
+    }
+    if (product.name.includes('1/4kg') || product.name.includes('(1/4kg)')) {
+      return { label: '1/4 kg', value: '1/4kg', sortOrder: 0.25 };
+    }
+    if (product.name.includes('1/2kg') || product.name.includes('(1/2kg)')) {
+      return { label: '1/2 kg', value: '1/2kg', sortOrder: 0.5 };
+    }
+    if (product.name.includes('1kg') || product.name.includes('(1kg)')) {
+      return { label: '1 kg', value: '1kg', sortOrder: 1 };
+    }
+    return { label: 'Standard', value: 'standard', sortOrder: 0 };
+  };
+
+  // Get highest quantity variant from a family
+  const getHighestQuantityVariant = (variants: Sweet[]) => {
+    return variants.reduce((highest, current) => {
+      const currentInfo = getVariantInfo(current);
+      const highestInfo = getVariantInfo(highest);
+      return currentInfo.sortOrder > highestInfo.sortOrder ? current : highest;
+    });
+  };
+
+  // Handle variant selection
+  const handleVariantChange = (familyName: string, variantValue: string) => {
+    setSelectedVariants(prev => ({
+      ...prev,
+      [familyName]: variantValue
+    }));
+  };
+
+  // Get selected product for a family
+  const getSelectedProduct = (familyName: string, variants: Sweet[]) => {
+    const selectedVariant = selectedVariants[familyName];
+    if (!selectedVariant) {
+      return getHighestQuantityVariant(variants); // Default to highest quantity variant
+    }
+    return variants.find(v => getVariantInfo(v).value === selectedVariant) || getHighestQuantityVariant(variants);
+  };
 
   // Convert menu data to Sweet format for cart compatibility
   const convertToSweets = (): Sweet[] => {
@@ -55,24 +130,102 @@ const DiwaliSweetsMenu = () => {
         background: 'linear-gradient(to bottom, hsl(var(--diwali-light)) 0%, hsl(var(--diwali-cream)) 100%)'
       }}
     >
-      {/* Engagement Banner */}
-      <div className="bg-gradient-to-r from-amber-100 to-amber-200 py-8 mb-8">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-amber-900 mb-4">
-            🪔 Premium Diwali Sweet Collection ✨
-          </h1>
-          <p className="text-lg text-amber-800 mb-6 max-w-3xl mx-auto">
-            Authentic traditional sweets handcrafted in Coimbatore • Premium ingredients • Fresh daily • Perfect for gifting
+      {/* Decorative Diwali Header */}
+      <div className="relative bg-gradient-to-r from-amber-50 to-orange-50 py-12 mb-8 overflow-hidden">
+        {/* Decorative Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          {/* Left side decorations */}
+          <div className="absolute left-4 top-4 w-24 h-24 opacity-30">
+            <svg viewBox="0 0 100 100" className="w-full h-full text-amber-600">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="2"/>
+              <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" strokeWidth="1"/>
+              <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" strokeWidth="1"/>
+              <path d="M50,10 L55,25 L50,30 L45,25 Z" fill="currentColor"/>
+              <path d="M50,70 L55,85 L50,90 L45,85 Z" fill="currentColor"/>
+              <path d="M10,50 L25,55 L30,50 L25,45 Z" fill="currentColor"/>
+              <path d="M70,50 L85,55 L90,50 L85,45 Z" fill="currentColor"/>
+            </svg>
+          </div>
+          
+          {/* Right side decorations */}
+          <div className="absolute right-4 top-4 w-24 h-24 opacity-30">
+            <svg viewBox="0 0 100 100" className="w-full h-full text-amber-600">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="2"/>
+              <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" strokeWidth="1"/>
+              <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" strokeWidth="1"/>
+              <path d="M50,10 L55,25 L50,30 L45,25 Z" fill="currentColor"/>
+              <path d="M50,70 L55,85 L50,90 L45,85 Z" fill="currentColor"/>
+              <path d="M10,50 L25,55 L30,50 L25,45 Z" fill="currentColor"/>
+              <path d="M70,50 L85,55 L90,50 L85,45 Z" fill="currentColor"/>
+            </svg>
+          </div>
+          
+          {/* Hanging diyas */}
+          <div className="absolute top-0 left-1/4 w-3 h-8 opacity-40">
+            <div className="w-full h-4 bg-amber-600 rounded-b-full"></div>
+            <div className="w-1 h-4 bg-amber-700 mx-auto"></div>
+          </div>
+          <div className="absolute top-0 right-1/4 w-3 h-8 opacity-40">
+            <div className="w-full h-4 bg-amber-600 rounded-b-full"></div>
+            <div className="w-1 h-4 bg-amber-700 mx-auto"></div>
+          </div>
+          <div className="absolute top-0 left-1/3 w-3 h-10 opacity-30">
+            <div className="w-full h-5 bg-amber-600 rounded-b-full"></div>
+            <div className="w-1 h-5 bg-amber-700 mx-auto"></div>
+          </div>
+          <div className="absolute top-0 right-1/3 w-3 h-10 opacity-30">
+            <div className="w-full h-5 bg-amber-600 rounded-b-full"></div>
+            <div className="w-1 h-5 bg-amber-700 mx-auto"></div>
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 text-center relative z-10">
+          {/* Main Title with Decorative Elements */}
+          <div className="relative inline-block">
+            {/* Central Mandala */}
+            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-16 opacity-20">
+              <svg viewBox="0 0 100 100" className="w-full h-full text-amber-700">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2"/>
+                <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" strokeWidth="1"/>
+                <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" strokeWidth="1"/>
+                <circle cx="50" cy="50" r="15" fill="none" stroke="currentColor" strokeWidth="1"/>
+                <path d="M50,5 L52,20 L50,25 L48,20 Z" fill="currentColor"/>
+                <path d="M50,75 L52,90 L50,95 L48,90 Z" fill="currentColor"/>
+                <path d="M5,50 L20,52 L25,50 L20,48 Z" fill="currentColor"/>
+                <path d="M75,50 L90,52 L95,50 L90,48 Z" fill="currentColor"/>
+                <path d="M20,20 L30,25 L25,30 L20,28 Z" fill="currentColor"/>
+                <path d="M70,20 L80,25 L75,30 L70,28 Z" fill="currentColor"/>
+                <path d="M20,70 L30,75 L25,80 L20,78 Z" fill="currentColor"/>
+                <path d="M70,70 L80,75 L75,80 L70,78 Z" fill="currentColor"/>
+              </svg>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-bold text-amber-900 mb-4 relative">
+              <span className="relative z-10">
+                Diwali Sweet Delights
+              </span>
+            </h1>
+          </div>
+          
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="hidden md:block w-24 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+            <span className="text-amber-700 text-2xl">✨</span>
+            <div className="hidden md:block w-24 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+          </div>
+          
+          <p className="text-lg text-amber-800 mb-6 max-w-3xl mx-auto font-medium">
+            Authentic traditional sweets handcrafted with love • Premium ingredients • Fresh daily • Perfect for celebrations
           </p>
-          <div className="flex flex-wrap justify-center gap-4 text-sm">
-            <span className="bg-white/80 px-4 py-2 rounded-full text-amber-800 font-semibold">
-              🎁 Gift boxes available
+          
+          <div className="flex flex-wrap justify-center gap-3 text-sm">
+            <span className="bg-white/90 px-4 py-2 rounded-full text-amber-800 font-semibold shadow-sm border border-amber-200">
+              🎁 Beautiful Gift Packaging
             </span>
-            <span className="bg-white/80 px-4 py-2 rounded-full text-amber-800 font-semibold">
-              🚚 Free delivery ₹6000+
+            <span className="bg-white/90 px-4 py-2 rounded-full text-amber-800 font-semibold shadow-sm border border-amber-200">
+              🚚 Same Day Delivery
             </span>
-            <span className="bg-white/80 px-4 py-2 rounded-full text-amber-800 font-semibold">
-              ⭐ 25+ years legacy
+            <span className="bg-white/90 px-4 py-2 rounded-full text-amber-800 font-semibold shadow-sm border border-amber-200">
+              ⭐ 25+ Years Legacy
             </span>
           </div>
         </div>
@@ -144,22 +297,23 @@ const DiwaliSweetsMenu = () => {
 
       {/* Sweets Grid */}
       <div className="container mx-auto px-4 md:px-6">
-        {/* Minimalist Product Cards */}
+        {/* Product Family Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-          {filteredSweets.map((sweet) => {
-            const isGiftBox = sweet.name.includes('Royal') || sweet.name.includes('Supreme') || sweet.name.includes('Grandeur') || sweet.name.includes('Premium') || sweet.category === 'Assorted & Combo Gift Boxes';
-            const isPremium = sweet.category === 'Dry Fruit Sweets' || sweet.category === 'Premium Cakes & Sweets' || sweet.price && sweet.price > 1000;
+          {Object.entries(groupProductsByFamily(filteredSweets)).map(([familyName, variants]) => {
+            const selectedProduct = getSelectedProduct(familyName, variants);
+            const isGiftBox = selectedProduct.name.includes('Royal') || selectedProduct.name.includes('Supreme') || selectedProduct.name.includes('Grandeur') || selectedProduct.name.includes('Premium') || selectedProduct.category === 'Assorted & Combo Gift Boxes';
+            const isPremium = selectedProduct.category === 'Dry Fruit Sweets' || selectedProduct.category === 'Premium Cakes & Sweets' || (selectedProduct.price && selectedProduct.price > 1000);
             
             return (
               <div
-                key={sweet.id}
+                key={familyName}
                 className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group border border-amber-200"
               >
                 {/* Large Product Image */}
                 <div className="relative overflow-hidden aspect-square">
                   <img
-                    src={sweet.image}
-                    alt={sweet.name}
+                    src={selectedProduct.image}
+                    alt={familyName}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     onError={(e) => {
                       const img = e.target as HTMLImageElement;
@@ -188,36 +342,62 @@ const DiwaliSweetsMenu = () => {
                 <div className="p-4">
                   {/* Product Name with Diwali Emoji */}
                   <h3 className="text-lg font-bold text-amber-900 mb-1 line-clamp-2">
-                    {sweet.name} 🪔
+                    {familyName} 🪔
                   </h3>
                   
                   {/* Short Description */}
                   <p className="text-sm text-amber-700 mb-3 line-clamp-1">
-                    {sweet.description?.split('.')[0] || 'Authentic • Festive • Premium Quality'}
+                    {selectedProduct.description?.split('.')[0] || 'Authentic • Festive • Premium Quality'}
                   </p>
+
+                  {/* Variant Selector */}
+                  {variants.length > 1 && (
+                    <div className="mb-3">
+                      <label className="text-xs font-semibold text-gray-700 mb-2 block">Select Size/Quantity:</label>
+                      <div className="flex flex-wrap gap-1">
+                        {variants.map((variant) => {
+                          const variantInfo = getVariantInfo(variant);
+                          const isSelected = selectedVariants[familyName] === variantInfo.value || (!selectedVariants[familyName] && variant === getHighestQuantityVariant(variants));
+                          return (
+                            <button
+                              key={variant.id}
+                              onClick={() => handleVariantChange(familyName, variantInfo.value)}
+                              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
+                                isSelected
+                                  ? 'bg-amber-500 text-white shadow-md'
+                                  : 'bg-amber-100 text-amber-700 hover:bg-amber-200'
+                              }`}
+                            >
+                              {variantInfo.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Gift Box Contents */}
                   {isGiftBox && (
                     <div className="mb-3 p-2 bg-amber-50 rounded-lg border border-amber-200">
                       <p className="text-xs font-semibold text-amber-800 mb-1">🎁 Includes:</p>
                       <p className="text-xs text-amber-700 line-clamp-2">
-                        {sweet.name.includes('Royal') && DIWALI_MENU_DATA.selections.Royal.join(', ')}
-                        {sweet.name.includes('Supreme') && DIWALI_MENU_DATA.selections.Supreme.join(', ')}
-                        {sweet.name.includes('Grandeur') && DIWALI_MENU_DATA.selections.Grandeur.join(', ')}
-                        {sweet.name.includes('Premium') && 'Premium selection of specialty cakes and sweets'}
-                        {sweet.name.includes('Bites') && 'Assorted premium bite-sized sweets'}
+                        {selectedProduct.name.includes('Royal') && DIWALI_MENU_DATA.selections.Royal.join(', ')}
+                        {selectedProduct.name.includes('Supreme') && DIWALI_MENU_DATA.selections.Supreme.join(', ')}
+                        {selectedProduct.name.includes('Grandeur') && DIWALI_MENU_DATA.selections.Grandeur.join(', ')}
+                        {selectedProduct.name.includes('Premium') && 'Premium selection of specialty cakes and sweets'}
+                        {selectedProduct.name.includes('Bites') && 'Assorted premium bite-sized sweets'}
                       </p>
                     </div>
                   )}
 
                   {/* Price */}
                   <div className="mb-4">
-                    {sweet.price ? (
+                    {selectedProduct.price ? (
                       <div className="text-left">
                         <span className="text-2xl font-bold text-amber-900">
-                          ₹{sweet.price}
+                          ₹{selectedProduct.price}
                           <span className="text-sm text-amber-600 font-medium ml-1">
-                            /{sweet.category === 'Bites' || sweet.name.includes('pcs') || sweet.name.includes('Box') ? 'box' : 'kg'}
+                            /{selectedProduct.category === 'Bites' || selectedProduct.name.includes('pcs') || selectedProduct.name.includes('Box') ? 'box' : 'kg'}
                           </span>
                         </span>
                       </div>
@@ -239,7 +419,7 @@ const DiwaliSweetsMenu = () => {
                   {/* Action Buttons */}
                   <div className="space-y-2">
                     <Button
-                      onClick={() => addToCart(sweet)}
+                      onClick={() => addToCart(selectedProduct)}
                       className="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg"
                     >
                       <Plus className="w-4 h-4 mr-2" />
@@ -251,7 +431,7 @@ const DiwaliSweetsMenu = () => {
                         variant="outline"
                         className="w-full border-2 border-amber-400 text-amber-700 hover:bg-amber-50 font-semibold py-2 rounded-xl transition-all duration-300"
                         onClick={() => {
-                          const message = `Hi! I'm interested in ${sweet.name} as a gift box. Please share available sizes and pricing details.`;
+                          const message = `Hi! I'm interested in ${selectedProduct.name} as a gift box. Please share available sizes and pricing details.`;
                           const whatsappUrl = `https://wa.me/918760101010?text=${encodeURIComponent(message)}`;
                           window.open(whatsappUrl, '_blank');
                         }}
@@ -266,7 +446,7 @@ const DiwaliSweetsMenu = () => {
           })}
         </div>
 
-        {filteredSweets.length === 0 && (
+        {Object.keys(groupProductsByFamily(filteredSweets)).length === 0 && (
           <div className="text-center py-12">
             <p className="text-lg" style={{ color: 'hsl(var(--diwali-subtle))' }}>No sweets found in this category.</p>
           </div>
