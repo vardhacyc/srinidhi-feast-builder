@@ -71,7 +71,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 1400,
           "unit": "kg",
           "description": "Premium cashew-based cake with rich, creamy texture",
-          "image": "/lovable-uploads/cashew-cake.jpg"
+          "image": "/lovable-uploads/CashewCake.webp"
         },
         {
           "id": "SN202502",
@@ -79,7 +79,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 1400,
           "unit": "kg",
           "description": "Delicate pistachio rolls with authentic taste",
-          "image": "/lovable-uploads/pista-roll.jpg"
+          "image": "/lovable-uploads/pista-roll.png"
         },
         {
           "id": "SN202503",
@@ -87,7 +87,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 1400,
           "unit": "kg",
           "description": "Layered cashew dessert with exotic flavors",
-          "image": "/lovable-uploads/kaju-cassata.jpg"
+          "image": "/lovable-uploads/kaju-katli.png"
         },
         {
           "id": "SN202504",
@@ -95,7 +95,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 1400,
           "unit": "kg",
           "description": "Sweet fig rolls with natural fruit flavors",
-          "image": "/lovable-uploads/fig-roll.jpg"
+          "image": "/motichoor-laddu.png"
         },
         {
           "id": "SN202505",
@@ -103,7 +103,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 1400,
           "unit": "kg",
           "description": "Rich almond halwa made with premium ingredients",
-          "image": "/lovable-uploads/badam-halwa.jpg"
+          "image": "/diamond-barfi.png"
         },
         {
           "id": "SN202506",
@@ -111,7 +111,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 1400,
           "unit": "kg",
           "description": "Traditional kaju katli with strawberry flavor",
-          "image": "/lovable-uploads/strawberry-kaju-katli.jpg"
+          "image": "/lovable-uploads/Strawberry-pista-Roll.webp"
         }
       ]
     },
@@ -172,7 +172,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 650,
           "unit": "kg",
           "description": "Flaky, crispy sweet with ghee and cardamom",
-          "image": "/lovable-uploads/soan-papdi.jpg"
+          "image": "/lovable-uploads/soan-papdi.png"
         },
         {
           "id": "SN202514",
@@ -180,7 +180,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 650,
           "unit": "kg",
           "description": "Rich halwa loaded with assorted dry fruits and ghee",
-          "image": "/lovable-uploads/DryFruitHalwa"
+          "image": "/gulab-jamun.png"
         }
       ]
     },
@@ -191,25 +191,25 @@ export const DIWALI_MENU_DATA: MenuData = {
           "id": "SN202515",
           "name": "Badam Chocolate Cake",
           "description": "Premium almond chocolate cake",
-          "image": "/lovable-uploads/badam-chocolate-cake.jpg"
+          "image": "/mysore-pak.png"
         },
         {
           "id": "SN202516",
           "name": "Kaju Gulkand Ball",
           "description": "Cashew balls with rose petal preserve",
-          "image": "/lovable-uploads/kaju-gulkand-ball.jpg"
+          "image": "/lovable-uploads/gulkand-ball.jpg"
         },
         {
           "id": "SN202517",
           "name": "Blueberry Kaju Cake",
           "description": "Cashew cake with blueberry flavoring",
-          "image": "/lovable-uploads/blueberry-kaju-cake.jpg"
+          "image": "/rasgulla.png"
         },
         {
           "id": "SN202518",
           "name": "Biscoff Kaju Cake",
           "description": "Premium cashew cake with Biscoff flavor",
-          "image": "/lovable-uploads/biscoff-kaju-cake.jpg"
+          "image": "/lovable-uploads/coconut-burfi.png"
         },
         {
           "id": "SN202547",
@@ -217,7 +217,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 600,
           "unit": "box",
           "description": "Premium selection: Badam Chocolate Cake, Kaju Gulkand Ball, Blueberry Kaju Cake, Biscoff Kaju Cake - 12 pieces",
-          "image": "/lovable-uploads/premium-12.jpg"
+          "image": "/kaju-katli.png"
         },
         {
           "id": "SN202548",
@@ -225,7 +225,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 1200,
           "unit": "box",
           "description": "Premium selection: Badam Chocolate Cake, Kaju Gulkand Ball, Blueberry Kaju Cake, Biscoff Kaju Cake - 25 pieces",
-          "image": "/lovable-uploads/premium-25.jpg"
+          "image": "/soan-papdi.png"
         }
       ]
     },
@@ -238,7 +238,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 80,
           "unit": "piece",
           "description": "Premium mixed dry fruit bites",
-          "image": "/lovable-uploads/mewa-bites.jpg"
+          "image": "/pista-roll.png"
         },
         {
           "id": "SN202520",
@@ -246,7 +246,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 75,
           "unit": "piece",
           "description": "Delicate rose-flavored bite-sized sweets",
-          "image": "/lovable-uploads/rose-bites.jpg"
+          "image": "/lovable-uploads/gulab-jamoon.png"
         },
         {
           "id": "SN202521",
@@ -254,7 +254,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 75,
           "unit": "piece",
           "description": "Citrusy orange-flavored sweet bites",
-          "image": "/lovable-uploads/orange-bites.jpg"
+          "image": "/motichoor-laddu.png"
         },
         {
           "id": "SN202522",
@@ -262,7 +262,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 75,
           "unit": "piece",
           "description": "Tropical mango-flavored sweet treats",
-          "image": "/lovable-uploads/mango-bites.jpg"
+          "image": "/kaju-katli.png"
         },
         {
           "id": "SN202523",
@@ -270,7 +270,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 85,
           "unit": "piece",
           "description": "Saffron and pistachio flavored premium bites",
-          "image": "/lovable-uploads/kesar-pista-bites.jpg"
+          "image": "/pista-roll.png"
         },
         {
           "id": "SN202524",
@@ -278,7 +278,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 70,
           "unit": "piece",
           "description": "Rich chocolate flavored sweet bites",
-          "image": "/lovable-uploads/chocolate-bites.jpg"
+          "image": "/diamond-barfi.png"
         },
         {
           "id": "SN202544",
@@ -286,7 +286,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 499,
           "unit": "box",
           "description": "Premium bite-sized sweets collection - 12 pieces",
-          "image": "/lovable-uploads/premium-bites-12.jpg"
+          "image": "/mysore-pak.png"
         },
         {
           "id": "SN202545",
@@ -294,7 +294,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 999,
           "unit": "box",
           "description": "Premium bite-sized sweets collection - 25 pieces",
-          "image": "/lovable-uploads/premium-bites-25.jpg"
+          "image": "/rasgulla.png"
         },
         {
           "id": "SN202549",
@@ -302,7 +302,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 1199,
           "unit": "box",
           "description": "Assorted premium dry fruits in elegant gift packaging",
-          "image": "/lovable-uploads/dry-fruits-gift-box.jpg"
+          "image": "/soan-papdi.png"
         }
       ]
     },
@@ -323,7 +323,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 600,
           "unit": "kg",
           "description": "Traditional dried gulab jamun",
-          "image": "/lovable-uploads/dry-jamun.jpg"
+          "image": "/gulab-jamun.png"
         },
         {
           "id": "SN202527",
@@ -331,7 +331,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 650,
           "unit": "kg",
           "description": "Rich chocolate flavored milk burfi",
-          "image": "/lovable-uploads/chocolate-burfi.jpg"
+          "image": "/diamond-barfi.png"
         },
         {
           "id": "SN202528",
@@ -339,7 +339,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 650,
           "unit": "kg",
           "description": "Premium almond-based traditional cake",
-          "image": "/lovable-uploads/badam-mas-cake.jpg"
+          "image": "/lovable-uploads/CashewCake.webp"
         }
       ]
     },
@@ -352,7 +352,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 450,
           "unit": "kg",
           "description": "Traditional South Indian mixture with various ingredients",
-          "image": "/lovable-uploads/classic-mixture.jpg"
+          "image": "/lovable-uploads/ribbon-pakoda.jpg"
         },
         {
           "id": "SN202530",
@@ -388,21 +388,21 @@ export const DIWALI_MENU_DATA: MenuData = {
           "name": "1/4kg Box",
           "price": 150,
           "description": "Premium gift box packaging for 1/4 kg sweets",
-          "image": "/lovable-uploads/gift-box-quarter.jpg"
+          "image": "/kaju-katli.png"
         },
         {
           "id": "SN202534",
           "name": "1/2kg Box",
           "price": 300,
           "description": "Premium gift box packaging for 1/2 kg sweets",
-          "image": "/lovable-uploads/gift-box-half.jpg"
+          "image": "/motichoor-laddu.png"
         },
         {
           "id": "SN202535",
           "name": "1kg Box",
           "price": 600,
           "description": "Premium gift box packaging for 1 kg sweets",
-          "image": "/lovable-uploads/gift-box-full.jpg"
+          "image": "/mysore-pak.png"
         }
       ]
     },
@@ -414,63 +414,63 @@ export const DIWALI_MENU_DATA: MenuData = {
           "name": "Royal Collection (1/4kg)",
           "price": 150,
           "description": "Royal selection: Laddu, Mysurpa, Badusha, Bombay Halwa, Gulkand Burfi, Dry Jamun - 1/4 kg",
-          "image": "/lovable-uploads/royal-quarter.jpg"
+          "image": "/motichoor-laddu.png"
         },
         {
           "id": "SN202537",
           "name": "Royal Collection (1/2kg)",
           "price": 300,
           "description": "Royal selection: Laddu, Mysurpa, Badusha, Bombay Halwa, Gulkand Burfi, Dry Jamun - 1/2 kg",
-          "image": "/lovable-uploads/royal-half.jpg"
+          "image": "/kaju-katli.png"
         },
         {
           "id": "SN202538",
           "name": "Royal Collection (1kg)",
           "price": 600,
           "description": "Royal selection: Laddu, Mysurpa, Badusha, Bombay Halwa, Gulkand Burfi, Dry Jamun - 1 kg",
-          "image": "/lovable-uploads/royal-full.jpg"
+          "image": "/mysore-pak.png"
         },
         {
           "id": "SN202539",
           "name": "Supreme Collection (1/4kg)",
           "price": 170,
           "description": "Supreme selection: Spl. Laddu, Carrot Mysurpa, Soan Papdi, Chocolate Burfi, Dry Fruit Halwa, Badam Mas Cake - 1/4 kg",
-          "image": "/lovable-uploads/supreme-quarter.jpg"
+          "image": "/soan-papdi.png"
         },
         {
           "id": "SN202540",
           "name": "Supreme Collection (1/2kg)",
           "price": 330,
           "description": "Supreme selection: Spl. Laddu, Carrot Mysurpa, Soan Papdi, Chocolate Burfi, Dry Fruit Halwa, Badam Mas Cake - 1/2 kg",
-          "image": "/lovable-uploads/supreme-half.jpg"
+          "image": "/diamond-barfi.png"
         },
         {
           "id": "SN202541",
           "name": "Supreme Collection (1kg)",
           "price": 650,
           "description": "Supreme selection: Spl. Laddu, Carrot Mysurpa, Soan Papdi, Chocolate Burfi, Dry Fruit Halwa, Badam Mas Cake - 1 kg",
-          "image": "/lovable-uploads/supreme-full.jpg"
+          "image": "/gulab-jamun.png"
         },
         {
           "id": "SN202542",
           "name": "Grandeur Collection (1/4kg)",
           "price": 350,
           "description": "Grandeur dry fruit selection: Cashew Cake, Pista Roll, Kaju Cassata, Fig Roll, Badam Halwa, Strawberry Kaju Katli - 1/4 kg",
-          "image": "/lovable-uploads/grandeur-quarter.jpg"
+          "image": "/pista-roll.png"
         },
         {
           "id": "SN202543",
           "name": "Grandeur Collection (1/2kg)",
           "price": 700,
           "description": "Grandeur dry fruit selection: Cashew Cake, Pista Roll, Kaju Cassata, Fig Roll, Badam Halwa, Strawberry Kaju Katli - 1/2 kg",
-          "image": "/lovable-uploads/grandeur-half.jpg"
+          "image": "/rasgulla.png"
         },
         {
           "id": "SN202546",
           "name": "Grandeur Collection (1kg)",
           "price": 1400,
           "description": "Grandeur dry fruit selection: Cashew Cake, Pista Roll, Kaju Cassata, Fig Roll, Badam Halwa, Strawberry Kaju Katli - 1 kg",
-          "image": "/lovable-uploads/grandeur-full.jpg"
+          "image": "/diwaliSweets/badusha.jpg"
         },
 
       ]

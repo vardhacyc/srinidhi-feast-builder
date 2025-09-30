@@ -122,16 +122,20 @@ const DiwaliSweetsMenu = () => {
     ? sweetsData 
     : sweetsData.filter(sweet => sweet.category === selectedCategory);
 
-  return (
+    return (
     <section 
       id="sweets" 
-      className="relative py-20" 
+      className="relative py-20 min-h-screen" 
       style={{
-        background: 'linear-gradient(to bottom, hsl(var(--diwali-light)) 0%, hsl(var(--diwali-cream)) 100%)'
+        background: 'linear-gradient(135deg, rgba(255, 243, 176, 0.95) 0%, rgba(254, 215, 170, 0.9) 25%, rgba(253, 186, 116, 0.95) 50%, rgba(255, 237, 213, 0.9) 75%, rgba(255, 248, 220, 0.95) 100%)'
       }}
     >
       {/* Decorative Diwali Header */}
-      <div className="relative bg-gradient-to-r from-amber-50 to-orange-50 py-12 mb-8 overflow-hidden">
+      <div className="relative py-16 mb-12 overflow-hidden">
+        {/* Glassmorphism background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-amber-50/40 to-orange-50/30 backdrop-blur-sm border-b border-white/20 shadow-2xl">
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 via-transparent to-orange-300/10"></div>
+        </div>
         {/* Decorative Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           {/* Left side decorations */}
@@ -179,9 +183,11 @@ const DiwaliSweetsMenu = () => {
           </div>
         </div>
 
-        <div className="container mx-auto px-4 text-center relative z-10">
+        <div className="container mx-auto px-6 text-center relative z-10">
           {/* Main Title with Decorative Elements */}
           <div className="relative inline-block">
+            {/* Glassmorphism title background */}
+            <div className="absolute inset-0 -m-8 bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-xl"></div>
             {/* Central Mandala */}
             <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-16 opacity-20">
               <svg viewBox="0 0 100 100" className="w-full h-full text-amber-700">
@@ -200,34 +206,27 @@ const DiwaliSweetsMenu = () => {
               </svg>
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-bold text-amber-900 mb-4 relative">
-              <span className="relative z-10">
-                Diwali Sweet Delights
-              </span>
-            </h1>
+                      <h1 className="relative text-5xl md:text-7xl font-bold bg-gradient-to-br from-amber-800 via-orange-700 to-amber-900 bg-clip-text text-transparent mb-6 tracking-tight drop-shadow-sm">
+            Diwali Sweet Delights
+          </h1>
           </div>
           
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="hidden md:block w-24 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
-            <span className="text-amber-700 text-2xl">✨</span>
-            <div className="hidden md:block w-24 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+          <div className="relative flex items-center justify-center gap-6 mb-8">
+            <div className="hidden md:block w-32 h-px bg-gradient-to-r from-transparent via-amber-500/60 to-transparent shadow-sm"></div>
+            <div className="relative">
+              <span className="text-amber-600 text-3xl drop-shadow-lg animate-pulse">✨</span>
+              <div className="absolute inset-0 text-amber-400 text-3xl animate-ping opacity-20">✨</div>
+            </div>
+            <div className="hidden md:block w-32 h-px bg-gradient-to-r from-transparent via-amber-500/60 to-transparent shadow-sm"></div>
           </div>
           
-          <p className="text-lg text-amber-800 mb-6 max-w-3xl mx-auto font-medium">
-            Authentic traditional sweets handcrafted with love • Premium ingredients • Fresh daily • Perfect for celebrations
-          </p>
-          
-          <div className="flex flex-wrap justify-center gap-3 text-sm">
-            <span className="bg-white/90 px-4 py-2 rounded-full text-amber-800 font-semibold shadow-sm border border-amber-200">
-              🎁 Beautiful Gift Packaging
-            </span>
-            <span className="bg-white/90 px-4 py-2 rounded-full text-amber-800 font-semibold shadow-sm border border-amber-200">
-              🚚 Same Day Delivery
-            </span>
-            <span className="bg-white/90 px-4 py-2 rounded-full text-amber-800 font-semibold shadow-sm border border-amber-200">
-              ⭐ 25+ Years Legacy
-            </span>
+          <div className="relative bg-white/30 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-white/40 shadow-lg max-w-4xl mx-auto">
+            <p className="text-lg text-amber-900 font-medium leading-relaxed">
+              Authentic traditional sweets handcrafted with love • Premium ingredients • Fresh daily • Perfect for celebrations
+            </p>
           </div>
+          
+
         </div>
       </div>
 
@@ -259,7 +258,7 @@ const DiwaliSweetsMenu = () => {
           </div>
 
           {/* Mobile Sticky Toolbar */}
-          <div className="md:hidden sticky top-0 z-30 bg-white/95 backdrop-blur-sm border-b-2 border-amber-200 mb-6">
+          <div className="md:hidden sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-white/30 shadow-lg mb-6">
             <div className="px-4 py-3">
               <div className="flex gap-2 overflow-x-auto scrollbar-hide">
                 {sweetCategories.map((category) => {
@@ -307,8 +306,10 @@ const DiwaliSweetsMenu = () => {
             return (
               <div
                 key={familyName}
-                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group border border-amber-200"
+                className="relative bg-white/70 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-white/30 hover:border-amber-300/50 hover:bg-white/80 transform hover:scale-[1.02]"
               >
+                {/* Glassmorphism overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-amber-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 {/* Large Product Image */}
                 <div className="relative overflow-hidden aspect-square">
                   <img
@@ -362,10 +363,10 @@ const DiwaliSweetsMenu = () => {
                             <button
                               key={variant.id}
                               onClick={() => handleVariantChange(familyName, variantInfo.value)}
-                              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
+                              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 backdrop-blur-sm ${
                                 isSelected
-                                  ? 'bg-amber-500 text-white shadow-md'
-                                  : 'bg-amber-100 text-amber-700 hover:bg-amber-200'
+                                  ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg border border-amber-400/30'
+                                  : 'bg-white/60 text-amber-700 hover:bg-white/80 border border-white/40 hover:shadow-md'
                               }`}
                             >
                               {variantInfo.label}
@@ -420,7 +421,7 @@ const DiwaliSweetsMenu = () => {
                   <div className="space-y-2">
                     <Button
                       onClick={() => addToCart(selectedProduct)}
-                      className="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg"
+                      className="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm border border-amber-300/20 hover:scale-[1.02] transform"
                     >
                       <Plus className="w-4 h-4 mr-2" />
                       Add to Cart
@@ -429,7 +430,7 @@ const DiwaliSweetsMenu = () => {
                     {isGiftBox && (
                       <Button
                         variant="outline"
-                        className="w-full border-2 border-amber-400 text-amber-700 hover:bg-amber-50 font-semibold py-2 rounded-xl transition-all duration-300"
+                        className="w-full border-2 border-amber-400/60 text-amber-700 hover:bg-amber-50/80 font-semibold py-2 rounded-xl transition-all duration-300 backdrop-blur-sm hover:border-amber-500/80 hover:shadow-md"
                         onClick={() => {
                           const message = `Hi! I'm interested in ${selectedProduct.name} as a gift box. Please share available sizes and pricing details.`;
                           const whatsappUrl = `https://wa.me/918760101010?text=${encodeURIComponent(message)}`;
