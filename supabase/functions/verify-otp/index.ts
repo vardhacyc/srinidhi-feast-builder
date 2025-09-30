@@ -14,19 +14,64 @@ interface VerifyOTPRequest {
   otp: string;
 }
 
+// Email validation regex
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+// OTP format validation (6 digits)
+const OTP_REGEX = /^\d{6}$/;
+
+// Input validation function
+const validateInput = (email: string, otp: string) => {
+  // Trim and validate email
+  const trimmedEmail = email.trim().toLowerCase();
+  if (!trimmedEmail || trimmedEmail.length > 255) {
+    throw new Error("Invalid email format");
+  }
+  if (!EMAIL_REGEX.test(trimmedEmail)) {
+    throw new Error("Invalid email format");
+  }
+
+  // Validate OTP format
+  const trimmedOTP = otp.trim();
+  if (!OTP_REGEX.test(trimmedOTP)) {
+    throw new Error("Invalid OTP format");
+  }
+
+  return { email: trimmedEmail, otp: trimmedOTP };
+};
+
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { email, otp }: VerifyOTPRequest = await req.json();
+    const body: VerifyOTPRequest = await req.json();
 
-    if (!email || !otp) {
-      throw new Error("Email and OTP are required");
-    }
+    // Validate input
+    const { email, otp } = validateInput(body.email, body.otp);
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
+
+    // Rate limiting: Check for too many failed attempts (max 5 attempts per 5 minutes)
+    const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString();
+    const { data: recentAttempts } = await supabase
+      .from("otp_verifications")
+      .select("id")
+      .eq("email", email)
+      .gte("created_at", fiveMinutesAgo);
+
+    if (recentAttempts && recentAttempts.length > 5) {
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: "Too many attempts. Please try again later." 
+        }),
+        {
+          status: 429,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
 
     // Find the OTP record
     const { data: otpRecord, error: fetchError } = await supabase

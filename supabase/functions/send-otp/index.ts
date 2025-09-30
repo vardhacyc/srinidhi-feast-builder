@@ -16,6 +16,29 @@ interface SendOTPRequest {
   customerName: string;
 }
 
+// Email validation regex
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+// Input validation function
+const validateInput = (email: string, customerName: string) => {
+  // Trim and validate email
+  const trimmedEmail = email.trim().toLowerCase();
+  if (!trimmedEmail || trimmedEmail.length > 255) {
+    throw new Error("Invalid email format");
+  }
+  if (!EMAIL_REGEX.test(trimmedEmail)) {
+    throw new Error("Invalid email format");
+  }
+
+  // Validate customer name
+  const trimmedName = customerName.trim();
+  if (!trimmedName || trimmedName.length < 2 || trimmedName.length > 100) {
+    throw new Error("Customer name must be between 2 and 100 characters");
+  }
+
+  return { email: trimmedEmail, name: trimmedName };
+};
+
 const generateOTP = (): string => {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
@@ -26,20 +49,41 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { email, customerName }: SendOTPRequest = await req.json();
+    const body: SendOTPRequest = await req.json();
 
-    if (!email || !customerName) {
-      throw new Error("Email and customer name are required");
-    }
+    // Validate input
+    const { email, name } = validateInput(body.email, body.customerName);
 
     // Initialize Supabase client
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
+
+    // Rate limiting: Check if OTP was sent recently (within last 60 seconds)
+    const { data: recentOTP } = await supabase
+      .from("otp_verifications")
+      .select("created_at")
+      .eq("email", email)
+      .gte("created_at", new Date(Date.now() - 60000).toISOString())
+      .limit(1)
+      .maybeSingle();
+
+    if (recentOTP) {
+      return new Response(
+        JSON.stringify({ 
+          error: "Please wait 60 seconds before requesting another OTP",
+          success: false 
+        }),
+        {
+          status: 429,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
 
     // Generate OTP
     const otpCode = generateOTP();
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // 5 minutes
 
-    console.log(`Generated OTP for ${email}: ${otpCode}`);
+    console.log(`Generated OTP for ${email}`);
 
     // Clean up old OTPs for this email
     await supabase
@@ -89,7 +133,7 @@ const handler = async (req: Request): Promise<Response> => {
               <h1>🪔 Sri Nidhi Catering</h1>
             </div>
             <div class="content">
-              <h2>Hello ${customerName},</h2>
+              <h2>Hello ${name},</h2>
               <p>Thank you for placing an order with Sri Nidhi Catering!</p>
               <p>To verify your email and confirm your order, please use the following One-Time Password (OTP):</p>
               
