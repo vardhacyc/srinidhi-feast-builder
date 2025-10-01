@@ -189,6 +189,27 @@ const AdminDashboard: React.FC = () => {
     }
   };
 
+  const handlePaymentStatusUpdate = async (orderId: string, newPaymentStatus: Order['payment_status']) => {
+    try {
+      await orderService.updatePaymentStatus(orderId, newPaymentStatus);
+      setOrders(orders.map(order => 
+        order.id === orderId 
+          ? { ...order, payment_status: newPaymentStatus, updated_at: new Date().toISOString() }
+          : order
+      ));
+      toast({
+        title: "Payment Status Updated",
+        description: "Payment status has been updated successfully.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to update payment status.",
+        variant: "destructive"
+      });
+    }
+  };
+
   const handleDeleteOrder = async (orderId: string) => {
     if (!confirm('Are you sure you want to delete this order?')) return;
     
@@ -683,6 +704,8 @@ const AdminDashboard: React.FC = () => {
   const getOrderStats = () => {
     const overdueOrders = orders.filter(order => isPaymentOverdue(order));
     const recentOrders = orders.filter(order => !isPaymentOverdue(order));
+    const paymentPendingOrders = orders.filter(order => order.payment_status === 'pending');
+    const paymentReceivedOrders = orders.filter(order => order.payment_status === 'received');
     
     return {
       total: orders.length,
@@ -692,7 +715,11 @@ const AdminDashboard: React.FC = () => {
       pending: orders.filter(order => order.status === 'received').length,
       completed: orders.filter(order => order.status === 'completed').length,
       overdueCount: overdueOrders.length,
-      recentCount: recentOrders.length
+      recentCount: recentOrders.length,
+      paymentPending: paymentPendingOrders.length,
+      paymentPendingAmount: paymentPendingOrders.reduce((sum, order) => sum + order.total_amount, 0),
+      paymentReceived: paymentReceivedOrders.length,
+      paymentReceivedAmount: paymentReceivedOrders.reduce((sum, order) => sum + order.total_amount, 0),
     };
   };
 
@@ -772,7 +799,7 @@ const AdminDashboard: React.FC = () => {
         </div>
 
         {/* Enhanced Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-4 mb-8">
           <Card className="bg-white/90 backdrop-blur-sm border-amber-200 shadow-lg">
             <CardContent className="p-4">
               <div className="flex items-center">
@@ -792,6 +819,32 @@ const AdminDashboard: React.FC = () => {
                 <div className="ml-3">
                   <p className="text-xs font-medium text-gray-600">Total Revenue</p>
                   <p className="text-xl font-bold text-green-700">₹{stats.revenue.toFixed(0)}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-white/90 backdrop-blur-sm border-orange-200 shadow-lg">
+            <CardContent className="p-4">
+              <div className="flex items-center">
+                <CreditCard className="h-6 w-6 text-orange-600" />
+                <div className="ml-3">
+                  <p className="text-xs font-medium text-gray-600">Payment Pending</p>
+                  <p className="text-lg font-bold text-orange-700">{stats.paymentPending}</p>
+                  <p className="text-xs text-orange-600">₹{stats.paymentPendingAmount.toFixed(0)}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-white/90 backdrop-blur-sm border-emerald-200 shadow-lg">
+            <CardContent className="p-4">
+              <div className="flex items-center">
+                <CheckCircle2 className="h-6 w-6 text-emerald-600" />
+                <div className="ml-3">
+                  <p className="text-xs font-medium text-gray-600">Payment Received</p>
+                  <p className="text-lg font-bold text-emerald-700">{stats.paymentReceived}</p>
+                  <p className="text-xs text-emerald-600">₹{stats.paymentReceivedAmount.toFixed(0)}</p>
                 </div>
               </div>
             </CardContent>
@@ -1053,10 +1106,28 @@ const AdminDashboard: React.FC = () => {
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="received">Received</SelectItem>
-                            <SelectItem value="payment_received">Payment Received</SelectItem>
                             <SelectItem value="processing">Processing</SelectItem>
                             <SelectItem value="completed">Completed</SelectItem>
                             <SelectItem value="cancelled">Cancelled</SelectItem>
+                          </SelectContent>
+                        </Select>
+
+                        <Select
+                          value={order.payment_status}
+                          onValueChange={(value: Order['payment_status']) => 
+                            handlePaymentStatusUpdate(order.id, value)
+                          }
+                        >
+                          <SelectTrigger className={`w-32 h-8 text-xs bg-white/80 text-gray-700 ${
+                            order.payment_status === 'pending' 
+                              ? 'border-orange-300' 
+                              : 'border-emerald-300'
+                          }`}>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="pending">💳 Pending</SelectItem>
+                            <SelectItem value="received">✅ Received</SelectItem>
                           </SelectContent>
                         </Select>
                         

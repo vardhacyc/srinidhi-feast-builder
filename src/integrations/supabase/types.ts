@@ -144,6 +144,7 @@ export type Database = {
           id: string
           items: Json
           mobile: string
+          payment_status: string
           special_instructions: string | null
           status: string
           subtotal: number
@@ -160,6 +161,7 @@ export type Database = {
           id?: string
           items: Json
           mobile: string
+          payment_status?: string
           special_instructions?: string | null
           status?: string
           subtotal: number
@@ -176,6 +178,7 @@ export type Database = {
           id?: string
           items?: Json
           mobile?: string
+          payment_status?: string
           special_instructions?: string | null
           status?: string
           subtotal?: number

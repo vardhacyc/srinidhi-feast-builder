@@ -134,7 +134,8 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
         gst_amount: getTotalGST(),
         total_amount: getFinalTotal(),
         total_items: getTotalItems(),
-        status: 'received' as const
+        status: 'received' as const,
+        payment_status: 'pending' as const
       };
 
       const order = await orderService.createOrder(orderData);

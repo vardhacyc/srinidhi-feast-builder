@@ -23,6 +23,7 @@ export interface Order {
   total_amount: number;
   total_items: number;
   status: 'received' | 'processing' | 'completed' | 'cancelled';
+  payment_status: 'pending' | 'received';
   created_at: string;
   updated_at: string;
 }
@@ -75,6 +76,7 @@ interface OrderRow {
   total_amount: number;
   total_items: number;
   status: string;
+  payment_status: string;
   created_at: string;
   updated_at: string;
 }
@@ -83,7 +85,8 @@ interface OrderRow {
 const convertRowToOrder = (row: OrderRow): Order => ({
   ...row,
   items: row.items as unknown as OrderItem[],
-  status: row.status as Order['status']
+  status: row.status as Order['status'],
+  payment_status: row.payment_status as Order['payment_status']
 });
 
 // Order management functions
@@ -117,6 +120,21 @@ export const orderService = {
       .from('orders')
       .update({ 
         status,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', orderId)
+      .select()
+      .single();
+
+    if (error) throw error;
+    return convertRowToOrder(data as OrderRow);
+  },
+
+  async updatePaymentStatus(orderId: string, payment_status: Order['payment_status']) {
+    const { data, error } = await supabase
+      .from('orders')
+      .update({ 
+        payment_status,
         updated_at: new Date().toISOString()
       })
       .eq('id', orderId)
