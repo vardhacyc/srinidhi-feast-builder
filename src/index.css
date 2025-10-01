@@ -2402,3 +2402,151 @@ All colors MUST be HSL.
     }
   }
 }
+
+/* OTP Modal with Golden Theme - Cross Browser Compatible */
+.otp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  /* Beautiful golden gradient background */
+  background: linear-gradient(135deg, 
+    #FEF3C7 0%, 
+    #FDE68A 15%, 
+    #FBBF24 30%, 
+    #F59E0B 50%, 
+    #FBBF24 70%, 
+    #FDE68A 85%, 
+    #FEF3C7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.otp-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  z-index: 1000000;
+}
+
+.otp-form-wrapper {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 24px;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(251, 191, 36, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid rgba(251, 191, 36, 0.2);
+  overflow: hidden;
+}
+
+/* Clean OTP Input Styling */
+.otp-input-field {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  text-align: center;
+  letter-spacing: 0.25em;
+  border: 2px solid #F59E0B;
+  border-radius: 12px;
+  background: white;
+  color: #1F2937;
+  outline: none;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.otp-input-field:focus {
+  border-color: #D97706;
+  background: #FFFBEB;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.otp-input-field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #F9FAFB;
+}
+
+.otp-input-field::placeholder {
+  color: #9CA3AF;
+  font-weight: 400;
+}
+
+/* Prevent body scroll when modal is open */
+body.otp-modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+html.otp-modal-open {
+  overflow: hidden;
+}
+
+/* Safari specific enhancements */
+@supports (-webkit-touch-callout: none) {
+  .otp-modal-overlay {
+    height: -webkit-fill-available;
+  }
+  
+  .otp-input-field {
+    font-size: 16px; /* Prevents zoom on iOS Safari */
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-text-size-adjust: none;
+  }
+}
+
+/* Ensure input is interactive */
+.otp-form-wrapper input {
+  pointer-events: auto !important;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  touch-action: manipulation !important;
+}
+
+/* Mobile optimizations */
+@media screen and (max-width: 768px) {
+  .otp-modal-overlay {
+    padding: 16px;
+  }
+  
+  .otp-input-enhanced {
+    font-size: 18px;
+    padding: 14px 16px;
+    letter-spacing: 0.3em;
+  }
+}
+
+/* Accessibility enhancements */
+@media (prefers-reduced-motion: reduce) {
+  .otp-input-enhanced {
+    transition: none;
+    transform: none;
+  }
+  
+  .otp-input-enhanced:focus {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .otp-input-enhanced {
+    border-width: 4px;
+  }
+}

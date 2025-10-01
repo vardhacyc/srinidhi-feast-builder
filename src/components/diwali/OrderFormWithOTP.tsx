@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -212,21 +213,41 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
     }
   };
 
+  // Handle body scroll lock for OTP modal
+  React.useEffect(() => {
+    if (showOTP) {
+      document.body.classList.add('otp-modal-open');
+      document.documentElement.classList.add('otp-modal-open');
+      
+      return () => {
+        document.body.classList.remove('otp-modal-open');
+        document.documentElement.classList.remove('otp-modal-open');
+      };
+    }
+  }, [showOTP]);
+
   if (showOTP && pendingFormData) {
-    return (
-      <div className="max-w-2xl mx-auto">
-        <OTPVerification
-          email={pendingFormData.email}
-          onVerify={handleOTPVerification}
-          onResend={handleResendOTP}
-          isVerifying={isVerifyingOTP}
-          onBack={() => {
-            setShowOTP(false);
-            setPendingFormData(null);
-          }}
-        />
+    const modalContent = (
+      <div className="otp-modal-overlay">
+        <div className="otp-modal-content">
+          <div className="otp-form-wrapper">
+            <OTPVerification
+              email={pendingFormData.email}
+              onVerify={handleOTPVerification}
+              onResend={handleResendOTP}
+              isVerifying={isVerifyingOTP}
+              onBack={() => {
+                setShowOTP(false);
+                setPendingFormData(null);
+              }}
+            />
+          </div>
+        </div>
       </div>
     );
+
+    // Render modal as portal to document body for better browser compatibility
+    return createPortal(modalContent, document.body);
   }
 
   const totalWeight = getTotalItems();

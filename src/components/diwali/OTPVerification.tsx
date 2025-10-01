@@ -67,9 +67,48 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
   };
 
   const maskedEmail = email.replace(/(.{2})(.*)(@.*)/, '$1****$3');
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  // Simplified auto-focus for better reliability
+  React.useEffect(() => {
+    const focusInput = () => {
+      const input = inputRef.current;
+      if (input && !isVerifying) {
+        try {
+          input.focus();
+          // For Safari and mobile browsers
+          if (navigator.userAgent.includes('Safari') || 'ontouchstart' in window) {
+            input.click();
+          }
+        } catch (e) {
+          console.log('Focus failed:', e);
+        }
+      }
+    };
+
+    // Try focusing with short delays
+    const timer1 = setTimeout(focusInput, 100);
+    const timer2 = setTimeout(focusInput, 300);
+    const timer3 = setTimeout(focusInput, 500);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
+  }, [isVerifying]);
+
+  // Simple click handler to ensure focus
+  const handleInputClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const input = inputRef.current;
+    if (input && !isVerifying) {
+      input.focus();
+    }
+  };
 
   return (
-    <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 md:p-8 max-w-md mx-auto border-2 border-amber-400 shadow-2xl">
+    <div className="p-6 md:p-8 w-full max-w-md mx-auto">
       <div className="text-center mb-8">
         <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
           <Shield className="h-8 w-8 text-white" />
@@ -98,16 +137,29 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
           <Label htmlFor="otp" className="text-gray-900 font-bold text-sm">
             Enter OTP *
           </Label>
-          <Input
-            id="otp"
+          <input
+            ref={inputRef}
+            id="otp-input"
             type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
             value={otp}
             onChange={(e) => handleOTPChange(e.target.value)}
+            onClick={handleInputClick}
+            onFocus={(e) => {
+              e.target.setSelectionRange(e.target.value.length, e.target.value.length);
+            }}
             placeholder="Enter 6-digit OTP"
-            className="mt-2 text-center text-2xl font-mono tracking-widest bg-white border-2 border-amber-400 focus:border-amber-600 text-gray-900 placeholder:text-gray-500 font-bold shadow-inner"
+            className="mt-2 w-full px-4 py-3 text-center text-lg font-mono tracking-wider bg-white border-2 border-amber-400 rounded-xl focus:border-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500/20 text-gray-900 placeholder:text-amber-600 font-semibold transition-all duration-200"
             maxLength={6}
             disabled={isVerifying}
             autoComplete="one-time-code"
+            autoFocus
+            tabIndex={0}
+            spellCheck={false}
+            autoCorrect="off"
+            autoCapitalize="off"
+            style={{ fontSize: '16px' }}
           />
           {error && (
             <p className="text-red-500 text-sm mt-1">{error}</p>
