@@ -216,38 +216,66 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
   // Handle body scroll lock for OTP modal
   React.useEffect(() => {
     if (showOTP) {
+      // Store current scroll position
+      const scrollY = window.scrollY;
+      
+      // Lock body scroll
       document.body.classList.add('otp-modal-open');
       document.documentElement.classList.add('otp-modal-open');
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
       
       return () => {
+        // Restore scroll
         document.body.classList.remove('otp-modal-open');
         document.documentElement.classList.remove('otp-modal-open');
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, scrollY);
       };
     }
   }, [showOTP]);
 
   if (showOTP && pendingFormData) {
-    const modalContent = (
-      <div className="otp-modal-overlay">
-        <div className="otp-modal-content">
-          <div className="otp-form-wrapper">
-            <OTPVerification
-              email={pendingFormData.email}
-              onVerify={handleOTPVerification}
-              onResend={handleResendOTP}
-              isVerifying={isVerifyingOTP}
-              onBack={() => {
-                setShowOTP(false);
-                setPendingFormData(null);
-              }}
-            />
-          </div>
+    return (
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'linear-gradient(135deg, #FEF3C7 0%, #FDE68A 15%, #FBBF24 30%, #F59E0B 50%, #FBBF24 70%, #FDE68A 85%, #FEF3C7 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '16px',
+        zIndex: 9999
+      }}>
+        <div style={{
+          width: '100%',
+          maxWidth: '450px',
+          background: 'rgba(255, 255, 255, 0.98)',
+          borderRadius: '20px',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+          border: '2px solid rgba(251, 191, 36, 0.2)'
+        }}>
+          <OTPVerification
+            email={pendingFormData.email}
+            onVerify={handleOTPVerification}
+            onResend={handleResendOTP}
+            isVerifying={isVerifyingOTP}
+            onBack={() => {
+              setShowOTP(false);
+              setPendingFormData(null);
+            }}
+          />
         </div>
       </div>
     );
-
-    // Render modal as portal to document body for better browser compatibility
-    return createPortal(modalContent, document.body);
   }
 
   const totalWeight = getTotalItems();

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../ui/button';
-import { Input } from '../ui/input';
-import { Label } from '../ui/label';
-import { Loader2, Shield, RefreshCw } from 'lucide-react';
+import { Loader2, RefreshCw } from 'lucide-react';
 
 interface OTPVerificationProps {
   email: string;
@@ -22,7 +20,7 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
   error
 }) => {
   const [otp, setOtp] = useState('');
-  const [timeLeft, setTimeLeft] = useState(300); // 5 minutes
+  const [timeLeft, setTimeLeft] = useState(300);
   const [canResend, setCanResend] = useState(false);
   const [isResending, setIsResending] = useState(false);
 
@@ -35,15 +33,9 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
     }
   }, [timeLeft]);
 
-  const handleOTPChange = (value: string) => {
-    // Only allow numbers and limit to 6 digits
-    const numericValue = value.replace(/\D/g, '').slice(0, 6);
-    setOtp(numericValue);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (otp.length === 6) {
+    if (otp.length === 6 && !isVerifying) {
       await onVerify(otp);
     }
   };
@@ -67,123 +59,84 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
   };
 
   const maskedEmail = email.replace(/(.{2})(.*)(@.*)/, '$1****$3');
-  const inputRef = React.useRef<HTMLInputElement>(null);
-
-  // Simplified auto-focus for better reliability
-  React.useEffect(() => {
-    const focusInput = () => {
-      const input = inputRef.current;
-      if (input && !isVerifying) {
-        try {
-          input.focus();
-          // For Safari and mobile browsers
-          if (navigator.userAgent.includes('Safari') || 'ontouchstart' in window) {
-            input.click();
-          }
-        } catch (e) {
-          console.log('Focus failed:', e);
-        }
-      }
-    };
-
-    // Try focusing with short delays
-    const timer1 = setTimeout(focusInput, 100);
-    const timer2 = setTimeout(focusInput, 300);
-    const timer3 = setTimeout(focusInput, 500);
-
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-    };
-  }, [isVerifying]);
-
-  // Simple click handler to ensure focus
-  const handleInputClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const input = inputRef.current;
-    if (input && !isVerifying) {
-      input.focus();
-    }
-  };
 
   return (
-    <div className="p-6 md:p-8 w-full max-w-md mx-auto">
-      <div className="text-center mb-8">
-        <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-          <Shield className="h-8 w-8 text-white" />
+    <div className="p-4 md:p-6 w-full max-w-md mx-auto">
+      <div className="text-center mb-4">
+        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg p-2 border-2 border-amber-400">
+          <img 
+            src="/cateringLogo.png" 
+            alt="Srinidhi Catering" 
+            className="w-full h-full object-contain"
+          />
         </div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        <h2 className="text-xl font-bold text-gray-900 mb-1">
           OTP Verification
         </h2>
-        <p className="text-gray-700 text-sm font-medium">
-          We've sent a 6-digit code to
-        </p>
-        <p className="font-bold text-gray-900">
-          {maskedEmail}
+        <p className="text-gray-700 text-xs">
+          Code sent to <span className="font-bold">{maskedEmail}</span>
         </p>
         <Button
           type="button"
           variant="ghost"
           onClick={onBack}
-          className="text-sm text-amber-700 hover:text-amber-900 mt-2 font-medium hover:bg-amber-100"
+          className="text-xs text-amber-700 hover:text-amber-900 mt-1 font-medium hover:bg-amber-100 h-7"
         >
           ← Change Email
         </Button>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4" style={{ pointerEvents: 'auto' }}>
         <div>
-          <Label htmlFor="otp" className="text-gray-900 font-bold text-sm">
+          <label htmlFor="otp-input" className="block text-gray-900 font-bold text-sm mb-1">
             Enter OTP *
-          </Label>
+          </label>
           <input
-            ref={inputRef}
             id="otp-input"
-            type="text"
+            type="tel"
             inputMode="numeric"
             pattern="[0-9]*"
             value={otp}
-            onChange={(e) => handleOTPChange(e.target.value)}
-            onClick={handleInputClick}
-            onFocus={(e) => {
-              e.target.setSelectionRange(e.target.value.length, e.target.value.length);
+            onChange={(e) => {
+              const value = e.target.value.replace(/[^0-9]/g, '').substring(0, 6);
+              setOtp(value);
             }}
-            placeholder="Enter 6-digit OTP"
-            className="mt-2 w-full px-4 py-3 text-center text-lg font-mono tracking-wider bg-white border-2 border-amber-400 rounded-xl focus:border-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500/20 text-gray-900 placeholder:text-amber-600 font-semibold transition-all duration-200"
+            placeholder="000000"
+            className="otp-input-field w-full px-4 py-2 text-center text-xl font-mono bg-white border-2 border-amber-400 rounded-xl focus:border-amber-600 focus:outline-none text-gray-900"
             maxLength={6}
-            disabled={isVerifying}
-            autoComplete="one-time-code"
+            autoComplete="off"
             autoFocus
-            tabIndex={0}
-            spellCheck={false}
-            autoCorrect="off"
-            autoCapitalize="off"
-            style={{ fontSize: '16px' }}
+            style={{
+              pointerEvents: 'auto',
+              userSelect: 'text',
+              WebkitUserSelect: 'text',
+              touchAction: 'manipulation'
+            }}
           />
           {error && (
-            <p className="text-red-500 text-sm mt-1">{error}</p>
+            <p className="text-red-500 text-xs mt-1 font-semibold">{error}</p>
           )}
         </div>
 
-        <Button
+        <button
           type="submit"
           disabled={otp.length !== 6 || isVerifying}
-          className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 shadow-lg"
+          className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-3 text-base rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+          style={{ pointerEvents: 'auto' }}
         >
           {isVerifying ? (
             <>
-              <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+              <Loader2 className="h-4 w-4 mr-2 animate-spin inline" />
               Verifying...
             </>
           ) : (
             'Verify & Place Order'
           )}
-        </Button>
+        </button>
 
-        <div className="text-center">
+        <div className="text-center pt-2">
           {!canResend ? (
-            <p className="text-sm text-gray-700 font-medium">
+            <p className="text-xs text-gray-700 font-medium">
               Resend OTP in {formatTime(timeLeft)}
             </p>
           ) : (
@@ -192,16 +145,16 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
               variant="ghost"
               onClick={handleResend}
               disabled={isResending}
-              className="text-amber-700 hover:text-amber-900 hover:bg-amber-100 font-medium"
+              className="text-amber-700 hover:text-amber-900 hover:bg-amber-100 font-medium text-sm h-8"
             >
               {isResending ? (
                 <>
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  <Loader2 className="h-3 w-3 mr-1 animate-spin" />
                   Resending...
                 </>
               ) : (
                 <>
-                  <RefreshCw className="h-4 w-4 mr-2" />
+                  <RefreshCw className="h-3 w-3 mr-1" />
                   Resend OTP
                 </>
               )}
@@ -210,10 +163,9 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
         </div>
       </form>
 
-      <div className="mt-6 p-4 bg-blue-50 rounded-xl border-2 border-blue-200">
-        <p className="text-xs text-blue-900 font-medium leading-relaxed">
-          🔒 <strong>Security Note:</strong> This OTP is valid for 5 minutes. 
-          Don't share it with anyone. Our team will never ask for your OTP.
+      <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+        <p className="text-xs text-blue-900 leading-relaxed">
+          🔒 Valid for 5 minutes. Never share your OTP.
         </p>
       </div>
     </div>
