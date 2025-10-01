@@ -79,10 +79,15 @@ const DiwaliSweetsMenu = () => {
 
   // Handle variant selection
   const handleVariantChange = (familyName: string, variantValue: string) => {
-    setSelectedVariants(prev => ({
-      ...prev,
-      [familyName]: variantValue
-    }));
+    console.log('Variant change:', { familyName, variantValue });
+    setSelectedVariants(prev => {
+      const newState = {
+        ...prev,
+        [familyName]: variantValue
+      };
+      console.log('New selected variants:', newState);
+      return newState;
+    });
   };
 
   // Get selected product for a family
@@ -362,11 +367,18 @@ const DiwaliSweetsMenu = () => {
                           return (
                             <button
                               key={variant.id}
-                              onClick={() => handleVariantChange(familyName, variantInfo.value)}
-                              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 backdrop-blur-sm ${
+                              type="button"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                console.log('Button clicked!', variantInfo.label, variantInfo.value);
+                                handleVariantChange(familyName, variantInfo.value);
+                              }}
+                              style={{ pointerEvents: 'auto', zIndex: 10, position: 'relative' }}
+                              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 cursor-pointer select-none ${
                                 isSelected
-                                  ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg border border-amber-400/30'
-                                  : 'bg-white/60 text-amber-700 hover:bg-white/80 border border-white/40 hover:shadow-md'
+                                  ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg border-2 border-amber-400'
+                                  : 'bg-white border-2 border-amber-200 text-amber-700 hover:border-amber-400 hover:bg-amber-50 hover:shadow-md active:bg-amber-100'
                               }`}
                             >
                               {variantInfo.label}
@@ -418,29 +430,13 @@ const DiwaliSweetsMenu = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="space-y-2">
-                    <Button
-                      onClick={() => addToCart(selectedProduct)}
-                      className="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm border border-amber-300/20 hover:scale-[1.02] transform"
-                    >
-                      <Plus className="w-4 h-4 mr-2" />
-                      Add to Cart
-                    </Button>
-                    
-                    {isGiftBox && (
-                      <Button
-                        variant="outline"
-                        className="w-full border-2 border-amber-400/60 text-amber-700 hover:bg-amber-50/80 font-semibold py-2 rounded-xl transition-all duration-300 backdrop-blur-sm hover:border-amber-500/80 hover:shadow-md"
-                        onClick={() => {
-                          const message = `Hi! I'm interested in ${selectedProduct.name} as a gift box. Please share available sizes and pricing details.`;
-                          const whatsappUrl = `https://wa.me/918760101010?text=${encodeURIComponent(message)}`;
-                          window.open(whatsappUrl, '_blank');
-                        }}
-                      >
-                        🎁 Buy for Gifting
-                      </Button>
-                    )}
-                  </div>
+                  <Button
+                    onClick={() => addToCart(selectedProduct)}
+                    className="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm border border-amber-300/20 hover:scale-[1.02] transform"
+                  >
+                    <Plus className="w-4 h-4 mr-2" />
+                    Add to Cart
+                  </Button>
                 </div>
               </div>
             );

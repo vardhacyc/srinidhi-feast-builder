@@ -95,7 +95,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 1400,
           "unit": "kg",
           "description": "Sweet fig rolls with natural fruit flavors",
-          "image": "/motichoor-laddu.png"
+          "image": "/lovable-uploads/83c09900-3531-4b73-80e6-69da609f6f92.png"
         },
         {
           "id": "SN202505",
@@ -103,7 +103,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 1400,
           "unit": "kg",
           "description": "Rich almond halwa made with premium ingredients",
-          "image": "/diamond-barfi.png"
+          "image": "/lovable-uploads/coconut-burfi.png"
         },
         {
           "id": "SN202506",
@@ -217,7 +217,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 600,
           "unit": "box",
           "description": "Premium selection: Badam Chocolate Cake, Kaju Gulkand Ball, Blueberry Kaju Cake, Biscoff Kaju Cake - 12 pieces",
-          "image": "/kaju-katli.png"
+          "image": "/lovable-uploads/90e0608c-b5fa-480e-9dfa-0a8173cd3f7e.png"
         },
         {
           "id": "SN202548",
@@ -225,7 +225,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 1200,
           "unit": "box",
           "description": "Premium selection: Badam Chocolate Cake, Kaju Gulkand Ball, Blueberry Kaju Cake, Biscoff Kaju Cake - 25 pieces",
-          "image": "/soan-papdi.png"
+          "image": "/lovable-uploads/soan-papdi.png"
         }
       ]
     },
@@ -237,8 +237,8 @@ export const DIWALI_MENU_DATA: MenuData = {
           "name": "Mewa Bites",
           "price": 80,
           "unit": "piece",
-          "description": "Premium mixed dry fruit bites",
-          "image": "/pista-roll.png"
+          "description": "Traditional mixed dry fruit bites",
+          "image": "/lovable-uploads/pista-roll.png"
         },
         {
           "id": "SN202520",
@@ -251,10 +251,10 @@ export const DIWALI_MENU_DATA: MenuData = {
         {
           "id": "SN202521",
           "name": "Orange Bites",
-          "price": 75,
+          "price": 80,
           "unit": "piece",
           "description": "Citrusy orange-flavored sweet bites",
-          "image": "/motichoor-laddu.png"
+          "image": "/lovable-uploads/a7c240ca-9638-4f9a-b530-e2a2e1696347.png"
         },
         {
           "id": "SN202522",
@@ -262,31 +262,31 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 75,
           "unit": "piece",
           "description": "Tropical mango-flavored sweet treats",
-          "image": "/kaju-katli.png"
+          "image": "/lovable-uploads/63e67f13-ca1f-4971-9c1e-b7c7b3bec5cc.png"
         },
         {
           "id": "SN202523",
           "name": "Kesar Pista Bites",
           "price": 85,
           "unit": "piece",
-          "description": "Saffron and pistachio flavored premium bites",
-          "image": "/pista-roll.png"
+          "description": "Saffron and pistachio flavored sweet treats",
+          "image": "/lovable-uploads/pista-roll.png"
         },
         {
           "id": "SN202524",
           "name": "Chocolate Bites",
-          "price": 70,
+          "price": 85,
           "unit": "piece",
-          "description": "Rich chocolate flavored sweet bites",
-          "image": "/diamond-barfi.png"
+          "description": "Rich chocolate-flavored sweet bites",
+          "image": "/lovable-uploads/coconut-burfi.png"
         },
         {
           "id": "SN202544",
-          "name": "Premium Assorted Bites (12pcs)",
-          "price": 499,
+          "name": "Premium Bites (12pcs)",
+          "price": 300,
           "unit": "box",
-          "description": "Premium bite-sized sweets collection - 12 pieces",
-          "image": "/mysore-pak.png"
+          "description": "Premium selection of 12 assorted bite-sized sweets",
+          "image": "/lovable-uploads/MysorePak.png"
         },
         {
           "id": "SN202545",
@@ -299,10 +299,10 @@ export const DIWALI_MENU_DATA: MenuData = {
         {
           "id": "SN202549",
           "name": "Dry Fruits Gift Box",
-          "price": 1199,
+          "price": 800,
           "unit": "box",
-          "description": "Assorted premium dry fruits in elegant gift packaging",
-          "image": "/soan-papdi.png"
+          "description": "Premium gift box with assorted dry fruits and sweets",
+          "image": "/lovable-uploads/soan-papdi.png"
         }
       ]
     },
@@ -330,8 +330,8 @@ export const DIWALI_MENU_DATA: MenuData = {
           "name": "Chocolate Burfi",
           "price": 650,
           "unit": "kg",
-          "description": "Rich chocolate flavored milk burfi",
-          "image": "/diamond-barfi.png"
+          "description": "Rich chocolate burfi with premium cocoa",
+          "image": "/lovable-uploads/coconut-burfi.png"
         },
         {
           "id": "SN202528",
@@ -388,21 +388,21 @@ export const DIWALI_MENU_DATA: MenuData = {
           "name": "1/4kg Box",
           "price": 150,
           "description": "Premium gift box packaging for 1/4 kg sweets",
-          "image": "/kaju-katli.png"
+          "image": "/lovable-uploads/8a25412c-6bca-463c-a2f9-cd4ba98905e6.png"
         },
         {
           "id": "SN202534",
           "name": "1/2kg Box",
-          "price": 300,
+          "price": 250,
           "description": "Premium gift box packaging for 1/2 kg sweets",
-          "image": "/motichoor-laddu.png"
+          "image": "/lovable-uploads/be4a8a1a-e952-4710-8111-60ee6ed7eb78.png"
         },
         {
           "id": "SN202535",
           "name": "1kg Box",
-          "price": 600,
+          "price": 400,
           "description": "Premium gift box packaging for 1 kg sweets",
-          "image": "/mysore-pak.png"
+          "image": "/lovable-uploads/8f7791bb-208a-4778-9f6a-21441f9bfaff.png"
         }
       ]
     },
@@ -414,35 +414,35 @@ export const DIWALI_MENU_DATA: MenuData = {
           "name": "Royal Collection (1/4kg)",
           "price": 150,
           "description": "Royal selection: Laddu, Mysurpa, Badusha, Bombay Halwa, Gulkand Burfi, Dry Jamun - 1/4 kg",
-          "image": "/motichoor-laddu.png"
+          "image": "/lovable-uploads/ladoo.png"
         },
         {
           "id": "SN202537",
           "name": "Royal Collection (1/2kg)",
           "price": 300,
           "description": "Royal selection: Laddu, Mysurpa, Badusha, Bombay Halwa, Gulkand Burfi, Dry Jamun - 1/2 kg",
-          "image": "/kaju-katli.png"
+          "image": "/lovable-uploads/90e0608c-b5fa-480e-9dfa-0a8173cd3f7e.png"
         },
         {
           "id": "SN202538",
           "name": "Royal Collection (1kg)",
           "price": 600,
           "description": "Royal selection: Laddu, Mysurpa, Badusha, Bombay Halwa, Gulkand Burfi, Dry Jamun - 1 kg",
-          "image": "/mysore-pak.png"
+          "image": "/lovable-uploads/MysorePak.png"
         },
         {
           "id": "SN202539",
           "name": "Supreme Collection (1/4kg)",
           "price": 170,
           "description": "Supreme selection: Spl. Laddu, Carrot Mysurpa, Soan Papdi, Chocolate Burfi, Dry Fruit Halwa, Badam Mas Cake - 1/4 kg",
-          "image": "/soan-papdi.png"
+          "image": "/lovable-uploads/soan-papdi.png"
         },
         {
           "id": "SN202540",
           "name": "Supreme Collection (1/2kg)",
           "price": 330,
           "description": "Supreme selection: Spl. Laddu, Carrot Mysurpa, Soan Papdi, Chocolate Burfi, Dry Fruit Halwa, Badam Mas Cake - 1/2 kg",
-          "image": "/diamond-barfi.png"
+          "image": "/lovable-uploads/CarrotMysorePak.webp"
         },
         {
           "id": "SN202541",
@@ -456,7 +456,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "name": "Grandeur Collection (1/4kg)",
           "price": 350,
           "description": "Grandeur dry fruit selection: Cashew Cake, Pista Roll, Kaju Cassata, Fig Roll, Badam Halwa, Strawberry Kaju Katli - 1/4 kg",
-          "image": "/pista-roll.png"
+          "image": "/lovable-uploads/pista-roll.png"
         },
         {
           "id": "SN202543",
