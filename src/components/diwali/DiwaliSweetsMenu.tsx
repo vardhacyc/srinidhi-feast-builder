@@ -301,13 +301,22 @@ const DiwaliSweetsMenu = () => {
 
       {/* Sweets Grid */}
       <div className="container mx-auto px-4 md:px-6">
-        {/* Product Family Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-          {Object.entries(groupProductsByFamily(filteredSweets)).map(([familyName, variants]) => {
+        {(() => {
+          const familyEntries = Object.entries(groupProductsByFamily(filteredSweets));
+          const collectionsEntries = familyEntries.filter(([familyName, variants]) => {
             const selectedProduct = getSelectedProduct(familyName, variants);
-            const isGiftBox = selectedProduct.name.includes('Royal') || selectedProduct.name.includes('Supreme') || selectedProduct.name.includes('Grandeur') || selectedProduct.name.includes('Premium') || selectedProduct.category === 'Assorted & Combo Gift Boxes';
+            return selectedProduct.name.includes('Royal') || selectedProduct.name.includes('Supreme') || selectedProduct.name.includes('Grandeur') || selectedProduct.name.includes('Premium') || selectedProduct.category === 'Assorted & Combo Gift Boxes';
+          });
+          const individualEntries = familyEntries.filter(([familyName, variants]) => {
+            const selectedProduct = getSelectedProduct(familyName, variants);
+            return !(selectedProduct.name.includes('Royal') || selectedProduct.name.includes('Supreme') || selectedProduct.name.includes('Grandeur') || selectedProduct.name.includes('Premium') || selectedProduct.category === 'Assorted & Combo Gift Boxes');
+          });
+
+          const renderProductCard = (familyName: string, variants: any[], isCollectionCard: boolean = false) => {
+            const selectedProduct = getSelectedProduct(familyName, variants);
+            const isGiftBox = isCollectionCard || selectedProduct.name.includes('Royal') || selectedProduct.name.includes('Supreme') || selectedProduct.name.includes('Grandeur') || selectedProduct.name.includes('Premium') || selectedProduct.category === 'Assorted & Combo Gift Boxes';
             const isPremium = selectedProduct.category === 'Dry Fruit Sweets' || selectedProduct.category === 'Premium Cakes & Sweets' || (selectedProduct.price && selectedProduct.price > 1000);
-            
+
             return (
               <div
                 key={familyName}
@@ -391,14 +400,14 @@ const DiwaliSweetsMenu = () => {
 
                   {/* Gift Box Contents */}
                   {isGiftBox && (
-                    <div className="mb-3 p-2 bg-amber-50 rounded-lg border border-amber-200">
+                    <div className="mb-3 p-2 bg-amber-50 rounded-lg border border-amber-200 hover:bg-amber-100 transition-all duration-300">
                       <p className="text-xs font-semibold text-amber-800 mb-1">🎁 Includes:</p>
-                      <p className="text-xs text-amber-700 line-clamp-2">
+                      <p className="text-xs text-amber-700 line-clamp-2 hover:line-clamp-none transition-all duration-300 cursor-pointer">
                         {selectedProduct.name.includes('Royal') && DIWALI_MENU_DATA.selections.Royal.join(', ')}
                         {selectedProduct.name.includes('Supreme') && DIWALI_MENU_DATA.selections.Supreme.join(', ')}
                         {selectedProduct.name.includes('Grandeur') && DIWALI_MENU_DATA.selections.Grandeur.join(', ')}
-                        {selectedProduct.name.includes('Premium') && 'Premium selection of specialty cakes and sweets'}
-                        {selectedProduct.name.includes('Bites') && 'Assorted premium bite-sized sweets'}
+                        {selectedProduct.name.includes('Premium Collection') && DIWALI_MENU_DATA.selections.Premium.join(', ')}
+                        {selectedProduct.name.includes('Premium Assorted') && DIWALI_MENU_DATA.selections['Premium Assorted'].join(', ')}
                       </p>
                     </div>
                   )}
@@ -421,8 +430,8 @@ const DiwaliSweetsMenu = () => {
                       </div>
                     )}
                     
-                    {/* Size Options */}
-                    {isGiftBox && (
+                    {/* Size Options - Only show for weight-based collections, not piece-based */}
+                    {isGiftBox && !selectedProduct.name.includes('pcs') && !selectedProduct.name.includes('Premium Collection') && !selectedProduct.name.includes('Premium Assorted') && (
                       <p className="text-xs text-amber-600 mt-1">
                         📦 1/4kg, 1/2kg, 1kg options available
                       </p>
@@ -440,8 +449,46 @@ const DiwaliSweetsMenu = () => {
                 </div>
               </div>
             );
-          })}
-        </div>
+          };
+
+          return (
+            <>
+              {/* Collections Section */}
+              {collectionsEntries.length > 0 && (
+                <div className="mb-12">
+                  {selectedCategory === 'all' && (
+                    <div className="mb-6">
+                      <h3 className="text-xl md:text-2xl font-bold text-amber-900 text-center">
+                        🎁 Gift Collections & Boxes
+                      </h3>
+                      <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-amber-600 mx-auto mt-2 rounded-full"></div>
+                    </div>
+                  )}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                    {collectionsEntries.map(([familyName, variants]) => renderProductCard(familyName, variants, true))}
+                  </div>
+                </div>
+              )}
+
+              {/* Individual Items Section */}
+              {individualEntries.length > 0 && (
+                <div>
+                  {selectedCategory === 'all' && collectionsEntries.length > 0 && (
+                    <div className="mb-6">
+                      <h3 className="text-xl md:text-2xl font-bold text-amber-900 text-center">
+                        🍬 Individual Sweets & Treats
+                      </h3>
+                      <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-amber-600 mx-auto mt-2 rounded-full"></div>
+                    </div>
+                  )}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                    {individualEntries.map(([familyName, variants]) => renderProductCard(familyName, variants, false))}
+                  </div>
+                </div>
+              )}
+            </>
+          );
+        })()}
 
         {Object.keys(groupProductsByFamily(filteredSweets)).length === 0 && (
           <div className="text-center py-12">

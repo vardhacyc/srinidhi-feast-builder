@@ -210,22 +210,6 @@ export const DIWALI_MENU_DATA: MenuData = {
           "name": "Biscoff Kaju Cake",
           "description": "Premium cashew cake with Biscoff flavor",
           "image": "/lovable-uploads/coconut-burfi.png"
-        },
-        {
-          "id": "SN202547",
-          "name": "Premium Collection (12pcs)",
-          "price": 600,
-          "unit": "box",
-          "description": "Premium selection: Badam Chocolate Cake, Kaju Gulkand Ball, Blueberry Kaju Cake, Biscoff Kaju Cake - 12 pieces",
-          "image": "/lovable-uploads/90e0608c-b5fa-480e-9dfa-0a8173cd3f7e.png"
-        },
-        {
-          "id": "SN202548",
-          "name": "Premium Collection (25pcs)",
-          "price": 1200,
-          "unit": "box",
-          "description": "Premium selection: Badam Chocolate Cake, Kaju Gulkand Ball, Blueberry Kaju Cake, Biscoff Kaju Cake - 25 pieces",
-          "image": "/lovable-uploads/soan-papdi.png"
         }
       ]
     },
@@ -233,73 +217,9 @@ export const DIWALI_MENU_DATA: MenuData = {
       "name": "Bites",
       "products": [
         {
-          "id": "SN202519",
-          "name": "Mewa Bites",
-          "price": 80,
-          "unit": "piece",
-          "description": "Traditional mixed dry fruit bites",
-          "image": "/lovable-uploads/pista-roll.png"
-        },
-        {
-          "id": "SN202520",
-          "name": "Rose Bites",
-          "price": 75,
-          "unit": "piece",
-          "description": "Delicate rose-flavored bite-sized sweets",
-          "image": "/lovable-uploads/gulab-jamoon.png"
-        },
-        {
-          "id": "SN202521",
-          "name": "Orange Bites",
-          "price": 80,
-          "unit": "piece",
-          "description": "Citrusy orange-flavored sweet bites",
-          "image": "/lovable-uploads/a7c240ca-9638-4f9a-b530-e2a2e1696347.png"
-        },
-        {
-          "id": "SN202522",
-          "name": "Mango Bites",
-          "price": 75,
-          "unit": "piece",
-          "description": "Tropical mango-flavored sweet treats",
-          "image": "/lovable-uploads/63e67f13-ca1f-4971-9c1e-b7c7b3bec5cc.png"
-        },
-        {
-          "id": "SN202523",
-          "name": "Kesar Pista Bites",
-          "price": 85,
-          "unit": "piece",
-          "description": "Saffron and pistachio flavored sweet treats",
-          "image": "/lovable-uploads/pista-roll.png"
-        },
-        {
-          "id": "SN202524",
-          "name": "Chocolate Bites",
-          "price": 85,
-          "unit": "piece",
-          "description": "Rich chocolate-flavored sweet bites",
-          "image": "/lovable-uploads/coconut-burfi.png"
-        },
-        {
-          "id": "SN202544",
-          "name": "Premium Bites (12pcs)",
-          "price": 300,
-          "unit": "box",
-          "description": "Premium selection of 12 assorted bite-sized sweets",
-          "image": "/lovable-uploads/MysorePak.png"
-        },
-        {
-          "id": "SN202545",
-          "name": "Premium Assorted Bites (25pcs)",
-          "price": 999,
-          "unit": "box",
-          "description": "Premium bite-sized sweets collection - 25 pieces",
-          "image": "/rasgulla.png"
-        },
-        {
           "id": "SN202549",
           "name": "Dry Fruits Gift Box",
-          "price": 800,
+          "price": 1199,
           "unit": "box",
           "description": "Premium gift box with assorted dry fruits and sweets",
           "image": "/lovable-uploads/soan-papdi.png"
@@ -380,32 +300,7 @@ export const DIWALI_MENU_DATA: MenuData = {
         }
       ]
     },
-    {
-      "name": "Gift Box Packaging",
-      "products": [
-        {
-          "id": "SN202533",
-          "name": "1/4kg Box",
-          "price": 150,
-          "description": "Premium gift box packaging for 1/4 kg sweets",
-          "image": "/lovable-uploads/8a25412c-6bca-463c-a2f9-cd4ba98905e6.png"
-        },
-        {
-          "id": "SN202534",
-          "name": "1/2kg Box",
-          "price": 250,
-          "description": "Premium gift box packaging for 1/2 kg sweets",
-          "image": "/lovable-uploads/be4a8a1a-e952-4710-8111-60ee6ed7eb78.png"
-        },
-        {
-          "id": "SN202535",
-          "name": "1kg Box",
-          "price": 400,
-          "description": "Premium gift box packaging for 1 kg sweets",
-          "image": "/lovable-uploads/8f7791bb-208a-4778-9f6a-21441f9bfaff.png"
-        }
-      ]
-    },
+
     {
       "name": "Assorted & Combo Gift Boxes",
       "products": [
@@ -472,6 +367,38 @@ export const DIWALI_MENU_DATA: MenuData = {
           "description": "Grandeur dry fruit selection: Cashew Cake, Pista Roll, Kaju Cassata, Fig Roll, Badam Halwa, Strawberry Kaju Katli - 1 kg",
           "image": "/diwaliSweets/badusha.jpg"
         },
+        {
+          "id": "SN202544",
+          "name": "Premium Assorted Bites (12pcs)",
+          "price": 499,
+          "unit": "box",
+          "description": "Premium selection of 12 assorted bite-sized sweets - perfect for gifting and sharing",
+          "image": "/lovable-uploads/MysorePak.png"
+        },
+        {
+          "id": "SN202545",
+          "name": "Premium Assorted Bites (25pcs)",
+          "price": 999,
+          "unit": "box",
+          "description": "Premium bite-sized sweets collection - 25 pieces, ideal for celebrations and corporate gifting",
+          "image": "/rasgulla.png"
+        },
+        {
+          "id": "SN202547",
+          "name": "Premium Collection (12pcs)",
+          "price": 600,
+          "unit": "box",
+          "description": "Premium selection: Badam Chocolate Cake, Kaju Gulkand Ball, Blueberry Kaju Cake, Biscoff Kaju Cake - 12 pieces",
+          "image": "/lovable-uploads/90e0608c-b5fa-480e-9dfa-0a8173cd3f7e.png"
+        },
+        {
+          "id": "SN202548",
+          "name": "Premium Collection (25pcs)",
+          "price": 1200,
+          "unit": "box",
+          "description": "Premium selection: Badam Chocolate Cake, Kaju Gulkand Ball, Blueberry Kaju Cake, Biscoff Kaju Cake - 25 pieces",
+          "image": "/lovable-uploads/soan-papdi.png"
+        }
 
       ]
     }
@@ -481,7 +408,7 @@ export const DIWALI_MENU_DATA: MenuData = {
     "Supreme": ["Spl. Laddu", "Carrot Mysurpa", "Soan Papdi", "Chocolate Burfi", "Dry Fruit Halwa", "Badam Mas Cake"],
     "Grandeur": ["Cashew Cake", "Pista Roll", "Kaju Cassata", "Fig Roll", "Badam Halwa", "Strawberry Kaju Katli"],
     "Premium": ["Badam Chocolate Cake", "Kaju Gulkand Ball", "Blueberry Kaju Cake", "Biscoff Kaju Cake"],
-    "Bites": ["Mewa Bites", "Rose Bites", "Orange Bites", "Mango Bites", "Kesar Pista Bites", "Chocolate Bites"]
+    "Premium Assorted": ["Assorted premium bite-sized sweets", "Premium selection of specialty cakes and sweets", "Flavors: Mewa, Rose, Orange, Mango, Kesar Pista, Chocolate"]
   }
 };
 

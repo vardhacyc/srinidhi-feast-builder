@@ -27,9 +27,16 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="relative py-24 bg-gradient-to-br from-amber-50/50 to-white overflow-hidden">
-      {/* Subtle Background Animation */}
-      <div className="absolute inset-0 opacity-5">
+    <section id="about" className="relative py-24 overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 25%, #d97706 50%, #b45309 75%, #92400e 100%)'
+    }}>
+      {/* Vibrant Background Pattern */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-300/25 via-amber-400/35 to-yellow-600/25"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15)_20%,transparent_50%),radial-gradient(circle_at_70%_80%,rgba(255,255,255,0.12)_20%,transparent_50%)]"></div>
+      </div>
+      {/* Decorative Elements */}
+      <div className="absolute inset-0 opacity-10">
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
@@ -64,6 +71,8 @@ const About = () => {
             A unit of Sri Nidhi Catering - Creating delightful memories that your taste buds will fondly remember forever
           </p>
         </div>
+
+        <div className="section-divider-enhanced"></div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           <div>
@@ -110,7 +119,7 @@ const About = () => {
           {values.map((value, index) => (
             <div 
               key={index}
-              className="bg-white rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-gold/30 hover:border-gold group hover:-translate-y-2"
+              className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 text-center shadow-2xl hover:shadow-3xl transition-all duration-300 border-2 border-yellow-300/50 hover:border-yellow-300 group hover:-translate-y-2"
             >
               <div className="bg-gradient-to-br from-primary to-accent rounded-full p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 transition-transform shadow-lg border-2 border-gold/20">
                 <value.icon className="h-8 w-8 text-white" />

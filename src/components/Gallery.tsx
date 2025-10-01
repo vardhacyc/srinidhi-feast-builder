@@ -81,7 +81,14 @@ const Gallery = () => {
   };
 
   return (
-    <section id="gallery" className="py-24 bg-white">
+    <section id="gallery" className="relative py-24 overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #b45309 0%, #78350f 25%, #92400e 50%, #d97706 75%, #f59e0b 100%)'
+    }}>
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-300/25 via-yellow-400/35 to-amber-600/25"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_75%,rgba(255,255,255,0.15)_20%,transparent_50%)]"></div>
+      </div>
+      <div className="relative z-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8">
@@ -175,6 +182,7 @@ const Gallery = () => {
             </div>
           </div>
         )}
+        </div>
       </div>
     </section>
   );
