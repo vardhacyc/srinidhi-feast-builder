@@ -39,7 +39,8 @@ import {
   Settings,
   MoreVertical,
   CheckSquare,
-  Square
+  Square,
+  Bell
 } from 'lucide-react';
 
 const AdminDashboard: React.FC = () => {
@@ -53,7 +54,7 @@ const AdminDashboard: React.FC = () => {
   const [paymentFilter, setPaymentFilter] = useState<string>('all');
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isAutoRefresh, setIsAutoRefresh] = useState(true);
+  const [isAutoRefresh, setIsAutoRefresh] = useState(false);
   const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
   const [newOrdersCount, setNewOrdersCount] = useState(0);
   const [selectedOrders, setSelectedOrders] = useState<string[]>([]);
@@ -324,7 +325,18 @@ const AdminDashboard: React.FC = () => {
   };
 
   const generatePaymentReminder = (order: Order): string => {
-    return `Dear ${order.customer_name},\n\nThis is a friendly reminder regarding your Diwali sweets order:\n\nOrder ID: #${order.id.slice(0, 8).toUpperCase()}\nAmount: ₹${order.total_amount}\nStatus: Payment Pending\n\nPlease complete the payment to confirm your order. You can pay via:\n• UPI\n• Cash on Delivery\n• Bank Transfer\n\nFor any queries, please call: +91 8760101010\n\nThank you,\nSri Nidhi Catering Team`;
+    return `Dear ${order.customer_name},\n\nThis is a friendly reminder regarding your Diwali sweets order:\n\nOrder ID: #${order.id.slice(0, 8).toUpperCase()}\nAmount: ₹${order.total_amount}\nStatus: Payment Pending\n\nPlease complete the payment to confirm your order. You can pay via:\n• UPI: berk@apl\n\nFor any queries, please call: +91 8760101010\n\nThank you,\nSri Nidhi Catering Team`;
+  };
+
+  const handlePaymentReminder = (order: Order) => {
+    const reminderMessage = generatePaymentReminder(order);
+    const whatsappUrl = `https://wa.me/91${order.mobile}?text=${encodeURIComponent(reminderMessage)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    toast({
+      title: "Payment Reminder",
+      description: `Reminder sent to ${order.customer_name}`,
+    });
   };
 
   const generateBulkCSV = (ordersList: Order[]): string => {
@@ -1041,6 +1053,7 @@ const AdminDashboard: React.FC = () => {
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="received">Received</SelectItem>
+                            <SelectItem value="payment_received">Payment Received</SelectItem>
                             <SelectItem value="processing">Processing</SelectItem>
                             <SelectItem value="completed">Completed</SelectItem>
                             <SelectItem value="cancelled">Cancelled</SelectItem>
@@ -1056,6 +1069,18 @@ const AdminDashboard: React.FC = () => {
                         >
                           <MessageCircle className="h-3 w-3" />
                         </Button>
+                        
+                        {(order.status === 'received' || order.status === 'processing') && (
+                          <Button
+                            onClick={() => handlePaymentReminder(order)}
+                            variant="outline"
+                            size="sm"
+                            className="h-8 bg-orange-50 border-orange-300 text-orange-700 hover:bg-orange-100 hover:border-orange-400"
+                            title={`Send payment reminder to ${order.customer_name}`}
+                          >
+                            <Bell className="h-3 w-3" />
+                          </Button>
+                        )}
                         
                         <Button
                           onClick={() => handlePrintOrder(order)}
