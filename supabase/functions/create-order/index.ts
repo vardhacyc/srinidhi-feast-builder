@@ -288,7 +288,7 @@ const handler = async (req: Request): Promise<Response> => {
             </html>
           `,
         });
-        console.log("Order confirmation email sent to:", order.customer_email);
+        console.log("Order confirmation email sent for order:", data.id.slice(0, 8));
       } catch (emailError: any) {
         console.error("Failed to send confirmation email:", emailError);
         // Don't fail the order if email fails

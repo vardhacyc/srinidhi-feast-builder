@@ -302,10 +302,11 @@ export const authService = {
         .from('user_roles')
         .select('role')
         .eq('user_id', user.id)
-        .single();
+        .eq('role', 'admin')
+        .maybeSingle();
 
       if (error) return false;
-      return data?.role === 'admin';
+      return !!data;
     } catch {
       return false;
     }
@@ -320,10 +321,11 @@ export const authService = {
         .from('user_roles')
         .select('role')
         .eq('user_id', user.id)
-        .single();
+        .eq('role', 'master_admin')
+        .maybeSingle();
 
       if (error) return false;
-      return data?.role === 'master_admin';
+      return !!data;
     } catch {
       return false;
     }

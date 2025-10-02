@@ -20,6 +20,24 @@ interface SendOTPRequest {
 // Email validation regex
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
+// Email normalization function to prevent rate limit bypass
+const normalizeEmail = (email: string): string => {
+  const trimmedEmail = email.trim().toLowerCase();
+  const [localPart, domain] = trimmedEmail.split('@');
+  
+  if (!domain) return trimmedEmail;
+  
+  // For Gmail and Googlemail, remove dots and strip plus-addressing
+  if (domain === 'gmail.com' || domain === 'googlemail.com') {
+    const cleanedLocal = localPart.replace(/\./g, '').split('+')[0];
+    return `${cleanedLocal}@${domain}`;
+  }
+  
+  // For other providers, just strip plus-addressing
+  const cleanedLocal = localPart.split('+')[0];
+  return `${cleanedLocal}@${domain}`;
+};
+
 // Input validation function
 const validateInput = (email: string, customerName: string) => {
   // Trim and validate email
@@ -58,11 +76,14 @@ const handler = async (req: Request): Promise<Response> => {
     // Initialize Supabase client
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
+    // Normalize email for rate limiting to prevent bypass via email variations
+    const normalizedEmail = normalizeEmail(email);
+
     // Rate limiting: Check if OTP was sent recently (within last 60 seconds)
     const { data: recentOTP } = await supabase
       .from("otp_verifications")
       .select("created_at")
-      .eq("email", email)
+      .eq("email", normalizedEmail)
       .gte("created_at", new Date(Date.now() - 60000).toISOString())
       .limit(1)
       .maybeSingle();
