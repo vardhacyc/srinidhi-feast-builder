@@ -213,78 +213,32 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
     }
   };
 
-  // Handle body scroll lock for OTP modal
+  // Scroll to top when OTP screen is shown
   React.useEffect(() => {
     if (showOTP) {
-      // Store current scroll position
-      const scrollY = window.scrollY;
-      
-      // Lock body scroll
-      document.body.classList.add('otp-modal-open');
-      document.documentElement.classList.add('otp-modal-open');
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      document.body.style.overflow = 'hidden';
-      
-      return () => {
-        // Restore scroll
-        document.body.classList.remove('otp-modal-open');
-        document.documentElement.classList.remove('otp-modal-open');
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        document.body.style.overflow = '';
-        window.scrollTo(0, scrollY);
-      };
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [showOTP]);
 
+  const totalWeight = getTotalItems();
+  const isFreeDelivery = totalWeight >= 10;
+
   if (showOTP && pendingFormData) {
     return (
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: 'linear-gradient(135deg, #FEF3C7 0%, #FDE68A 15%, #FBBF24 30%, #F59E0B 50%, #FBBF24 70%, #FDE68A 85%, #FEF3C7 100%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '20px',
-        zIndex: 9999,
-        overflow: 'auto',
-        WebkitOverflowScrolling: 'touch'
-      }}>
-        <div style={{
-          width: '100%',
-          maxWidth: '500px',
-          margin: 'auto',
-          background: 'rgba(255, 255, 255, 0.98)',
-          borderRadius: '24px',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(251, 191, 36, 0.1)',
-          border: '3px solid rgba(251, 191, 36, 0.3)',
-          maxHeight: '90vh',
-          overflow: 'auto'
-        }}>
-          <OTPVerification
-            email={pendingFormData.email}
-            onVerify={handleOTPVerification}
-            onResend={handleResendOTP}
-            isVerifying={isVerifyingOTP}
-            onBack={() => {
-              setShowOTP(false);
-              setPendingFormData(null);
-            }}
-          />
-        </div>
+      <div className="bg-gradient-to-br from-amber-50/90 to-amber-100/90 backdrop-blur-sm rounded-3xl p-6 md:p-8 max-w-2xl mx-auto border-2 border-amber-300 shadow-2xl">
+        <OTPVerification
+          email={pendingFormData.email}
+          onVerify={handleOTPVerification}
+          onResend={handleResendOTP}
+          isVerifying={isVerifyingOTP}
+          onBack={() => {
+            setShowOTP(false);
+            setPendingFormData(null);
+          }}
+        />
       </div>
     );
   }
-
-  const totalWeight = getTotalItems();
-  const isFreeDelivery = totalWeight >= 10;
 
   return (
     <div className="bg-gradient-to-br from-amber-50/90 to-amber-100/90 backdrop-blur-sm rounded-3xl p-6 md:p-8 max-w-2xl mx-auto border-2 border-amber-300 shadow-2xl">
