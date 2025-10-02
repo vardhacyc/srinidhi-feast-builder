@@ -38,6 +38,9 @@ const DiwaliHero = () => {
         <div className="absolute top-20 left-10 text-4xl animate-pulse opacity-30" style={{ animationDelay: '0s' }}>🪔</div>
         <div className="absolute top-32 right-20 text-3xl animate-pulse opacity-25" style={{ animationDelay: '2s' }}>✨</div>
         <div className="absolute bottom-32 left-20 text-5xl animate-pulse opacity-20" style={{ animationDelay: '4s' }}>🌟</div>
+        <div className="absolute bottom-20 right-10 text-4xl animate-pulse opacity-30" style={{ animationDelay: '1s' }}>🎆</div>
+        <div className="absolute top-1/2 left-1/4 text-2xl animate-pulse opacity-15" style={{ animationDelay: '3s' }}>💫</div>
+        <div className="absolute top-1/3 right-1/3 text-3xl animate-pulse opacity-25" style={{ animationDelay: '1.5s' }}>🕯️</div>
       </div>
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full py-20">
@@ -46,13 +49,13 @@ const DiwaliHero = () => {
         <div className="mb-12">
           <div className="inline-flex items-center justify-center mb-8">
             <div className="relative">
-              <div className="absolute inset-0 h-44 w-44 animate-pulse opacity-20 rounded-full bg-gradient-to-r from-amber-600 to-amber-700 shadow-2xl" style={{ background: 'radial-gradient(circle, hsl(var(--diwali-gold)) 0%, hsl(var(--diwali-bronze)) 100%)' }}></div>
+              <div className="absolute inset-0 h-44 w-44 animate-pulse opacity-20 rounded-full bg-gradient-to-r from-yellow-300 to-amber-400 shadow-2xl" style={{ background: 'radial-gradient(circle, hsl(var(--diwali-bright)) 0%, hsl(var(--diwali-gold)) 100%)' }}></div>
               <img 
                 src="/cateringLogo.png" 
                 alt="Sri Nidhi Catering Logo" 
                 className="relative z-10 h-44 w-44 object-contain" 
                 style={{
-                  filter: 'brightness(0.55) contrast(1.5) saturate(1.5) hue-rotate(-8deg) drop-shadow(0 4px 12px rgba(139, 69, 19, 0.6)) drop-shadow(0 2px 6px rgba(101, 67, 33, 0.4))',
+                  filter: 'brightness(1.2) contrast(1.1) drop-shadow(0 6px 16px hsla(var(--diwali-shadow), 0.4))',
                   imageRendering: 'crisp-edges'
                 }}
               />
