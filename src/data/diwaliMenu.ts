@@ -95,7 +95,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 1400,
           "unit": "kg",
           "description": "Sweet fig rolls with natural fruit flavors",
-          "image": "/lovable-uploads/83c09900-3531-4b73-80e6-69da609f6f92.png"
+          "image": "/figroll.png"
         },
         {
           "id": "SN202505",
@@ -372,16 +372,16 @@ export const DIWALI_MENU_DATA: MenuData = {
           "name": "Premium Assorted Bites (12pcs)",
           "price": 499,
           "unit": "box",
-          "description": "Premium Bites - Mewa Bites, Rose Bites, Orange Bites, Mango Bites, Kesar Pista Bites, Chocolate Bites (2 pieces each) - 12 pieces total",
-          "image": "/lovable-uploads/MysorePak.png"
+          "description": "Delicious assorted premium bite-sized sweets - perfect for gifting",
+          "image": "/premiumbites.png"
         },
         {
           "id": "SN202545",
           "name": "Premium Assorted Bites (25pcs)",
           "price": 999,
           "unit": "box",
-          "description": "Premium Bites - Mewa Bites, Rose Bites, Orange Bites, Mango Bites, Kesar Pista Bites, Chocolate Bites (4-5 pieces each) - 25 pieces total",
-          "image": "/rasgulla.png"
+          "description": "Delicious assorted premium bite-sized sweets - perfect for gifting",
+          "image": "/premiumbites.png"
         },
         {
           "id": "SN202547",
