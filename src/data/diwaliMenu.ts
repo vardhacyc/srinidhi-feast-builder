@@ -330,42 +330,42 @@ export const DIWALI_MENU_DATA: MenuData = {
           "name": "Supreme Collection (1/4kg)",
           "price": 170,
           "description": "Supreme selection: Spl. Laddu, Carrot Mysurpa, Soan Papdi, Chocolate Burfi, Dry Fruit Halwa, Badam Mas Cake - 1/4 kg",
-          "image": "/lovable-uploads/soan-papdi.png"
+          "image": "/supreme.png"
         },
         {
           "id": "SN202540",
           "name": "Supreme Collection (1/2kg)",
           "price": 330,
           "description": "Supreme selection: Spl. Laddu, Carrot Mysurpa, Soan Papdi, Chocolate Burfi, Dry Fruit Halwa, Badam Mas Cake - 1/2 kg",
-          "image": "/lovable-uploads/CarrotMysorePak.webp"
+          "image": "/supreme.png"
         },
         {
           "id": "SN202541",
           "name": "Supreme Collection (1kg)",
           "price": 650,
           "description": "Supreme selection: Spl. Laddu, Carrot Mysurpa, Soan Papdi, Chocolate Burfi, Dry Fruit Halwa, Badam Mas Cake - 1 kg",
-          "image": "/gulab-jamun.png"
+          "image": "/supreme.png"
         },
         {
           "id": "SN202542",
           "name": "Grandeur Collection (1/4kg)",
           "price": 350,
           "description": "Grandeur dry fruit selection: Cashew Cake, Pista Roll, Kaju Cassata, Fig Roll, Badam Halwa, Strawberry Kaju Katli - 1/4 kg",
-          "image": "/lovable-uploads/pista-roll.png"
+          "image": "/grandeur.png"
         },
         {
           "id": "SN202543",
           "name": "Grandeur Collection (1/2kg)",
           "price": 700,
           "description": "Grandeur dry fruit selection: Cashew Cake, Pista Roll, Kaju Cassata, Fig Roll, Badam Halwa, Strawberry Kaju Katli - 1/2 kg",
-          "image": "/rasgulla.png"
+          "image": "/grandeur.png"
         },
         {
           "id": "SN202546",
           "name": "Grandeur Collection (1kg)",
           "price": 1400,
           "description": "Grandeur dry fruit selection: Cashew Cake, Pista Roll, Kaju Cassata, Fig Roll, Badam Halwa, Strawberry Kaju Katli - 1 kg",
-          "image": "/diwaliSweets/badusha.jpg"
+          "image": "/grandeur.png"
         },
         {
           "id": "SN202544",
