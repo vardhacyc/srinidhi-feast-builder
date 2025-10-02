@@ -99,20 +99,20 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
   const maskedEmail = email.replace(/(.{2})(.*)(@.*)/, '$1****$3');
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white rounded-3xl shadow-2xl p-8">
+    <div className="w-full max-w-md mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8">
       {/* Logo */}
-      <div className="flex justify-center mb-6">
-        <div className="w-24 h-24 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-full flex items-center justify-center shadow-lg">
+      <div className="flex justify-center mb-4 sm:mb-6">
+        <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-full flex items-center justify-center shadow-lg">
           <img 
             src="/cateringLogo.png" 
             alt="Sri Nidhi Catering" 
-            className="w-16 h-16 object-contain"
+            className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
           />
         </div>
       </div>
 
       {/* Title */}
-      <h2 className="text-3xl font-bold text-gray-900 text-center mb-3">
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-2 sm:mb-3">
         OTP Verification
       </h2>
 
@@ -141,7 +141,7 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
           </label>
 
           {/* OTP Input Boxes */}
-          <div className="flex justify-center gap-2 mb-4">
+          <div className="flex justify-center gap-2 sm:gap-3 mb-4">
             {otpDigits.map((digit, index) => (
               <input
                 key={index}
@@ -153,7 +153,8 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
                 onChange={(e) => handleChange(index, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
                 onPaste={index === 0 ? handlePaste : undefined}
-                className="w-12 h-14 text-center text-2xl font-semibold border-3 border-orange-400 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 focus:outline-none bg-white transition-all"
+                className="w-11 h-12 sm:w-14 sm:h-16 text-center text-xl sm:text-2xl font-bold border-2 sm:border-3 border-orange-400 rounded-lg sm:rounded-xl focus:border-orange-500 focus:ring-4 focus:ring-orange-200 focus:outline-none bg-white text-gray-900 placeholder-gray-400 transition-all shadow-sm"
+                style={{ color: '#1f2937', caretColor: '#f97316' }}
                 autoFocus={index === 0}
               />
             ))}
