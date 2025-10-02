@@ -252,16 +252,21 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '16px',
-        zIndex: 9999
+        padding: '20px',
+        zIndex: 9999,
+        overflow: 'auto',
+        WebkitOverflowScrolling: 'touch'
       }}>
         <div style={{
           width: '100%',
-          maxWidth: '450px',
+          maxWidth: '500px',
+          margin: 'auto',
           background: 'rgba(255, 255, 255, 0.98)',
-          borderRadius: '20px',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-          border: '2px solid rgba(251, 191, 36, 0.2)'
+          borderRadius: '24px',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(251, 191, 36, 0.1)',
+          border: '3px solid rgba(251, 191, 36, 0.3)',
+          maxHeight: '90vh',
+          overflow: 'auto'
         }}>
           <OTPVerification
             email={pendingFormData.email}
