@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.38.4";
+import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
 const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
@@ -52,7 +53,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Rate limiting: Check for too many failed attempts (max 5 attempts per 5 minutes)
+    // Rate limiting: Check for too many failed attempts (max 3 attempts per 5 minutes - stricter)
     const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString();
     const { data: recentAttempts } = await supabase
       .from("otp_verifications")
@@ -60,7 +61,7 @@ const handler = async (req: Request): Promise<Response> => {
       .eq("email", email)
       .gte("created_at", fiveMinutesAgo);
 
-    if (recentAttempts && recentAttempts.length > 5) {
+    if (recentAttempts && recentAttempts.length > 3) {
       return new Response(
         JSON.stringify({ 
           success: false, 
@@ -73,21 +74,47 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Find the OTP record
-    const { data: otpRecord, error: fetchError } = await supabase
+    // Find the most recent OTP record for this email
+    const { data: otpRecords, error: fetchError } = await supabase
       .from("otp_verifications")
       .select("*")
       .eq("email", email)
-      .eq("otp_code", otp)
       .eq("verified", false)
       .gt("expires_at", new Date().toISOString())
       .order("created_at", { ascending: false })
-      .limit(1)
-      .maybeSingle();
+      .limit(5);
 
     if (fetchError) {
       console.error("Database error:", fetchError);
       throw new Error("Failed to verify OTP");
+    }
+
+    if (!otpRecords || otpRecords.length === 0) {
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: "Invalid or expired OTP" 
+        }),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
+    // Use constant-time comparison via bcrypt to prevent timing attacks
+    let otpRecord = null;
+    for (const record of otpRecords) {
+      try {
+        const isValid = await bcrypt.compare(otp, record.otp_code);
+        if (isValid) {
+          otpRecord = record;
+          break;
+        }
+      } catch (err) {
+        console.error("Bcrypt comparison error:", err);
+        continue;
+      }
     }
 
     if (!otpRecord) {
@@ -114,7 +141,7 @@ const handler = async (req: Request): Promise<Response> => {
       throw new Error("Failed to mark OTP as verified");
     }
 
-    console.log(`OTP verified successfully for ${email}`);
+    console.log(`OTP verified successfully`);
 
     return new Response(
       JSON.stringify({ 

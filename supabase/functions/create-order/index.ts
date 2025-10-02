@@ -87,6 +87,66 @@ const handler = async (req: Request): Promise<Response> => {
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
+    // SERVER-SIDE PRICE VALIDATION - Critical security check
+    // Verify prices against products table to prevent manipulation
+    const productIds = order.items.map(item => item.id);
+    const { data: products, error: productsError } = await supabase
+      .from("products")
+      .select("id, name, price, gst_percentage")
+      .in("id", productIds);
+
+    if (productsError || !products) {
+      return new Response(JSON.stringify({ success: false, error: "Failed to validate product prices" }), {
+        status: 200,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
+
+    // Create a map for quick lookup
+    const productMap = new Map(products.map(p => [p.id, p]));
+
+    // Validate each item's price and recalculate totals
+    let calculatedSubtotal = 0;
+    for (const item of order.items) {
+      const product = productMap.get(item.id);
+      if (!product) {
+        return new Response(JSON.stringify({ success: false, error: `Invalid product: ${item.name}` }), {
+          status: 200,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        });
+      }
+
+      // Verify the price matches the database
+      if (Math.abs(item.price - product.price) > 0.01) {
+        return new Response(JSON.stringify({ 
+          success: false, 
+          error: `Price mismatch for ${product.name}. Please refresh and try again.` 
+        }), {
+          status: 200,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        });
+      }
+
+      calculatedSubtotal += product.price * item.quantity;
+    }
+
+    // Recalculate GST and total (using 5% GST rate)
+    const calculatedGST = calculatedSubtotal * 0.05;
+    const calculatedTotal = calculatedSubtotal + calculatedGST;
+
+    // Verify submitted amounts match calculated amounts (allow small rounding differences)
+    if (Math.abs(order.subtotal - calculatedSubtotal) > 0.01 ||
+        Math.abs(order.gst_amount - calculatedGST) > 0.01 ||
+        Math.abs(order.total_amount - calculatedTotal) > 0.01) {
+      return new Response(JSON.stringify({ 
+        success: false, 
+        error: "Order total mismatch. Please refresh and try again." 
+      }), {
+        status: 200,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
+
     // Insert order and return the inserted row
     const { data, error } = await supabase
       .from("orders")

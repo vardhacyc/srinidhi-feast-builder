@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.38.4";
 import { Resend } from "https://esm.sh/resend@4.0.0";
+import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
@@ -83,7 +84,10 @@ const handler = async (req: Request): Promise<Response> => {
     const otpCode = generateOTP();
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // 5 minutes
 
-    console.log(`Generated OTP for ${email}`);
+    // Hash the OTP before storing (security best practice)
+    const hashedOTP = await bcrypt.hash(otpCode);
+
+    console.log(`OTP generated successfully`);
 
     // Clean up old OTPs for this email
     await supabase
@@ -91,12 +95,12 @@ const handler = async (req: Request): Promise<Response> => {
       .delete()
       .eq("email", email);
 
-    // Store OTP in database
+    // Store hashed OTP in database
     const { error: dbError } = await supabase
       .from("otp_verifications")
       .insert({
         email,
-        otp_code: otpCode,
+        otp_code: hashedOTP,
         expires_at: expiresAt.toISOString(),
         verified: false,
       });
