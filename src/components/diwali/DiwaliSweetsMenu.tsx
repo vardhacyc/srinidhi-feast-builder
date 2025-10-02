@@ -335,22 +335,6 @@ const DiwaliSweetsMenu = () => {
                       img.src = '/placeholder-sweet.jpg';
                     }}
                   />
-                  {/* Premium Badge */}
-                  {isPremium && (
-                    <div className="absolute top-3 left-3">
-                      <div className="bg-gradient-to-r from-amber-400 to-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
-                        ✨ Premium
-                      </div>
-                    </div>
-                  )}
-                  {/* Gift Box Badge */}
-                  {isGiftBox && (
-                    <div className="absolute top-3 right-3">
-                      <div className="bg-gradient-to-r from-red-400 to-red-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
-                        🎁 Gift Box
-                      </div>
-                    </div>
-                  )}
                 </div>
 
                 {/* Product Info */}
