@@ -372,7 +372,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "name": "Premium Assorted Bites (12pcs)",
           "price": 499,
           "unit": "box",
-          "description": "Premium selection of 12 assorted bite-sized sweets - perfect for gifting and sharing",
+          "description": "Premium Bites - Mewa Bites, Rose Bites, Orange Bites, Mango Bites, Kesar Pista Bites, Chocolate Bites (2 pieces each) - 12 pieces total",
           "image": "/lovable-uploads/MysorePak.png"
         },
         {
@@ -380,7 +380,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "name": "Premium Assorted Bites (25pcs)",
           "price": 999,
           "unit": "box",
-          "description": "Premium bite-sized sweets collection - 25 pieces, ideal for celebrations and corporate gifting",
+          "description": "Premium Bites - Mewa Bites, Rose Bites, Orange Bites, Mango Bites, Kesar Pista Bites, Chocolate Bites (4-5 pieces each) - 25 pieces total",
           "image": "/rasgulla.png"
         },
         {
@@ -408,7 +408,7 @@ export const DIWALI_MENU_DATA: MenuData = {
     "Supreme": ["Spl. Laddu", "Carrot Mysurpa", "Soan Papdi", "Chocolate Burfi", "Dry Fruit Halwa", "Badam Mas Cake"],
     "Grandeur": ["Cashew Cake", "Pista Roll", "Kaju Cassata", "Fig Roll", "Badam Halwa", "Strawberry Kaju Katli"],
     "Premium": ["Badam Chocolate Cake", "Kaju Gulkand Ball", "Blueberry Kaju Cake", "Biscoff Kaju Cake"],
-    "Premium Assorted": ["Assorted premium bite-sized sweets", "Premium selection of specialty cakes and sweets", "Flavors: Mewa, Rose, Orange, Mango, Kesar Pista, Chocolate"]
+    "Premium Assorted": ["Mewa Bites", "Rose Bites", "Orange Bites", "Mango Bites", "Kesar Pista Bites", "Chocolate Bites"]
   }
 };
 

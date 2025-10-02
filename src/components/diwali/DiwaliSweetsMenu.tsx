@@ -361,8 +361,8 @@ const DiwaliSweetsMenu = () => {
                   </h3>
                   
                   {/* Short Description */}
-                  <p className="text-sm text-amber-700 mb-3 line-clamp-1">
-                    {selectedProduct.description?.split('.')[0] || 'Authentic • Festive • Premium Quality'}
+                  <p className="text-sm text-amber-700 mb-3 line-clamp-3">
+                    {selectedProduct.description || 'Authentic • Festive • Premium Quality'}
                   </p>
 
                   {/* Variant Selector */}
