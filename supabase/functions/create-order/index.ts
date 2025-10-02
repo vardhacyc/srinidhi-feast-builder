@@ -1,8 +1,12 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.58.0";
+import { Resend } from "npm:resend@2.0.0";
 
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
 const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+const resendApiKey = Deno.env.get("RESEND_API_KEY");
+
+const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -110,6 +114,125 @@ const handler = async (req: Request): Promise<Response> => {
         status: 200,
         headers: { "Content-Type": "application/json", ...corsHeaders },
       });
+    }
+
+    // Send order confirmation email if customer email is provided
+    if (data && order.customer_email && resend) {
+      try {
+        const orderItems = order.items.map(item => 
+          `<tr>
+            <td style="padding: 12px; border-bottom: 1px solid #e5e7eb;">${item.name}</td>
+            <td style="padding: 12px; border-bottom: 1px solid #e5e7eb; text-align: center;">${item.quantity} kg</td>
+            <td style="padding: 12px; border-bottom: 1px solid #e5e7eb; text-align: right;">₹${item.price.toFixed(2)}</td>
+            <td style="padding: 12px; border-bottom: 1px solid #e5e7eb; text-align: right;">₹${(item.price * item.quantity).toFixed(2)}</td>
+          </tr>`
+        ).join('');
+
+        await resend.emails.send({
+          from: "Sri Nidhi Catering <orders@srinidhi.com>",
+          to: [order.customer_email],
+          subject: "🎉 Order Confirmed - Sri Nidhi Catering Diwali Sweets",
+          html: `
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            </head>
+            <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb;">
+              <div style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); padding: 30px; text-align: center; border-radius: 12px 12px 0 0;">
+                <h1 style="color: white; margin: 0; font-size: 28px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">🎊 Order Confirmed! 🎊</h1>
+                <p style="color: white; margin: 10px 0 0; font-size: 16px;">Thank you for choosing Sri Nidhi Catering</p>
+              </div>
+              
+              <div style="background: white; padding: 30px; border-radius: 0 0 12px 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <p style="font-size: 16px; margin-bottom: 20px;">Dear <strong>${order.customer_name}</strong>,</p>
+                
+                <p style="font-size: 15px; color: #059669; background: #d1fae5; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                  ✅ Your Diwali sweets order has been successfully received and confirmed!
+                </p>
+
+                <div style="background: #fef3c7; padding: 20px; border-radius: 8px; margin: 25px 0;">
+                  <h2 style="color: #92400e; margin: 0 0 15px; font-size: 18px;">📋 Order Summary</h2>
+                  <p style="margin: 8px 0; color: #78350f;"><strong>Order ID:</strong> #${data.id.slice(0, 8).toUpperCase()}</p>
+                  <p style="margin: 8px 0; color: #78350f;"><strong>Order Date:</strong> ${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                  <p style="margin: 8px 0; color: #78350f;"><strong>Mobile:</strong> ${order.mobile}</p>
+                </div>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 25px 0; background: white; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+                  <thead>
+                    <tr style="background: #fbbf24;">
+                      <th style="padding: 12px; text-align: left; color: white; font-weight: 600;">Item</th>
+                      <th style="padding: 12px; text-align: center; color: white; font-weight: 600;">Quantity</th>
+                      <th style="padding: 12px; text-align: right; color: white; font-weight: 600;">Price</th>
+                      <th style="padding: 12px; text-align: right; color: white; font-weight: 600;">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${orderItems}
+                  </tbody>
+                  <tfoot style="background: #fef3c7;">
+                    <tr>
+                      <td colspan="3" style="padding: 12px; text-align: right; font-weight: 600; border-top: 2px solid #fbbf24;">Subtotal:</td>
+                      <td style="padding: 12px; text-align: right; font-weight: 600; border-top: 2px solid #fbbf24;">₹${order.subtotal.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" style="padding: 12px; text-align: right;">GST (5%):</td>
+                      <td style="padding: 12px; text-align: right;">₹${order.gst_amount.toFixed(2)}</td>
+                    </tr>
+                    <tr style="background: #fde68a;">
+                      <td colspan="3" style="padding: 12px; text-align: right; font-weight: 700; font-size: 18px;">Total Amount:</td>
+                      <td style="padding: 12px; text-align: right; font-weight: 700; font-size: 18px; color: #92400e;">₹${order.total_amount.toFixed(2)}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+
+                <div style="background: #dbeafe; padding: 20px; border-radius: 8px; margin: 25px 0;">
+                  <h3 style="color: #1e40af; margin: 0 0 10px; font-size: 16px;">📍 Delivery Address</h3>
+                  <p style="margin: 0; color: #1e3a8a; white-space: pre-line;">${order.address}</p>
+                  ${order.special_instructions ? `<p style="margin: 15px 0 0; color: #1e3a8a;"><strong>Special Instructions:</strong> ${order.special_instructions}</p>` : ''}
+                </div>
+
+                <div style="background: #dcfce7; padding: 20px; border-radius: 8px; margin: 25px 0;">
+                  <h3 style="color: #166534; margin: 0 0 15px; font-size: 16px;">⏱️ What's Next?</h3>
+                  <ul style="margin: 0; padding-left: 20px; color: #14532d;">
+                    <li style="margin: 8px 0;">Your order will be freshly prepared with premium ingredients</li>
+                    <li style="margin: 8px 0;">Preparation time: 2-3 hours</li>
+                    <li style="margin: 8px 0;">Delivery within 4-6 hours</li>
+                    <li style="margin: 8px 0;">We'll keep you updated via WhatsApp</li>
+                  </ul>
+                </div>
+
+                <div style="text-align: center; margin: 30px 0;">
+                  <p style="font-size: 20px; margin: 10px 0;">✨ Happy Diwali! ✨</p>
+                  <p style="font-size: 14px; color: #6b7280; margin: 10px 0;">May these sweet treats bring joy and prosperity to your celebrations!</p>
+                </div>
+
+                <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 25px 0; text-align: center;">
+                  <h3 style="color: #374151; margin: 0 0 15px; font-size: 16px;">Need Help?</h3>
+                  <p style="margin: 8px 0; color: #6b7280;">📞 Call us: <a href="tel:+918760101010" style="color: #f59e0b; text-decoration: none; font-weight: 600;">+91 8760101010</a></p>
+                  <p style="margin: 8px 0; color: #6b7280;">💬 WhatsApp: <a href="https://wa.me/918760101010" style="color: #25D366; text-decoration: none; font-weight: 600;">+91 8760101010</a></p>
+                </div>
+
+                <p style="font-size: 14px; color: #6b7280; text-align: center; margin: 30px 0 10px;">
+                  Thank you for choosing Sri Nidhi Catering!<br>
+                  <strong style="color: #f59e0b;">Your satisfaction is our priority</strong>
+                </p>
+              </div>
+
+              <div style="text-align: center; padding: 20px; color: #9ca3af; font-size: 12px;">
+                <p style="margin: 5px 0;">© ${new Date().getFullYear()} Sri Nidhi Catering. All rights reserved.</p>
+                <p style="margin: 5px 0;">This is an automated confirmation email for your order.</p>
+              </div>
+            </body>
+            </html>
+          `,
+        });
+        console.log("Order confirmation email sent to:", order.customer_email);
+      } catch (emailError: any) {
+        console.error("Failed to send confirmation email:", emailError);
+        // Don't fail the order if email fails
+      }
     }
 
     return new Response(

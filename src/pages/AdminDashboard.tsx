@@ -51,6 +51,7 @@ const AdminDashboard: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [orderSourceFilter, setOrderSourceFilter] = useState<string>('all');
   const [timelineFilter, setTimelineFilter] = useState<string>('all');
   const [showCustomTime, setShowCustomTime] = useState(false);
   const [customStartDate, setCustomStartDate] = useState('');
@@ -632,6 +633,7 @@ const AdminDashboard: React.FC = () => {
   const handleClearFilters = () => {
     setSearchTerm('');
     setStatusFilter('all');
+    setOrderSourceFilter('all');
     setTimelineFilter('all');
     setCustomStartDate('');
     setCustomEndDate('');
@@ -723,7 +725,13 @@ const AdminDashboard: React.FC = () => {
     
     const matchesTimeline = isWithinTimeline(order, timelineFilter);
     
-    return matchesSearch && matchesStatus && matchesTimeline;
+    const matchesOrderSource = orderSourceFilter === 'all'
+      ? true
+      : orderSourceFilter === 'online'
+        ? order.customer_email && order.customer_email.trim() !== ''
+        : !order.customer_email || order.customer_email.trim() === '';
+    
+    return matchesSearch && matchesStatus && matchesTimeline && matchesOrderSource;
   });
 
   const getStatusBadge = (status: Order['status']) => {
@@ -1115,6 +1123,16 @@ const AdminDashboard: React.FC = () => {
                       <SelectItem value="completed">✅ Delivered</SelectItem>
                       <SelectItem value="cancelled">❌ Cancelled</SelectItem>
                       <SelectItem value="paid">💰 Paid</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Select value={orderSourceFilter} onValueChange={setOrderSourceFilter}>
+                    <SelectTrigger className="w-40 bg-white/80 border-amber-300 text-gray-800">
+                      <SelectValue placeholder="Order Source" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Orders</SelectItem>
+                      <SelectItem value="online">📧 Online</SelectItem>
+                      <SelectItem value="whatsapp">💬 WhatsApp</SelectItem>
                     </SelectContent>
                   </Select>
                   <Select value={timelineFilter} onValueChange={(value) => {
