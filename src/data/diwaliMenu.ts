@@ -180,7 +180,7 @@ export const DIWALI_MENU_DATA: MenuData = {
           "price": 650,
           "unit": "kg",
           "description": "Rich halwa loaded with assorted dry fruits and ghee",
-          "image": "/gulab-jamun.png"
+          "image": "/dryfruitHalwa.png"
         }
       ]
     },
@@ -309,21 +309,21 @@ export const DIWALI_MENU_DATA: MenuData = {
           "name": "Royal Collection (1/4kg)",
           "price": 150,
           "description": "Royal selection: Laddu, Mysurpa, Badusha, Bombay Halwa, Gulkand Burfi, Dry Jamun - 1/4 kg",
-          "image": "/lovable-uploads/ladoo.png"
+          "image": "/royal.png"
         },
         {
           "id": "SN202537",
           "name": "Royal Collection (1/2kg)",
           "price": 300,
           "description": "Royal selection: Laddu, Mysurpa, Badusha, Bombay Halwa, Gulkand Burfi, Dry Jamun - 1/2 kg",
-          "image": "/lovable-uploads/90e0608c-b5fa-480e-9dfa-0a8173cd3f7e.png"
+          "image": "/royal.png"
         },
         {
           "id": "SN202538",
           "name": "Royal Collection (1kg)",
           "price": 600,
           "description": "Royal selection: Laddu, Mysurpa, Badusha, Bombay Halwa, Gulkand Burfi, Dry Jamun - 1 kg",
-          "image": "/lovable-uploads/MysorePak.png"
+          "image": "/royal.png"
         },
         {
           "id": "SN202539",

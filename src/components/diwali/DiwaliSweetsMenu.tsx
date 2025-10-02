@@ -3,11 +3,54 @@ import { Plus, Star, Sparkles, Crown, Leaf, Heart, Gift, Cookie, Cake, Zap } fro
 import { useCart, Sweet } from '../../contexts/CartContext';
 import { Button } from '../ui/button';
 import { DIWALI_MENU_DATA, CATEGORY_GROUPS, getProductsByCategory } from '../../data/diwaliMenu';
+import { useCartFlyAnimation } from '../../hooks/useCartFlyAnimation';
 
 const DiwaliSweetsMenu = () => {
-  const { addToCart } = useCart();
+  const { addToCart, getTotalItems } = useCart();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedVariants, setSelectedVariants] = useState<{[key: string]: string}>({});
+  const animateToCart = useCartFlyAnimation();
+
+  // Update both cart badges when items change
+  React.useEffect(() => {
+    const totalItems = getTotalItems();
+    
+    // Update FloatingCart badge
+    const floatingCart = document.getElementById('floating-cart');
+    if (floatingCart) {
+      const floatingCartBadge = floatingCart.querySelector('.cart-count-badge') as HTMLElement;
+      if (floatingCartBadge) {
+        floatingCartBadge.textContent = totalItems.toString();
+        
+        // Trigger pulse animation
+        if (totalItems > 0) {
+          floatingCartBadge.classList.remove('updating');
+          requestAnimationFrame(() => {
+            floatingCartBadge.classList.add('updating');
+          });
+          
+          setTimeout(() => {
+            floatingCartBadge.classList.remove('updating');
+          }, 600);
+        }
+      }
+    }
+    
+    // Update WhatsApp cart badge (legacy support)
+    const whatsappBadge = document.getElementById('cart-badge');
+    if (whatsappBadge) {
+      whatsappBadge.textContent = totalItems.toString();
+      whatsappBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+      
+      // Pulse animation when count changes
+      if (totalItems > 0) {
+        whatsappBadge.classList.add('cart-badge-pulse');
+        setTimeout(() => {
+          whatsappBadge.classList.remove('cart-badge-pulse');
+        }, 600);
+      }
+    }
+  }, [getTotalItems()]);
 
   const sweetCategories = [
     { id: 'all', name: 'All Items', icon: Sparkles, color: 'hsl(var(--diwali-gold))', mobile: 'All' },
@@ -424,8 +467,14 @@ const DiwaliSweetsMenu = () => {
 
                   {/* Action Buttons */}
                   <Button
-                    onClick={() => addToCart(selectedProduct)}
-                    className="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm border border-amber-300/20 hover:scale-[1.02] transform"
+                    onClick={(e) => {
+                      // Trigger fly animation
+                      animateToCart(e.currentTarget, selectedProduct.image);
+                      
+                      // Add to cart
+                      addToCart(selectedProduct);
+                    }}
+                    className="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm border border-amber-300/20 hover:scale-[1.02] transform btn-add-to-cart"
                   >
                     <Plus className="w-4 h-4 mr-2" />
                     Add to Cart

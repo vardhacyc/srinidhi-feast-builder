@@ -174,73 +174,69 @@ Order ID: ${Date.now()}`;
           <div className="p-6">
             <div className="space-y-4">
               {cart.map(item => (
-                <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-4 rounded-xl hover:scale-102 transition-all duration-300 shadow-sm" style={{ background: 'hsla(var(--diwali-cream), 0.9)', border: '1px solid hsla(var(--diwali-gold), 0.3)'}}>
-                  {/* Top row for mobile: Image and basic info */}
-                  <div className="flex items-center gap-3 w-full sm:w-auto">
-                    <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                      <img 
-                        src={item.image} 
-                        alt={item.name}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          const img = e.target as HTMLImageElement;
-                          img.src = '/placeholder-sweet.jpg';
-                        }}
-                      />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-base sm:text-lg leading-snug" style={{ color: 'hsl(var(--diwali-dark))', textShadow: '1px 1px 2px hsla(var(--diwali-shadow), 0.1)' }}>{item.name}</h3>
-                      <p className="text-xs sm:text-sm font-medium" style={{ color: 'hsl(var(--diwali-text))' }}>₹{item.price}/kg</p>
-                    </div>
-                    {/* Remove button - visible on mobile */}
+                <div key={item.id} className="flex items-center gap-4 p-4 rounded-xl hover:scale-102 transition-all duration-300 shadow-sm" style={{ background: 'hsla(var(--diwali-cream), 0.9)', border: '1px solid hsla(var(--diwali-gold), 0.3)'}}>
+                  {/* Product Image */}
+                  <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                    <img 
+                      src={item.image} 
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const img = e.target as HTMLImageElement;
+                        img.src = '/placeholder-sweet.jpg';
+                      }}
+                    />
+                  </div>
+                  
+                  {/* Product Info */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-bold text-lg leading-tight mb-1" style={{ color: 'hsl(var(--diwali-dark))', textShadow: '1px 1px 2px hsla(var(--diwali-shadow), 0.1)' }}>
+                      {item.name}
+                    </h3>
+                    <p className="text-sm font-medium" style={{ color: 'hsl(var(--diwali-text))' }}>
+                      ₹{item.price}/kg
+                    </p>
+                  </div>
+                  
+                  {/* Quantity Controls */}
+                  <div className="flex items-center gap-2 flex-shrink-0">
                     <button
-                      onClick={() => removeFromCart(item.id)}
-                      className="w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 sm:hidden"
-                      style={{ color: 'hsl(var(--diwali-dark))' }}
+                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                      className="w-9 h-9 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
+                      style={{ background: 'hsl(var(--diwali-light))', border: '1px solid hsl(var(--diwali-gold))', color: 'hsl(var(--diwali-dark))' }}
+                      aria-label="Decrease quantity"
                     >
-                      <Trash2 className="h-3 w-3" />
+                      <Minus className="h-4 w-4" />
+                    </button>
+                    <span className="px-4 py-1.5 rounded-full font-bold text-center min-w-[70px]" style={{ background: 'hsl(var(--diwali-light))', border: '1px solid hsl(var(--diwali-gold))', color: 'hsl(var(--diwali-dark))' }}>
+                      {item.quantity}kg
+                    </span>
+                    <button
+                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                      className="w-9 h-9 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
+                      style={{ background: 'hsl(var(--diwali-light))', border: '1px solid hsl(var(--diwali-gold))', color: 'hsl(var(--diwali-dark))' }}
+                      aria-label="Increase quantity"
+                    >
+                      <Plus className="h-4 w-4" />
                     </button>
                   </div>
                   
-                  {/* Bottom row for mobile: Controls and total */}
-                  <div className="flex items-center justify-between w-full sm:w-auto sm:flex-shrink-0">
-                    {/* Quantity controls */}
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
-                        style={{ background: 'hsl(var(--diwali-light))', border: '1px solid hsl(var(--diwali-gold))', color: 'hsl(var(--diwali-dark))' }}
-                      >
-                        <Minus className="h-3 w-3 sm:h-4 sm:w-4" />
-                      </button>
-                      <span className="px-2 sm:px-3 py-1 rounded-full font-bold text-center min-w-[50px] sm:min-w-[60px] text-xs sm:text-sm" style={{ background: 'hsl(var(--diwali-light))', border: '1px solid hsl(var(--diwali-gold))', color: 'hsl(var(--diwali-dark))' }}>
-                        {item.quantity}kg
-                      </span>
-                      <button
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
-                        style={{ background: 'hsl(var(--diwali-light))', border: '1px solid hsl(var(--diwali-gold))', color: 'hsl(var(--diwali-dark))' }}
-                      >
-                        <Plus className="h-3 w-3 sm:h-4 sm:w-4" />
-                      </button>
+                  {/* Item Total Price */}
+                  <div className="text-right min-w-[100px] flex-shrink-0">
+                    <div className="font-bold text-xl" style={{ color: 'hsl(var(--diwali-dark))', textShadow: '1px 1px 2px hsla(var(--diwali-shadow), 0.1)' }}>
+                      ₹{item.price * item.quantity}
                     </div>
-                    
-                    {/* Item total */}
-                    <div className="text-right">
-                      <div className="font-bold text-base sm:text-lg" style={{ color: 'hsl(var(--diwali-dark))', textShadow: '1px 1px 2px hsla(var(--diwali-shadow), 0.1)' }}>
-                        ₹{item.price * item.quantity}
-                      </div>
-                    </div>
-                    
-                    {/* Remove button - hidden on mobile, visible on desktop */}
-                    <button
-                      onClick={() => removeFromCart(item.id)}
-                      className="w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 hidden sm:flex ml-2"
-                      style={{ color: 'hsl(var(--diwali-dark))' }}
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </button>
                   </div>
+                  
+                  {/* Delete Button */}
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    className="w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 flex-shrink-0"
+                    style={{ background: 'hsla(var(--diwali-bronze), 0.1)', color: 'hsl(var(--diwali-dark))' }}
+                    aria-label="Remove item"
+                  >
+                    <Trash2 className="h-5 w-5" />
+                  </button>
                 </div>
               ))}
             </div>
