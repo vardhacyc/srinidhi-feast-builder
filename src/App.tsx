@@ -9,13 +9,15 @@ import Index from "./pages/Index";
 import DiwaliIndex from "./pages/DiwaliIndex";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
+import MasterAdminDashboard from "./pages/MasterAdminDashboard";
+import MasterAdminLogin from "./pages/MasterAdminLogin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const AppContent = () => {
   const location = useLocation();
-  const isAdminPage = location.pathname.startsWith('/admin');
+  const isAdminPage = location.pathname.startsWith('/admin') || location.pathname.startsWith('/master-admin');
 
   return (
     <>
@@ -25,6 +27,8 @@ const AppContent = () => {
         <Route path="/catering" element={<Index />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/master-admin-login" element={<MasterAdminLogin />} />
+        <Route path="/master-admin" element={<MasterAdminDashboard />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

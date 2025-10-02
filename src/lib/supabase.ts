@@ -309,5 +309,23 @@ export const authService = {
     } catch {
       return false;
     }
+  },
+
+  async isMasterAdmin() {
+    try {
+      const user = await this.getCurrentUser();
+      if (!user) return false;
+
+      const { data, error } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', user.id)
+        .single();
+
+      if (error) return false;
+      return data?.role === 'master_admin';
+    } catch {
+      return false;
+    }
   }
 };

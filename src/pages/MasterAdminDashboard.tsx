@@ -43,7 +43,7 @@ import {
   Bell
 } from 'lucide-react';
 
-const AdminDashboard: React.FC = () => {
+const MasterAdminDashboard: React.FC = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   
@@ -828,8 +828,8 @@ const AdminDashboard: React.FC = () => {
             />
             <div>
               <div className="flex items-center gap-3">
-                <h1 className="font-display text-3xl font-bold text-gray-800">
-                  🪔 Diwali Orders Dashboard
+                <h1 className="font-display text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                  🛡️ Master Admin Dashboard
                 </h1>
                 {newOrdersCount > 0 && (
                   <Badge className="bg-red-500 text-white animate-pulse">
@@ -839,7 +839,7 @@ const AdminDashboard: React.FC = () => {
               </div>
               <div className="flex items-center gap-4 mt-2">
                 <p className="text-gray-600">
-                  Manage your sweet orders efficiently
+                  Full system control & order management
                 </p>
                 <div className="flex items-center gap-2 text-sm text-gray-500">
                   <div className={`w-2 h-2 rounded-full ${
@@ -1387,6 +1387,16 @@ const AdminDashboard: React.FC = () => {
                         >
                           <FileDown className="h-3 w-3" />
                         </Button>
+                        
+                        <Button
+                          onClick={() => handleDeleteOrder(order.id)}
+                          variant="outline"
+                          size="sm"
+                          className="h-8 bg-red-50 border-red-300 text-red-700 hover:bg-red-100 hover:border-red-400"
+                          title={`Delete order for ${order.customer_name}`}
+                        >
+                          <Trash2 className="h-3 w-3" />
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -1401,4 +1411,4 @@ const AdminDashboard: React.FC = () => {
   );
 };
 
-export default AdminDashboard;
+export default MasterAdminDashboard;
