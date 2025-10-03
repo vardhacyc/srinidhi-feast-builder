@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.38.4";
-import * as bcrypt from "https://deno.land/x/bcrypt@v0.2.4/mod.ts";
+
 
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
 const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
@@ -38,6 +38,31 @@ const validateInput = (email: string, otp: string) => {
   }
 
   return { email: trimmedEmail, otp: trimmedOTP };
+};
+
+// Helper: convert ArrayBuffer to hex string
+const toHex = (buffer: ArrayBuffer): string => {
+  return Array.from(new Uint8Array(buffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+};
+
+// Hash OTP using a server-side secret + email for binding
+const hashOTP = async (otp: string, email: string): Promise<string> => {
+  const secret = Deno.env.get("OTP_SECRET") || Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "otp-fallback-secret";
+  const data = new TextEncoder().encode(`${secret}:${email}:${otp}`);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return toHex(digest);
+};
+
+// Constant-time comparison to mitigate timing attacks
+const timingSafeEqual = (a: string, b: string): boolean => {
+  if (a.length !== b.length) return false;
+  let result = 0;
+  for (let i = 0; i < a.length; i++) {
+    result |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return result === 0;
 };
 
 const handler = async (req: Request): Promise<Response> => {
@@ -106,13 +131,14 @@ const handler = async (req: Request): Promise<Response> => {
     let otpRecord = null;
     for (const record of otpRecords) {
       try {
-        const isValid = await bcrypt.compare(otp, record.otp_code);
+        const expected = await hashOTP(otp, record.email || email);
+        const isValid = timingSafeEqual(expected, record.otp_code);
         if (isValid) {
           otpRecord = record;
           break;
         }
       } catch (err) {
-        console.error("Bcrypt comparison error:", err);
+        console.error("OTP comparison error:", err);
         continue;
       }
     }

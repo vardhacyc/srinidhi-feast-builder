@@ -1,7 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.38.4";
 import { Resend } from "https://esm.sh/resend@4.0.0";
-import * as bcrypt from "https://deno.land/x/bcrypt@v0.2.4/mod.ts";
+
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
@@ -62,6 +62,21 @@ const generateOTP = (): string => {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
+// Helper: convert ArrayBuffer to hex string
+const toHex = (buffer: ArrayBuffer): string => {
+  return Array.from(new Uint8Array(buffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+};
+
+// Hash OTP using a server-side secret + email for binding
+const hashOTP = async (otp: string, email: string): Promise<string> => {
+  const secret = Deno.env.get("OTP_SECRET") || Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "otp-fallback-secret";
+  const data = new TextEncoder().encode(`${secret}:${email}:${otp}`);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return toHex(digest);
+};
+
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -106,7 +121,7 @@ const handler = async (req: Request): Promise<Response> => {
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // 5 minutes
 
     // Hash the OTP before storing (security best practice)
-    const hashedOTP = await bcrypt.hash(otpCode);
+    const hashedOTP = await hashOTP(otpCode, email);
 
     console.log(`OTP generated successfully`);
 
