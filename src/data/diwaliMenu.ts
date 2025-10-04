@@ -66,11 +66,27 @@ export const DIWALI_MENU_DATA: MenuData = {
       "name": "Dry Fruit Sweets",
       "products": [
         {
+          "id": "SN202501-250g",
+          "name": "Cashew Cake (1/4kg)",
+          "price": 350,
+          "unit": "250g",
+          "description": "Premium cashew-based cake with rich, creamy texture - 1/4 kg",
+          "image": "/lovable-uploads/CashewCake.webp"
+        },
+        {
+          "id": "SN202501-500g",
+          "name": "Cashew Cake (1/2kg)",
+          "price": 700,
+          "unit": "500g",
+          "description": "Premium cashew-based cake with rich, creamy texture - 1/2 kg",
+          "image": "/lovable-uploads/CashewCake.webp"
+        },
+        {
           "id": "SN202501",
-          "name": "Cashew Cake",
+          "name": "Cashew Cake (1kg)",
           "price": 1400,
           "unit": "kg",
-          "description": "Premium cashew-based cake with rich, creamy texture",
+          "description": "Premium cashew-based cake with rich, creamy texture - 1 kg",
           "image": "/lovable-uploads/CashewCake.webp"
         },
         {
