@@ -227,6 +227,7 @@ export type Database = {
           image_url: string | null
           name: string
           price: number
+          sku: string | null
           soft_enabled: boolean
           updated_at: string | null
         }
@@ -241,6 +242,7 @@ export type Database = {
           image_url?: string | null
           name: string
           price: number
+          sku?: string | null
           soft_enabled?: boolean
           updated_at?: string | null
         }
@@ -255,6 +257,7 @@ export type Database = {
           image_url?: string | null
           name?: string
           price?: number
+          sku?: string | null
           soft_enabled?: boolean
           updated_at?: string | null
         }

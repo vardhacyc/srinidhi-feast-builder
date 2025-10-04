@@ -89,26 +89,59 @@ const handler = async (req: Request): Promise<Response> => {
 
     // SERVER-SIDE PRICE VALIDATION - Critical security check
     // Verify prices against products table to prevent manipulation
-    const productIds = order.items.map(item => item.id);
-    const { data: products, error: productsError } = await supabase
-      .from("products")
-      .select("id, name, price, gst_percentage")
-      .in("id", productIds);
+    const productIds = order.items.map(item => String(item.id));
 
-    if (productsError || !products) {
+    // Support both UUID product IDs and string SKUs (e.g., SN2025xx)
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const idList = productIds.filter((id) => uuidRegex.test(id));
+    const skuList = productIds.filter((id) => !uuidRegex.test(id));
+
+    let products: Array<{ id: string; sku?: string | null; name: string; price: number; gst_percentage: number } > = [];
+
+    if (idList.length > 0) {
+      const { data, error } = await supabase
+        .from("products")
+        .select("id, sku, name, price, gst_percentage")
+        .in("id", idList);
+      if (error) {
+        return new Response(JSON.stringify({ success: false, error: "Failed to validate product prices" }), {
+          status: 200,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        });
+      }
+      products = products.concat(data ?? []);
+    }
+
+    if (skuList.length > 0) {
+      const { data, error } = await supabase
+        .from("products")
+        .select("id, sku, name, price, gst_percentage")
+        .in("sku", skuList);
+      if (error) {
+        return new Response(JSON.stringify({ success: false, error: "Failed to validate product prices" }), {
+          status: 200,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        });
+      }
+      products = products.concat(data ?? []);
+    }
+
+    if (products.length === 0) {
       return new Response(JSON.stringify({ success: false, error: "Failed to validate product prices" }), {
         status: 200,
         headers: { "Content-Type": "application/json", ...corsHeaders },
       });
     }
 
-    // Create a map for quick lookup
-    const productMap = new Map(products.map(p => [p.id, p]));
+    // Create maps for quick lookup by id or sku
+    const productById = new Map(products.filter((p) => p.id).map((p) => [p.id, p]));
+    const productBySku = new Map(products.filter((p) => p.sku).map((p) => [String(p.sku), p]));
 
     // Validate each item's price and recalculate totals
     let calculatedSubtotal = 0;
     for (const item of order.items) {
-      const product = productMap.get(item.id);
+      const key = String(item.id);
+      const product = productById.get(key) ?? productBySku.get(key);
       if (!product) {
         return new Response(JSON.stringify({ success: false, error: `Invalid product: ${item.name}` }), {
           status: 200,
@@ -117,7 +150,7 @@ const handler = async (req: Request): Promise<Response> => {
       }
 
       // Verify the price matches the database
-      if (Math.abs(item.price - product.price) > 0.01) {
+      if (Math.abs(item.price - Number(product.price)) > 0.01) {
         return new Response(JSON.stringify({ 
           success: false, 
           error: `Price mismatch for ${product.name}. Please refresh and try again.` 
@@ -127,7 +160,7 @@ const handler = async (req: Request): Promise<Response> => {
         });
       }
 
-      calculatedSubtotal += product.price * item.quantity;
+      calculatedSubtotal += Number(product.price) * item.quantity;
     }
 
     // Recalculate GST and total (using 5% GST rate)
