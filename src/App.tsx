@@ -11,6 +11,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
 import MasterAdminDashboard from "./pages/MasterAdminDashboard";
 import MasterAdminLogin from "./pages/MasterAdminLogin";
+import WhatsAppOrdersDashboard from "./pages/WhatsAppOrdersDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const AppContent = () => {
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/master-admin-login" element={<MasterAdminLogin />} />
         <Route path="/master-admin" element={<MasterAdminDashboard />} />
+        <Route path="/whatsapp-orders" element={<WhatsAppOrdersDashboard />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
