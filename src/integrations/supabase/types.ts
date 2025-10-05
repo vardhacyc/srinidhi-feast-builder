@@ -21,6 +21,8 @@ export type Database = {
           created_at: string | null
           customer_email: string
           customer_name: string
+          delivery_date: string | null
+          delivery_time: string | null
           gst_amount: number
           id: string
           mobile: string
@@ -35,6 +37,8 @@ export type Database = {
           created_at?: string | null
           customer_email: string
           customer_name: string
+          delivery_date?: string | null
+          delivery_time?: string | null
           gst_amount: number
           id?: string
           mobile: string
@@ -49,6 +53,8 @@ export type Database = {
           created_at?: string | null
           customer_email?: string
           customer_name?: string
+          delivery_date?: string | null
+          delivery_time?: string | null
           gst_amount?: number
           id?: string
           mobile?: string
@@ -140,6 +146,8 @@ export type Database = {
           created_at: string
           customer_email: string | null
           customer_name: string
+          delivery_date: string | null
+          delivery_time: string | null
           gst_amount: number
           id: string
           items: Json
@@ -157,6 +165,8 @@ export type Database = {
           created_at?: string
           customer_email?: string | null
           customer_name: string
+          delivery_date?: string | null
+          delivery_time?: string | null
           gst_amount: number
           id?: string
           items: Json
@@ -174,6 +184,8 @@ export type Database = {
           created_at?: string
           customer_email?: string | null
           customer_name?: string
+          delivery_date?: string | null
+          delivery_time?: string | null
           gst_amount?: number
           id?: string
           items?: Json

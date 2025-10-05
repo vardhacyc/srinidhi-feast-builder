@@ -2,18 +2,41 @@ import React from 'react';
 import { ShoppingCart, MessageCircle } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
 import { Button } from '../ui/button';
+import { supabase } from '../../lib/supabase';
 
 const StickyCartBar: React.FC = () => {
   const { cart, getTotalItems, getFinalTotal } = useCart();
   
-  const handleWhatsAppOrder = () => {
+  const handleWhatsAppOrder = async () => {
     if (cart.length === 0) return;
     
+    // Save to database before WhatsApp redirect (no OTP needed)
+    try {
+      const totalWeight = getTotalItems();
+      const finalTotal = getFinalTotal();
+      
+      await supabase.from('abandoned_carts').insert([{
+        customer_email: 'whatsapp-order@pending.com',
+        customer_name: 'WhatsApp Order',
+        mobile: 'pending',
+        address: 'To be confirmed via WhatsApp',
+        special_instructions: 'WhatsApp order - awaiting customer details',
+        cart_items: cart as any,
+        subtotal: finalTotal / 1.05,
+        gst_amount: finalTotal * 0.05 / 1.05,
+        total_amount: finalTotal,
+        total_items: totalWeight,
+      }]);
+    } catch (error) {
+      console.error('Error saving WhatsApp cart:', error);
+    }
+    
+    // Create message without prices
     const orderDetails = cart.map(item => 
-      `${item.name} x${item.quantity}kg = ₹${item.price * item.quantity}`
+      `${item.name} - ${item.quantity}kg`
     ).join('\n');
     
-    const message = `🪔 *Diwali Sweet Order* 🪔\n\nMy Order:\n${orderDetails}\n\n*Total: ₹${getFinalTotal().toFixed(2)}*\n*Total Items: ${getTotalItems()}kg*\n\nPlease confirm availability and delivery details!\n\n*Happy Diwali!* ✨`;
+    const message = `🪔 *Diwali Sweet Order* 🪔\n\nMy Order:\n${orderDetails}\n\n*Total Items: ${getTotalItems()}kg*\n\nPlease share the pricing and confirm availability and delivery details!\n\n*Happy Diwali!* ✨`;
     
     const whatsappUrl = `https://wa.me/918760101010?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

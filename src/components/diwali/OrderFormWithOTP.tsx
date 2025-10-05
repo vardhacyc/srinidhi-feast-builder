@@ -40,6 +40,12 @@ const orderSchema = z.object({
   pincode: z.string()
     .trim()
     .regex(/^\d{6}$/, 'Please enter a valid 6-digit pincode'),
+  deliveryDate: z.string()
+    .trim()
+    .min(1, 'Please select a delivery date'),
+  deliveryTime: z.string()
+    .trim()
+    .min(1, 'Please select a delivery time'),
   specialInstructions: z.string()
     .max(200, 'Special instructions must be less than 200 characters')
     .optional()
@@ -137,6 +143,8 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
         customer_name: data.name,
         mobile: data.mobile,
         address: `${data.address}, ${data.city}, ${data.state} - ${data.pincode}`,
+        delivery_date: data.deliveryDate,
+        delivery_time: data.deliveryTime,
         special_instructions: data.specialInstructions || null,
         cart_items: cart as any,
         subtotal: finalTotal / 1.05, // Calculate subtotal (assuming 5% GST)
@@ -397,6 +405,41 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
             {errors.pincode && (
               <p className="text-red-500 text-sm mt-1">{errors.pincode.message}</p>
             )}
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <Label htmlFor="deliveryDate" className="text-amber-900 font-bold text-sm">
+                Delivery Date *
+              </Label>
+              <Input
+                id="deliveryDate"
+                type="date"
+                {...register('deliveryDate')}
+                min={new Date().toISOString().split('T')[0]}
+                className="mt-2 bg-white/95 border-2 border-amber-300 focus:border-amber-500 text-amber-900 font-medium"
+                disabled={isSubmitting || isSendingOTP}
+              />
+              {errors.deliveryDate && (
+                <p className="text-red-500 text-sm mt-1">{errors.deliveryDate.message}</p>
+              )}
+            </div>
+
+            <div>
+              <Label htmlFor="deliveryTime" className="text-amber-900 font-bold text-sm">
+                Delivery Time *
+              </Label>
+              <Input
+                id="deliveryTime"
+                type="time"
+                {...register('deliveryTime')}
+                className="mt-2 bg-white/95 border-2 border-amber-300 focus:border-amber-500 text-amber-900 font-medium"
+                disabled={isSubmitting || isSendingOTP}
+              />
+              {errors.deliveryTime && (
+                <p className="text-red-500 text-sm mt-1">{errors.deliveryTime.message}</p>
+              )}
+            </div>
           </div>
         </div>
 

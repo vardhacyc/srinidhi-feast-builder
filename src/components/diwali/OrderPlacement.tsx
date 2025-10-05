@@ -18,6 +18,8 @@ interface OrderFormData {
   city: string;
   state: string;
   pincode: string;
+  deliveryDate: string;
+  deliveryTime: string;
   specialInstructions?: string;
   otpVerified: boolean;
 }
@@ -120,6 +122,8 @@ const OrderPlacement: React.FC<OrderPlacementProps> = ({ onClose }) => {
         customer_email: data.email,
         mobile: data.mobile,
         address: fullAddress,
+        delivery_date: data.deliveryDate,
+        delivery_time: data.deliveryTime,
         special_instructions: data.specialInstructions || '',
         items: cart.map(item => ({
           id: item.id,

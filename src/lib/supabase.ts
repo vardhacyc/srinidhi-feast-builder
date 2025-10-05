@@ -16,6 +16,8 @@ export interface Order {
   customer_email?: string;
   mobile: string;
   address: string;
+  delivery_date?: string;
+  delivery_time?: string;
   special_instructions?: string;
   items: OrderItem[];
   subtotal: number;
@@ -69,6 +71,8 @@ interface OrderRow {
   customer_email?: string;
   mobile: string;
   address: string;
+  delivery_date?: string;
+  delivery_time?: string;
   special_instructions?: string;
   items: Json;
   subtotal: number;
