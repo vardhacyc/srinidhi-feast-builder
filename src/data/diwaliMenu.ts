@@ -90,43 +90,123 @@ export const DIWALI_MENU_DATA: MenuData = {
           "image": "/lovable-uploads/CashewCake.webp"
         },
         {
-          "id": "SN202502",
-          "name": "Pista Roll",
-          "price": 1400,
-          "unit": "kg",
-          "description": "Delicate pistachio rolls with authentic taste",
+          "id": "SN202502-250g",
+          "name": "Pista Roll (1/4kg)",
+          "price": 350,
+          "unit": "250g",
+          "description": "Delicate pistachio rolls with authentic taste - 1/4 kg",
           "image": "/lovable-uploads/pista-roll.png"
         },
         {
-          "id": "SN202503",
-          "name": "Kaju Cassata",
+          "id": "SN202502-500g",
+          "name": "Pista Roll (1/2kg)",
+          "price": 700,
+          "unit": "500g",
+          "description": "Delicate pistachio rolls with authentic taste - 1/2 kg",
+          "image": "/lovable-uploads/pista-roll.png"
+        },
+        {
+          "id": "SN202502",
+          "name": "Pista Roll (1kg)",
           "price": 1400,
           "unit": "kg",
-          "description": "Layered cashew dessert with exotic flavors",
+          "description": "Delicate pistachio rolls with authentic taste - 1 kg",
+          "image": "/lovable-uploads/pista-roll.png"
+        },
+        {
+          "id": "SN202503-250g",
+          "name": "Kaju Cassata (1/4kg)",
+          "price": 350,
+          "unit": "250g",
+          "description": "Layered cashew dessert with exotic flavors - 1/4 kg",
           "image": "/lovable-uploads/kaju-katli.png"
         },
         {
-          "id": "SN202504",
-          "name": "Fig Roll",
+          "id": "SN202503-500g",
+          "name": "Kaju Cassata (1/2kg)",
+          "price": 700,
+          "unit": "500g",
+          "description": "Layered cashew dessert with exotic flavors - 1/2 kg",
+          "image": "/lovable-uploads/kaju-katli.png"
+        },
+        {
+          "id": "SN202503",
+          "name": "Kaju Cassata (1kg)",
           "price": 1400,
           "unit": "kg",
-          "description": "Sweet fig rolls with natural fruit flavors",
+          "description": "Layered cashew dessert with exotic flavors - 1 kg",
+          "image": "/lovable-uploads/kaju-katli.png"
+        },
+        {
+          "id": "SN202504-250g",
+          "name": "Fig Roll (1/4kg)",
+          "price": 350,
+          "unit": "250g",
+          "description": "Sweet fig rolls with natural fruit flavors - 1/4 kg",
           "image": "/figroll.png"
         },
         {
-          "id": "SN202505",
-          "name": "Badam Halwa",
+          "id": "SN202504-500g",
+          "name": "Fig Roll (1/2kg)",
+          "price": 700,
+          "unit": "500g",
+          "description": "Sweet fig rolls with natural fruit flavors - 1/2 kg",
+          "image": "/figroll.png"
+        },
+        {
+          "id": "SN202504",
+          "name": "Fig Roll (1kg)",
           "price": 1400,
           "unit": "kg",
-          "description": "Rich almond halwa made with premium ingredients",
+          "description": "Sweet fig rolls with natural fruit flavors - 1 kg",
+          "image": "/figroll.png"
+        },
+        {
+          "id": "SN202505-250g",
+          "name": "Badam Halwa (1/4kg)",
+          "price": 350,
+          "unit": "250g",
+          "description": "Rich almond halwa made with premium ingredients - 1/4 kg",
           "image": "/lovable-uploads/coconut-burfi.png"
         },
         {
-          "id": "SN202506",
-          "name": "Strawberry Kaju Katli",
+          "id": "SN202505-500g",
+          "name": "Badam Halwa (1/2kg)",
+          "price": 700,
+          "unit": "500g",
+          "description": "Rich almond halwa made with premium ingredients - 1/2 kg",
+          "image": "/lovable-uploads/coconut-burfi.png"
+        },
+        {
+          "id": "SN202505",
+          "name": "Badam Halwa (1kg)",
           "price": 1400,
           "unit": "kg",
-          "description": "Traditional kaju katli with strawberry flavor",
+          "description": "Rich almond halwa made with premium ingredients - 1 kg",
+          "image": "/lovable-uploads/coconut-burfi.png"
+        },
+        {
+          "id": "SN202506-250g",
+          "name": "Strawberry Kaju Katli (1/4kg)",
+          "price": 350,
+          "unit": "250g",
+          "description": "Traditional kaju katli with strawberry flavor - 1/4 kg",
+          "image": "/lovable-uploads/Strawberry-pista-Roll.webp"
+        },
+        {
+          "id": "SN202506-500g",
+          "name": "Strawberry Kaju Katli (1/2kg)",
+          "price": 700,
+          "unit": "500g",
+          "description": "Traditional kaju katli with strawberry flavor - 1/2 kg",
+          "image": "/lovable-uploads/Strawberry-pista-Roll.webp"
+        },
+        {
+          "id": "SN202506",
+          "name": "Strawberry Kaju Katli (1kg)",
+          "price": 1400,
+          "unit": "kg",
+          "description": "Traditional kaju katli with strawberry flavor - 1 kg",
           "image": "/lovable-uploads/Strawberry-pista-Roll.webp"
         }
       ]
@@ -135,67 +215,195 @@ export const DIWALI_MENU_DATA: MenuData = {
       "name": "Ghee Sweets",
       "products": [
         {
-          "id": "SN202507",
-          "name": "Laddu",
-          "price": 600,
-          "unit": "kg",
-          "description": "Traditional round sweets made with flour, ghee and sugar",
+          "id": "SN202507-250g",
+          "name": "Laddu (1/4kg)",
+          "price": 150,
+          "unit": "250g",
+          "description": "Traditional round sweets made with flour, ghee and sugar - 1/4 kg",
           "image": "/lovable-uploads/ladoo.png"
         },
         {
-          "id": "SN202508",
-          "name": "Mysurpa",
+          "id": "SN202507-500g",
+          "name": "Laddu (1/2kg)",
+          "price": 300,
+          "unit": "500g",
+          "description": "Traditional round sweets made with flour, ghee and sugar - 1/2 kg",
+          "image": "/lovable-uploads/ladoo.png"
+        },
+        {
+          "id": "SN202507",
+          "name": "Laddu (1kg)",
           "price": 600,
           "unit": "kg",
-          "description": "Rich, buttery sweet from Karnataka made with ghee",
+          "description": "Traditional round sweets made with flour, ghee and sugar - 1 kg",
+          "image": "/lovable-uploads/ladoo.png"
+        },
+        {
+          "id": "SN202508-250g",
+          "name": "Mysurpa (1/4kg)",
+          "price": 150,
+          "unit": "250g",
+          "description": "Rich, buttery sweet from Karnataka made with ghee - 1/4 kg",
           "image": "/lovable-uploads/MysorePak.png"
         },
         {
-          "id": "SN202509",
-          "name": "Badusha",
+          "id": "SN202508-500g",
+          "name": "Mysurpa (1/2kg)",
+          "price": 300,
+          "unit": "500g",
+          "description": "Rich, buttery sweet from Karnataka made with ghee - 1/2 kg",
+          "image": "/lovable-uploads/MysorePak.png"
+        },
+        {
+          "id": "SN202508",
+          "name": "Mysurpa (1kg)",
           "price": 600,
           "unit": "kg",
-          "description": "Flaky, layered sweet pastry soaked in sugar syrup",
+          "description": "Rich, buttery sweet from Karnataka made with ghee - 1 kg",
+          "image": "/lovable-uploads/MysorePak.png"
+        },
+        {
+          "id": "SN202509-250g",
+          "name": "Badusha (1/4kg)",
+          "price": 150,
+          "unit": "250g",
+          "description": "Flaky, layered sweet pastry soaked in sugar syrup - 1/4 kg",
           "image": "/lovable-uploads/badusha.jpg"
         },
         {
-          "id": "SN202510",
-          "name": "Bombay Halwa",
+          "id": "SN202509-500g",
+          "name": "Badusha (1/2kg)",
+          "price": 300,
+          "unit": "500g",
+          "description": "Flaky, layered sweet pastry soaked in sugar syrup - 1/2 kg",
+          "image": "/lovable-uploads/badusha.jpg"
+        },
+        {
+          "id": "SN202509",
+          "name": "Badusha (1kg)",
           "price": 600,
           "unit": "kg",
-          "description": "Colorful, translucent sweet made with corn flour",
+          "description": "Flaky, layered sweet pastry soaked in sugar syrup - 1 kg",
+          "image": "/lovable-uploads/badusha.jpg"
+        },
+        {
+          "id": "SN202510-250g",
+          "name": "Bombay Halwa (1/4kg)",
+          "price": 150,
+          "unit": "250g",
+          "description": "Colorful, translucent sweet made with corn flour - 1/4 kg",
           "image": "/lovable-uploads/bombay_halwa.webp"
         },
         {
-          "id": "SN202511",
-          "name": "Spl. Laddu",
-          "price": 650,
+          "id": "SN202510-500g",
+          "name": "Bombay Halwa (1/2kg)",
+          "price": 300,
+          "unit": "500g",
+          "description": "Colorful, translucent sweet made with corn flour - 1/2 kg",
+          "image": "/lovable-uploads/bombay_halwa.webp"
+        },
+        {
+          "id": "SN202510",
+          "name": "Bombay Halwa (1kg)",
+          "price": 600,
           "unit": "kg",
-          "description": "Premium laddus made with pure ghee and finest ingredients",
+          "description": "Colorful, translucent sweet made with corn flour - 1 kg",
+          "image": "/lovable-uploads/bombay_halwa.webp"
+        },
+        {
+          "id": "SN202511-250g",
+          "name": "Spl. Laddu (1/4kg)",
+          "price": 163,
+          "unit": "250g",
+          "description": "Premium laddus made with pure ghee and finest ingredients - 1/4 kg",
           "image": "/lovable-uploads/ladoo.png"
         },
         {
-          "id": "SN202512",
-          "name": "Carrot Mysurpa",
+          "id": "SN202511-500g",
+          "name": "Spl. Laddu (1/2kg)",
+          "price": 325,
+          "unit": "500g",
+          "description": "Premium laddus made with pure ghee and finest ingredients - 1/2 kg",
+          "image": "/lovable-uploads/ladoo.png"
+        },
+        {
+          "id": "SN202511",
+          "name": "Spl. Laddu (1kg)",
           "price": 650,
           "unit": "kg",
-          "description": "Traditional Mysore Pak enhanced with fresh carrots",
+          "description": "Premium laddus made with pure ghee and finest ingredients - 1 kg",
+          "image": "/lovable-uploads/ladoo.png"
+        },
+        {
+          "id": "SN202512-250g",
+          "name": "Carrot Mysurpa (1/4kg)",
+          "price": 163,
+          "unit": "250g",
+          "description": "Traditional Mysore Pak enhanced with fresh carrots - 1/4 kg",
           "image": "/lovable-uploads/CarrotMysorePak.webp"
         },
         {
-          "id": "SN202513",
-          "name": "Soan Papdi",
+          "id": "SN202512-500g",
+          "name": "Carrot Mysurpa (1/2kg)",
+          "price": 325,
+          "unit": "500g",
+          "description": "Traditional Mysore Pak enhanced with fresh carrots - 1/2 kg",
+          "image": "/lovable-uploads/CarrotMysorePak.webp"
+        },
+        {
+          "id": "SN202512",
+          "name": "Carrot Mysurpa (1kg)",
           "price": 650,
           "unit": "kg",
-          "description": "Flaky, crispy sweet with ghee and cardamom",
+          "description": "Traditional Mysore Pak enhanced with fresh carrots - 1 kg",
+          "image": "/lovable-uploads/CarrotMysorePak.webp"
+        },
+        {
+          "id": "SN202513-250g",
+          "name": "Soan Papdi (1/4kg)",
+          "price": 163,
+          "unit": "250g",
+          "description": "Flaky, crispy sweet with ghee and cardamom - 1/4 kg",
           "image": "/lovable-uploads/soan-papdi.png"
         },
         {
-          "id": "SN202514",
-          "name": "Dry Fruit Halwa",
+          "id": "SN202513-500g",
+          "name": "Soan Papdi (1/2kg)",
+          "price": 325,
+          "unit": "500g",
+          "description": "Flaky, crispy sweet with ghee and cardamom - 1/2 kg",
+          "image": "/lovable-uploads/soan-papdi.png"
+        },
+        {
+          "id": "SN202513",
+          "name": "Soan Papdi (1kg)",
           "price": 650,
           "unit": "kg",
-          "description": "Rich halwa loaded with assorted dry fruits and ghee",
+          "description": "Flaky, crispy sweet with ghee and cardamom - 1 kg",
+          "image": "/lovable-uploads/soan-papdi.png"
+        },
+        {
+          "id": "SN202514-250g",
+          "name": "Dry Fruit Halwa (1/4kg)",
+          "price": 163,
+          "unit": "250g",
+          "description": "Rich halwa loaded with assorted dry fruits and ghee - 1/4 kg",
+          "image": "/dryfruitHalwa.png"
+        },
+        {
+          "id": "SN202514-500g",
+          "name": "Dry Fruit Halwa (1/2kg)",
+          "price": 325,
+          "unit": "500g",
+          "description": "Rich halwa loaded with assorted dry fruits and ghee - 1/2 kg",
+          "image": "/dryfruitHalwa.png"
+        },
+        {
+          "id": "SN202514",
+          "name": "Dry Fruit Halwa (1kg)",
+          "price": 650,
+          "unit": "kg",
+          "description": "Rich halwa loaded with assorted dry fruits and ghee - 1 kg",
           "image": "/dryfruitHalwa.png"
         }
       ]
@@ -246,35 +454,99 @@ export const DIWALI_MENU_DATA: MenuData = {
       "name": "Milk Sweets",
       "products": [
         {
-          "id": "SN202525",
-          "name": "Gulkand Burfi",
-          "price": 600,
-          "unit": "kg",
-          "description": "Rose petal preserve flavored milk fudge squares",
+          "id": "SN202525-250g",
+          "name": "Gulkand Burfi (1/4kg)",
+          "price": 150,
+          "unit": "250g",
+          "description": "Rose petal preserve flavored milk fudge squares - 1/4 kg",
           "image": "/lovable-uploads/3f9c1eba-d27c-4ca8-bff6-452efdb026dd.png"
         },
         {
-          "id": "SN202526",
-          "name": "Dry Jamun",
+          "id": "SN202525-500g",
+          "name": "Gulkand Burfi (1/2kg)",
+          "price": 300,
+          "unit": "500g",
+          "description": "Rose petal preserve flavored milk fudge squares - 1/2 kg",
+          "image": "/lovable-uploads/3f9c1eba-d27c-4ca8-bff6-452efdb026dd.png"
+        },
+        {
+          "id": "SN202525",
+          "name": "Gulkand Burfi (1kg)",
           "price": 600,
           "unit": "kg",
-          "description": "Traditional dried gulab jamun",
+          "description": "Rose petal preserve flavored milk fudge squares - 1 kg",
+          "image": "/lovable-uploads/3f9c1eba-d27c-4ca8-bff6-452efdb026dd.png"
+        },
+        {
+          "id": "SN202526-250g",
+          "name": "Dry Jamun (1/4kg)",
+          "price": 150,
+          "unit": "250g",
+          "description": "Traditional dried gulab jamun - 1/4 kg",
           "image": "/gulab-jamun.png"
         },
         {
-          "id": "SN202527",
-          "name": "Chocolate Burfi",
-          "price": 650,
+          "id": "SN202526-500g",
+          "name": "Dry Jamun (1/2kg)",
+          "price": 300,
+          "unit": "500g",
+          "description": "Traditional dried gulab jamun - 1/2 kg",
+          "image": "/gulab-jamun.png"
+        },
+        {
+          "id": "SN202526",
+          "name": "Dry Jamun (1kg)",
+          "price": 600,
           "unit": "kg",
-          "description": "Rich chocolate burfi with premium cocoa",
+          "description": "Traditional dried gulab jamun - 1 kg",
+          "image": "/gulab-jamun.png"
+        },
+        {
+          "id": "SN202527-250g",
+          "name": "Chocolate Burfi (1/4kg)",
+          "price": 163,
+          "unit": "250g",
+          "description": "Rich chocolate burfi with premium cocoa - 1/4 kg",
           "image": "/lovable-uploads/coconut-burfi.png"
         },
         {
-          "id": "SN202528",
-          "name": "Badam Mas Cake",
+          "id": "SN202527-500g",
+          "name": "Chocolate Burfi (1/2kg)",
+          "price": 325,
+          "unit": "500g",
+          "description": "Rich chocolate burfi with premium cocoa - 1/2 kg",
+          "image": "/lovable-uploads/coconut-burfi.png"
+        },
+        {
+          "id": "SN202527",
+          "name": "Chocolate Burfi (1kg)",
           "price": 650,
           "unit": "kg",
-          "description": "Premium almond-based traditional cake",
+          "description": "Rich chocolate burfi with premium cocoa - 1 kg",
+          "image": "/lovable-uploads/coconut-burfi.png"
+        },
+        {
+          "id": "SN202528-250g",
+          "name": "Badam Mas Cake (1/4kg)",
+          "price": 163,
+          "unit": "250g",
+          "description": "Premium almond-based traditional cake - 1/4 kg",
+          "image": "/lovable-uploads/CashewCake.webp"
+        },
+        {
+          "id": "SN202528-500g",
+          "name": "Badam Mas Cake (1/2kg)",
+          "price": 325,
+          "unit": "500g",
+          "description": "Premium almond-based traditional cake - 1/2 kg",
+          "image": "/lovable-uploads/CashewCake.webp"
+        },
+        {
+          "id": "SN202528",
+          "name": "Badam Mas Cake (1kg)",
+          "price": 650,
+          "unit": "kg",
+          "description": "Premium almond-based traditional cake - 1 kg",
           "image": "/lovable-uploads/CashewCake.webp"
         }
       ]
@@ -283,35 +555,99 @@ export const DIWALI_MENU_DATA: MenuData = {
       "name": "Savouries",
       "products": [
         {
-          "id": "SN202529",
-          "name": "Classic Mixture",
-          "price": 450,
-          "unit": "kg",
-          "description": "Traditional South Indian mixture with various ingredients",
+          "id": "SN202529-250g",
+          "name": "Classic Mixture (1/4kg)",
+          "price": 113,
+          "unit": "250g",
+          "description": "Traditional South Indian mixture with various ingredients - 1/4 kg",
           "image": "/lovable-uploads/ribbon-pakoda.jpg"
         },
         {
-          "id": "SN202530",
-          "name": "Butter Murukku",
+          "id": "SN202529-500g",
+          "name": "Classic Mixture (1/2kg)",
+          "price": 225,
+          "unit": "500g",
+          "description": "Traditional South Indian mixture with various ingredients - 1/2 kg",
+          "image": "/lovable-uploads/ribbon-pakoda.jpg"
+        },
+        {
+          "id": "SN202529",
+          "name": "Classic Mixture (1kg)",
           "price": 450,
           "unit": "kg",
-          "description": "Crispy spiral snacks made with butter",
+          "description": "Traditional South Indian mixture with various ingredients - 1 kg",
+          "image": "/lovable-uploads/ribbon-pakoda.jpg"
+        },
+        {
+          "id": "SN202530-250g",
+          "name": "Butter Murukku (1/4kg)",
+          "price": 113,
+          "unit": "250g",
+          "description": "Crispy spiral snacks made with butter - 1/4 kg",
           "image": "/lovable-uploads/butter-murukku.webp"
         },
         {
-          "id": "SN202531",
-          "name": "Ribbon Pakoda",
+          "id": "SN202530-500g",
+          "name": "Butter Murukku (1/2kg)",
+          "price": 225,
+          "unit": "500g",
+          "description": "Crispy spiral snacks made with butter - 1/2 kg",
+          "image": "/lovable-uploads/butter-murukku.webp"
+        },
+        {
+          "id": "SN202530",
+          "name": "Butter Murukku (1kg)",
           "price": 450,
           "unit": "kg",
-          "description": "Ribbon-shaped crispy savory snacks",
+          "description": "Crispy spiral snacks made with butter - 1 kg",
+          "image": "/lovable-uploads/butter-murukku.webp"
+        },
+        {
+          "id": "SN202531-250g",
+          "name": "Ribbon Pakoda (1/4kg)",
+          "price": 113,
+          "unit": "250g",
+          "description": "Ribbon-shaped crispy savory snacks - 1/4 kg",
           "image": "/lovable-uploads/ribbon-pakoda.jpg"
         },
         {
-          "id": "SN202532",
-          "name": "Ragi Ribbon Pakoda",
+          "id": "SN202531-500g",
+          "name": "Ribbon Pakoda (1/2kg)",
+          "price": 225,
+          "unit": "500g",
+          "description": "Ribbon-shaped crispy savory snacks - 1/2 kg",
+          "image": "/lovable-uploads/ribbon-pakoda.jpg"
+        },
+        {
+          "id": "SN202531",
+          "name": "Ribbon Pakoda (1kg)",
           "price": 450,
           "unit": "kg",
-          "description": "Healthy finger millet ribbon-shaped fritters",
+          "description": "Ribbon-shaped crispy savory snacks - 1 kg",
+          "image": "/lovable-uploads/ribbon-pakoda.jpg"
+        },
+        {
+          "id": "SN202532-250g",
+          "name": "Ragi Ribbon Pakoda (1/4kg)",
+          "price": 113,
+          "unit": "250g",
+          "description": "Healthy finger millet ribbon-shaped fritters - 1/4 kg",
+          "image": "/lovable-uploads/RagiPakoda.jpg"
+        },
+        {
+          "id": "SN202532-500g",
+          "name": "Ragi Ribbon Pakoda (1/2kg)",
+          "price": 225,
+          "unit": "500g",
+          "description": "Healthy finger millet ribbon-shaped fritters - 1/2 kg",
+          "image": "/lovable-uploads/RagiPakoda.jpg"
+        },
+        {
+          "id": "SN202532",
+          "name": "Ragi Ribbon Pakoda (1kg)",
+          "price": 450,
+          "unit": "kg",
+          "description": "Healthy finger millet ribbon-shaped fritters - 1 kg",
           "image": "/lovable-uploads/RagiPakoda.jpg"
         }
       ]
