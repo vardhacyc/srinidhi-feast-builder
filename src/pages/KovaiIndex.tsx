@@ -3,7 +3,7 @@ import DiwaliHero from '@/components/diwali/DiwaliHero';
 import DiwaliSweetsMenu from '@/components/diwali/DiwaliSweetsMenu';
 import DiwaliFooter from '@/components/diwali/DiwaliFooter';
 import DiwaliHeader from '@/components/diwali/DiwaliHeader';
-import FloatingCart from '@/components/FloatingCart';
+import KovaiFloatingCart from '@/components/KovaiFloatingCart';
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
 
 const KovaiIndex = () => {
@@ -13,7 +13,7 @@ const KovaiIndex = () => {
         <DiwaliHeader />
         <DiwaliHero />
         <DiwaliSweetsMenu />
-        <FloatingCart />
+        <KovaiFloatingCart />
         <DiwaliFooter />
         <WhatsAppFloat 
           phoneNumber="918760101010"
