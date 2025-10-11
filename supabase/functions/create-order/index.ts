@@ -235,40 +235,46 @@ const handler = async (req: Request): Promise<Response> => {
             <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background: #f9fafb;">
               
               <!-- Simple Elegant Header -->
-              <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 20px;">
+              <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,0.12); margin-bottom: 20px; border: 2px solid #10b981;">
                 <!-- Success Banner -->
-                <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 30px 20px; text-align: center;">
-                  <div style="font-size: 48px; margin-bottom: 10px;">✓</div>
-                  <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 700;">Order Confirmed</h1>
-                  <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0; font-size: 14px;">Order #${data.id.slice(0, 8).toUpperCase()}</p>
+                <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 35px 20px; text-align: center;">
+                  <div style="font-size: 56px; margin-bottom: 12px;">✓</div>
+                  <h1 style="color: white; margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">Order Confirmed!</h1>
+                  <p style="color: rgba(255,255,255,0.95); margin: 10px 0 0; font-size: 15px; font-weight: 600;">Order #${data.id.slice(0, 8).toUpperCase()}</p>
                 </div>
                 
                 <!-- Main Content -->
                 <div style="padding: 30px 25px;">
-                  <p style="font-size: 18px; color: #1f2937; margin: 0 0 20px;">Hi <strong style="color: #f59e0b;">${order.customer_name}</strong>,</p>
-                  <p style="color: #6b7280; margin: 0 0 25px; line-height: 1.6;">Thank you for your order! Your Diwali sweets are being prepared with care.</p>
+                  <p style="font-size: 20px; color: #1f2937; margin: 0 0 15px; font-weight: 600;">Hi <strong style="color: #f59e0b; font-size: 22px;">${order.customer_name}</strong>,</p>
+                  <p style="color: #4b5563; margin: 0 0 25px; line-height: 1.6; font-size: 15px;">Thank you for your order! Your <strong>Diwali sweets</strong> are being prepared with care.</p>
                   
                   <!-- Order Info -->
-                  <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+                  <div style="background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); padding: 20px; border-radius: 10px; margin-bottom: 25px; border-left: 4px solid #10b981;">
                     <table style="width: 100%; border-collapse: collapse;">
                       <tr>
-                        <td style="padding: 8px 0; color: #6b7280; font-size: 14px;">Order Date:</td>
-                        <td style="padding: 8px 0; color: #1f2937; font-weight: 600; font-size: 14px; text-align: right;">${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</td>
+                        <td style="padding: 10px 0; color: #6b7280; font-size: 14px; font-weight: 600;">📅 Order Date:</td>
+                        <td style="padding: 10px 0; color: #1f2937; font-weight: 700; font-size: 15px; text-align: right;">${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</td>
                       </tr>
                       <tr>
-                        <td style="padding: 8px 0; color: #6b7280; font-size: 14px;">Contact:</td>
-                        <td style="padding: 8px 0; color: #1f2937; font-weight: 600; font-size: 14px; text-align: right;">${order.mobile}</td>
+                        <td style="padding: 10px 0; color: #6b7280; font-size: 14px; font-weight: 600;">📞 Contact:</td>
+                        <td style="padding: 10px 0; color: #1f2937; font-weight: 700; font-size: 15px; text-align: right;">${order.mobile}</td>
                       </tr>
+                      ${(order as any).delivery_date ? `<tr>
+                        <td style="padding: 10px 0; color: #6b7280; font-size: 14px; font-weight: 600;">🚚 Delivery Date:</td>
+                        <td style="padding: 10px 0; color: #10b981; font-weight: 700; font-size: 15px; text-align: right;">${new Date((order as any).delivery_date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}${(order as any).delivery_time ? ` at ${(order as any).delivery_time}` : ''}</td>
+                      </tr>` : ''}
                     </table>
                   </div>
                   <!-- Order Items -->
-                  <h3 style="color: #1f2937; margin: 0 0 15px; font-size: 16px; font-weight: 700;">Order Items</h3>
-                  <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                  <div style="background: #fef3c7; padding: 3px; border-radius: 8px; display: inline-block; margin-bottom: 12px;">
+                    <h3 style="color: #92400e; margin: 0; font-size: 17px; font-weight: 800; padding: 0 12px;">🛍️ ORDER ITEMS</h3>
+                  </div>
+                  <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; border: 2px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
                     <thead>
-                      <tr style="border-bottom: 2px solid #e5e7eb;">
-                        <th style="padding: 10px 0; text-align: left; color: #6b7280; font-weight: 600; font-size: 13px; text-transform: uppercase;">Item</th>
-                        <th style="padding: 10px 0; text-align: center; color: #6b7280; font-weight: 600; font-size: 13px; text-transform: uppercase;">Qty</th>
-                        <th style="padding: 10px 0; text-align: right; color: #6b7280; font-weight: 600; font-size: 13px; text-transform: uppercase;">Price</th>
+                      <tr style="background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); border-bottom: 3px solid #d1d5db;">
+                        <th style="padding: 12px 10px; text-align: left; color: #374151; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Item</th>
+                        <th style="padding: 12px 10px; text-align: center; color: #374151; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Qty</th>
+                        <th style="padding: 12px 10px; text-align: right; color: #374151; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Price</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -277,19 +283,19 @@ const handler = async (req: Request): Promise<Response> => {
                   </table>
                   
                   <!-- Totals -->
-                  <div style="border-top: 2px solid #e5e7eb; padding-top: 15px;">
+                  <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 20px; border-radius: 10px; margin-top: 20px; border: 2px solid #fbbf24;">
                     <table style="width: 100%; border-collapse: collapse;">
                       <tr>
-                        <td style="padding: 6px 0; color: #6b7280; font-size: 14px;">Subtotal:</td>
-                        <td style="padding: 6px 0; text-align: right; color: #1f2937; font-weight: 600; font-size: 14px;">₹${order.subtotal.toFixed(2)}</td>
+                        <td style="padding: 8px 0; color: #78350f; font-size: 15px; font-weight: 600;">Subtotal:</td>
+                        <td style="padding: 8px 0; text-align: right; color: #92400e; font-weight: 700; font-size: 16px;">₹${order.subtotal.toFixed(2)}</td>
                       </tr>
                       <tr>
-                        <td style="padding: 6px 0; color: #6b7280; font-size: 14px;">GST (5%):</td>
-                        <td style="padding: 6px 0; text-align: right; color: #1f2937; font-weight: 600; font-size: 14px;">₹${order.gst_amount.toFixed(2)}</td>
+                        <td style="padding: 8px 0; color: #78350f; font-size: 15px; font-weight: 600;">GST (5%):</td>
+                        <td style="padding: 8px 0; text-align: right; color: #92400e; font-weight: 700; font-size: 16px;">₹${order.gst_amount.toFixed(2)}</td>
                       </tr>
-                      <tr style="border-top: 2px solid #1f2937;">
-                        <td style="padding: 12px 0 0; color: #1f2937; font-weight: 700; font-size: 16px;">Total:</td>
-                        <td style="padding: 12px 0 0; text-align: right; color: #f59e0b; font-weight: 700; font-size: 20px;">₹${order.total_amount.toFixed(2)}</td>
+                      <tr style="border-top: 3px solid #f59e0b;">
+                        <td style="padding: 15px 0 0; color: #78350f; font-weight: 800; font-size: 18px;">💰 TOTAL:</td>
+                        <td style="padding: 15px 0 0; text-align: right; color: #b45309; font-weight: 900; font-size: 24px;">₹${order.total_amount.toFixed(2)}</td>
                       </tr>
                     </table>
                   </div>
@@ -297,47 +303,53 @@ const handler = async (req: Request): Promise<Response> => {
               </div>
 
               <!-- Delivery & Payment Card -->
-              <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 20px;">
+              <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,0.12); margin-bottom: 20px; border: 2px solid #e5e7eb;">
                 <div style="padding: 30px 25px;">
                   <!-- Delivery Address -->
-                  <h3 style="color: #1f2937; margin: 0 0 15px; font-size: 16px; font-weight: 700;">Delivery Address</h3>
-                  <div style="background: #f9fafb; padding: 15px; border-radius: 8px; border-left: 3px solid #10b981; margin-bottom: 30px;">
-                    <p style="margin: 0; color: #4b5563; line-height: 1.6; font-size: 14px; white-space: pre-line;">${order.address}</p>
-                    ${order.special_instructions ? `<p style="margin: 12px 0 0; color: #6b7280; font-size: 13px;"><strong>Note:</strong> ${order.special_instructions}</p>` : ''}
+                  <div style="background: #10b981; padding: 3px; border-radius: 8px; display: inline-block; margin-bottom: 12px;">
+                    <h3 style="color: white; margin: 0; font-size: 17px; font-weight: 800; padding: 0 12px;">📍 DELIVERY ADDRESS</h3>
+                  </div>
+                  <div style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); padding: 18px; border-radius: 10px; border-left: 4px solid #10b981; margin-bottom: 30px;">
+                    <p style="margin: 0; color: #065f46; line-height: 1.7; font-size: 15px; font-weight: 500; white-space: pre-line;">${order.address}</p>
+                    ${order.special_instructions ? `<p style="margin: 15px 0 0; padding-top: 15px; border-top: 2px dashed #10b981; color: #047857; font-size: 14px; font-weight: 600;"><strong>📝 Special Note:</strong> ${order.special_instructions}</p>` : ''}
                   </div>
 
                   <!-- Payment Info -->
-                  <h3 style="color: #1f2937; margin: 0 0 15px; font-size: 16px; font-weight: 700;">Payment Details</h3>
-                  <div style="background: #fef3c7; padding: 20px; border-radius: 8px; text-align: center; border-left: 3px solid #f59e0b;">
-                    <p style="color: #78350f; margin: 0 0 10px; font-size: 14px;">Please pay to complete your order</p>
-                    <div style="background: white; padding: 12px 20px; border-radius: 6px; margin: 12px 0; display: inline-block;">
-                      <p style="margin: 0 0 5px; color: #92400e; font-size: 20px; font-weight: 700;">8760101010@apl</p>
-                      <p style="margin: 0; color: #78350f; font-size: 13px;">Amount: ₹${order.total_amount.toFixed(2)}</p>
+                  <div style="background: #f59e0b; padding: 3px; border-radius: 8px; display: inline-block; margin-bottom: 12px;">
+                    <h3 style="color: white; margin: 0; font-size: 17px; font-weight: 800; padding: 0 12px;">💳 PAYMENT DETAILS</h3>
+                  </div>
+                  <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 25px; border-radius: 10px; text-align: center; border: 3px solid #fbbf24;">
+                    <p style="color: #78350f; margin: 0 0 15px; font-size: 15px; font-weight: 700;">Please pay to complete your order</p>
+                    <div style="background: white; padding: 15px 25px; border-radius: 8px; margin: 15px 0; display: inline-block; border: 2px solid #f59e0b; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);">
+                      <p style="margin: 0 0 8px; color: #6b7280; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">UPI ID</p>
+                      <p style="margin: 0 0 8px; color: #92400e; font-size: 24px; font-weight: 800;">8760101010@apl</p>
+                      <p style="margin: 0; color: #78350f; font-size: 14px; font-weight: 700;">Amount: <span style="color: #b45309; font-size: 16px;">₹${order.total_amount.toFixed(2)}</span></p>
                     </div>
-                    <p style="color: #92400e; margin: 12px 0 0; font-size: 12px;">💡 Share payment screenshot on WhatsApp</p>
+                    <p style="color: #92400e; margin: 15px 0 0; font-size: 13px; font-weight: 700;">💡 Share payment screenshot on WhatsApp for confirmation</p>
                   </div>
                 </div>
               </div>
 
               <!-- Simple Footer -->
-              <div style="background: white; border-radius: 12px; padding: 25px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 20px;">
-                <p style="color: #f59e0b; margin: 0 0 10px; font-size: 22px; font-weight: 700;">🪔 Happy Diwali! 🪔</p>
-                <p style="color: #6b7280; margin: 0 0 20px; font-size: 14px;">May these sweets bring joy to your celebrations</p>
-                <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
-                  <p style="color: #1f2937; margin: 0 0 8px; font-size: 14px; font-weight: 600;">Need Help?</p>
-                  <p style="margin: 5px 0; font-size: 14px;">
-                    <a href="tel:+918760101010" style="color: #f59e0b; text-decoration: none;">📞 +91 8760101010</a>
+              <div style="background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-radius: 12px; padding: 30px 25px; text-align: center; box-shadow: 0 6px 24px rgba(0,0,0,0.12); margin-bottom: 20px; border: 2px solid #fbbf24;">
+                <div style="font-size: 40px; margin-bottom: 12px;">🪔</div>
+                <p style="color: #b45309; margin: 0 0 8px; font-size: 26px; font-weight: 800;">Happy Diwali!</p>
+                <p style="color: #78350f; margin: 0 0 25px; font-size: 15px; font-weight: 600;">May these sweets bring joy to your celebrations</p>
+                <div style="background: white; border-radius: 10px; padding: 20px; border-top: 3px solid #f59e0b;">
+                  <p style="color: #1f2937; margin: 0 0 12px; font-size: 16px; font-weight: 700;">Need Help?</p>
+                  <p style="margin: 8px 0; font-size: 15px; font-weight: 600;">
+                    <a href="tel:+918760101010" style="color: #f59e0b; text-decoration: none; font-weight: 700;">📞 +91 8760101010</a>
                   </p>
-                  <p style="margin: 5px 0; font-size: 14px;">
-                    <a href="https://wa.me/918760101010" style="color: #10b981; text-decoration: none;">💬 WhatsApp</a>
+                  <p style="margin: 8px 0; font-size: 15px; font-weight: 600;">
+                    <a href="https://wa.me/918760101010" style="color: #10b981; text-decoration: none; font-weight: 700;">💬 WhatsApp</a>
                   </p>
                 </div>
               </div>
 
               <!-- Simple Thank You -->
               <div style="text-align: center; padding: 20px;">
-                <p style="color: #6b7280; font-size: 13px; margin: 0;">Thank you for choosing <strong style="color: #f59e0b;">Sri Nidhi Catering</strong></p>
-                <p style="color: #9ca3af; font-size: 12px; margin: 5px 0 0;">Your satisfaction is our priority</p>
+                <p style="color: #4b5563; font-size: 14px; margin: 0; font-weight: 600;">Thank you for choosing <strong style="color: #f59e0b; font-size: 15px;">Sri Nidhi Catering</strong></p>
+                <p style="color: #6b7280; font-size: 13px; margin: 8px 0 0; font-weight: 500;">⭐ Your satisfaction is our priority ⭐</p>
               </div>
               </div>
 
