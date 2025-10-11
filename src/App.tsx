@@ -12,19 +12,13 @@ import AdminLogin from "./pages/AdminLogin";
 import MasterAdminDashboard from "./pages/MasterAdminDashboard";
 import MasterAdminLogin from "./pages/MasterAdminLogin";
 import WhatsAppOrdersDashboard from "./pages/WhatsAppOrdersDashboard";
-import KovaiIndex from "./pages/KovaiIndex";
-import KovaiAdminLogin from "./pages/KovaiAdminLogin";
-import KovaiAdminDashboard from "./pages/KovaiAdminDashboard";
-import KovaiWhatsAppOrdersDashboard from "./pages/KovaiWhatsAppOrdersDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const AppContent = () => {
   const location = useLocation();
-  const isAdminPage = location.pathname.startsWith('/admin') || 
-                      location.pathname.startsWith('/master-admin') || 
-                      location.pathname.startsWith('/kovai/admin');
+  const isAdminPage = location.pathname.startsWith('/admin') || location.pathname.startsWith('/master-admin');
 
   return (
     <>
@@ -37,13 +31,6 @@ const AppContent = () => {
         <Route path="/master-admin-login" element={<MasterAdminLogin />} />
         <Route path="/master-admin" element={<MasterAdminDashboard />} />
         <Route path="/whatsapp-orders" element={<WhatsAppOrdersDashboard />} />
-        
-        {/* Kovai Caterers Routes */}
-        <Route path="/kovai" element={<KovaiIndex />} />
-        <Route path="/kovai/admin-login" element={<KovaiAdminLogin />} />
-        <Route path="/kovai/admin" element={<KovaiAdminDashboard />} />
-        <Route path="/kovai/whatsapp-orders" element={<KovaiWhatsAppOrdersDashboard />} />
-        
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
