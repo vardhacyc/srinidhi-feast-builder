@@ -287,18 +287,39 @@ const handler = async (req: Request): Promise<Response> => {
                 </div>
 
                 <div style="background: #dcfce7; padding: 20px; border-radius: 8px; margin: 25px 0;">
-                  <h3 style="color: #166534; margin: 0 0 15px; font-size: 16px;">⏱️ What's Next?</h3>
-                  <ul style="margin: 0; padding-left: 20px; color: #14532d;">
-                    <li style="margin: 8px 0;">Your order will be freshly prepared with premium ingredients</li>
-                    <li style="margin: 8px 0;">Preparation time: 2-3 hours</li>
-                    <li style="margin: 8px 0;">Delivery within 4-6 hours</li>
-                    <li style="margin: 8px 0;">We'll keep you updated via WhatsApp</li>
+                  <h3 style="color: #166534; margin: 0 0 15px; font-size: 18px;">⏱️ What's Next?</h3>
+                  <ul style="margin: 0; padding-left: 20px; color: #14532d; line-height: 1.8;">
+                    <li style="margin: 10px 0;">Your order will be freshly prepared with premium ingredients</li>
+                    <li style="margin: 10px 0;">Preparation time: 2-3 hours</li>
+                    <li style="margin: 10px 0;">Delivery within 4-6 hours</li>
+                    <li style="margin: 10px 0;">Our team will reach out to you shortly to arrange payment for your order</li>
                   </ul>
                 </div>
 
-                <div style="text-align: center; margin: 30px 0;">
-                  <p style="font-size: 20px; margin: 10px 0;">✨ Happy Diwali! ✨</p>
-                  <p style="font-size: 14px; color: #6b7280; margin: 10px 0;">May these sweet treats bring joy and prosperity to your celebrations!</p>
+                <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 25px; border-radius: 12px; margin: 25px 0; border: 2px solid #fbbf24;">
+                  <h3 style="color: #92400e; margin: 0 0 15px; font-size: 18px; text-align: center;">💳 Payment Information</h3>
+                  <div style="background: white; padding: 20px; border-radius: 8px; margin: 15px 0;">
+                    <p style="margin: 10px 0; color: #78350f; font-size: 15px; text-align: center;">
+                      <strong style="font-size: 16px;">UPI Payment ID:</strong>
+                    </p>
+                    <p style="margin: 15px 0; text-align: center;">
+                      <span style="background: #fef3c7; padding: 12px 20px; border-radius: 8px; font-size: 18px; font-weight: 700; color: #92400e; border: 2px dashed #f59e0b; display: inline-block;">
+                        8760101010@apl
+                      </span>
+                    </p>
+                    <p style="margin: 15px 0 5px; color: #78350f; font-size: 14px; text-align: center;">
+                      Please send the payment to the above UPI ID<br>
+                      <strong>Amount: ₹${order.total_amount.toFixed(2)}</strong>
+                    </p>
+                  </div>
+                  <p style="margin: 15px 0 0; color: #92400e; font-size: 13px; text-align: center; font-style: italic;">
+                    💡 After payment, please share the screenshot on WhatsApp for confirmation
+                  </p>
+                </div>
+
+                <div style="text-align: center; margin: 30px 0; padding: 20px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%); border-radius: 12px;">
+                  <p style="font-size: 24px; margin: 10px 0;">✨ Happy Diwali! ✨</p>
+                  <p style="font-size: 15px; color: #78350f; margin: 10px 0; font-weight: 500;">May these sweet treats bring joy and prosperity to your celebrations!</p>
                 </div>
 
                 <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 25px 0; text-align: center;">
