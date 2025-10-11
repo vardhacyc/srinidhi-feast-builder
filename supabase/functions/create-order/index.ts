@@ -328,17 +328,17 @@ const handler = async (req: Request): Promise<Response> => {
                       ${orderItems}
                     </tbody>
                     <tfoot>
-                      <tr style="background: #fef3c7;">
-                        <td colspan="3" style="padding: 15px 12px; text-align: right; font-weight: 600; color: #78350f; border-top: 2px solid #fbbf24;">Subtotal:</td>
-                        <td style="padding: 15px 12px; text-align: right; font-weight: 700; color: #78350f; border-top: 2px solid #fbbf24; font-size: 16px;">₹${order.subtotal.toFixed(2)}</td>
+                      <tr style="background: #fef9e6;">
+                        <td colspan="3" style="padding: 16px 15px; text-align: right; font-weight: 700; color: #78350f; border-top: 3px solid #fbbf24; font-size: 15px;">Subtotal:</td>
+                        <td style="padding: 16px 15px; text-align: right; font-weight: 800; color: #78350f; border-top: 3px solid #fbbf24; font-size: 17px;">₹${order.subtotal.toFixed(2)}</td>
                       </tr>
-                      <tr style="background: #fef3c7;">
-                        <td colspan="3" style="padding: 12px; text-align: right; color: #78350f;">GST (5%):</td>
-                        <td style="padding: 12px; text-align: right; color: #78350f; font-weight: 600;">₹${order.gst_amount.toFixed(2)}</td>
+                      <tr style="background: #fef9e6;">
+                        <td colspan="3" style="padding: 14px 15px; text-align: right; color: #78350f; font-weight: 600; font-size: 14px;">GST (5%):</td>
+                        <td style="padding: 14px 15px; text-align: right; color: #78350f; font-weight: 700; font-size: 15px;">₹${order.gst_amount.toFixed(2)}</td>
                       </tr>
-                      <tr style="background: linear-gradient(135deg, #fde68a 0%, #fbbf24 100%);">
-                        <td colspan="3" style="padding: 18px 12px; text-align: right; font-weight: 800; font-size: 18px; color: #78350f; border-top: 3px solid #f59e0b;">Total Amount:</td>
-                        <td style="padding: 18px 12px; text-align: right; font-weight: 800; font-size: 20px; color: #92400e; border-top: 3px solid #f59e0b;">₹${order.total_amount.toFixed(2)}</td>
+                      <tr style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                        <td colspan="3" style="padding: 22px 15px; text-align: right; font-weight: 900; font-size: 20px; color: white; border-top: 4px solid #b45309;">💰 Total Amount:</td>
+                        <td style="padding: 22px 15px; text-align: right; font-weight: 900; font-size: 24px; color: white; border-top: 4px solid #b45309;">₹${order.total_amount.toFixed(2)}</td>
                       </tr>
                     </tfoot>
                   </table>
@@ -415,14 +415,19 @@ const handler = async (req: Request): Promise<Response> => {
                   </div>
                 </div>
 
-                <!-- Festive Diwali Message -->
-                <div style="text-align: center; margin: 40px 0; padding: 35px 20px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 30%, #fbbf24 70%, #f59e0b 100%); border-radius: 16px; box-shadow: 0 8px 24px rgba(251, 191, 36, 0.3); border: 3px solid #fbbf24;">
-                  <div style="font-size: 48px; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">🪔 ✨ 🎆</div>
-                  <h2 style="font-size: 32px; margin: 15px 0; color: #78350f; font-weight: 800; text-shadow: 1px 1px 2px rgba(255,255,255,0.5); letter-spacing: 1px;">Happy Diwali!</h2>
-                  <p style="font-size: 17px; color: #92400e; margin: 15px 0; font-weight: 600; line-height: 1.6; max-width: 500px; margin-left: auto; margin-right: auto;">
-                    May these sweet treats bring joy, prosperity, and light to your festive celebrations! 🎉
-                  </p>
-                  <div style="margin-top: 20px; font-size: 32px;">🕯️ 🪔 🕯️</div>
+                <!-- Festive Diwali Message - Enhanced -->
+                <div style="text-align: center; margin: 45px 0; padding: 45px 30px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 20%, #fbbf24 60%, #f59e0b 100%); border-radius: 20px; box-shadow: 0 12px 40px rgba(251, 191, 36, 0.4), 0 0 0 4px rgba(251, 191, 36, 0.2); border: 4px solid #d97706; position: relative; overflow: hidden;">
+                  <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.2) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(255,255,255,0.2) 0%, transparent 50%);"></div>
+                  <div style="position: relative; z-index: 1;">
+                    <div style="font-size: 64px; margin-bottom: 20px; text-shadow: 3px 3px 8px rgba(0,0,0,0.15); animation: sparkle 2s ease-in-out infinite;">🪔 ✨ 🎆</div>
+                    <h2 style="font-size: 40px; margin: 20px 0; color: white; font-weight: 900; text-shadow: 2px 2px 8px rgba(0,0,0,0.3); letter-spacing: 2px; line-height: 1.2;">Happy Diwali!</h2>
+                    <div style="background: rgba(255,255,255,0.3); display: inline-block; padding: 20px 35px; border-radius: 15px; backdrop-filter: blur(10px); margin: 15px 0;">
+                      <p style="font-size: 19px; color: #78350f; margin: 0; font-weight: 700; line-height: 1.7; max-width: 500px;">
+                        May these sweet treats bring joy, prosperity, and light to your festive celebrations! 🎉
+                      </p>
+                    </div>
+                    <div style="margin-top: 25px; font-size: 40px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">🕯️ 🪔 🕯️</div>
+                  </div>
                 </div>
 
                 <!-- Need Help Section -->
