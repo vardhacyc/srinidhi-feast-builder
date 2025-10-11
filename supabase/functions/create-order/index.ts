@@ -232,111 +232,232 @@ const handler = async (req: Request): Promise<Response> => {
               <meta charset="utf-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
             </head>
-            <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb;">
-              <div style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); padding: 30px; text-align: center; border-radius: 12px 12px 0 0;">
-                <h1 style="color: white; margin: 0; font-size: 28px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">🎊 Order Confirmed! 🎊</h1>
-                <p style="color: white; margin: 10px 0 0; font-size: 16px;">Thank you for choosing Sri Nidhi Catering</p>
+            <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 650px; margin: 0 auto; padding: 0; background: linear-gradient(to bottom, #fef3c7 0%, #ffffff 100%);">
+              
+              <!-- Success Checkmark Animation Section -->
+              <div style="text-align: center; padding: 40px 20px 20px; background: transparent;">
+                <div style="display: inline-block; width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin: 0 auto 20px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3); position: relative;">
+                  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Premium Header -->
+              <div style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); padding: 40px 30px; text-align: center; border-radius: 16px 16px 0 0; margin: 0 20px; box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2);">
+                <h1 style="color: white; margin: 0 0 12px 0; font-size: 36px; font-weight: 700; letter-spacing: -0.5px; text-shadow: 0 2px 8px rgba(0,0,0,0.15);">🎊 Order Confirmed! 🎊</h1>
+                <p style="color: rgba(255, 255, 255, 0.95); margin: 0; font-size: 18px; font-weight: 500;">Thank you for choosing Sri Nidhi Catering</p>
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid rgba(255, 255, 255, 0.3);">
+                  <p style="color: white; margin: 0; font-size: 14px; opacity: 0.9;">Order #${data.id.slice(0, 8).toUpperCase()}</p>
+                </div>
               </div>
               
-              <div style="background: white; padding: 30px; border-radius: 0 0 12px 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <p style="font-size: 16px; margin-bottom: 20px;">Dear <strong>${order.customer_name}</strong>,</p>
+              <!-- Main Content Card -->
+              <div style="background: white; padding: 40px 35px; margin: 0 20px; border-radius: 0 0 16px 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
                 
-                <p style="font-size: 15px; color: #059669; background: #d1fae5; padding: 15px; border-radius: 8px; margin: 20px 0;">
-                  ✅ Your Diwali sweets order has been successfully received and confirmed!
-                </p>
-
-                <div style="background: #fef3c7; padding: 20px; border-radius: 8px; margin: 25px 0;">
-                  <h2 style="color: #92400e; margin: 0 0 15px; font-size: 18px;">📋 Order Summary</h2>
-                  <p style="margin: 8px 0; color: #78350f;"><strong>Order ID:</strong> #${data.id.slice(0, 8).toUpperCase()}</p>
-                  <p style="margin: 8px 0; color: #78350f;"><strong>Order Date:</strong> ${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-                  <p style="margin: 8px 0; color: #78350f;"><strong>Mobile:</strong> ${order.mobile}</p>
+                <!-- Personalized Greeting -->
+                <div style="margin-bottom: 30px;">
+                  <p style="font-size: 18px; color: #1f2937; margin: 0;">Dear <strong style="color: #f59e0b;">${order.customer_name}</strong>,</p>
+                </div>
+                
+                <!-- Success Message with Icon -->
+                <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 20px 25px; border-radius: 12px; margin: 25px 0; border-left: 5px solid #10b981; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);">
+                  <div style="display: flex; align-items: center;">
+                    <div style="font-size: 28px; margin-right: 15px;">✅</div>
+                    <div>
+                      <p style="font-size: 16px; font-weight: 600; color: #065f46; margin: 0 0 5px 0;">Order Successfully Confirmed!</p>
+                      <p style="font-size: 14px; color: #047857; margin: 0;">Your Diwali sweets order has been received and is being processed</p>
+                    </div>
+                  </div>
                 </div>
 
-                <table style="width: 100%; border-collapse: collapse; margin: 25px 0; background: white; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-                  <thead>
-                    <tr style="background: #fbbf24;">
-                      <th style="padding: 12px; text-align: left; color: white; font-weight: 600;">Item</th>
-                      <th style="padding: 12px; text-align: center; color: white; font-weight: 600;">Quantity</th>
-                      <th style="padding: 12px; text-align: right; color: white; font-weight: 600;">Price</th>
-                      <th style="padding: 12px; text-align: right; color: white; font-weight: 600;">Total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    ${orderItems}
-                  </tbody>
-                  <tfoot style="background: #fef3c7;">
+                <!-- Order Details Card -->
+                <div style="background: linear-gradient(to right, #fef3c7, #fde68a); padding: 25px; border-radius: 12px; margin: 30px 0; box-shadow: 0 4px 12px rgba(251, 191, 36, 0.15); border: 1px solid #fbbf24;">
+                  <h2 style="color: #92400e; margin: 0 0 20px; font-size: 20px; font-weight: 700; display: flex; align-items: center;">
+                    <span style="font-size: 24px; margin-right: 10px;">📋</span> Order Details
+                  </h2>
+                  <table style="width: 100%; border-collapse: collapse;">
                     <tr>
-                      <td colspan="3" style="padding: 12px; text-align: right; font-weight: 600; border-top: 2px solid #fbbf24;">Subtotal:</td>
-                      <td style="padding: 12px; text-align: right; font-weight: 600; border-top: 2px solid #fbbf24;">₹${order.subtotal.toFixed(2)}</td>
+                      <td style="padding: 10px 0; color: #78350f; font-weight: 600; width: 40%;">Order ID:</td>
+                      <td style="padding: 10px 0; color: #92400e; font-weight: 700;">#${data.id.slice(0, 8).toUpperCase()}</td>
                     </tr>
                     <tr>
-                      <td colspan="3" style="padding: 12px; text-align: right;">GST (5%):</td>
-                      <td style="padding: 12px; text-align: right;">₹${order.gst_amount.toFixed(2)}</td>
+                      <td style="padding: 10px 0; color: #78350f; font-weight: 600;">Order Date:</td>
+                      <td style="padding: 10px 0; color: #92400e;">${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</td>
                     </tr>
-                    <tr style="background: #fde68a;">
-                      <td colspan="3" style="padding: 12px; text-align: right; font-weight: 700; font-size: 18px;">Total Amount:</td>
-                      <td style="padding: 12px; text-align: right; font-weight: 700; font-size: 18px; color: #92400e;">₹${order.total_amount.toFixed(2)}</td>
+                    <tr>
+                      <td style="padding: 10px 0; color: #78350f; font-weight: 600;">Contact Number:</td>
+                      <td style="padding: 10px 0; color: #92400e; font-weight: 600;">${order.mobile}</td>
                     </tr>
-                  </tfoot>
-                </table>
-
-                <div style="background: #dbeafe; padding: 20px; border-radius: 8px; margin: 25px 0;">
-                  <h3 style="color: #1e40af; margin: 0 0 10px; font-size: 16px;">📍 Delivery Address</h3>
-                  <p style="margin: 0; color: #1e3a8a; white-space: pre-line;">${order.address}</p>
-                  ${order.special_instructions ? `<p style="margin: 15px 0 0; color: #1e3a8a;"><strong>Special Instructions:</strong> ${order.special_instructions}</p>` : ''}
+                  </table>
                 </div>
 
-                <div style="background: #dcfce7; padding: 20px; border-radius: 8px; margin: 25px 0;">
-                  <h3 style="color: #166534; margin: 0 0 15px; font-size: 18px;">⏱️ What's Next?</h3>
-                  <ul style="margin: 0; padding-left: 20px; color: #14532d; line-height: 1.8;">
-                    <li style="margin: 10px 0;">Your order will be freshly prepared with premium ingredients</li>
-                    <li style="margin: 10px 0;">Preparation time: 2-3 hours</li>
-                    <li style="margin: 10px 0;">Delivery within 4-6 hours</li>
-                    <li style="margin: 10px 0;">Our team will reach out to you shortly to arrange payment for your order</li>
-                  </ul>
+                <!-- Order Items Table -->
+                <div style="margin: 30px 0;">
+                  <h3 style="color: #1f2937; margin: 0 0 15px; font-size: 18px; font-weight: 700;">Your Order Items</h3>
+                  <table style="width: 100%; border-collapse: collapse; background: white; border: 2px solid #f3f4f6; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <thead>
+                      <tr style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);">
+                        <th style="padding: 15px 12px; text-align: left; color: white; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Item</th>
+                        <th style="padding: 15px 12px; text-align: center; color: white; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Qty</th>
+                        <th style="padding: 15px 12px; text-align: right; color: white; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Price</th>
+                        <th style="padding: 15px 12px; text-align: right; color: white; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${orderItems}
+                    </tbody>
+                    <tfoot>
+                      <tr style="background: #fef3c7;">
+                        <td colspan="3" style="padding: 15px 12px; text-align: right; font-weight: 600; color: #78350f; border-top: 2px solid #fbbf24;">Subtotal:</td>
+                        <td style="padding: 15px 12px; text-align: right; font-weight: 700; color: #78350f; border-top: 2px solid #fbbf24; font-size: 16px;">₹${order.subtotal.toFixed(2)}</td>
+                      </tr>
+                      <tr style="background: #fef3c7;">
+                        <td colspan="3" style="padding: 12px; text-align: right; color: #78350f;">GST (5%):</td>
+                        <td style="padding: 12px; text-align: right; color: #78350f; font-weight: 600;">₹${order.gst_amount.toFixed(2)}</td>
+                      </tr>
+                      <tr style="background: linear-gradient(135deg, #fde68a 0%, #fbbf24 100%);">
+                        <td colspan="3" style="padding: 18px 12px; text-align: right; font-weight: 800; font-size: 18px; color: #78350f; border-top: 3px solid #f59e0b;">Total Amount:</td>
+                        <td style="padding: 18px 12px; text-align: right; font-weight: 800; font-size: 20px; color: #92400e; border-top: 3px solid #f59e0b;">₹${order.total_amount.toFixed(2)}</td>
+                      </tr>
+                    </tfoot>
+                  </table>
                 </div>
 
-                <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 25px; border-radius: 12px; margin: 25px 0; border: 2px solid #fbbf24;">
-                  <h3 style="color: #92400e; margin: 0 0 15px; font-size: 18px; text-align: center;">💳 Payment Information</h3>
-                  <div style="background: white; padding: 20px; border-radius: 8px; margin: 15px 0;">
-                    <p style="margin: 10px 0; color: #78350f; font-size: 15px; text-align: center;">
-                      <strong style="font-size: 16px;">UPI Payment ID:</strong>
-                    </p>
-                    <p style="margin: 15px 0; text-align: center;">
-                      <span style="background: #fef3c7; padding: 12px 20px; border-radius: 8px; font-size: 18px; font-weight: 700; color: #92400e; border: 2px dashed #f59e0b; display: inline-block;">
-                        8760101010@apl
-                      </span>
-                    </p>
-                    <p style="margin: 15px 0 5px; color: #78350f; font-size: 14px; text-align: center;">
-                      Please send the payment to the above UPI ID<br>
-                      <strong>Amount: ₹${order.total_amount.toFixed(2)}</strong>
+                <!-- Delivery Address Card -->
+                <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 25px; border-radius: 12px; margin: 30px 0; border: 2px solid #3b82f6; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+                  <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px; box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);">
+                      <span style="font-size: 20px;">📍</span>
+                    </div>
+                    <h3 style="color: #1e40af; margin: 0; font-size: 18px; font-weight: 700;">Delivery Address</h3>
+                  </div>
+                  <div style="background: white; padding: 18px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                    <p style="margin: 0; color: #1e3a8a; line-height: 1.6; font-size: 15px; white-space: pre-line;">${order.address}</p>
+                  </div>
+                  ${order.special_instructions ? `
+                  <div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #fbbf24;">
+                    <p style="margin: 0; color: #78350f;"><span style="font-weight: 700;">📝 Special Instructions:</span> ${order.special_instructions}</p>
+                  </div>` : ''}
+                </div>
+
+                <!-- What's Next Card -->
+                <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 25px; border-radius: 12px; margin: 30px 0; border: 2px solid #10b981; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);">
+                  <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px; box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);">
+                      <span style="font-size: 20px;">⏱️</span>
+                    </div>
+                    <h3 style="color: #065f46; margin: 0; font-size: 18px; font-weight: 700;">What's Next?</h3>
+                  </div>
+                  <div style="background: white; padding: 18px; border-radius: 8px; border-left: 4px solid #10b981;">
+                    <p style="margin: 0; color: #065f46; line-height: 1.6; font-size: 15px;">
+                      ✓ Our team will reach out to you shortly to arrange payment for your order
                     </p>
                   </div>
-                  <p style="margin: 15px 0 0; color: #92400e; font-size: 13px; text-align: center; font-style: italic;">
-                    💡 After payment, please share the screenshot on WhatsApp for confirmation
+                </div>
+
+                <!-- Payment Information - Premium Design -->
+                <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 30px; border-radius: 16px; margin: 30px 0; border: 3px solid #fbbf24; box-shadow: 0 8px 24px rgba(251, 191, 36, 0.25);">
+                  <div style="text-align: center; margin-bottom: 20px;">
+                    <div style="display: inline-block; background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); padding: 12px 24px; border-radius: 25px; box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);">
+                      <span style="font-size: 24px; margin-right: 8px;">💳</span>
+                      <span style="color: white; font-size: 20px; font-weight: 800; letter-spacing: 0.5px;">PAYMENT INFORMATION</span>
+                    </div>
+                  </div>
+                  
+                  <div style="background: white; padding: 30px; border-radius: 12px; margin: 20px 0; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+                    <p style="margin: 0 0 20px; color: #78350f; font-size: 16px; text-align: center; font-weight: 600;">
+                      Please send your payment to complete your order
+                    </p>
+                    
+                    <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 25px; border-radius: 12px; margin: 20px 0; text-align: center; border: 3px dashed #fbbf24; box-shadow: inset 0 2px 8px rgba(251, 191, 36, 0.2);">
+                      <p style="margin: 0 0 10px; color: #78350f; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">UPI Payment ID</p>
+                      <div style="background: white; padding: 15px 25px; border-radius: 8px; display: inline-block; border: 2px solid #fbbf24; box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);">
+                        <span style="font-size: 24px; font-weight: 800; color: #92400e; letter-spacing: 1px;">8760101010@apl</span>
+                      </div>
+                      <p style="margin: 20px 0 0; color: #92400e; font-size: 18px; font-weight: 700;">
+                        Amount: <span style="font-size: 22px;">₹${order.total_amount.toFixed(2)}</span>
+                      </p>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 2px solid #fde68a;">
+                      <p style="margin: 0 0 12px; color: #78350f; font-size: 15px; font-weight: 600;">We accept all UPI payment methods:</p>
+                      <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 12px 24px; border-radius: 20px; display: inline-block; border: 2px solid #fbbf24;">
+                        <span style="color: #92400e; font-size: 15px; font-weight: 700;">📱 GPay • PhonePe • Paytm • UPI Apps</span>
+                      </div>
+                    </div>
+                    
+                    <div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center; border-left: 4px solid #fbbf24;">
+                      <p style="margin: 0; color: #92400e; font-size: 14px; font-weight: 600;">
+                        💡 After payment, please share the screenshot on WhatsApp for confirmation
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Festive Diwali Message -->
+                <div style="text-align: center; margin: 40px 0; padding: 35px 20px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 30%, #fbbf24 70%, #f59e0b 100%); border-radius: 16px; box-shadow: 0 8px 24px rgba(251, 191, 36, 0.3); border: 3px solid #fbbf24;">
+                  <div style="font-size: 48px; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">🪔 ✨ 🎆</div>
+                  <h2 style="font-size: 32px; margin: 15px 0; color: #78350f; font-weight: 800; text-shadow: 1px 1px 2px rgba(255,255,255,0.5); letter-spacing: 1px;">Happy Diwali!</h2>
+                  <p style="font-size: 17px; color: #92400e; margin: 15px 0; font-weight: 600; line-height: 1.6; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    May these sweet treats bring joy, prosperity, and light to your festive celebrations! 🎉
+                  </p>
+                  <div style="margin-top: 20px; font-size: 32px;">🕯️ 🪔 🕯️</div>
+                </div>
+
+                <!-- Need Help Section -->
+                <div style="background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); padding: 30px 25px; border-radius: 12px; margin: 30px 0; text-align: center; border: 2px solid #d1d5db; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                  <div style="margin-bottom: 20px;">
+                    <div style="display: inline-block; background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%); padding: 10px 20px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);">
+                      <span style="color: white; font-size: 18px; font-weight: 700; letter-spacing: 0.5px;">💬 NEED HELP?</span>
+                    </div>
+                  </div>
+                  <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                    <p style="margin: 12px 0; color: #374151; font-size: 16px;">
+                      <span style="font-size: 20px; vertical-align: middle;">📞</span>
+                      <span style="font-weight: 600; color: #6b7280;"> Call us: </span>
+                      <a href="tel:+918760101010" style="color: #f59e0b; text-decoration: none; font-weight: 700; font-size: 17px;">+91 8760101010</a>
+                    </p>
+                    <div style="height: 1px; background: #e5e7eb; margin: 15px 0;"></div>
+                    <p style="margin: 12px 0; color: #374151; font-size: 16px;">
+                      <span style="font-size: 20px; vertical-align: middle;">💬</span>
+                      <span style="font-weight: 600; color: #6b7280;"> WhatsApp: </span>
+                      <a href="https://wa.me/918760101010" style="color: #25D366; text-decoration: none; font-weight: 700; font-size: 17px;">+91 8760101010</a>
+                    </p>
+                  </div>
+                  <p style="margin: 20px 0 0; color: #6b7280; font-size: 14px; font-style: italic;">
+                    We're here to help! Contact us anytime for queries or support.
                   </p>
                 </div>
 
-                <div style="text-align: center; margin: 30px 0; padding: 20px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%); border-radius: 12px;">
-                  <p style="font-size: 24px; margin: 10px 0;">✨ Happy Diwali! ✨</p>
-                  <p style="font-size: 15px; color: #78350f; margin: 10px 0; font-weight: 500;">May these sweet treats bring joy and prosperity to your celebrations!</p>
+                <!-- Thank You Message -->
+                <div style="text-align: center; margin: 35px 0; padding: 25px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; border: 2px solid #fbbf24;">
+                  <p style="font-size: 18px; color: #78350f; margin: 10px 0; font-weight: 600; line-height: 1.8;">
+                    Thank you for choosing <strong style="color: #92400e; font-size: 20px;">Sri Nidhi Catering!</strong>
+                  </p>
+                  <p style="font-size: 16px; color: #92400e; margin: 15px 0; font-weight: 700;">
+                    ⭐ Your satisfaction is our priority ⭐
+                  </p>
                 </div>
-
-                <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 25px 0; text-align: center;">
-                  <h3 style="color: #374151; margin: 0 0 15px; font-size: 16px;">Need Help?</h3>
-                  <p style="margin: 8px 0; color: #6b7280;">📞 Call us: <a href="tel:+918760101010" style="color: #f59e0b; text-decoration: none; font-weight: 600;">+91 8760101010</a></p>
-                  <p style="margin: 8px 0; color: #6b7280;">💬 WhatsApp: <a href="https://wa.me/918760101010" style="color: #25D366; text-decoration: none; font-weight: 600;">+91 8760101010</a></p>
-                </div>
-
-                <p style="font-size: 14px; color: #6b7280; text-align: center; margin: 30px 0 10px;">
-                  Thank you for choosing Sri Nidhi Catering!<br>
-                  <strong style="color: #f59e0b;">Your satisfaction is our priority</strong>
-                </p>
               </div>
 
-              <div style="text-align: center; padding: 20px; color: #9ca3af; font-size: 12px;">
-                <p style="margin: 5px 0;">© ${new Date().getFullYear()} Sri Nidhi Catering. All rights reserved.</p>
-                <p style="margin: 5px 0;">This is an automated confirmation email for your order.</p>
+              <!-- Footer -->
+              <div style="text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #1f2937 0%, #111827 100%); border-top: 4px solid #fbbf24;">
+                <div style="margin-bottom: 15px;">
+                  <span style="font-size: 28px; color: #fbbf24; font-weight: 800; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); letter-spacing: 1px;">Sri Nidhi Catering</span>
+                </div>
+                <p style="margin: 10px 0; color: #d1d5db; font-size: 13px; line-height: 1.6;">
+                  Crafting delicious memories since years • Premium Quality • Traditional Taste
+                </p>
+                <div style="margin: 20px 0; height: 2px; background: linear-gradient(to right, transparent, #fbbf24, transparent);"></div>
+                <p style="margin: 8px 0; color: #9ca3af; font-size: 12px;">
+                  © ${new Date().getFullYear()} Sri Nidhi Catering. All rights reserved.
+                </p>
+                <p style="margin: 8px 0; color: #6b7280; font-size: 11px; font-style: italic;">
+                  This is an automated confirmation email for your order #${data.id.slice(0, 8).toUpperCase()}
+                </p>
               </div>
             </body>
             </html>
