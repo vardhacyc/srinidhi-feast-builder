@@ -222,7 +222,7 @@ const handler = async (req: Request): Promise<Response> => {
         ).join('');
 
         const emailResponse = await resend.emails.send({
-          from: "Sri Nidhi Catering <onboarding@resend.dev>",
+          from: "Sri Nidhi Catering <sales@berk-carp.com>",
           to: [order.customer_email],
           subject: "🎉 Order Confirmed - Sri Nidhi Catering Diwali Sweets",
           html: `
