@@ -232,44 +232,51 @@ const handler = async (req: Request): Promise<Response> => {
               <meta charset="utf-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
             </head>
-            <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 650px; margin: 0 auto; padding: 0; background: linear-gradient(to bottom, #fef3c7 0%, #ffffff 100%);">
+            <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 650px; margin: 0 auto; padding: 0; background: linear-gradient(to bottom, #fff9e6 0%, #ffffff 50%, #fff9e6 100%);">
               
-              <!-- Success Checkmark Animation Section -->
-              <div style="text-align: center; padding: 40px 20px 20px; background: transparent;">
-                <div style="display: inline-block; width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin: 0 auto 20px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3); position: relative;">
+              <!-- Success Checkmark Animation Section - Enhanced -->
+              <div style="text-align: center; padding: 50px 20px 30px; background: transparent;">
+                <div style="display: inline-block; width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin: 0 auto; box-shadow: 0 12px 40px rgba(16, 185, 129, 0.4), 0 0 0 8px rgba(16, 185, 129, 0.1); position: relative; animation: pulse 2s ease-in-out infinite;">
                   <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </div>
                 </div>
               </div>
 
-              <!-- Premium Header -->
-              <div style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); padding: 40px 30px; text-align: center; border-radius: 16px 16px 0 0; margin: 0 20px; box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2);">
-                <h1 style="color: white; margin: 0 0 12px 0; font-size: 36px; font-weight: 700; letter-spacing: -0.5px; text-shadow: 0 2px 8px rgba(0,0,0,0.15);">🎊 Order Confirmed! 🎊</h1>
-                <p style="color: rgba(255, 255, 255, 0.95); margin: 0; font-size: 18px; font-weight: 500;">Thank you for choosing Sri Nidhi Catering</p>
-                <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid rgba(255, 255, 255, 0.3);">
-                  <p style="color: white; margin: 0; font-size: 14px; opacity: 0.9;">Order #${data.id.slice(0, 8).toUpperCase()}</p>
+              <!-- Premium Header - Enhanced -->
+              <div style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%); padding: 50px 35px; text-align: center; border-radius: 20px 20px 0 0; margin: 0 20px; box-shadow: 0 15px 50px rgba(217, 119, 6, 0.3); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,%3Csvg width=&quot;40&quot; height=&quot;40&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cdefs%3E%3Cpattern id=&quot;grid&quot; width=&quot;40&quot; height=&quot;40&quot; patternUnits=&quot;userSpaceOnUse&quot;%3E%3Cpath d=&quot;M 40 0 L 0 0 0 40&quot; fill=&quot;none&quot; stroke=&quot;rgba(255,255,255,0.05)&quot; stroke-width=&quot;1&quot;/%3E%3C/pattern%3E%3C/defs%3E%3Crect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;url(%23grid)&quot; /%3E%3C/svg%3E'); opacity: 0.3;"></div>
+                <div style="position: relative; z-index: 1;">
+                  <div style="font-size: 56px; margin-bottom: 15px; text-shadow: 0 3px 10px rgba(0,0,0,0.2);">🎊</div>
+                  <h1 style="color: white; margin: 0 0 15px 0; font-size: 42px; font-weight: 800; letter-spacing: -1px; text-shadow: 0 3px 15px rgba(0,0,0,0.2);">Order Confirmed!</h1>
+                  <div style="background: rgba(255,255,255,0.2); display: inline-block; padding: 10px 25px; border-radius: 30px; backdrop-filter: blur(10px);">
+                    <p style="color: white; margin: 0; font-size: 20px; font-weight: 600;">Thank you for choosing Sri Nidhi Catering</p>
+                  </div>
+                  <div style="margin-top: 25px; padding-top: 25px; border-top: 2px solid rgba(255, 255, 255, 0.3);">
+                    <p style="color: rgba(255,255,255,0.95); margin: 0; font-size: 16px; font-weight: 600; letter-spacing: 1px;">Order #${data.id.slice(0, 8).toUpperCase()}</p>
+                  </div>
                 </div>
               </div>
               
-              <!-- Main Content Card -->
-              <div style="background: white; padding: 40px 35px; margin: 0 20px; border-radius: 0 0 16px 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+              <!-- Main Content Card - Enhanced -->
+              <div style="background: white; padding: 45px 40px; margin: 0 20px; border-radius: 0 0 20px 20px; box-shadow: 0 15px 60px rgba(0,0,0,0.12);">
                 
-                <!-- Personalized Greeting -->
-                <div style="margin-bottom: 30px;">
-                  <p style="font-size: 18px; color: #1f2937; margin: 0;">Dear <strong style="color: #f59e0b;">${order.customer_name}</strong>,</p>
+                <!-- Personalized Greeting - Enhanced -->
+                <div style="margin-bottom: 35px; text-align: center;">
+                  <p style="font-size: 22px; color: #1f2937; margin: 0; line-height: 1.5;">Dear <strong style="color: #f59e0b; font-size: 24px;">${order.customer_name}</strong>,</p>
                 </div>
                 
-                <!-- Success Message with Icon -->
-                <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 20px 25px; border-radius: 12px; margin: 25px 0; border-left: 5px solid #10b981; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);">
-                  <div style="display: flex; align-items: center;">
-                    <div style="font-size: 28px; margin-right: 15px;">✅</div>
-                    <div>
-                      <p style="font-size: 16px; font-weight: 600; color: #065f46; margin: 0 0 5px 0;">Order Successfully Confirmed!</p>
-                      <p style="font-size: 14px; color: #047857; margin: 0;">Your Diwali sweets order has been received and is being processed</p>
+                <!-- Success Message with Icon - Enhanced -->
+                <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 25px 30px; border-radius: 16px; margin: 30px 0; border-left: 6px solid #10b981; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15); position: relative; overflow: hidden;">
+                  <div style="position: absolute; right: -20px; top: -20px; font-size: 100px; opacity: 0.1;">✓</div>
+                  <div style="position: relative; z-index: 1;">
+                    <div style="display: inline-block; background: #10b981; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px;">
+                      <span style="font-size: 18px;">✅</span>
                     </div>
+                    <p style="font-size: 20px; font-weight: 700; color: #065f46; margin: 0 0 8px 0; letter-spacing: -0.3px;">Order Successfully Confirmed!</p>
+                    <p style="font-size: 16px; color: #047857; margin: 0; line-height: 1.6;">Your Diwali sweets order has been received and is being processed with care</p>
                   </div>
                 </div>
 
