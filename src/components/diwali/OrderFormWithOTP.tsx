@@ -42,10 +42,10 @@ const orderSchema = z.object({
     .regex(/^\d{6}$/, 'Please enter a valid 6-digit pincode'),
   deliveryDate: z.string()
     .trim()
-    .min(1, 'Please select a delivery date'),
+    .optional(),
   deliveryTime: z.string()
     .trim()
-    .min(1, 'Please select a delivery time'),
+    .optional(),
   specialInstructions: z.string()
     .max(200, 'Special instructions must be less than 200 characters')
     .optional()
@@ -410,7 +410,7 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
           <div className="grid grid-cols-2 gap-4">
             <div>
               <Label htmlFor="deliveryDate" className="text-amber-900 font-bold text-sm">
-                Delivery Date *
+                Delivery Date (Optional)
               </Label>
               <Input
                 id="deliveryDate"
@@ -419,6 +419,7 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
                 min={new Date().toISOString().split('T')[0]}
                 className="mt-2 bg-white/95 border-2 border-amber-300 focus:border-amber-500 text-amber-900 font-medium"
                 disabled={isSubmitting || isSendingOTP}
+                placeholder="Select preferred delivery date"
               />
               {errors.deliveryDate && (
                 <p className="text-red-500 text-sm mt-1">{errors.deliveryDate.message}</p>
@@ -427,7 +428,7 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
 
             <div>
               <Label htmlFor="deliveryTime" className="text-amber-900 font-bold text-sm">
-                Delivery Time *
+                Delivery Time (Optional)
               </Label>
               <Input
                 id="deliveryTime"
@@ -435,6 +436,7 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
                 {...register('deliveryTime')}
                 className="mt-2 bg-white/95 border-2 border-amber-300 focus:border-amber-500 text-amber-900 font-medium"
                 disabled={isSubmitting || isSendingOTP}
+                placeholder="Select preferred delivery time"
               />
               {errors.deliveryTime && (
                 <p className="text-red-500 text-sm mt-1">{errors.deliveryTime.message}</p>
