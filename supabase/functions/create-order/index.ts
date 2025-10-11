@@ -221,8 +221,8 @@ const handler = async (req: Request): Promise<Response> => {
           </tr>`
         ).join('');
 
-        await resend.emails.send({
-          from: "Sri Nidhi Catering <orders@srinidhi.com>",
+        const emailResponse = await resend.emails.send({
+          from: "Sri Nidhi Catering <onboarding@resend.dev>",
           to: [order.customer_email],
           subject: "🎉 Order Confirmed - Sri Nidhi Catering Diwali Sweets",
           html: `
@@ -321,9 +321,18 @@ const handler = async (req: Request): Promise<Response> => {
             </html>
           `,
         });
-        console.log("Order confirmation email sent for order:", data.id.slice(0, 8));
+        console.log("Order confirmation email sent successfully:", {
+          orderId: data.id.slice(0, 8),
+          to: order.customer_email,
+          messageId: emailResponse.data?.id
+        });
       } catch (emailError: any) {
-        console.error("Failed to send confirmation email:", emailError);
+        console.error("Failed to send confirmation email:", {
+          error: emailError.message,
+          orderId: data.id.slice(0, 8),
+          to: order.customer_email,
+          statusCode: emailError.statusCode
+        });
         // Don't fail the order if email fails
       }
     }
