@@ -280,37 +280,48 @@ const handler = async (req: Request): Promise<Response> => {
                   </div>
                 </div>
 
-                <!-- Order Details Card -->
-                <div style="background: linear-gradient(to right, #fef3c7, #fde68a); padding: 25px; border-radius: 12px; margin: 30px 0; box-shadow: 0 4px 12px rgba(251, 191, 36, 0.15); border: 1px solid #fbbf24;">
-                  <h2 style="color: #92400e; margin: 0 0 20px; font-size: 20px; font-weight: 700; display: flex; align-items: center;">
-                    <span style="font-size: 24px; margin-right: 10px;">📋</span> Order Details
-                  </h2>
-                  <table style="width: 100%; border-collapse: collapse;">
-                    <tr>
-                      <td style="padding: 10px 0; color: #78350f; font-weight: 600; width: 40%;">Order ID:</td>
-                      <td style="padding: 10px 0; color: #92400e; font-weight: 700;">#${data.id.slice(0, 8).toUpperCase()}</td>
-                    </tr>
-                    <tr>
-                      <td style="padding: 10px 0; color: #78350f; font-weight: 600;">Order Date:</td>
-                      <td style="padding: 10px 0; color: #92400e;">${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</td>
-                    </tr>
-                    <tr>
-                      <td style="padding: 10px 0; color: #78350f; font-weight: 600;">Contact Number:</td>
-                      <td style="padding: 10px 0; color: #92400e; font-weight: 600;">${order.mobile}</td>
-                    </tr>
-                  </table>
+                <!-- Order Details Card - Enhanced -->
+                <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 30px; border-radius: 16px; margin: 35px 0; box-shadow: 0 8px 24px rgba(251, 191, 36, 0.2); border: 2px solid #fbbf24; position: relative; overflow: hidden;">
+                  <div style="position: absolute; right: -30px; bottom: -30px; font-size: 120px; opacity: 0.08;">📋</div>
+                  <div style="position: relative; z-index: 1;">
+                    <div style="margin-bottom: 25px;">
+                      <div style="display: inline-block; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); padding: 10px 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);">
+                        <h2 style="color: white; margin: 0; font-size: 20px; font-weight: 800; letter-spacing: 0.5px;">
+                          <span style="font-size: 22px; margin-right: 8px;">📋</span> ORDER DETAILS
+                        </h2>
+                      </div>
+                    </div>
+                    <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+                      <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                          <td style="padding: 12px 0; color: #78350f; font-weight: 700; width: 45%; font-size: 15px;">Order ID:</td>
+                          <td style="padding: 12px 0; color: #92400e; font-weight: 800; font-size: 16px;">#${data.id.slice(0, 8).toUpperCase()}</td>
+                        </tr>
+                        <tr style="border-top: 2px solid #fef3c7;">
+                          <td style="padding: 12px 0; color: #78350f; font-weight: 700; font-size: 15px;">Order Date:</td>
+                          <td style="padding: 12px 0; color: #92400e; font-weight: 600; font-size: 15px;">${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</td>
+                        </tr>
+                        <tr style="border-top: 2px solid #fef3c7;">
+                          <td style="padding: 12px 0; color: #78350f; font-weight: 700; font-size: 15px;">Contact Number:</td>
+                          <td style="padding: 12px 0; color: #92400e; font-weight: 700; font-size: 16px;">📞 ${order.mobile}</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
                 </div>
 
-                <!-- Order Items Table -->
-                <div style="margin: 30px 0;">
-                  <h3 style="color: #1f2937; margin: 0 0 15px; font-size: 18px; font-weight: 700;">Your Order Items</h3>
-                  <table style="width: 100%; border-collapse: collapse; background: white; border: 2px solid #f3f4f6; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <!-- Order Items Table - Enhanced -->
+                <div style="margin: 40px 0;">
+                  <div style="margin-bottom: 20px;">
+                    <h3 style="color: #1f2937; margin: 0; font-size: 22px; font-weight: 800; display: inline-block; border-bottom: 4px solid #f59e0b; padding-bottom: 8px;">🛍️ Your Order Items</h3>
+                  </div>
+                  <table style="width: 100%; border-collapse: collapse; background: white; border: 3px solid #fbbf24; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.08);">
                     <thead>
-                      <tr style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);">
-                        <th style="padding: 15px 12px; text-align: left; color: white; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Item</th>
-                        <th style="padding: 15px 12px; text-align: center; color: white; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Qty</th>
-                        <th style="padding: 15px 12px; text-align: right; color: white; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Price</th>
-                        <th style="padding: 15px 12px; text-align: right; color: white; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Total</th>
+                      <tr style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                        <th style="padding: 18px 15px; text-align: left; color: white; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;">Item</th>
+                        <th style="padding: 18px 15px; text-align: center; color: white; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;">Qty</th>
+                        <th style="padding: 18px 15px; text-align: right; color: white; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;">Price</th>
+                        <th style="padding: 18px 15px; text-align: right; color: white; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;">Total</th>
                       </tr>
                     </thead>
                     <tbody>
