@@ -172,6 +172,58 @@ Order ID: ${Date.now()}`;
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
           {/* Cart items */}
           <div className="p-6">
+            {/* Action Buttons at Top */}
+            <div className="mb-6 space-y-3">
+              {/* Primary Order Button - Apple Style */}
+              <Button
+                onClick={() => {
+                  setOrderMethod('online');
+                  setShowOrderPlacement(true);
+                }}
+                className="w-full bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 active:scale-[0.98] border-0"
+                style={{
+                  boxShadow: '0 2px 8px -2px rgba(59, 130, 246, 0.5), 0 4px 16px -8px rgba(0, 0, 0, 0.1)'
+                }}
+              >
+                <div className="flex items-center justify-center space-x-3">
+                  <CreditCard className="h-5 w-5" />
+                  <span className="text-base">Place Order Online</span>
+                </div>
+              </Button>
+
+              {/* WhatsApp Button - Apple Style */}
+              <Button
+                onClick={() => {
+                  if (orderMethod !== 'whatsapp') {
+                    setOrderMethod('whatsapp');
+                  } else {
+                    handleWhatsAppOrder();
+                  }
+                }}
+                disabled={isProcessing}
+                className="w-full bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 active:scale-[0.98] border-0 disabled:opacity-50"
+                style={{
+                  boxShadow: '0 2px 8px -2px rgba(34, 197, 94, 0.5), 0 4px 16px -8px rgba(0, 0, 0, 0.1)'
+                }}
+              >
+                <div className="flex items-center justify-center space-x-3">
+                  {isProcessing ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
+                      <span className="text-base">Connecting...</span>
+                    </>
+                  ) : (
+                    <>
+                      <MessageCircle className="h-5 w-5" />
+                      <span className="text-base">
+                        {orderMethod === 'whatsapp' ? 'Send WhatsApp Order' : 'Order via WhatsApp'}
+                      </span>
+                    </>
+                  )}
+                </div>
+              </Button>
+            </div>
+
             <div className="space-y-4">
               {cart.map(item => (
                 <div key={item.id} className="p-3 sm:p-4 rounded-xl hover:scale-102 transition-all duration-300 shadow-sm" style={{ background: 'hsla(var(--diwali-cream), 0.9)', border: '1px solid hsla(var(--diwali-gold), 0.3)'}}>
