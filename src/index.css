@@ -69,6 +69,23 @@ All colors MUST be HSL.
     /* Soft Greys */
     --diwali-text: 30 8% 27%; /* #45423C */
     --diwali-subtle: 39 30% 41%; /* #8C7A4D */
+
+    /* Christmas Color Palette */
+    --xmas-red: 12 76% 55%;         /* Rich Christmas Red */
+    --xmas-green: 145 63% 42%;      /* Forest Green */
+    --xmas-gold: 45 100% 51%;       /* Golden */
+    --xmas-white: 0 0% 98%;         /* Snow White */
+    --xmas-silver: 0 0% 75%;        /* Silver */
+    --xmas-dark-red: 12 76% 35%;    /* Dark Red */
+    --xmas-dark-green: 145 63% 25%; /* Dark Green */
+    --xmas-cream: 43 100% 95%;      /* Cream */
+    --xmas-bronze: 30 67% 50%;      /* Bronze/Copper */
+    
+    /* Christmas Deep Neutrals */
+    --xmas-dark: 145 30% 15%;       /* Deep Green-Charcoal */
+    --xmas-shadow: 145 30% 20%;     /* Shadow Green */
+    --xmas-muted: 145 20% 30%;      /* Muted Green-Grey */
+    --xmas-text: 0 0% 20%;          /* Dark Text */
   }
 
   .dark {
@@ -2400,6 +2417,232 @@ All colors MUST be HSL.
     .scroll-fade-in {
       animation: none;
     }
+  }
+
+  /* Christmas Theme Styles */
+  .xmas-gradient {
+    background: radial-gradient(ellipse at center, 
+      hsl(var(--xmas-cream)) 0%, 
+      hsl(var(--xmas-white)) 25%, 
+      hsl(var(--xmas-green)) 70%, 
+      hsl(var(--xmas-dark-green)) 100%);
+  }
+
+  /* Christmas glass effect */
+  .xmas-glass {
+    background: linear-gradient(135deg, 
+      hsla(var(--xmas-white), 0.9) 0%, 
+      hsla(var(--xmas-cream), 0.85) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsla(var(--xmas-gold), 0.3);
+    box-shadow: 
+      0 16px 40px hsla(var(--xmas-dark), 0.3),
+      inset 0 2px 0 hsla(var(--xmas-white), 0.4),
+      inset 0 -2px 0 hsla(var(--xmas-green), 0.1);
+  }
+
+  /* Christmas card styling */
+  .xmas-glass-card {
+    background: linear-gradient(135deg,
+      hsla(var(--xmas-white), 0.95) 0%,
+      hsla(var(--xmas-cream), 0.9) 100%);
+    backdrop-filter: blur(15px);
+    border: 2px solid hsla(var(--xmas-gold), 0.2);
+    box-shadow: 
+      0 12px 35px hsla(var(--xmas-dark), 0.2),
+      0 4px 12px hsla(var(--xmas-green), 0.15),
+      inset 0 2px 0 hsla(var(--xmas-white), 0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .xmas-glass-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      hsla(var(--xmas-gold), 0.1),
+      transparent
+    );
+    transform: rotate(45deg);
+    animation: xmas-shimmer 3s infinite;
+  }
+
+  /* Christmas button styling */
+  .xmas-btn {
+    background: linear-gradient(135deg, 
+      hsl(var(--xmas-red)) 0%, 
+      hsl(var(--xmas-dark-red)) 100%);
+    color: white;
+    border: 1px solid hsla(var(--xmas-white), 0.5);
+    box-shadow: 
+      0 8px 25px hsla(var(--xmas-red), 0.4),
+      inset 0 2px 0 hsla(var(--xmas-white), 0.6),
+      inset 0 -2px 0 hsla(var(--xmas-dark-red), 0.3);
+    font-weight: 700;
+    text-shadow: 0 1px 2px hsla(var(--xmas-dark), 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .xmas-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsla(var(--xmas-white), 0.8), transparent);
+    transition: left 0.5s;
+  }
+
+  .xmas-btn:hover::before {
+    left: 100%;
+  }
+
+  .xmas-btn:hover {
+    background: linear-gradient(135deg, 
+      hsl(var(--xmas-green)) 0%, 
+      hsl(var(--xmas-dark-green)) 100%);
+    box-shadow: 
+      0 12px 35px hsla(var(--xmas-green), 0.5),
+      inset 0 2px 0 hsla(var(--xmas-white), 0.8),
+      inset 0 -2px 0 hsla(var(--xmas-dark-green), 0.4);
+    transform: translateY(-2px);
+  }
+
+  .xmas-badge {
+    background: linear-gradient(135deg, 
+      hsl(var(--xmas-gold)) 0%, 
+      hsl(var(--xmas-bronze)) 100%);
+    color: hsl(var(--xmas-dark));
+    text-shadow: 0 1px 2px hsla(var(--xmas-white), 0.5);
+    border: 1px solid hsla(var(--xmas-white), 0.3);
+    box-shadow: 0 4px 12px hsla(var(--xmas-gold), 0.3);
+  }
+
+  .xmas-text-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--xmas-red)) 0%, 
+      hsl(var(--xmas-green)) 50%, 
+      hsl(var(--xmas-gold)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Snowflake animation */
+  @keyframes snowfall {
+    0% { 
+      transform: translateY(-100vh) rotate(0deg); 
+      opacity: 1;
+    }
+    100% { 
+      transform: translateY(100vh) rotate(360deg); 
+      opacity: 0;
+    }
+  }
+
+  .animate-snowfall {
+    animation: snowfall 3s linear infinite;
+  }
+
+  @keyframes xmas-shimmer {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+      transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+  }
+
+  .xmas-shimmer {
+    background: linear-gradient(
+      90deg,
+      hsla(var(--xmas-white), 0.3),
+      hsla(var(--xmas-gold), 0.8),
+      hsla(var(--xmas-white), 0.3)
+    );
+    background-size: 200% 100%;
+    animation: xmas-shimmer 3s infinite;
+  }
+
+  @keyframes xmas-particle-float {
+    0%, 100% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateY(-20px) translateX(10px) rotate(180deg);
+      opacity: 0.8;
+    }
+  }
+
+  .xmas-particle {
+    animation: xmas-particle-float 4s ease-in-out infinite;
+  }
+
+  .xmas-shadow {
+    box-shadow: 
+      0 10px 30px hsla(var(--xmas-green), 0.3),
+      0 4px 12px hsla(var(--xmas-red), 0.2);
+  }
+
+  .xmas-shadow-lg {
+    box-shadow: 
+      0 20px 50px hsla(var(--xmas-green), 0.4),
+      0 8px 20px hsla(var(--xmas-red), 0.3),
+      0 2px 8px hsla(var(--xmas-gold), 0.2);
+  }
+
+  .xmas-vignette {
+    position: relative;
+  }
+
+  .xmas-vignette::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      transparent 60%,
+      hsla(var(--xmas-dark), 0.3) 100%
+    );
+  }
+
+  /* Christmas pulse animation */
+  @keyframes xmas-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsla(var(--xmas-red), 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 15px hsla(var(--xmas-red), 0);
+    }
+  }
+
+  @keyframes xmas-glow {
+    0%, 100% {
+      box-shadow: 0 0 12px hsl(var(--xmas-red) / 0.7), 0 0 24px hsl(var(--xmas-green) / 0.5), 0 0 36px hsl(var(--xmas-gold) / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 20px hsl(var(--xmas-red) / 1), 0 0 40px hsl(var(--xmas-green) / 0.8), 0 0 60px hsl(var(--xmas-gold) / 0.6);
+    }
+  }
+
+  .animate-xmas-glow {
+    animation: xmas-glow 2.5s ease-in-out infinite;
   }
 }
 

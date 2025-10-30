@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import Index from "./pages/Index";
 import DiwaliIndex from "./pages/DiwaliIndex";
+import XmasIndex from "./pages/XmasIndex";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
 import MasterAdminDashboard from "./pages/MasterAdminDashboard";
@@ -25,6 +26,7 @@ const AppContent = () => {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/diwali" element={<DiwaliIndex />} />
+        <Route path="/xmas" element={<XmasIndex />} />
         <Route path="/catering" element={<Index />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminDashboard />} />
