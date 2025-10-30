@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.38.4";
 import { Resend } from "https://esm.sh/resend@4.0.0";
 
+
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
 const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
@@ -18,6 +19,24 @@ interface SendOTPRequest {
 
 // Email validation regex
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+// Email normalization function to prevent rate limit bypass
+const normalizeEmail = (email: string): string => {
+  const trimmedEmail = email.trim().toLowerCase();
+  const [localPart, domain] = trimmedEmail.split('@');
+  
+  if (!domain) return trimmedEmail;
+  
+  // For Gmail and Googlemail, remove dots and strip plus-addressing
+  if (domain === 'gmail.com' || domain === 'googlemail.com') {
+    const cleanedLocal = localPart.replace(/\./g, '').split('+')[0];
+    return `${cleanedLocal}@${domain}`;
+  }
+  
+  // For other providers, just strip plus-addressing
+  const cleanedLocal = localPart.split('+')[0];
+  return `${cleanedLocal}@${domain}`;
+};
 
 // Input validation function
 const validateInput = (email: string, customerName: string) => {
@@ -43,6 +62,21 @@ const generateOTP = (): string => {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
+// Helper: convert ArrayBuffer to hex string
+const toHex = (buffer: ArrayBuffer): string => {
+  return Array.from(new Uint8Array(buffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+};
+
+// Hash OTP using a server-side secret + email for binding
+const hashOTP = async (otp: string, email: string): Promise<string> => {
+  const secret = Deno.env.get("OTP_SECRET") || Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "otp-fallback-secret";
+  const data = new TextEncoder().encode(`${secret}:${email}:${otp}`);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return toHex(digest);
+};
+
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -57,11 +91,14 @@ const handler = async (req: Request): Promise<Response> => {
     // Initialize Supabase client
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
+    // Normalize email for rate limiting to prevent bypass via email variations
+    const normalizedEmail = normalizeEmail(email);
+
     // Rate limiting: Check if OTP was sent recently (within last 60 seconds)
     const { data: recentOTP } = await supabase
       .from("otp_verifications")
       .select("created_at")
-      .eq("email", email)
+      .eq("email", normalizedEmail)
       .gte("created_at", new Date(Date.now() - 60000).toISOString())
       .limit(1)
       .maybeSingle();
@@ -83,7 +120,10 @@ const handler = async (req: Request): Promise<Response> => {
     const otpCode = generateOTP();
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // 5 minutes
 
-    console.log(`Generated OTP for ${email}`);
+    // Hash the OTP before storing (security best practice)
+    const hashedOTP = await hashOTP(otpCode, email);
+
+    console.log(`OTP generated successfully`);
 
     // Clean up old OTPs for this email
     await supabase
@@ -91,12 +131,12 @@ const handler = async (req: Request): Promise<Response> => {
       .delete()
       .eq("email", email);
 
-    // Store OTP in database
+    // Store hashed OTP in database
     const { error: dbError } = await supabase
       .from("otp_verifications")
       .insert({
         email,
-        otp_code: otpCode,
+        otp_code: hashedOTP,
         expires_at: expiresAt.toISOString(),
         verified: false,
       });

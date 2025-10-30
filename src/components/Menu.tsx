@@ -67,9 +67,16 @@ const Menu = () => {
   };
 
   return (
-    <section id="menu" className="relative py-24 bg-gradient-to-br from-amber-50/30 to-bg-neutral overflow-hidden">
+    <section id="menu" className="relative py-24 overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #d97706 0%, #b45309 25%, #92400e 50%, #78350f 75%, #451a03 100%)'
+    }}>
+      {/* Vibrant Background Pattern */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-300/30 via-yellow-500/40 to-amber-600/30"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_40%,rgba(255,255,255,0.20)_20%,transparent_50%),radial-gradient(circle_at_60%_60%,rgba(255,255,255,0.18)_20%,transparent_50%)]"></div>
+      </div>
       {/* Elegant floating background elements */}
-      <div className="absolute inset-0 opacity-4">
+      <div className="absolute inset-0 opacity-8">
         {[...Array(4)].map((_, i) => (
           <div
             key={i}
@@ -88,17 +95,17 @@ const Menu = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
-          <h2 className="font-display text-5xl md:text-6xl font-black text-gray-900 mb-8">
+          <h2 className="font-display text-5xl md:text-6xl font-black mb-8 text-white drop-shadow-lg">
             Our{' '}
             <span className="relative inline-block">
-              <ScribbleUnderline variant="wavy" delay={1.2} color="#464646">
-                <span className="text-primary">Menu</span>
+              <ScribbleUnderline variant="wavy" delay={1.2} color="#ffffff">
+                <span className="text-yellow-200">Menu</span>
               </ScribbleUnderline>
               {/* Hand-drawn yellow underline effect */}
-              <div className="absolute -bottom-2 left-0 w-full h-4 bg-accent opacity-60 transform rotate-1 rounded-lg"></div>
+              <div className="absolute -bottom-2 left-0 w-full h-4 bg-yellow-300 opacity-80 transform rotate-1 rounded-lg"></div>
             </span>
           </h2>
-          <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
+          <p className="text-xl text-yellow-100 max-w-4xl mx-auto font-medium leading-relaxed drop-shadow">
             Authentic South Indian flavors with modern presentation and competitive pricing
           </p>
         </div>
@@ -190,17 +197,25 @@ const Menu = () => {
           {menuItems[activeCategory as keyof typeof menuItems].map((item, index) => (
             <div 
               key={index}
-              className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 group border-2 border-primary/20 hover:border-primary/40 hover:-translate-y-2"
+              className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 border-2 border-yellow-300/50 hover:border-yellow-300 group hover:-translate-y-2"
             >
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-black text-gray-900 group-hover:text-primary transition-colors flex-1 mr-4">
-                  {item.name}
-                </h3>
-                <span className="text-3xl font-black text-primary bg-accent/20 px-4 py-2 rounded-xl">₹{item.rate}</span>
-              </div>
-              <p className="text-gray-700 mb-6 text-lg font-medium leading-relaxed">{item.description}</p>
-              <div className="text-sm text-gray-500 font-semibold bg-gray-100 px-3 py-1 rounded-lg inline-block">
-                Per plate
+                <div className="flex-1">
+                  <h3 className="text-enhanced-contrast text-2xl font-black mb-2 group-hover:text-primary transition-colors">
+                    {item.name}
+                  </h3>
+                  <p className="description-enhanced text-sm leading-relaxed mb-4">
+                    {item.description}
+                  </p>
+                </div>
+                <div className="ml-6 text-right">
+                  <span className="price-enhanced text-2xl font-black">
+                    ₹{item.rate}
+                  </span>
+                  <div className="text-sm text-gray-500 font-semibold bg-gray-100 px-3 py-1 rounded-lg inline-block mt-2">
+                    Per plate
+                  </div>
+                </div>
               </div>
             </div>
           ))}

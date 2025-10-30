@@ -7,6 +7,7 @@ import DiwaliCart from '../components/diwali/DiwaliCart';
 import DiwaliFooter from '../components/diwali/DiwaliFooter';
 import FlowerShower from '../components/diwali/FlowerShower';
 import FloatingWhatsApp from '../components/FloatingWhatsApp';
+import FloatingCart from '../components/FloatingCart';
 import { CartProvider } from '../contexts/CartContext';
 
 const DiwaliIndex = () => {
@@ -77,6 +78,7 @@ const DiwaliIndex = () => {
         <DiwaliSweetsMenu />
         <DiwaliCart />
         <DiwaliFooter />
+        <FloatingCart />
         <FloatingWhatsApp 
           phoneNumber="918760101010"
           message="🪔 Hi! I'm interested in your premium Diwali sweets collection. Can you help me with more information? ✨"

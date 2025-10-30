@@ -31,29 +31,38 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="services" className="relative py-24 overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 25%, #b45309 50%, #92400e 75%, #78350f 100%)'
+    }}>
+      {/* Vibrant Background Pattern */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-300/30 via-amber-400/40 to-amber-600/30"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.18)_15%,transparent_40%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.15)_15%,transparent_40%)]"></div>
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8">
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-8 drop-shadow-lg">
             Our{' '}
             <span className="relative inline-block">
               <ScribbleUnderline variant="rough" delay={1.0}>
-                <span className="text-primary">Services</span>
+                <span className="text-yellow-200">Services</span>
               </ScribbleUnderline>
               {/* Hand-drawn yellow underline effect */}
-              <div className="absolute -bottom-2 left-0 w-full h-4 bg-accent opacity-60 transform -rotate-1 rounded-lg"></div>
+              <div className="absolute -bottom-2 left-0 w-full h-4 bg-yellow-300 opacity-80 transform -rotate-1 rounded-lg"></div>
             </span>
           </h2>
-          <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
+          <p className="text-xl text-yellow-100 max-w-4xl mx-auto font-medium leading-relaxed drop-shadow">
             Comprehensive catering solutions tailored to your specific needs and occasions
           </p>
         </div>
+
+        <div className="section-divider-enhanced"></div>
 
         <div className="grid md:grid-cols-2 gap-10">
           {services.map((service, index) => (
             <div 
               key={index}
-              className="bg-bg-neutral rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 group border-2 border-primary/20 hover:border-primary/40 hover:-translate-y-2"
+              className="bg-white/95 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 border-2 border-yellow-300/50 hover:border-yellow-300 group hover:-translate-y-2"
             >
               {/* Service Image */}
               <div className="relative h-64 overflow-hidden">

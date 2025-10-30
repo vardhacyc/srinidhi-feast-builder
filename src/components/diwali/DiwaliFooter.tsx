@@ -99,17 +99,17 @@ const DiwaliFooter = () => {
               </p>
               <div className="pt-3 space-y-2" style={{ borderTop: '1px solid hsla(var(--diwali-muted), 0.5)' }}>
                 <p className="text-sm" style={{ color: 'hsl(var(--diwali-soft))' }}>
-                  📦 All items are subject to availability
+                  📦 1/4 KG - 1/2 KG - 1 KG - Gift Box Available (Chargeable) | All items are subject to availability.
                 </p>
                 <p className="text-sm" style={{ color: 'hsl(var(--diwali-soft))' }}>
-                  💰 GST extra: {DELIVERY_CONFIG.gstRates.sweets}% on Sweets & {DELIVERY_CONFIG.gstRates.savouries}% on Savouries
+                  ₹ GST extra: {DELIVERY_CONFIG.gstRates.sweets}% on Sweets & {DELIVERY_CONFIG.gstRates.savouries}% on Savouries.
                 </p>
               </div>
             </div>
           </div>
           
           <p className="mb-2" style={{ color: 'hsl(var(--diwali-soft))' }}>
-            © 2024 Sri Nidhi Diwali Sweets. Continuing the legacy of premium catering services.
+            © 2025 Sri Nidhi Diwali Sweets. Continuing the legacy of premium catering services.
           </p>
           <p className="font-semibold" style={{ color: 'hsl(var(--diwali-bright))' }}>
             🪔 Wishing you a very Happy and Prosperous Diwali! 🪔

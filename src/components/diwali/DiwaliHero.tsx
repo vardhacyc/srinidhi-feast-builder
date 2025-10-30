@@ -38,9 +38,6 @@ const DiwaliHero = () => {
         <div className="absolute top-20 left-10 text-4xl animate-pulse opacity-30" style={{ animationDelay: '0s' }}>🪔</div>
         <div className="absolute top-32 right-20 text-3xl animate-pulse opacity-25" style={{ animationDelay: '2s' }}>✨</div>
         <div className="absolute bottom-32 left-20 text-5xl animate-pulse opacity-20" style={{ animationDelay: '4s' }}>🌟</div>
-        <div className="absolute bottom-20 right-10 text-4xl animate-pulse opacity-30" style={{ animationDelay: '1s' }}>🎆</div>
-        <div className="absolute top-1/2 left-1/4 text-2xl animate-pulse opacity-15" style={{ animationDelay: '3s' }}>💫</div>
-        <div className="absolute top-1/3 right-1/3 text-3xl animate-pulse opacity-25" style={{ animationDelay: '1.5s' }}>🕯️</div>
       </div>
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full py-20">
@@ -49,13 +46,13 @@ const DiwaliHero = () => {
         <div className="mb-12">
           <div className="inline-flex items-center justify-center mb-8">
             <div className="relative">
-              <div className="absolute inset-0 h-44 w-44 animate-pulse opacity-20 rounded-full bg-gradient-to-r from-yellow-300 to-amber-400 shadow-2xl" style={{ background: 'radial-gradient(circle, hsl(var(--diwali-bright)) 0%, hsl(var(--diwali-gold)) 100%)' }}></div>
+              <div className="absolute inset-0 h-44 w-44 animate-pulse opacity-20 rounded-full bg-gradient-to-r from-amber-600 to-amber-700 shadow-2xl" style={{ background: 'radial-gradient(circle, hsl(var(--diwali-gold)) 0%, hsl(var(--diwali-bronze)) 100%)' }}></div>
               <img 
                 src="/cateringLogo.png" 
                 alt="Sri Nidhi Catering Logo" 
                 className="relative z-10 h-44 w-44 object-contain" 
                 style={{
-                  filter: 'brightness(1.2) contrast(1.1) drop-shadow(0 6px 16px hsla(var(--diwali-shadow), 0.4))',
+                  filter: 'brightness(0.55) contrast(1.5) saturate(1.5) hue-rotate(-8deg) drop-shadow(0 4px 12px rgba(139, 69, 19, 0.6)) drop-shadow(0 2px 6px rgba(101, 67, 33, 0.4))',
                   imageRendering: 'crisp-edges'
                 }}
               />
@@ -124,57 +121,6 @@ const DiwaliHero = () => {
           </div>
         </div>
 
-        {/* Professional Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-6xl mx-auto">
-          <div className="group">
-            <div className="relative p-8 rounded-3xl diwali-glass-card transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-              <div className="relative">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center shadow-lg" style={{ background: 'linear-gradient(135deg, hsl(var(--diwali-gold)), hsl(var(--diwali-bronze)))' }}>
-                  <Award className="h-8 w-8" style={{ color: 'hsl(var(--diwali-cream))' }} />
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-center" style={{ color: 'hsl(var(--diwali-dark))', fontFamily: "'Inter', sans-serif", textShadow: '2px 2px 0px hsla(var(--diwali-shadow), 0.7)', letterSpacing: '0.02em' }}>
-                  PREMIUM QUALITY
-                </h3>
-                <p className="text-center font-semibold leading-relaxed" style={{ color: 'hsl(var(--diwali-text))', textShadow: '1px 1px 0px hsla(var(--diwali-shadow), 0.6)', fontFamily: "'Inter', sans-serif" }}>
-                  Authentic traditional recipes perfected over 25 years
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="group">
-            <div className="relative p-8 rounded-3xl diwali-glass-card transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-              <div className="relative">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center shadow-lg" style={{ background: 'linear-gradient(135deg, hsl(var(--diwali-gold)), hsl(var(--diwali-bronze)))' }}>
-                  <Sparkles className="h-8 w-8" style={{ color: 'hsl(var(--diwali-cream))' }} />
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-center" style={{ color: 'hsl(var(--diwali-dark))', fontFamily: "'Inter', sans-serif", textShadow: '2px 2px 0px hsla(var(--diwali-shadow), 0.7)', letterSpacing: '0.02em' }}>
-                  FESTIVAL READY
-                </h3>
-                <p className="text-center font-semibold leading-relaxed" style={{ color: 'hsl(var(--diwali-text))', textShadow: '1px 1px 0px hsla(var(--diwali-shadow), 0.6)', fontFamily: "'Inter', sans-serif" }}>
-                  Premium packaging perfect for gifting and celebrations
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="group">
-            <div className="relative p-8 rounded-3xl diwali-glass-card transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-              <div className="relative">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center shadow-lg" style={{ background: 'linear-gradient(135deg, hsl(var(--diwali-gold)), hsl(var(--diwali-bronze)))' }}>
-                  <Heart className="h-8 w-8" style={{ color: 'hsl(var(--diwali-cream))' }} />
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-center" style={{ color: 'hsl(var(--diwali-dark))', fontFamily: "'Inter', sans-serif", textShadow: '2px 2px 0px hsla(var(--diwali-shadow), 0.7)', letterSpacing: '0.02em' }}>
-                  FRESH DAILY
-                </h3>
-                <p className="text-center font-semibold leading-relaxed" style={{ color: 'hsl(var(--diwali-text))', textShadow: '1px 1px 0px hsla(var(--diwali-shadow), 0.6)', fontFamily: "'Inter', sans-serif" }}>
-                  Made fresh every morning with finest quality ingredients
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Professional CTA */}
         <div className="space-y-8">
           <button
@@ -195,27 +141,30 @@ const DiwaliHero = () => {
           </button>
         </div>
 
-        {/* Professional Festive Message */}
-        <div className="mt-20">
-          <div className="relative p-8 rounded-3xl diwali-glass-card max-w-5xl mx-auto">
+        {/* Premium Festive Message */}
+        <div className="mt-16">
+          <div className="relative px-8 py-6 rounded-2xl diwali-glass-card max-w-3xl mx-auto">
             <div className="relative text-center">
-              <div className="text-4xl mb-4">🪔</div>
+              <div className="flex justify-center items-center mb-3">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center shadow-md" style={{ background: 'linear-gradient(135deg, hsl(var(--diwali-gold)), hsl(var(--diwali-bronze)))' }}>
+                  <Crown className="h-4 w-4" style={{ color: 'hsl(var(--diwali-cream))' }} />
+                </div>
+              </div>
               <p 
-                className="text-xl md:text-2xl font-bold leading-relaxed"
+                className="text-lg md:text-xl font-semibold leading-snug"
                 style={{ 
                   color: 'hsl(var(--diwali-dark))',
-                  textShadow: '2px 2px 0px hsla(var(--diwali-shadow), 0.7), 4px 4px 8px hsla(var(--diwali-shadow), 0.5)',
+                  textShadow: '1px 1px 0px hsla(var(--diwali-shadow), 0.6)',
                   fontFamily: "'Inter', sans-serif",
-                  fontWeight: '700',
+                  fontWeight: '600',
                   textRendering: 'optimizeLegibility',
-                  letterSpacing: '0.02em'
+                  letterSpacing: '0.01em'
                 }}
               >
-                Wishing you a Diwali filled with
+                Celebrating traditions with
                 <br />
-                <span style={{ color: 'hsl(var(--diwali-bronze))' }}>Joy • Prosperity • Sweet Moments</span>
+                <span style={{ color: 'hsl(var(--diwali-bronze))', fontWeight: '700' }}>Premium Quality • Authentic Taste</span>
               </p>
-              <div className="text-4xl mt-4">🌟</div>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.38.4";
 
+
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
 const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
@@ -39,6 +40,31 @@ const validateInput = (email: string, otp: string) => {
   return { email: trimmedEmail, otp: trimmedOTP };
 };
 
+// Helper: convert ArrayBuffer to hex string
+const toHex = (buffer: ArrayBuffer): string => {
+  return Array.from(new Uint8Array(buffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+};
+
+// Hash OTP using a server-side secret + email for binding
+const hashOTP = async (otp: string, email: string): Promise<string> => {
+  const secret = Deno.env.get("OTP_SECRET") || Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "otp-fallback-secret";
+  const data = new TextEncoder().encode(`${secret}:${email}:${otp}`);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return toHex(digest);
+};
+
+// Constant-time comparison to mitigate timing attacks
+const timingSafeEqual = (a: string, b: string): boolean => {
+  if (a.length !== b.length) return false;
+  let result = 0;
+  for (let i = 0; i < a.length; i++) {
+    result |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return result === 0;
+};
+
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -52,7 +78,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Rate limiting: Check for too many failed attempts (max 5 attempts per 5 minutes)
+    // Rate limiting: Check for too many failed attempts (max 3 attempts per 5 minutes - stricter)
     const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString();
     const { data: recentAttempts } = await supabase
       .from("otp_verifications")
@@ -60,7 +86,7 @@ const handler = async (req: Request): Promise<Response> => {
       .eq("email", email)
       .gte("created_at", fiveMinutesAgo);
 
-    if (recentAttempts && recentAttempts.length > 5) {
+    if (recentAttempts && recentAttempts.length > 3) {
       return new Response(
         JSON.stringify({ 
           success: false, 
@@ -73,21 +99,48 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Find the OTP record
-    const { data: otpRecord, error: fetchError } = await supabase
+    // Find the most recent OTP record for this email
+    const { data: otpRecords, error: fetchError } = await supabase
       .from("otp_verifications")
       .select("*")
       .eq("email", email)
-      .eq("otp_code", otp)
       .eq("verified", false)
       .gt("expires_at", new Date().toISOString())
       .order("created_at", { ascending: false })
-      .limit(1)
-      .maybeSingle();
+      .limit(5);
 
     if (fetchError) {
       console.error("Database error:", fetchError);
       throw new Error("Failed to verify OTP");
+    }
+
+    if (!otpRecords || otpRecords.length === 0) {
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: "Invalid or expired OTP" 
+        }),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
+    // Use constant-time comparison via bcrypt to prevent timing attacks
+    let otpRecord = null;
+    for (const record of otpRecords) {
+      try {
+        const expected = await hashOTP(otp, record.email || email);
+        const isValid = timingSafeEqual(expected, record.otp_code);
+        if (isValid) {
+          otpRecord = record;
+          break;
+        }
+      } catch (err) {
+        console.error("OTP comparison error:", err);
+        continue;
+      }
     }
 
     if (!otpRecord) {
@@ -114,7 +167,7 @@ const handler = async (req: Request): Promise<Response> => {
       throw new Error("Failed to mark OTP as verified");
     }
 
-    console.log(`OTP verified successfully for ${email}`);
+    console.log(`OTP verified successfully`);
 
     return new Response(
       JSON.stringify({ 

@@ -71,20 +71,20 @@ const DiwaliHeader = () => {
           </nav>
 
           {/* Mobile Menu */}
-          <div className="md:hidden flex items-center space-x-2 pr-2">
-            <div className="relative">
+          <div className="md:hidden flex items-center justify-end space-x-3 pr-1">
+            <div className="relative mobile-cart-container">
               <button
                 onClick={() => scrollToSection('cart')}
                 className={`diwali-btn p-3 rounded-full flex items-center justify-center relative ${isAnimating ? 'animate-cart-bounce' : ''}`}
-                style={{ minWidth: '52px', minHeight: '52px' }}
+                style={{ minWidth: '48px', minHeight: '48px' }}
                 aria-label={`View Cart - ${getTotalItems()} items`}
               >
-                <ShoppingCart className="h-6 w-6" />
+                <ShoppingCart className="h-5 w-5" />
               </button>
               {getTotalItems() > 0 && (
                 <span 
-                  className="cart-notification-badge"
-                  style={{ top: '-2px', right: '-2px', width: '20px', height: '20px', fontSize: '11px' }}
+                  className="mobile-cart-notification absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center"
+                  style={{ minWidth: '18px', minHeight: '18px', fontSize: '10px', zIndex: 30 }}
                   aria-label={`${getTotalItems()} items in cart`}
                   role="status"
                 >

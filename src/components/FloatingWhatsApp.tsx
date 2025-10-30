@@ -388,16 +388,49 @@ const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({
         }
       `}</style>
 
-      <button
+      <div
+        id="whatsapp-float"
         className={`whatsapp-float ${isClicked ? 'clicked' : ''} ${className}`}
         onClick={handleClick}
+        role="button"
+        tabIndex={0}
         aria-label="Contact us on WhatsApp for Diwali sweet orders"
         title="Chat with us on WhatsApp"
-        type="button"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleClick();
+          }
+        }}
       >
         <MessageCircle className="whatsapp-icon" />
         <div ref={bubbleContainerRef} className="bubble-container" aria-hidden="true"></div>
-      </button>
+        {/* Cart Badge - hidden by default, shown when items added */}
+        <span 
+          id="cart-badge" 
+          className="cart-badge"
+          style={{
+            position: 'absolute',
+            top: '-5px',
+            right: '-5px',
+            background: '#ef4444',
+            color: 'white',
+            borderRadius: '50%',
+            width: '24px',
+            height: '24px',
+            display: 'none',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '12px',
+            fontWeight: 'bold',
+            boxShadow: '0 2px 8px rgba(239, 68, 68, 0.4)',
+            zIndex: 2,
+          }}
+          aria-live="polite"
+        >
+          0
+        </span>
+      </div>
     </>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -39,6 +40,12 @@ const orderSchema = z.object({
   pincode: z.string()
     .trim()
     .regex(/^\d{6}$/, 'Please enter a valid 6-digit pincode'),
+  deliveryDate: z.string()
+    .trim()
+    .optional(),
+  deliveryTime: z.string()
+    .trim()
+    .optional(),
   specialInstructions: z.string()
     .max(200, 'Special instructions must be less than 200 characters')
     .optional()
@@ -136,6 +143,8 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
         customer_name: data.name,
         mobile: data.mobile,
         address: `${data.address}, ${data.city}, ${data.state} - ${data.pincode}`,
+        delivery_date: data.deliveryDate,
+        delivery_time: data.deliveryTime,
         special_instructions: data.specialInstructions || null,
         cart_items: cart as any,
         subtotal: finalTotal / 1.05, // Calculate subtotal (assuming 5% GST)
@@ -178,7 +187,7 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
         description: error.message || "Please check your code and try again",
         variant: "destructive"
       });
-      throw error;
+      // handled via toast
     } finally {
       setIsVerifyingOTP(false);
     }
@@ -208,13 +217,23 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
         description: error.message || "Please try again",
         variant: "destructive",
       });
-      throw error;
+       // handled via toast
     }
   };
 
+  // Scroll to top when OTP screen is shown
+  React.useEffect(() => {
+    if (showOTP) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [showOTP]);
+
+  const totalWeight = getTotalItems();
+  const isFreeDelivery = totalWeight >= 10;
+
   if (showOTP && pendingFormData) {
     return (
-      <div className="max-w-2xl mx-auto">
+      <div className="bg-gradient-to-br from-amber-50/90 to-amber-100/90 backdrop-blur-sm rounded-3xl p-6 md:p-8 max-w-2xl mx-auto border-2 border-amber-300 shadow-2xl">
         <OTPVerification
           email={pendingFormData.email}
           onVerify={handleOTPVerification}
@@ -228,9 +247,6 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
       </div>
     );
   }
-
-  const totalWeight = getTotalItems();
-  const isFreeDelivery = totalWeight >= 10;
 
   return (
     <div className="bg-gradient-to-br from-amber-50/90 to-amber-100/90 backdrop-blur-sm rounded-3xl p-6 md:p-8 max-w-2xl mx-auto border-2 border-amber-300 shadow-2xl">
@@ -389,6 +405,43 @@ const OrderFormWithOTP: React.FC<OrderFormWithOTPProps> = ({ onSubmit, isSubmitt
             {errors.pincode && (
               <p className="text-red-500 text-sm mt-1">{errors.pincode.message}</p>
             )}
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <Label htmlFor="deliveryDate" className="text-amber-900 font-bold text-sm">
+                Delivery Date (Optional)
+              </Label>
+              <Input
+                id="deliveryDate"
+                type="date"
+                {...register('deliveryDate')}
+                min={new Date().toISOString().split('T')[0]}
+                className="mt-2 bg-white/95 border-2 border-amber-300 focus:border-amber-500 text-amber-900 font-medium"
+                disabled={isSubmitting || isSendingOTP}
+                placeholder="Select preferred delivery date"
+              />
+              {errors.deliveryDate && (
+                <p className="text-red-500 text-sm mt-1">{errors.deliveryDate.message}</p>
+              )}
+            </div>
+
+            <div>
+              <Label htmlFor="deliveryTime" className="text-amber-900 font-bold text-sm">
+                Delivery Time (Optional)
+              </Label>
+              <Input
+                id="deliveryTime"
+                type="time"
+                {...register('deliveryTime')}
+                className="mt-2 bg-white/95 border-2 border-amber-300 focus:border-amber-500 text-amber-900 font-medium"
+                disabled={isSubmitting || isSendingOTP}
+                placeholder="Select preferred delivery time"
+              />
+              {errors.deliveryTime && (
+                <p className="text-red-500 text-sm mt-1">{errors.deliveryTime.message}</p>
+              )}
+            </div>
           </div>
         </div>
 

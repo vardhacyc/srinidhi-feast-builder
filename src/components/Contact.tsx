@@ -98,20 +98,27 @@ Please provide a detailed quote for this event.
   ];
 
   return (
-    <section id="contact" className="py-24 bg-white">
+    <section id="contact" className="relative py-24 overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 25%, #d97706 50%, #b45309 75%, #92400e 100%)'
+    }}>
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-300/30 via-amber-400/40 to-yellow-600/30"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.20)_20%,transparent_50%)]"></div>
+      </div>
+      <div className="relative z-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8">
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-8 drop-shadow-lg">
             Get In{' '}
             <span className="relative inline-block">
-              <ScribbleUnderline variant="zigzag" delay={1.5} color="#E1A200">
-                <span className="text-primary">Touch</span>
+              <ScribbleUnderline variant="zigzag" delay={1.5} color="#ffffff">
+                <span className="text-yellow-200">Touch</span>
               </ScribbleUnderline>
               {/* Hand-drawn yellow underline effect */}
-              <div className="absolute -bottom-2 left-0 w-full h-4 bg-accent opacity-60 transform -rotate-1 rounded-lg"></div>
+              <div className="absolute -bottom-2 left-0 w-full h-4 bg-yellow-300 opacity-80 transform -rotate-1 rounded-lg"></div>
             </span>
           </h2>
-          <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
+          <p className="text-xl text-yellow-100 max-w-4xl mx-auto font-medium leading-relaxed drop-shadow">
             Ready to plan your event? Contact us for a personalized quote and consultation
           </p>
         </div>
@@ -359,6 +366,7 @@ Please provide a detailed quote for this event.
               WhatsApp Chat
             </a>
           </div>
+        </div>
         </div>
       </div>
     </section>

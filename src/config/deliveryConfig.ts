@@ -11,7 +11,7 @@ export const DELIVERY_CONFIG = {
   // GST rates for different categories (in percentage)
   gstRates: {
     sweets: 5,
-    savouries: 12
+    savouries: 5
   },
   
   // Additional notes and disclaimers
@@ -23,7 +23,7 @@ export const DELIVERY_CONFIG = {
       `Free delivery within ${area} for orders above ₹${amount}`,
     
     gstInfo: (sweetRate: number, savouryRate: number) =>
-      `GST extra: ${sweetRate}% on Sweets & ${savouryRate}% on Savouries.`,
+      `₹ GST extra: ${sweetRate}% on Sweets & ${savouryRate}% on Savouries.`,
     
     availability: () => "All items are subject to availability."
   }

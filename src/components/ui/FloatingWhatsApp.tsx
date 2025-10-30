@@ -315,20 +315,22 @@ const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({
         /* Enhanced mobile optimizations */
         @media (max-width: 768px) {
           .whatsapp-float {
-            bottom: 20px;
-            right: 20px;
+            bottom: 90px;
+            right: 16px;
             width: 56px;
             height: 56px;
+            z-index: 999;
           }
         }
 
         /* Touch device optimizations */
         @media (hover: none) and (pointer: coarse) {
           .whatsapp-float {
-            width: 64px;
-            height: 64px;
-            bottom: 24px;
-            right: 24px;
+            width: 60px;
+            height: 60px;
+            bottom: 85px;
+            right: 20px;
+            z-index: 999;
           }
           
           .whatsapp-float:hover {

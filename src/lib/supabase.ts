@@ -16,6 +16,8 @@ export interface Order {
   customer_email?: string;
   mobile: string;
   address: string;
+  delivery_date?: string;
+  delivery_time?: string;
   special_instructions?: string;
   items: OrderItem[];
   subtotal: number;
@@ -23,6 +25,7 @@ export interface Order {
   total_amount: number;
   total_items: number;
   status: 'received' | 'processing' | 'completed' | 'cancelled';
+  payment_status: 'pending' | 'received';
   created_at: string;
   updated_at: string;
 }
@@ -68,6 +71,8 @@ interface OrderRow {
   customer_email?: string;
   mobile: string;
   address: string;
+  delivery_date?: string;
+  delivery_time?: string;
   special_instructions?: string;
   items: Json;
   subtotal: number;
@@ -75,6 +80,7 @@ interface OrderRow {
   total_amount: number;
   total_items: number;
   status: string;
+  payment_status: string;
   created_at: string;
   updated_at: string;
 }
@@ -83,25 +89,24 @@ interface OrderRow {
 const convertRowToOrder = (row: OrderRow): Order => ({
   ...row,
   items: row.items as unknown as OrderItem[],
-  status: row.status as Order['status']
+  status: row.status as Order['status'],
+  payment_status: row.payment_status as Order['payment_status']
 });
 
 // Order management functions
 export const orderService = {
   async createOrder(orderData: Omit<Order, 'id' | 'created_at' | 'updated_at'>) {
-    const dbData = {
-      ...orderData,
-      items: orderData.items as unknown as Json
-    };
-    
-    const { data, error } = await supabase
-      .from('orders')
-      .insert([dbData])
-      .select()
-      .single();
+    // Use Edge Function to bypass client RLS for inserts while keeping server-side validation
+    const { data, error } = await supabase.functions.invoke('create-order', {
+      body: {
+        ...orderData,
+        items: orderData.items,
+      }
+    });
 
     if (error) throw error;
-    return convertRowToOrder(data as OrderRow);
+    if (!data?.success) throw new Error(data?.error || 'Failed to create order');
+    return convertRowToOrder(data.order as OrderRow);
   },
 
   async getOrders(): Promise<Order[]> {
@@ -119,6 +124,21 @@ export const orderService = {
       .from('orders')
       .update({ 
         status,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', orderId)
+      .select()
+      .single();
+
+    if (error) throw error;
+    return convertRowToOrder(data as OrderRow);
+  },
+
+  async updatePaymentStatus(orderId: string, payment_status: Order['payment_status']) {
+    const { data, error } = await supabase
+      .from('orders')
+      .update({ 
+        payment_status,
         updated_at: new Date().toISOString()
       })
       .eq('id', orderId)
@@ -286,10 +306,30 @@ export const authService = {
         .from('user_roles')
         .select('role')
         .eq('user_id', user.id)
-        .single();
+        .eq('role', 'admin')
+        .maybeSingle();
 
       if (error) return false;
-      return data?.role === 'admin';
+      return !!data;
+    } catch {
+      return false;
+    }
+  },
+
+  async isMasterAdmin() {
+    try {
+      const user = await this.getCurrentUser();
+      if (!user) return false;
+
+      const { data, error } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', user.id)
+        .eq('role', 'master_admin')
+        .maybeSingle();
+
+      if (error) return false;
+      return !!data;
     } catch {
       return false;
     }

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../ui/button';
-import { Input } from '../ui/input';
-import { Label } from '../ui/label';
-import { Loader2, Shield, RefreshCw } from 'lucide-react';
+import { Loader2, RefreshCw } from 'lucide-react';
 
 interface OTPVerificationProps {
   email: string;
@@ -21,10 +19,11 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
   onBack,
   error
 }) => {
-  const [otp, setOtp] = useState('');
-  const [timeLeft, setTimeLeft] = useState(300); // 5 minutes
+  const [otpDigits, setOtpDigits] = useState(['', '', '', '', '', '']);
+  const [timeLeft, setTimeLeft] = useState(300);
   const [canResend, setCanResend] = useState(false);
   const [isResending, setIsResending] = useState(false);
+  const inputRefs = React.useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -35,15 +34,45 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
     }
   }, [timeLeft]);
 
-  const handleOTPChange = (value: string) => {
-    // Only allow numbers and limit to 6 digits
-    const numericValue = value.replace(/\D/g, '').slice(0, 6);
-    setOtp(numericValue);
+  const handleChange = (index: number, value: string) => {
+    if (!/^\d*$/.test(value)) return;
+    
+    const newOtpDigits = [...otpDigits];
+    newOtpDigits[index] = value.slice(-1);
+    setOtpDigits(newOtpDigits);
+    
+    // Auto focus next input
+    if (value && index < 5) {
+      inputRefs.current[index + 1]?.focus();
+    }
+  };
+
+  const handleKeyDown = (index: number, e: React.KeyboardEvent) => {
+    if (e.key === 'Backspace' && !otpDigits[index] && index > 0) {
+      inputRefs.current[index - 1]?.focus();
+    }
+  };
+
+  const handlePaste = (e: React.ClipboardEvent) => {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 6);
+    const newOtpDigits = [...otpDigits];
+    
+    for (let i = 0; i < pastedData.length; i++) {
+      newOtpDigits[i] = pastedData[i];
+    }
+    setOtpDigits(newOtpDigits);
+    
+    if (pastedData.length > 0) {
+      const lastIndex = Math.min(pastedData.length, 5);
+      inputRefs.current[lastIndex]?.focus();
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (otp.length === 6) {
+    const otp = otpDigits.join('');
+    if (otp.length === 6 && !isVerifying) {
       await onVerify(otp);
     }
   };
@@ -54,7 +83,8 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
       await onResend();
       setTimeLeft(300);
       setCanResend(false);
-      setOtp('');
+      setOtpDigits(['', '', '', '', '', '']);
+      inputRefs.current[0]?.focus();
     } finally {
       setIsResending(false);
     }
@@ -69,99 +99,121 @@ const OTPVerification: React.FC<OTPVerificationProps> = ({
   const maskedEmail = email.replace(/(.{2})(.*)(@.*)/, '$1****$3');
 
   return (
-    <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 md:p-8 max-w-md mx-auto border-2 border-amber-400 shadow-2xl">
-      <div className="text-center mb-8">
-        <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-          <Shield className="h-8 w-8 text-white" />
+    <div className="w-full max-w-md mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8">
+      {/* Logo */}
+      <div className="flex justify-center mb-4 sm:mb-6">
+        <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-full flex items-center justify-center shadow-lg">
+          <img 
+            src="/cateringLogo.png" 
+            alt="Sri Nidhi Catering" 
+            className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
+          />
         </div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
-          OTP Verification
-        </h2>
-        <p className="text-gray-700 text-sm font-medium">
-          We've sent a 6-digit code to
-        </p>
-        <p className="font-bold text-gray-900">
-          {maskedEmail}
-        </p>
-        <Button
-          type="button"
-          variant="ghost"
-          onClick={onBack}
-          className="text-sm text-amber-700 hover:text-amber-900 mt-2 font-medium hover:bg-amber-100"
-        >
-          ← Change Email
-        </Button>
       </div>
 
+      {/* Title */}
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-2 sm:mb-3">
+        OTP Verification
+      </h2>
+
+      {/* Email Info */}
+      <p className="text-gray-600 text-center mb-2">
+        Code sent to <span className="font-semibold text-gray-900">{maskedEmail}</span>
+      </p>
+
+      {/* Change Email Button */}
+      <div className="text-center mb-8">
+        <button
+          type="button"
+          onClick={onBack}
+          className="text-orange-600 hover:text-orange-700 font-medium text-sm transition-colors"
+        >
+          ← Change Email
+        </button>
+      </div>
+
+      {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* OTP Input Label */}
         <div>
-          <Label htmlFor="otp" className="text-gray-900 font-bold text-sm">
+          <label className="block text-gray-900 font-bold text-base mb-4">
             Enter OTP *
-          </Label>
-          <Input
-            id="otp"
-            type="text"
-            value={otp}
-            onChange={(e) => handleOTPChange(e.target.value)}
-            placeholder="Enter 6-digit OTP"
-            className="mt-2 text-center text-2xl font-mono tracking-widest bg-white border-2 border-amber-400 focus:border-amber-600 text-gray-900 placeholder:text-gray-500 font-bold shadow-inner"
-            maxLength={6}
-            disabled={isVerifying}
-            autoComplete="one-time-code"
-          />
+          </label>
+
+          {/* OTP Input Boxes */}
+          <div className="flex justify-center gap-2 sm:gap-3 mb-4">
+            {otpDigits.map((digit, index) => (
+              <input
+                key={index}
+                ref={(el) => (inputRefs.current[index] = el)}
+                type="tel"
+                inputMode="numeric"
+                maxLength={1}
+                value={digit}
+                onChange={(e) => handleChange(index, e.target.value)}
+                onKeyDown={(e) => handleKeyDown(index, e)}
+                onPaste={index === 0 ? handlePaste : undefined}
+                className="w-11 h-12 sm:w-14 sm:h-16 text-center text-xl sm:text-2xl font-bold border-2 sm:border-3 border-orange-400 rounded-lg sm:rounded-xl focus:border-orange-500 focus:ring-4 focus:ring-orange-200 focus:outline-none bg-white text-gray-900 placeholder-gray-400 transition-all shadow-sm"
+                style={{ color: '#1f2937', caretColor: '#f97316' }}
+                autoFocus={index === 0}
+              />
+            ))}
+          </div>
+
           {error && (
-            <p className="text-red-500 text-sm mt-1">{error}</p>
+            <p className="text-red-600 text-sm mt-2 font-semibold text-center">{error}</p>
           )}
         </div>
 
-        <Button
+        {/* Verify Button */}
+        <button
           type="submit"
-          disabled={otp.length !== 6 || isVerifying}
-          className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 shadow-lg"
+          disabled={otpDigits.join('').length !== 6 || isVerifying}
+          className="w-full bg-gradient-to-r from-amber-400 via-orange-400 to-amber-400 hover:from-amber-500 hover:via-orange-500 hover:to-amber-500 text-white font-bold py-4 text-lg rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
         >
           {isVerifying ? (
             <>
-              <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+              <Loader2 className="h-5 w-5 mr-2 animate-spin inline" />
               Verifying...
             </>
           ) : (
             'Verify & Place Order'
           )}
-        </Button>
+        </button>
 
+        {/* Resend Timer/Button */}
         <div className="text-center">
           {!canResend ? (
-            <p className="text-sm text-gray-700 font-medium">
+            <p className="text-gray-600 font-medium">
               Resend OTP in {formatTime(timeLeft)}
             </p>
           ) : (
-            <Button
+            <button
               type="button"
-              variant="ghost"
               onClick={handleResend}
               disabled={isResending}
-              className="text-amber-700 hover:text-amber-900 hover:bg-amber-100 font-medium"
+              className="text-orange-600 hover:text-orange-700 font-medium transition-colors"
             >
               {isResending ? (
                 <>
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  <Loader2 className="h-4 w-4 mr-1 animate-spin inline" />
                   Resending...
                 </>
               ) : (
                 <>
-                  <RefreshCw className="h-4 w-4 mr-2" />
+                  <RefreshCw className="h-4 w-4 mr-1 inline" />
                   Resend OTP
                 </>
               )}
-            </Button>
+            </button>
           )}
         </div>
       </form>
 
-      <div className="mt-6 p-4 bg-blue-50 rounded-xl border-2 border-blue-200">
-        <p className="text-xs text-blue-900 font-medium leading-relaxed">
-          🔒 <strong>Security Note:</strong> This OTP is valid for 5 minutes. 
-          Don't share it with anyone. Our team will never ask for your OTP.
+      {/* Security Message */}
+      <div className="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
+        <p className="text-sm text-blue-900 font-medium text-center">
+          🔒 Valid for 5 minutes. Never share your OTP. 🛡️
         </p>
       </div>
     </div>

@@ -1275,6 +1275,254 @@ All colors MUST be HSL.
     padding-left: max(1rem, env(safe-area-inset-left));
   }
 
+  /* Mobile alignment improvements */
+  .mobile-cart-container {
+    position: relative;
+    z-index: 20;
+  }
+
+  /* Category tabs styling */
+  .category-tabs-container {
+    position: relative;
+  }
+
+  /* ===================================================================
+     ENHANCED SECTION BACKGROUNDS & VIBRANCY
+     ================================================================= */
+
+  /* Enhanced section backgrounds for consistent vibrancy */
+  .section-enhanced-bg {
+    background: linear-gradient(
+      135deg,
+      rgba(225, 162, 0, 0.08) 0%,
+      rgba(184, 134, 11, 0.12) 50%,
+      rgba(70, 70, 70, 0.05) 100%
+    );
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-enhanced-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(225, 162, 0, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(184, 134, 11, 0.04) 0%, transparent 50%);
+    opacity: 0.7;
+    z-index: 0;
+  }
+
+  .section-enhanced-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Enhanced card styling for better visual appeal */
+  .card-enhanced {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(249, 249, 247, 0.9) 50%,
+      rgba(245, 245, 245, 0.85) 100%
+    ) !important;
+    backdrop-filter: blur(12px) brightness(105%);
+    border: 2px solid rgba(225, 162, 0, 0.3) !important;
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.15),
+      0 4px 16px rgba(225, 162, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-enhanced:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.2),
+      0 8px 24px rgba(225, 162, 0, 0.2),
+      inset 0 2px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(225, 162, 0, 0.5);
+  }
+
+  /* Enhanced text visibility and contrast */
+  .text-enhanced-contrast {
+    background: linear-gradient(
+      135deg,
+      #2d1810 0%,
+      #4a2c1a 25%,
+      #6b3f28 50%,
+      #8b5a3c 75%,
+      #2d1810 100%
+    ) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: 
+      0 2px 4px rgba(255, 255, 255, 0.8),
+      0 4px 8px rgba(0, 0, 0, 0.6),
+      0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+    font-weight: 700 !important;
+  }
+
+  .description-enhanced {
+    color: #2c1810 !important;
+    text-shadow: 
+      0 1px 2px rgba(255, 255, 255, 0.9),
+      0 2px 4px rgba(0, 0, 0, 0.5) !important;
+    font-weight: 600 !important;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 4px 8px;
+    border-radius: 6px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Enhanced section dividers for visual flow */
+  .section-divider-enhanced {
+    position: relative;
+    margin: 4rem 0;
+  }
+
+  .section-divider-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(225, 162, 0, 0.3) 20%,
+      rgba(184, 134, 11, 0.6) 50%,
+      rgba(225, 162, 0, 0.3) 80%,
+      transparent 100%
+    );
+    border-radius: 2px;
+  }
+
+  .section-divider-enhanced::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 5px;
+    background: linear-gradient(
+      90deg,
+      #E1A200 0%,
+      #B8860B 50%,
+      #E1A200 100%
+    );
+    border-radius: 3px;
+    box-shadow: 0 2px 8px rgba(225, 162, 0, 0.4);
+  }
+
+  /* Enhanced menu and product card styling */
+  .menu-card-enhanced {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 248, 220, 0.95) 0%,
+      rgba(255, 239, 213, 0.9) 30%,
+      rgba(245, 245, 220, 0.9) 70%,
+      rgba(250, 240, 190, 0.95) 100%
+    ) !important;
+    backdrop-filter: blur(15px) saturate(110%);
+    border: 2px solid rgba(225, 162, 0, 0.4);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.12),
+      0 4px 16px rgba(225, 162, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .menu-card-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      #E1A200 0%,
+      #B8860B 50%,
+      #E1A200 100%
+    );
+  }
+
+  .menu-card-enhanced:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 
+      0 16px 48px rgba(0, 0, 0, 0.18),
+      0 8px 24px rgba(225, 162, 0, 0.15),
+      inset 0 2px 0 rgba(255, 255, 255, 0.8);
+    border-color: rgba(225, 162, 0, 0.6);
+  }
+
+  /* Enhanced price styling */
+  .price-enhanced {
+    background: linear-gradient(
+      135deg,
+      #8B4513 0%,
+      #A0522D 30%,
+      #CD853F 70%,
+      #D2691E 100%
+    ) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.8),
+      0 1px 0 rgba(255, 255, 255, 0.6) !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+    font-weight: 900 !important;
+    font-size: 1.1em !important;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .hover\\:line-clamp-none:hover {
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    -webkit-box-orient: unset;
+    overflow: visible;
+  }
+
+  .mobile-cart-notification {
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+    border: 2px solid white;
+  }
+
   @media (max-width: 768px) {
     .diwali-btn {
       min-width: 48px;
@@ -2152,5 +2400,320 @@ All colors MUST be HSL.
     .scroll-fade-in {
       animation: none;
     }
+  }
+}
+
+/* OTP Modal with Golden Theme - Cross Browser Compatible */
+.otp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  /* Beautiful golden gradient background */
+  background: linear-gradient(135deg, 
+    #FEF3C7 0%, 
+    #FDE68A 15%, 
+    #FBBF24 30%, 
+    #F59E0B 50%, 
+    #FBBF24 70%, 
+    #FDE68A 85%, 
+    #FEF3C7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  pointer-events: auto !important;
+}
+
+.otp-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  z-index: 1000000;
+  pointer-events: auto !important;
+}
+
+.otp-form-wrapper {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 24px;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(251, 191, 36, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid rgba(251, 191, 36, 0.2);
+  overflow: hidden;
+  pointer-events: auto !important;
+}
+
+/* Clean OTP Input Styling */
+.otp-input-field {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  text-align: center;
+  letter-spacing: 0.25em;
+  border: 2px solid #F59E0B;
+  border-radius: 12px;
+  background: white;
+  color: #1F2937;
+  outline: none;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  pointer-events: auto !important;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  touch-action: manipulation !important;
+  cursor: text !important;
+}
+
+.otp-input-field:focus {
+  border-color: #D97706;
+  background: #FFFBEB;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.otp-input-field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #F9FAFB;
+}
+
+.otp-input-field::placeholder {
+  color: #9CA3AF;
+  font-weight: 400;
+}
+
+/* Prevent body scroll when modal is open */
+body.otp-modal-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100vh !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+html.otp-modal-open {
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
+/* Hide scrollbar completely */
+body.otp-modal-open::-webkit-scrollbar,
+html.otp-modal-open::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+body.otp-modal-open,
+html.otp-modal-open {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* Safari specific enhancements */
+@supports (-webkit-touch-callout: none) {
+  .otp-modal-overlay {
+    height: -webkit-fill-available;
+  }
+  
+  .otp-input-field {
+    font-size: 16px; /* Prevents zoom on iOS Safari */
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-text-size-adjust: none;
+  }
+}
+
+/* Ensure input is interactive */
+.otp-form-wrapper input {
+  pointer-events: auto !important;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  touch-action: manipulation !important;
+}
+
+/* Mobile optimizations */
+@media screen and (max-width: 768px) {
+  .otp-modal-overlay {
+    padding: 16px;
+  }
+  
+  .otp-input-enhanced {
+    font-size: 18px;
+    padding: 14px 16px;
+    letter-spacing: 0.3em;
+  }
+}
+
+/* Accessibility enhancements */
+@media (prefers-reduced-motion: reduce) {
+  .otp-input-enhanced {
+    transition: none;
+    transform: none;
+  }
+  
+  .otp-input-enhanced:focus {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .otp-input-enhanced {
+    border-width: 4px;
+  }
+}
+
+/* ============================================
+   CART FLY ANIMATION
+   ============================================ */
+
+/* Flying item animation */
+.cart-fly-animation {
+  animation: fly-fade-in 0.1s ease-out;
+}
+
+@keyframes fly-fade-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Bounce effect for cart/WhatsApp icon on receiving item */
+.cart-bounce {
+  animation: cart-bounce 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes cart-bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  10%, 30%, 50%, 70% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  20%, 40%, 60% {
+    transform: scale(1.15) rotate(5deg);
+  }
+  80% {
+    transform: scale(1.05);
+  }
+  90% {
+    transform: scale(1.02);
+  }
+}
+
+/* Pulse animation for cart badge when item added */
+.cart-badge-pulse {
+  animation: badge-pulse 0.6s ease-out;
+}
+
+@keyframes badge-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+    background-color: #ef4444;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Throwing arc animation - creates parabolic trajectory */
+.throw-to-cart {
+  animation: throw-arc 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes throw-arc {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  25% {
+    /* Arc upward - item goes up first */
+    transform: translate(25%, -30%) rotate(90deg) scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    /* Peak of arc */
+    transform: translate(50%, -40%) rotate(180deg) scale(1);
+    opacity: 0.9;
+  }
+  75% {
+    /* Descending - item falls into cart */
+    transform: translate(75%, -20%) rotate(270deg) scale(0.7);
+    opacity: 0.6;
+  }
+  100% {
+    /* Landing in cart */
+    transform: translate(100%, 0) rotate(360deg) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* Alternative: More dramatic throw with bounce on landing */
+@keyframes throw-arc-bounce {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  20% {
+    /* Initial throw - goes up sharply */
+    transform: translate(15%, -50%) rotate(90deg) scale(1.15);
+    opacity: 1;
+  }
+  40% {
+    /* High arc peak */
+    transform: translate(40%, -60%) rotate(180deg) scale(1.05);
+    opacity: 1;
+  }
+  60% {
+    /* Descending rapidly */
+    transform: translate(65%, -35%) rotate(270deg) scale(0.8);
+    opacity: 0.8;
+  }
+  80% {
+    /* Near landing */
+    transform: translate(85%, -10%) rotate(330deg) scale(0.5);
+    opacity: 0.5;
+  }
+  90% {
+    /* Bounce slightly */
+    transform: translate(95%, -5%) rotate(350deg) scale(0.4);
+    opacity: 0.3;
+  }
+  100% {
+    /* Final rest in cart */
+    transform: translate(100%, 0) rotate(360deg) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cart-fly-animation,
+  .cart-bounce,
+  .cart-badge-pulse,
+  .throw-to-cart {
+    animation: none !important;
+    transition: none !important;
   }
 }

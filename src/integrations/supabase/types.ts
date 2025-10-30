@@ -21,6 +21,8 @@ export type Database = {
           created_at: string | null
           customer_email: string
           customer_name: string
+          delivery_date: string | null
+          delivery_time: string | null
           gst_amount: number
           id: string
           mobile: string
@@ -35,6 +37,8 @@ export type Database = {
           created_at?: string | null
           customer_email: string
           customer_name: string
+          delivery_date?: string | null
+          delivery_time?: string | null
           gst_amount: number
           id?: string
           mobile: string
@@ -49,6 +53,8 @@ export type Database = {
           created_at?: string | null
           customer_email?: string
           customer_name?: string
+          delivery_date?: string | null
+          delivery_time?: string | null
           gst_amount?: number
           id?: string
           mobile?: string
@@ -140,10 +146,13 @@ export type Database = {
           created_at: string
           customer_email: string | null
           customer_name: string
+          delivery_date: string | null
+          delivery_time: string | null
           gst_amount: number
           id: string
           items: Json
           mobile: string
+          payment_status: string
           special_instructions: string | null
           status: string
           subtotal: number
@@ -156,10 +165,13 @@ export type Database = {
           created_at?: string
           customer_email?: string | null
           customer_name: string
+          delivery_date?: string | null
+          delivery_time?: string | null
           gst_amount: number
           id?: string
           items: Json
           mobile: string
+          payment_status?: string
           special_instructions?: string | null
           status?: string
           subtotal: number
@@ -172,10 +184,13 @@ export type Database = {
           created_at?: string
           customer_email?: string | null
           customer_name?: string
+          delivery_date?: string | null
+          delivery_time?: string | null
           gst_amount?: number
           id?: string
           items?: Json
           mobile?: string
+          payment_status?: string
           special_instructions?: string | null
           status?: string
           subtotal?: number
@@ -224,6 +239,7 @@ export type Database = {
           image_url: string | null
           name: string
           price: number
+          sku: string | null
           soft_enabled: boolean
           updated_at: string | null
         }
@@ -238,6 +254,7 @@ export type Database = {
           image_url?: string | null
           name: string
           price: number
+          sku?: string | null
           soft_enabled?: boolean
           updated_at?: string | null
         }
@@ -252,6 +269,7 @@ export type Database = {
           image_url?: string | null
           name?: string
           price?: number
+          sku?: string | null
           soft_enabled?: boolean
           updated_at?: string | null
         }
@@ -283,6 +301,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      assign_user_role: {
+        Args: { target_role: string; target_user_id: string }
+        Returns: undefined
+      }
       cleanup_expired_otps: {
         Args: Record<PropertyKey, never>
         Returns: undefined
