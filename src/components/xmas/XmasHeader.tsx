@@ -32,7 +32,7 @@ const XmasHeader = () => {
             </div>
             <div>
               <h1 className="text-xl md:text-2xl font-bold" style={{ color: 'hsl(var(--xmas-dark))', textShadow: '1px 1px 2px hsla(var(--xmas-shadow), 0.3)' }}>
-                
+                Sri Nidhi Catering
               </h1>
               <p className="text-xs md:text-sm font-semibold" style={{ color: 'hsl(var(--xmas-muted))' }}>
                 Premium Christmas & New Year Treats

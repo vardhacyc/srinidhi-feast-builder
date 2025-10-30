@@ -77,7 +77,7 @@ const XmasHero = () => {
                 WebkitTextStroke: '1px hsla(var(--xmas-red), 0.3)'
               }}
             >
-              
+              Sri Nidhi
             </span>
             <span 
               className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold"
@@ -91,7 +91,7 @@ const XmasHero = () => {
                 textTransform: 'uppercase'
               }}
             >
-              
+              Festive Season Delights
             </span>
           </h1>
           
