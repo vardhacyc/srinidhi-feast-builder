@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import Index from "./pages/Index";
 import DiwaliIndex from "./pages/DiwaliIndex";
+import Xmas from "./pages/Xmas";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
 import MasterAdminDashboard from "./pages/MasterAdminDashboard";
@@ -25,6 +26,7 @@ const AppContent = () => {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/diwali" element={<DiwaliIndex />} />
+        <Route path="/xmas" element={<Xmas />} />
         <Route path="/catering" element={<Index />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminDashboard />} />
@@ -34,8 +36,8 @@ const AppContent = () => {
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {/* Floating WhatsApp Button - Hidden on admin pages */}
-      {!isAdminPage && (
+      {/* Floating WhatsApp Button - Hidden on admin pages and custom pages with their own buttons */}
+      {!isAdminPage && !location.pathname.startsWith('/xmas') && (
         <WhatsAppFloat 
           phoneNumber="918760101010"
           message="Hi! I'm interested in your Diwali sweets. Could you please provide more information?"
