@@ -123,8 +123,8 @@ export default function Xmas() {
           100% { background-position: 1000px 0; }
         }
         @keyframes pulse-glow {
-          0%, 100% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.6), 0 0 60px rgba(139, 92, 246, 0.4), inset 0 0 30px rgba(139, 92, 246, 0.1); }
-          50% { box-shadow: 0 0 50px rgba(139, 92, 246, 0.8), 0 0 80px rgba(139, 92, 246, 0.6), inset 0 0 40px rgba(139, 92, 246, 0.2); }
+          0%, 100% { box-shadow: 0 0 30px rgba(156, 0, 212, 0.55), 0 0 60px rgba(88, 0, 137, 0.45), inset 0 0 28px rgba(152, 0, 210, 0.2); }
+          50% { box-shadow: 0 0 55px rgba(156, 0, 212, 0.8), 0 0 85px rgba(88, 0, 137, 0.6), inset 0 0 38px rgba(152, 0, 210, 0.28); }
         }
         .snowflake {
           position: absolute;
@@ -147,7 +147,7 @@ export default function Xmas() {
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+          background: linear-gradient(90deg, transparent, rgba(156, 0, 212, 0.28), transparent);
           transition: left 0.5s;
         }
         .card-xmas:hover::before {
@@ -157,13 +157,13 @@ export default function Xmas() {
           content: "";
           position: absolute;
           inset: 0;
-          background: linear-gradient(180deg, rgba(139, 92, 246, 0.1) 0%, transparent 50%, rgba(88, 28, 135, 0.1) 100%);
+          background: linear-gradient(180deg, rgba(156, 0, 212, 0.12) 0%, transparent 55%, rgba(35, 0, 55, 0.4) 100%);
           pointer-events: none;
         }
         .card-xmas:hover {
           transform: translateY(-8px) scale(1.02);
-          box-shadow: 0 20px 60px -20px rgba(109, 40, 217, 0.6), 0 0 60px rgba(139, 92, 246, 0.4), inset 0 0 40px rgba(139, 92, 246, 0.1);
-          border-color: rgba(139, 92, 246, 0.7) !important;
+          box-shadow: 0 22px 62px -18px rgba(88, 0, 137, 0.55), 0 0 62px rgba(156, 0, 212, 0.45), inset 0 0 36px rgba(156, 0, 212, 0.2);
+          border-color: rgba(156, 0, 212, 0.7) !important;
         }
         .cta-btn-xmas {
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -205,7 +205,7 @@ export default function Xmas() {
           transform: translateY(-2px) scale(1.02);
         }
         .gradient-text {
-          background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 30%, #f472b6 60%, #fbbf24 100%);
+          background: linear-gradient(135deg, #f2d5ff 0%, #d79aff 25%, #b560ff 55%, #7f09c9 80%, #310042 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -222,14 +222,14 @@ export default function Xmas() {
           animation: shimmer 3s infinite;
         }
         .red-glow {
-          box-shadow: 0 0 30px rgba(239, 68, 68, 0.5), inset 0 0 20px rgba(239, 68, 68, 0.2);
-          animation: pulse-glow 2s ease-in-out infinite;
+          box-shadow: 0 0 32px rgba(156, 0, 212, 0.5), inset 0 0 22px rgba(88, 0, 137, 0.3);
+          animation: pulse-glow 2.3s ease-in-out infinite;
         }
       `}</style>
 
-                  <div className="min-h-screen relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #2d1b4e 0%, #3d2463 20%, #4a2870 40%, #5b2e80 60%, #4a2870 80%, #3d2463 100%)' }}>
-        {/* Animated Snowflakes */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                  <div className="min-h-screen relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #7e22ce 0%, #6b21a8 20%, #581c87 40%, #4c1d95 60%, #3b0764 80%, #1e0a3c 100%)' }}>
+  {/* Animated Snowflakes */}
+  <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {Array.from({ length: 40 }).map((_, i) => (
             <div
               key={i}
@@ -290,8 +290,19 @@ export default function Xmas() {
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center px-6 py-20">
           <div className="relative z-10 max-w-6xl mx-auto text-center">
+            {/* Logo */}
+            <div className="mb-8 flex justify-center">
+              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full flex items-center justify-center backdrop-blur-xl border-2 shadow-2xl" style={{ background: 'linear-gradient(135deg, rgba(88, 28, 135, 0.8), rgba(76, 29, 149, 0.7))', borderColor: 'rgba(139, 92, 246, 0.6)', boxShadow: '0 10px 40px rgba(109, 40, 217, 0.6), inset 0 0 30px rgba(139, 92, 246, 0.2)' }}>
+                <img 
+                  src="/cateringLogo.png" 
+                  alt="Sri Nidhi Catering" 
+                  className="w-40 h-40 md:w-48 md:h-48 object-contain drop-shadow-2xl"
+                  style={{ filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5))' }}
+                />
+              </div>
+            </div>
+
             {/* Holiday Badge */}
-                        {/* Holiday Badge */}
             <div className="inline-flex items-center gap-3 mb-8 px-8 py-3 rounded-full backdrop-blur-xl border-2 shadow-2xl red-glow" style={{ background: 'linear-gradient(135deg, rgba(88, 28, 135, 0.7), rgba(76, 29, 149, 0.6))', borderColor: 'rgba(139, 92, 246, 0.6)', boxShadow: '0 8px 32px rgba(109, 40, 217, 0.5), inset 0 0 20px rgba(139, 92, 246, 0.2)' }}>
               <Snowflake className="w-5 h-5 text-cyan-200 animate-spin drop-shadow-lg" style={{ animationDuration: '4s' }} />
               <span className="text-xs tracking-[0.3em] font-bold text-white drop-shadow-lg">🎄 CHRISTMAS • THANKSGIVING • NEW YEAR 🎅</span>
@@ -300,10 +311,10 @@ export default function Xmas() {
 
             {/* Main Heading */}
             <h1 className="mb-8 leading-tight">
-              <span className="block text-5xl md:text-7xl font-extrabold gradient-text mb-4 drop-shadow-2xl">
+              <span className="block text-5xl md:text-7xl font-extrabold mb-4" style={{ color: '#e9d5ff', textShadow: '0 4px 16px rgba(0, 0, 0, 0.8), 0 2px 8px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 40px rgba(156, 0, 212, 0.3)' }}>
                 Festive Delights
               </span>
-              <span className="block text-3xl md:text-5xl font-bold text-white drop-shadow-lg">
+              <span className="block text-3xl md:text-5xl font-bold" style={{ color: '#f5f3ff', textShadow: '0 3px 12px rgba(0, 0, 0, 0.8), 0 1px 6px rgba(0, 0, 0, 0.6), 0 6px 20px rgba(0, 0, 0, 0.5)' }}>
                 from Around the World
               </span>
             </h1>
@@ -318,8 +329,8 @@ export default function Xmas() {
                 onClick={() => document.getElementById('collection')?.scrollIntoView({ behavior: 'smooth' })}
                 className="cta-btn-xmas group w-full sm:w-auto px-8 sm:px-12 py-6 sm:py-7 rounded-full text-white text-base sm:text-lg shadow-2xl border-2"
                 style={{ 
-                  background: 'linear-gradient(135deg, #5b2e80 0%, #6d3a8f 30%, #7d459d 60%, #8e54ab 100%)',
-                  borderColor: 'rgba(141, 84, 171, 0.6)',
+                  background: 'linear-gradient(135deg, #9100d4 0%, #7700b3 32%, #5b008e 65%, #39015c 100%)',
+                  borderColor: 'rgba(136, 0, 196, 0.55)',
                   backdropFilter: 'blur(10px)'
                 }}
               >
@@ -333,70 +344,64 @@ export default function Xmas() {
                 onClick={() => handleOrderWhatsApp('General Inquiry')}
                 className="cta-btn-xmas w-full sm:w-auto px-8 sm:px-12 py-6 sm:py-7 rounded-full backdrop-blur-xl border-2 text-white text-base sm:text-lg shadow-2xl"
                 style={{ 
-                  background: 'linear-gradient(135deg, rgba(61, 36, 99, 0.8), rgba(74, 40, 112, 0.7))',
-                  borderColor: 'rgba(107, 70, 165, 0.6)',
+                  background: 'linear-gradient(135deg, rgba(92, 0, 150, 0.78), rgba(36, 0, 55, 0.78))',
+                  borderColor: 'rgba(118, 0, 181, 0.55)',
                   backdropFilter: 'blur(20px)'
                 }}
               >
                 <Phone className="w-5 h-5 mr-3" />
                 WhatsApp Us
               </Button>
-            </div>            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              {[
-                { label: 'Happy Customers', value: totalCustomers.toLocaleString() + '+', icon: '🎅' },
-                { label: 'Festive Rating', value: '4.9★', icon: '⭐' },
-                { label: 'Countries Inspired', value: '15+', icon: '🌍' }
-              ].map((stat, idx) => (
-                <div 
-                  key={idx} 
-                  className="backdrop-blur-xl p-10 rounded-3xl border-2 shadow-2xl relative overflow-hidden"
-                  style={{ 
-                    background: 'linear-gradient(135deg, rgba(55, 16, 82, 0.8), rgba(46, 16, 101, 0.7))',
-                    borderColor: 'rgba(109, 40, 217, 0.5)',
-                    boxShadow: '0 15px 50px rgba(74, 31, 117, 0.6), inset 0 0 30px rgba(139, 92, 246, 0.2)'
-                  }}
-                >
-                  <div className="absolute top-0 right-0 text-6xl opacity-20">{stat.icon}</div>
-                  <div className="text-4xl md:text-5xl font-black gradient-text mb-2 drop-shadow-lg">{stat.value}</div>
-                  <div className="text-sm font-semibold text-white uppercase tracking-wider drop-shadow">{stat.label}</div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
 
+        {/* Decorative Divider */}
+        <div className="relative py-12 flex items-center justify-center">
+          <div className="flex items-center gap-4">
+            <div className="w-20 h-0.5" style={{ background: 'linear-gradient(90deg, transparent, rgba(233, 213, 255, 0.5))' }}></div>
+            <div className="flex gap-3 items-center">
+              <span className="text-3xl animate-pulse" style={{ filter: 'drop-shadow(0 0 10px rgba(233, 213, 255, 0.6))' }}>❄️</span>
+              <span className="text-2xl" style={{ color: '#e9d5ff', textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)' }}>✨</span>
+              <span className="text-3xl animate-pulse" style={{ filter: 'drop-shadow(0 0 10px rgba(233, 213, 255, 0.6))' }}>🎄</span>
+              <span className="text-2xl" style={{ color: '#e9d5ff', textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)' }}>✨</span>
+              <span className="text-3xl animate-pulse" style={{ filter: 'drop-shadow(0 0 10px rgba(233, 213, 255, 0.6))' }}>❄️</span>
+            </div>
+            <div className="w-20 h-0.5" style={{ background: 'linear-gradient(90deg, rgba(233, 213, 255, 0.5), transparent)' }}></div>
+          </div>
+        </div>
+
         {/* Collection Section */}
-        <section id="collection" className="py-28 px-6 relative">
+        <section id="collection" className="py-16 px-6 relative">
           <div className="max-w-7xl mx-auto relative">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-6xl font-extrabold mb-6 gradient-text drop-shadow-2xl">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-6xl font-extrabold mb-6" style={{ color: '#e9d5ff', textShadow: '0 4px 16px rgba(0, 0, 0, 0.8), 0 2px 8px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.4)' }}>
                 Exotic Sweet Collection
               </h2>
-              <p className="text-lg md:text-xl text-white font-medium drop-shadow-md">
+              <p className="text-lg md:text-xl font-medium" style={{ color: '#f5f3ff', textShadow: '0 3px 12px rgba(0, 0, 0, 0.8), 0 1px 6px rgba(0, 0, 0, 0.6)' }}>
                 Handpicked delicacies from master confectioners worldwide
               </p>
             </div>
 
             {/* Category Filter */}
-            <div className="flex justify-center mb-16 overflow-x-auto">
-              <div className="inline-flex rounded-full p-3 backdrop-blur-xl border-2 shadow-2xl gap-2" style={{ background: 'linear-gradient(135deg, rgba(46, 16, 101, 0.85), rgba(55, 16, 82, 0.8))', borderColor: 'rgba(109, 40, 217, 0.6)', boxShadow: '0 15px 50px rgba(74, 31, 117, 0.7), inset 0 0 30px rgba(139, 92, 246, 0.15)' }}>
+            <div className="mb-12 overflow-x-auto px-4 pb-2" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(156, 0, 212, 0.5) transparent' }}>
+              <div className="flex gap-2 justify-start md:justify-center min-w-max md:min-w-0">
                 {xmasCategories.map(cat => (
                   <button
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
-                    className={`px-6 py-3 rounded-full text-xs md:text-sm font-bold tracking-wide transition-all whitespace-nowrap backdrop-blur-lg ${
+                    className={`px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-300 whitespace-nowrap ${
                       selectedCategory === cat 
-                        ? 'text-white shadow-xl border-2' 
-                        : 'text-slate-200 hover:text-white'
+                        ? 'text-white' 
+                        : 'text-slate-100 hover:text-white'
                     }`}
                     style={selectedCategory === cat ? {
-                      background: 'linear-gradient(135deg, #371052 0%, #4c1d95 50%, #6d28d9 100%)',
-                      borderColor: 'rgba(139, 92, 246, 0.5)',
-                      boxShadow: '0 8px 30px rgba(109, 40, 217, 0.7), inset 0 0 20px rgba(139, 92, 246, 0.2)'
+                      background: 'linear-gradient(135deg, #7700b3 0%, #5b008e 50%, #39015c 100%)',
+                      boxShadow: '0 2px 10px rgba(119, 0, 179, 0.5)',
+                      border: '1px solid rgba(156, 0, 212, 0.4)'
                     } : {
-                      background: 'rgba(55, 16, 82, 0.4)',
-                      boxShadow: 'inset 0 0 15px rgba(88, 28, 135, 0.1)'
+                      background: 'rgba(46, 16, 101, 0.4)',
+                      border: '1px solid rgba(156, 0, 212, 0.2)'
                     }}
                   >
                     {cat}
@@ -421,12 +426,15 @@ export default function Xmas() {
                   onMouseLeave={() => setHoveredSweet(null)}
                 >
                   {/* Image */}
-                  <div className="relative h-72 overflow-hidden rounded-t-3xl">
+                  <div className="relative h-72 overflow-hidden rounded-t-3xl" style={{ background: 'linear-gradient(135deg, rgba(76, 29, 149, 0.3), rgba(55, 16, 82, 0.5))' }}>
                     <img 
                       src={sweet.image}
                       alt={sweet.name}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       style={{ filter: 'brightness(1.1) contrast(1.05)' }}
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent" />
                     
