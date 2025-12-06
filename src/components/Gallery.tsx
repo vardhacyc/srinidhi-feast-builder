@@ -1,187 +1,56 @@
 
-import { useState } from 'react';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-
 const Gallery = () => {
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
-
   const images = [
-    {
-      url: "/a1_award.jpg",
-      title: "Award-Winning Excellence",
-      category: "Awards"
-    },
-    {
-      url: "/a3_demo.jpg",
-      title: "Premium Catering Demonstration",
-      category: "Events"
-    },
-    {
-      url: "/a2.jpg",
-      title: "Professional Service Team",
-      category: "Events"
-    },
-    {
-      url: "/a4_outdoor.jpg",
-      title: "Outdoor Event Catering",
-      category: "Events"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&w=800&q=80",
-      title: "Traditional South Indian Feast",
-      category: "Food"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=800&q=80",
-      title: "Elegant Presentation",
-      category: "Food"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
-      title: "Traditional Sweets",
-      category: "Food"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=80",
-      title: "Buffet Setup",
-      category: "Events"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=800&q=80",
-      title: "Authentic Spices",
-      category: "Kitchen"
-    }
+    { src: '/a3_demo.jpg', alt: 'Wedding Catering Setup', title: 'Wedding Catering' },
+    { src: '/a2.jpg', alt: 'Biryani Preparation', title: 'Biryani Special' },
+    { src: '/a4_outdoor.jpg', alt: 'Outdoor Event Setup', title: 'Outdoor Events' },
+    { src: '/a1_award.jpg', alt: 'Award Winning Service', title: 'Award Winning' },
+    { src: '/celebrity-wedding.png', alt: 'Celebrity Events', title: 'Celebrity Events' },
   ];
 
-  const categories = ['All', 'Awards', 'Events', 'Food', 'Kitchen'];
-  const [activeCategory, setActiveCategory] = useState('All');
-
-  const filteredImages = activeCategory === 'All' 
-    ? images 
-    : images.filter(img => img.category === activeCategory);
-
-  const openLightbox = (index: number) => {
-    setSelectedImage(index);
-  };
-
-  const closeLightbox = () => {
-    setSelectedImage(null);
-  };
-
-  const nextImage = () => {
-    if (selectedImage !== null) {
-      setSelectedImage((selectedImage + 1) % filteredImages.length);
-    }
-  };
-
-  const prevImage = () => {
-    if (selectedImage !== null) {
-      setSelectedImage(selectedImage > 0 ? selectedImage - 1 : filteredImages.length - 1);
-    }
-  };
-
   return (
-    <section id="gallery" className="relative py-24 overflow-hidden" style={{
-      background: 'linear-gradient(135deg, #b45309 0%, #78350f 25%, #92400e 50%, #d97706 75%, #f59e0b 100%)'
-    }}>
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-300/25 via-yellow-400/35 to-amber-600/25"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_75%,rgba(255,255,255,0.15)_20%,transparent_50%)]"></div>
-      </div>
-      <div className="relative z-10">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8">
-            Our{' '}
-            <span className="relative inline-block">
-              <span className="text-primary">Gallery</span>
-              {/* Hand-drawn yellow underline effect */}
-              <div className="absolute -bottom-2 left-0 w-full h-4 bg-accent opacity-60 transform rotate-1 rounded-lg"></div>
+    <section id="gallery" className="relative py-24 overflow-hidden bg-black">
+      <div className="container mx-auto px-4 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#C9A227]"></div>
+            <span className="text-sm tracking-[0.3em] uppercase" style={{ color: '#C9A227' }}>
+              Portfolio
             </span>
-          </h2>
-          <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
-            Glimpse into our culinary artistry and memorable events
-          </p>
-        </div>
-
-        {/* Category Filter with vibrant styling */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-8 py-4 rounded-xl font-black text-lg transition-all transform ${
-                activeCategory === category
-                  ? 'btn-gradient-primary shadow-2xl scale-105'
-                  : 'bg-white text-gray-700 hover:bg-primary/10 shadow-lg hover:scale-102 border-2 border-primary/20'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        {/* Gallery Grid with enhanced styling */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-          {filteredImages.map((image, index) => (
-            <div 
-              key={index}
-              className="relative group cursor-pointer overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-primary/20 hover:border-primary/40 hover:-translate-y-2"
-              onClick={() => openLightbox(index)}
-            >
-              <img
-                src={image.url}
-                alt={image.title}
-                className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center p-6">
-                <div className="text-white text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="text-xl font-black mb-2">{image.title}</h3>
-                  <p className="text-lg font-medium bg-primary/80 px-3 py-1 rounded-lg">{image.category}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Lightbox with enhanced styling */}
-        {selectedImage !== null && (
-          <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4">
-            <div className="relative max-w-5xl max-h-full">
-              <button
-                onClick={closeLightbox}
-                className="absolute top-4 right-4 text-white hover:text-primary z-10 bg-black/50 rounded-full p-2 hover:bg-primary/20 transition-all"
-              >
-                <X className="h-8 w-8" />
-              </button>
-              
-              <button
-                onClick={prevImage}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-primary z-10 bg-black/50 rounded-full p-3 hover:bg-primary/20 transition-all"
-              >
-                <ChevronLeft className="h-10 w-10" />
-              </button>
-              
-              <button
-                onClick={nextImage}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-primary z-10 bg-black/50 rounded-full p-3 hover:bg-primary/20 transition-all"
-              >
-                <ChevronRight className="h-10 w-10" />
-              </button>
-
-              <img
-                src={filteredImages[selectedImage].url}
-                alt={filteredImages[selectedImage].title}
-                className="max-w-full max-h-full object-contain rounded-2xl"
-              />
-              
-              <div className="absolute bottom-6 left-6 text-white bg-black/70 p-4 rounded-xl">
-                <h3 className="text-2xl font-black text-primary mb-1">{filteredImages[selectedImage].title}</h3>
-                <p className="text-gray-300 text-lg font-medium">{filteredImages[selectedImage].category}</p>
-              </div>
-            </div>
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#C9A227]"></div>
           </div>
-        )}
+
+          <h2
+            className="text-3xl md:text-4xl lg:text-5xl font-light text-white mb-6"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            Our{' '}
+            <span className="italic" style={{ color: '#C9A227' }}>Portfolio</span>
+          </h2>
+        </div>
+
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className="group relative aspect-square overflow-hidden rounded-xl cursor-pointer"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(201, 162, 39, 0.2) 50%, transparent 100%)' }}
+              ></div>
+              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                <h3 className="text-sm font-light text-white">{image.title}</h3>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

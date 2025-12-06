@@ -1,18 +1,26 @@
-
-import { useState } from 'react';
-import { Menu, X, Phone, Mail } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#services', label: 'Services' },
-    { href: '#menu', label: 'Menu' },
-    { href: '#gallery', label: 'Gallery' },
-    { href: '#contact', label: 'Contact' },
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Menu', href: '#menu' },
+    { name: 'Gallery', href: '#gallery' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   const scrollToSection = (href: string) => {
@@ -20,99 +28,117 @@ const Header = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-    setIsMenuOpen(false);
+    setIsMobileMenuOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
-      {/* Top bar with contact info - Updated with new royal blue color */}
-      <div className="bg-header-bar text-white py-2 px-4">
-        <div className="container mx-auto flex justify-between items-center text-sm">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2">
-              <Phone className="h-4 w-4" />
-              <span>8760101010</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Mail className="h-4 w-4" />
-              <span>srinidhicatering10@gmail.com</span>
-            </div>
-          </div>
-          <div className="hidden md:block">
-            <span>Continuing Kovai Catering's Premium Legacy in Coimbatore</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main navigation */}
-      <nav className="bg-white py-4 px-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-3">
-            {/* Catering Logo with enhanced hover zoom effect */}
-            <img 
-              src="/cateringLogo.png" 
-              alt="Sri Nidhi Catering Logo" 
-              className="h-16 w-16 object-contain logo-hover cursor-pointer"
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+          ? 'bg-black/95 backdrop-blur-xl border-b border-white/10'
+          : 'bg-transparent'
+        }`}
+    >
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <a
+            href="#home"
+            onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}
+            className="flex items-center gap-3"
+          >
+            <img
+              src="/cateringLogo.png"
+              alt="Sri Nidhi Catering"
+              className="w-10 h-10 object-contain"
             />
-            <div>
-              <h1 className="text-2xl font-bold text-gray-800">Sri Nidhi Catering</h1>
-              <p className="text-sm text-gray-600">Premium Catering Services</p>
+            <div className="hidden sm:block">
+              <span
+                className="text-xl font-light tracking-wide text-white"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Sri Nidhi
+              </span>
+              <span
+                className="text-xs ml-2 tracking-[0.2em] uppercase"
+                style={{ color: '#C9A227' }}
+              >
+                Catering
+              </span>
             </div>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center gap-10">
             {navLinks.map((link) => (
               <button
-                key={link.href}
+                key={link.name}
                 onClick={() => scrollToSection(link.href)}
-                className="text-gray-700 hover:text-header-bar font-medium transition-colors"
+                className="text-sm font-light tracking-wide text-white/70 hover:text-[#C9A227] transition-colors duration-300"
               >
-                {link.label}
+                {link.name}
               </button>
             ))}
-            {/* Updated Book Now button with primary yellow */}
-            <Button 
+          </nav>
+
+          {/* CTA + Phone */}
+          <div className="hidden lg:flex items-center gap-6">
+            <a
+              href="tel:+918760101010"
+              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
+            >
+              <Phone className="w-4 h-4" style={{ color: '#C9A227' }} />
+              <span className="text-sm font-light">+91 87601 01010</span>
+            </a>
+            <Button
               onClick={() => scrollToSection('#contact')}
-              className="bg-primary hover:bg-accent text-white px-6"
+              className="font-medium px-6 py-5 tracking-wide transition-all duration-300 hover:scale-105 border-0"
+              style={{
+                background: '#C9A227',
+                color: '#0A0A0A',
+              }}
             >
               Book Now
             </Button>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 text-white"
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t">
-            <div className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-gray-700 hover:text-header-bar font-medium text-left"
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden absolute top-20 left-0 right-0 bg-black/98 backdrop-blur-xl border-b border-white/10">
+            <nav className="container mx-auto px-4 py-6">
+              <div className="flex flex-col gap-4">
+                {navLinks.map((link) => (
+                  <button
+                    key={link.name}
+                    onClick={() => scrollToSection(link.href)}
+                    className="text-left py-3 text-white/70 hover:text-[#C9A227] transition-colors border-b border-white/5"
+                  >
+                    {link.name}
+                  </button>
+                ))}
+                <Button
+                  onClick={() => scrollToSection('#contact')}
+                  className="mt-4 py-6 font-medium tracking-wide border-0"
+                  style={{
+                    background: '#C9A227',
+                    color: '#0A0A0A',
+                  }}
                 >
-                  {link.label}
-                </button>
-              ))}
-              {/* Updated mobile Book Now button */}
-              <Button 
-                onClick={() => scrollToSection('#contact')}
-                className="bg-primary hover:bg-accent text-white w-full"
-              >
-                Book Now
-              </Button>
-            </div>
+                  Book Now
+                </Button>
+              </div>
+            </nav>
           </div>
         )}
-      </nav>
+      </div>
     </header>
   );
 };

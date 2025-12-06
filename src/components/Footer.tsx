@@ -1,25 +1,24 @@
-
-import { Heart, MapPin, Phone, Mail, Clock, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
     { name: 'Home', href: '#home' },
-    { name: 'About Us', href: '#about' },
+    { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
     { name: 'Menu', href: '#menu' },
     { name: 'Gallery', href: '#gallery' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Contact', href: '#contact' },
   ];
 
   const services = [
     'Wedding Catering',
     'Corporate Events',
     'Birthday Parties',
-    'Religious Functions',
-    'Institutional Catering',
-    'Bulk Orders'
+    'House Warming',
+    'Destination Weddings',
+    'Live Counters',
   ];
 
   const scrollToSection = (href: string) => {
@@ -30,59 +29,58 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-6">
-              {/* Catering Logo with enhanced hover zoom effect */}
-              <img 
-                src="/cateringLogo.png" 
-                alt="Sri Nidhi Catering Logo" 
-                className="h-16 w-16 object-contain logo-hover cursor-pointer"
+    <footer className="bg-black border-t border-white/10">
+      <div className="container mx-auto px-4 lg:px-8 py-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src="/cateringLogo.png"
+                alt="Sri Nidhi Catering"
+                className="w-10 h-10 object-contain"
               />
               <div>
-                <h3 className="text-2xl font-bold">Sri Nidhi Catering</h3>
-                <p className="text-gray-400">Premium Catering Services</p>
+                <span
+                  className="block text-xl font-light text-white"
+                  style={{ fontFamily: "'Playfair Display', serif" }}
+                >
+                  Sri Nidhi
+                </span>
+                <span className="text-xs tracking-[0.2em] uppercase" style={{ color: '#C9A227' }}>
+                  Catering
+                </span>
               </div>
             </div>
-            
-            <p className="text-gray-300 mb-6 max-w-md">
-              Sri Nidhi Catering, building on the legacy of Kovai Catering with professional services 
-              creating delightful memories that your taste buds will fondly remember forever. 
-              With state-of-the-art kitchen facilities, we serve thousands daily with authentic flavors.
+            <p className="text-white/50 mb-6 leading-relaxed text-sm">
+              Elevating your events with exceptional gourmet cuisine and impeccable service since 2008.
             </p>
-
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <MapPin className="h-5 w-5 text-primary" />
-                <span className="text-gray-300">B111, Manchester Grand, MG Rd, Sri Kamadhenu Nagar, Avarampalayam, Coimbatore, Tamil Nadu 641004</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-primary" />
-                <span className="text-gray-300">8760101010</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-primary" />
-                <span className="text-gray-300">srinidhicatering10@gmail.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Clock className="h-5 w-5 text-primary" />
-                <span className="text-gray-300">Mon-Sat: 8AM-10PM, Sun: 9AM-9PM</span>
-              </div>
+            <div className="flex gap-4">
+              {[Facebook, Instagram, Twitter].map((Icon, index) => (
+                <a
+                  key={index}
+                  href="#"
+                  className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-[#C9A227]/20"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)'
+                  }}
+                >
+                  <Icon className="w-4 h-4 text-white/70" />
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-semibold mb-6">Quick Links</h4>
+            <h4 className="text-white font-medium mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-gray-300 hover:text-primary transition-colors"
+                    className="text-white/50 hover:text-[#C9A227] transition-colors text-left text-sm"
                   >
                     {link.name}
                   </button>
@@ -93,72 +91,47 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-xl font-semibold mb-6">Our Services</h4>
+            <h4 className="text-white font-medium mb-6">Our Services</h4>
             <ul className="space-y-3">
               {services.map((service, index) => (
-                <li key={index} className="text-gray-300">
-                  {service}
-                </li>
+                <li key={index} className="text-white/50 text-sm">{service}</li>
               ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="text-white font-medium mb-6">Contact Info</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <Phone className="w-4 h-4 mt-0.5" style={{ color: '#C9A227' }} />
+                <div>
+                  <a href="tel:+918760101010" className="block text-white/70 text-sm hover:text-[#C9A227] transition-colors">+91 87601 01010</a>
+                  <a href="tel:+919994316559" className="block text-white/50 text-sm hover:text-[#C9A227] transition-colors">+91 9994316559</a>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <Mail className="w-4 h-4 mt-0.5" style={{ color: '#C9A227' }} />
+                <a href="mailto:srinidhicatering10@gmail.com" className="text-white/50 text-sm hover:text-[#C9A227] transition-colors">srinidhicatering10@gmail.com</a>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 mt-0.5" style={{ color: '#C9A227' }} />
+                <p className="text-white/50 text-sm">B111, Manchester Grand, MG Rd<br />Coimbatore, TN 641004</p>
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* Social Media & Newsletter */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-6 md:mb-0">
-              <h4 className="text-lg font-semibold mb-3">Follow Us</h4>
-              <div className="flex space-x-4">
-                <a
-                  href="#"
-                  className="bg-gray-800 p-3 rounded-full hover:bg-primary transition-colors"
-                >
-                  <Facebook className="h-5 w-5" />
-                </a>
-                <a
-                  href="#"
-                  className="bg-gray-800 p-3 rounded-full hover:bg-primary transition-colors"
-                >
-                  <Instagram className="h-5 w-5" />
-                </a>
-                <a
-                  href="#"
-                  className="bg-gray-800 p-3 rounded-full hover:bg-primary transition-colors"
-                >
-                  <Twitter className="h-5 w-5" />
-                </a>
-              </div>
-            </div>
-
-            <div className="text-center md:text-right">
-              <p className="text-gray-400 mb-2">
-                Quality • Tradition • Excellence
-              </p>
-              <div className="flex items-center justify-center md:justify-end space-x-2 text-primary">
-                <span>Made</span>
-                
-                <span>in Coimbatore</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400">
-              © {currentYear} Srinidhi Catering. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-white/40 text-sm">
+              © {currentYear} Sri Nidhi Catering. All rights reserved.
             </p>
-            <div className="flex space-x-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-primary transition-colors">Refund Policy</a>
-            </div>
+            <p className="text-white/40 text-sm">
+              Website by <a href="https://www.berk-carp.com/" target="_blank" rel="noopener noreferrer" className="text-[#C9A227] hover:text-white transition-colors">berk-carp.com</a>
+            </p>
           </div>
-          <p className="text-gray-500 text-sm mt-4">
-            A proud subsidiary of Kovai Catering - Serving Coimbatore since 2010
-          </p>
         </div>
       </div>
     </footer>

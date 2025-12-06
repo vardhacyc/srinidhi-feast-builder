@@ -10,65 +10,102 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Premium Dark Theme with Gold Accents */
-    --background: 220 20% 8%; /* Deep charcoal background */
-    --foreground: 0 0% 95%; /* Light text */
+    /* ═══════════════════════════════════════════════════════════════════════
+       FOOD PSYCHOLOGY COLOR SYSTEM
+       Based on scientific research: warm colors (amber, orange, terracotta) 
+       stimulate appetite, while gold conveys premium quality.
+       Cool blues are avoided as they suppress appetite.
+    ═══════════════════════════════════════════════════════════════════════ */
 
-    --card: 220 15% 12%; /* Dark card background */
-    --card-foreground: 0 0% 90%;
+    /* Premium Dark Base - Rich chocolate undertones */
+    --background: 20 25% 6%;
+    /* Deep espresso black */
+    --foreground: 40 15% 95%;
+    /* Warm cream white */
 
-    --popover: 220 15% 10%;
-    --popover-foreground: 0 0% 95%;
+    /* Card Colors - Warm charcoal */
+    --card: 25 20% 10%;
+    /* Warm dark card */
+    --card-foreground: 40 10% 92%;
 
-    --primary: 45 95% 58%; /* Premium gold primary */
-    --primary-foreground: 220 20% 8%;
+    --popover: 25 18% 8%;
+    --popover-foreground: 40 15% 95%;
 
-    --secondary: 220 15% 15%; /* Darker secondary */
-    --secondary-foreground: 0 0% 85%;
+    /* Primary - Rich Saffron Gold (appetite stimulating) */
+    --primary: 38 95% 55%;
+    /* Saffron gold */
+    --primary-foreground: 20 25% 6%;
 
-    --muted: 220 15% 18%; /* Muted dark */
-    --muted-foreground: 0 0% 60%;
+    /* Secondary - Warm Spice */
+    --secondary: 25 20% 14%;
+    --secondary-foreground: 40 10% 88%;
 
-    --accent: 45 90% 65%; /* Bright gold accent */
-    --accent-foreground: 220 20% 8%;
+    /* Muted - Warm Gray */
+    --muted: 25 15% 18%;
+    --muted-foreground: 30 10% 55%;
+
+    /* Accent - Turmeric Yellow (traditional, appetizing) */
+    --accent: 42 100% 58%;
+    --accent-foreground: 20 25% 6%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 41 100% 44%; /* Updated to match new primary amber */
+    /* Warm-toned borders */
+    --border: 30 15% 25%;
+    --input: 30 15% 20%;
+    --ring: 38 95% 55%;
 
     --radius: 0.5rem;
 
-    /* Updated Sidebar Colors to Match New Palette */
+    /* ═══════════════════════════════════════════════════════════════════════
+       FOOD PSYCHOLOGY GRADIENT COLORS
+       Scientifically proven to increase appetite and perceived food quality
+    ═══════════════════════════════════════════════════════════════════════ */
+
+    /* Warm Appetizing Colors */
+    --food-saffron: 38 95% 55%;
+    /* Primary gold - luxury, warmth */
+    --food-turmeric: 42 100% 50%;
+    /* Yellow - happiness, energy */
+    --food-paprika: 25 90% 50%;
+    /* Orange-red - appetite stimulant */
+    --food-cinnamon: 18 65% 40%;
+    /* Warm brown - comfort, organic */
+    --food-honey: 45 100% 60%;
+    /* Light gold - sweetness, natural */
+    --food-caramel: 30 70% 45%;
+    /* Amber brown - indulgence */
+    --food-terracotta: 15 60% 50%;
+    /* Earthy orange - authentic, rustic */
+    --food-burgundy: 350 50% 35%;
+    /* Deep red - sophistication, wine */
+
+    /* Premium Cream Tones */
+    --food-cream: 40 50% 96%;
+    /* Off-white - clean, fresh */
+    --food-ivory: 45 40% 94%;
+    /* Warm white - premium feel */
+    --food-champagne: 42 35% 88%;
+    /* Soft gold tint - celebration */
+
+    /* Rich Dark Tones */
+    --food-espresso: 20 30% 12%;
+    /* Deep coffee brown */
+    --food-chocolate: 15 35% 18%;
+    /* Milk chocolate */
+    --food-mahogany: 10 40% 22%;
+    /* Rich wood tone */
+
+    /* Sidebar (keeping consistent) */
     --sidebar-background: 60 9% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 41 100% 44%; /* Amber Primary */
+    --sidebar-primary: 38 95% 55%;
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 60 5% 96%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 41 100% 44%; /* Amber Primary */
-
-    /* Premium Yellow Diwali Theme Colors */
-    --diwali-cream: 54 100% 95%; /* #FFFBE6 */
-    --diwali-light: 50 100% 85%; /* #FFF3B3 */
-    --diwali-soft: 49 100% 83%; /* #FFEFA8 */
-    --diwali-bright: 51 100% 64%; /* #FFE148 */
-    --diwali-gold: 48 100% 48%; /* #F5C800 */
-    --diwali-amber: 47 100% 47%; /* #F2C200 */
-    --diwali-bronze: 39 100% 35%; /* #B07600 */
-    
-    /* Deep Neutrals */
-    --diwali-dark: 42 65% 8%; /* #1A1608 */
-    --diwali-charcoal: 42 100% 13%; /* #2A2100 */
-    --diwali-shadow: 42 65% 18%; /* #3B2E08 */
-    --diwali-muted: 42 85% 22%; /* #6D5605 */
-    
-    /* Soft Greys */
-    --diwali-text: 30 8% 27%; /* #45423C */
-    --diwali-subtle: 39 30% 41%; /* #8C7A4D */
+    --sidebar-ring: 38 95% 55%;
   }
 
   .dark {
@@ -121,7 +158,12 @@ All colors MUST be HSL.
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Playfair Display', Georgia, serif;
   }
 
@@ -140,20 +182,26 @@ All colors MUST be HSL.
 
 /* Premium Organic Design System Animations */
 @layer utilities {
+
   /* Sophisticated geometric particles animation */
   @keyframes geometricFloat {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
       opacity: 0.3;
     }
+
     25% {
       transform: translateY(-15px) translateX(8px) rotate(90deg) scale(1.1);
       opacity: 0.6;
     }
+
     50% {
       transform: translateY(-25px) translateX(-5px) rotate(180deg) scale(0.9);
       opacity: 0.8;
     }
+
     75% {
       transform: translateY(-10px) translateX(-12px) rotate(270deg) scale(1.05);
       opacity: 0.5;
@@ -165,10 +213,12 @@ All colors MUST be HSL.
       transform: rotate(0deg) translateX(30px) rotate(0deg) scale(1);
       opacity: 0.4;
     }
+
     50% {
       transform: rotate(180deg) translateX(40px) rotate(-180deg) scale(1.2);
       opacity: 0.7;
     }
+
     100% {
       transform: rotate(360deg) translateX(30px) rotate(-360deg) scale(1);
       opacity: 0.4;
@@ -176,21 +226,26 @@ All colors MUST be HSL.
   }
 
   @keyframes morphingShape {
-    0%, 100% {
+
+    0%,
+    100% {
       border-radius: 50%;
       transform: rotate(0deg) scale(1);
       opacity: 0.2;
     }
+
     25% {
       border-radius: 25% 75% 50% 25%;
       transform: rotate(90deg) scale(1.1);
       opacity: 0.4;
     }
+
     50% {
       border-radius: 75% 25% 75% 25%;
       transform: rotate(180deg) scale(0.9);
       opacity: 0.6;
     }
+
     75% {
       border-radius: 25% 50% 25% 75%;
       transform: rotate(270deg) scale(1.05);
@@ -212,14 +267,18 @@ All colors MUST be HSL.
 
   /* Legacy float animations for backward compatibility */
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px) translateX(0px) rotate(0deg);
       opacity: 0.4;
     }
+
     33% {
       transform: translateY(-20px) translateX(10px) rotate(120deg);
       opacity: 0.8;
     }
+
     66% {
       transform: translateY(10px) translateX(-10px) rotate(240deg);
       opacity: 0.6;
@@ -236,9 +295,12 @@ All colors MUST be HSL.
 
   /* Enhanced Diwali animations with improved colors and smoother transitions */
   @keyframes diwali-glow {
-    0%, 100% {
+
+    0%,
+    100% {
       box-shadow: 0 0 12px hsl(45 100% 60% / 0.7), 0 0 24px hsl(15 80% 65% / 0.5), 0 0 36px hsl(25 70% 55% / 0.4);
     }
+
     50% {
       box-shadow: 0 0 20px hsl(45 100% 60% / 1), 0 0 40px hsl(15 80% 65% / 0.8), 0 0 60px hsl(25 70% 55% / 0.6);
     }
@@ -249,21 +311,26 @@ All colors MUST be HSL.
   }
 
   @keyframes sparkle {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: scale(1) rotate(0deg);
       opacity: 0.8;
       filter: hue-rotate(0deg);
     }
+
     25% {
       transform: scale(1.3) rotate(90deg);
       opacity: 1;
       filter: hue-rotate(90deg);
     }
+
     50% {
       transform: scale(1.5) rotate(180deg);
       opacity: 0.9;
       filter: hue-rotate(180deg);
     }
+
     75% {
       transform: scale(1.2) rotate(270deg);
       opacity: 1;
@@ -280,10 +347,12 @@ All colors MUST be HSL.
       transform: scale(0) rotate(0deg);
       opacity: 0;
     }
+
     50% {
       transform: scale(1.8) rotate(180deg);
       opacity: 1;
     }
+
     100% {
       transform: scale(0) rotate(360deg);
       opacity: 0;
@@ -299,6 +368,7 @@ All colors MUST be HSL.
       transform: translateY(-100vh) rotate(0deg);
       opacity: 1;
     }
+
     100% {
       transform: translateY(100vh) rotate(360deg);
       opacity: 0;
@@ -315,6 +385,7 @@ All colors MUST be HSL.
       opacity: 0;
       transform: translateY(30px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -327,9 +398,12 @@ All colors MUST be HSL.
 
   /* Enhanced pulse glow effect with more vibrant colors */
   @keyframes pulseGlow {
-    0%, 100% {
+
+    0%,
+    100% {
       box-shadow: 0 0 8px rgba(255, 199, 0, 0.4), 0 0 15px rgba(255, 162, 0, 0.3);
     }
+
     50% {
       box-shadow: 0 0 25px rgba(255, 199, 0, 0.8), 0 0 40px rgba(255, 162, 0, 0.6), 0 0 60px rgba(255, 140, 0, 0.4);
     }
@@ -344,9 +418,11 @@ All colors MUST be HSL.
     0% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0% 50%;
     }
@@ -362,6 +438,7 @@ All colors MUST be HSL.
     0% {
       background-position: -200% 0;
     }
+
     100% {
       background-position: 200% 0;
     }
@@ -370,14 +447,15 @@ All colors MUST be HSL.
   /* Premium jewel sparkle animation */
   @keyframes jewelSparkle {
     0% {
-      box-shadow: 
+      box-shadow:
         0 6px 12px rgba(255, 215, 0, 0.5),
         0 0 20px rgba(255, 215, 0, 0.3),
         inset 0 3px 6px rgba(255, 255, 255, 0.8),
         inset 0 -2px 4px rgba(184, 134, 11, 0.3);
     }
+
     100% {
-      box-shadow: 
+      box-shadow:
         0 8px 16px rgba(255, 215, 0, 0.7),
         0 0 30px rgba(255, 215, 0, 0.5),
         inset 0 4px 8px rgba(255, 255, 255, 0.9),
@@ -391,18 +469,22 @@ All colors MUST be HSL.
       opacity: 0.8;
       transform: scale(1) rotate(0deg);
     }
+
     25% {
       opacity: 1;
       transform: scale(1.1) rotate(90deg);
     }
+
     50% {
       opacity: 0.9;
       transform: scale(0.95) rotate(180deg);
     }
+
     75% {
       opacity: 1;
       transform: scale(1.05) rotate(270deg);
     }
+
     100% {
       opacity: 0.8;
       transform: scale(1) rotate(360deg);
@@ -414,10 +496,12 @@ All colors MUST be HSL.
       background-position: -200% 0;
       filter: brightness(1) saturate(1);
     }
+
     50% {
       background-position: 200% 0;
       filter: brightness(1.2) saturate(1.3);
     }
+
     100% {
       background-position: -200% 0;
       filter: brightness(1) saturate(1);
@@ -428,6 +512,7 @@ All colors MUST be HSL.
     0% {
       transform: rotate(0deg);
     }
+
     100% {
       transform: rotate(360deg);
     }
@@ -436,25 +521,27 @@ All colors MUST be HSL.
   @keyframes screwGleam {
     0% {
       filter: brightness(1) saturate(1);
-      box-shadow: 
+      box-shadow:
         0 8px 16px rgba(0, 0, 0, 0.5),
         0 4px 8px rgba(0, 0, 0, 0.3),
         inset 0 4px 8px rgba(255, 255, 255, 0.4),
         inset 0 -4px 8px rgba(139, 105, 20, 0.6),
         0 0 20px rgba(255, 215, 0, 0.3);
     }
+
     50% {
       filter: brightness(1.4) saturate(1.5);
-      box-shadow: 
+      box-shadow:
         0 12px 24px rgba(0, 0, 0, 0.6),
         0 6px 12px rgba(0, 0, 0, 0.4),
         inset 0 6px 12px rgba(255, 255, 255, 0.7),
         inset 0 -6px 12px rgba(139, 105, 20, 0.8),
         0 0 40px rgba(255, 215, 0, 0.6);
     }
+
     100% {
       filter: brightness(1) saturate(1);
-      box-shadow: 
+      box-shadow:
         0 8px 16px rgba(0, 0, 0, 0.5),
         0 4px 8px rgba(0, 0, 0, 0.3),
         inset 0 4px 8px rgba(255, 255, 255, 0.4),
@@ -465,21 +552,23 @@ All colors MUST be HSL.
 
   @keyframes goldTextGlow {
     0% {
-      text-shadow: 
+      text-shadow:
         3px 3px 6px rgba(0, 0, 0, 0.9),
         0 0 15px rgba(255, 215, 0, 0.8),
         0 0 30px rgba(255, 215, 0, 0.5),
         0 0 45px rgba(255, 215, 0, 0.3);
     }
+
     50% {
-      text-shadow: 
+      text-shadow:
         3px 3px 6px rgba(0, 0, 0, 0.9),
         0 0 20px rgba(255, 215, 0, 1),
         0 0 40px rgba(255, 215, 0, 0.7),
         0 0 60px rgba(255, 215, 0, 0.5);
     }
+
     100% {
-      text-shadow: 
+      text-shadow:
         3px 3px 6px rgba(0, 0, 0, 0.9),
         0 0 15px rgba(255, 215, 0, 0.8),
         0 0 30px rgba(255, 215, 0, 0.5),
@@ -492,9 +581,11 @@ All colors MUST be HSL.
       background-position: -200% 0;
       opacity: 0.8;
     }
+
     50% {
       opacity: 1;
     }
+
     100% {
       background-position: 200% 0;
       opacity: 0.8;
@@ -507,18 +598,22 @@ All colors MUST be HSL.
       transform: translate(0, 0) scale(1);
       opacity: 0.8;
     }
+
     25% {
       transform: translate(5px, -3px) scale(1.1);
       opacity: 1;
     }
+
     50% {
       transform: translate(-3px, 2px) scale(0.9);
       opacity: 0.9;
     }
+
     75% {
       transform: translate(2px, -5px) scale(1.05);
       opacity: 1;
     }
+
     100% {
       transform: translate(0, 0) scale(1);
       opacity: 0.8;
@@ -530,14 +625,17 @@ All colors MUST be HSL.
       opacity: 0.7;
       transform: rotate(0deg) scale(1);
     }
+
     33% {
       opacity: 0.9;
       transform: rotate(120deg) scale(1.05);
     }
+
     66% {
       opacity: 0.8;
       transform: rotate(240deg) scale(0.95);
     }
+
     100% {
       opacity: 0.7;
       transform: rotate(360deg) scale(1);
@@ -549,10 +647,12 @@ All colors MUST be HSL.
       background-position: -200% 0;
       backdrop-filter: blur(25px) brightness(110%) saturate(120%);
     }
+
     50% {
       background-position: 200% 0;
       backdrop-filter: blur(30px) brightness(115%) saturate(130%);
     }
+
     100% {
       background-position: -200% 0;
       backdrop-filter: blur(25px) brightness(110%) saturate(120%);
@@ -563,12 +663,15 @@ All colors MUST be HSL.
     0% {
       transform: translateZ(10px) rotate(0deg);
     }
+
     12.5% {
       transform: translateZ(10px) rotate(45deg);
     }
+
     87.5% {
       transform: translateZ(10px) rotate(315deg);
     }
+
     100% {
       transform: translateZ(10px) rotate(360deg);
     }
@@ -577,25 +680,27 @@ All colors MUST be HSL.
   @keyframes luxuryScrewGleam {
     0% {
       filter: brightness(1) saturate(1) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-      box-shadow: 
+      box-shadow:
         0 12px 24px rgba(0, 0, 0, 0.4),
         0 6px 12px rgba(0, 0, 0, 0.25),
         inset 0 6px 12px rgba(255, 255, 255, 0.5),
         inset 0 -6px 12px rgba(139, 105, 20, 0.7),
         0 0 30px rgba(255, 215, 0, 0.4);
     }
+
     50% {
       filter: brightness(1.3) saturate(1.4) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
-      box-shadow: 
+      box-shadow:
         0 16px 32px rgba(0, 0, 0, 0.5),
         0 8px 16px rgba(0, 0, 0, 0.3),
         inset 0 8px 16px rgba(255, 255, 255, 0.7),
         inset 0 -8px 16px rgba(139, 105, 20, 0.9),
         0 0 50px rgba(255, 215, 0, 0.7);
     }
+
     100% {
       filter: brightness(1) saturate(1) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-      box-shadow: 
+      box-shadow:
         0 12px 24px rgba(0, 0, 0, 0.4),
         0 6px 12px rgba(0, 0, 0, 0.25),
         inset 0 6px 12px rgba(255, 255, 255, 0.5),
@@ -606,21 +711,23 @@ All colors MUST be HSL.
 
   @keyframes luxuryTextEtch {
     0% {
-      text-shadow: 
+      text-shadow:
         0 0 0 rgba(255, 215, 0, 0.8),
         0 2px 4px rgba(255, 215, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.5),
         0 0 20px rgba(255, 215, 0, 0.2);
     }
+
     50% {
-      text-shadow: 
+      text-shadow:
         0 0 0 rgba(255, 215, 0, 1),
         0 3px 6px rgba(255, 215, 0, 0.5),
         inset 0 2px 0 rgba(255, 255, 255, 0.7),
         0 0 30px rgba(255, 215, 0, 0.4);
     }
+
     100% {
-      text-shadow: 
+      text-shadow:
         0 0 0 rgba(255, 215, 0, 0.8),
         0 2px 4px rgba(255, 215, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.5),
@@ -648,18 +755,22 @@ All colors MUST be HSL.
       opacity: 0.8;
       transform: scale(1) rotate(0deg);
     }
+
     25% {
       opacity: 1;
       transform: scale(1.02) rotate(90deg);
     }
+
     50% {
       opacity: 0.9;
       transform: scale(0.98) rotate(180deg);
     }
+
     75% {
       opacity: 1;
       transform: scale(1.01) rotate(270deg);
     }
+
     100% {
       opacity: 0.8;
       transform: scale(1) rotate(360deg);
@@ -668,23 +779,25 @@ All colors MUST be HSL.
 
   @keyframes compactGlassGlow {
     0% {
-      box-shadow: 
+      box-shadow:
         0 12px 32px rgba(60, 36, 21, 0.3),
         0 6px 16px rgba(60, 36, 21, 0.15),
         inset 0 2px 4px rgba(255, 255, 255, 0.3),
         inset 0 -1px 2px rgba(212, 175, 55, 0.2),
         0 0 40px rgba(212, 175, 55, 0.15);
     }
+
     50% {
-      box-shadow: 
+      box-shadow:
         0 16px 40px rgba(60, 36, 21, 0.4),
         0 8px 20px rgba(60, 36, 21, 0.2),
         inset 0 3px 6px rgba(255, 255, 255, 0.4),
         inset 0 -2px 4px rgba(212, 175, 55, 0.3),
         0 0 60px rgba(212, 175, 55, 0.25);
     }
+
     100% {
-      box-shadow: 
+      box-shadow:
         0 12px 32px rgba(60, 36, 21, 0.3),
         0 6px 16px rgba(60, 36, 21, 0.15),
         inset 0 2px 4px rgba(255, 255, 255, 0.3),
@@ -696,25 +809,27 @@ All colors MUST be HSL.
   @keyframes cornerBracketShine {
     0% {
       filter: brightness(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-      box-shadow: 
+      box-shadow:
         0 4px 8px rgba(60, 36, 21, 0.3),
         0 2px 4px rgba(60, 36, 21, 0.2),
         inset 0 1px 2px rgba(255, 255, 255, 0.4),
         inset 0 -1px 2px rgba(139, 105, 20, 0.4),
         0 0 12px rgba(212, 175, 55, 0.3);
     }
+
     50% {
       filter: brightness(1.3) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
-      box-shadow: 
+      box-shadow:
         0 6px 12px rgba(60, 36, 21, 0.4),
         0 3px 6px rgba(60, 36, 21, 0.25),
         inset 0 2px 4px rgba(255, 255, 255, 0.6),
         inset 0 -2px 4px rgba(139, 105, 20, 0.6),
         0 0 20px rgba(212, 175, 55, 0.5);
     }
+
     100% {
       filter: brightness(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-      box-shadow: 
+      box-shadow:
         0 4px 8px rgba(60, 36, 21, 0.3),
         0 2px 4px rgba(60, 36, 21, 0.2),
         inset 0 1px 2px rgba(255, 255, 255, 0.4),
@@ -732,21 +847,23 @@ All colors MUST be HSL.
   /* REFINED COMPACT LUXURY CARD ANIMATIONS */
   @keyframes refinedGlassGlow {
     0% {
-      box-shadow: 
+      box-shadow:
         0 6px 24px rgba(114, 47, 55, 0.2),
         0 3px 12px rgba(114, 47, 55, 0.1),
         inset 0 1px 2px rgba(255, 255, 255, 0.4),
         0 0 20px rgba(201, 169, 97, 0.1);
     }
+
     50% {
-      box-shadow: 
+      box-shadow:
         0 8px 32px rgba(114, 47, 55, 0.25),
         0 4px 16px rgba(114, 47, 55, 0.125),
         inset 0 2px 4px rgba(255, 255, 255, 0.5),
         0 0 30px rgba(201, 169, 97, 0.15);
     }
+
     100% {
-      box-shadow: 
+      box-shadow:
         0 6px 24px rgba(114, 47, 55, 0.2),
         0 3px 12px rgba(114, 47, 55, 0.1),
         inset 0 1px 2px rgba(255, 255, 255, 0.4),
@@ -756,21 +873,23 @@ All colors MUST be HSL.
 
   @keyframes luxurySealGlow {
     0% {
-      box-shadow: 
+      box-shadow:
         0 2px 6px rgba(114, 47, 55, 0.3),
         0 1px 3px rgba(114, 47, 55, 0.2),
         inset 0 1px 2px rgba(255, 255, 255, 0.3),
         0 0 8px rgba(201, 169, 97, 0.2);
     }
+
     50% {
-      box-shadow: 
+      box-shadow:
         0 3px 8px rgba(114, 47, 55, 0.35),
         0 2px 4px rgba(114, 47, 55, 0.25),
         inset 0 2px 4px rgba(255, 255, 255, 0.4),
         0 0 12px rgba(201, 169, 97, 0.3);
     }
+
     100% {
-      box-shadow: 
+      box-shadow:
         0 2px 6px rgba(114, 47, 55, 0.3),
         0 1px 3px rgba(114, 47, 55, 0.2),
         inset 0 1px 2px rgba(255, 255, 255, 0.3),
@@ -786,13 +905,16 @@ All colors MUST be HSL.
   }
 
   @keyframes refinedHoverGlow {
-    0%, 100% {
-      box-shadow: 
+
+    0%,
+    100% {
+      box-shadow:
         0 8px 32px rgba(114, 47, 55, 0.25),
         0 0 40px rgba(201, 169, 97, 0.2);
     }
+
     50% {
-      box-shadow: 
+      box-shadow:
         0 12px 48px rgba(114, 47, 55, 0.3),
         0 0 60px rgba(201, 169, 97, 0.3);
     }
@@ -800,15 +922,15 @@ All colors MUST be HSL.
 
   /* Premium shadow utilities */
   .shadow-premium {
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 
-                0 4px 12px rgba(0, 0, 0, 0.05),
-                0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1),
+      0 4px 12px rgba(0, 0, 0, 0.05),
+      0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
   .shadow-3xl {
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15), 
-                0 10px 20px rgba(0, 0, 0, 0.1),
-                0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15),
+      0 10px 20px rgba(0, 0, 0, 0.1),
+      0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
   /* Enhanced Glass morphism with glossy effects */
@@ -816,7 +938,7 @@ All colors MUST be HSL.
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 
+    box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.4),
       inset 0 -1px 0 rgba(255, 255, 255, 0.1);
@@ -826,7 +948,7 @@ All colors MUST be HSL.
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 
+    box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.2),
       inset 0 -1px 0 rgba(255, 255, 255, 0.05);
@@ -834,13 +956,13 @@ All colors MUST be HSL.
 
   /* Glossy card effects */
   .glass-card {
-    background: linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.12) 0%, 
-      rgba(255, 255, 255, 0.06) 50%, 
-      rgba(255, 255, 255, 0.02) 100%);
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.06) 50%,
+        rgba(255, 255, 255, 0.02) 100%);
     backdrop-filter: blur(25px);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 
+    box-shadow:
       0 16px 40px rgba(0, 0, 0, 0.4),
       inset 0 2px 0 rgba(255, 255, 255, 0.3),
       inset 0 -2px 0 rgba(0, 0, 0, 0.1);
@@ -865,12 +987,12 @@ All colors MUST be HSL.
 
   /* Glossy button styles */
   .btn-glossy {
-    background: linear-gradient(135deg, 
-      hsl(45 95% 58%) 0%, 
-      hsl(45 85% 48%) 50%, 
-      hsl(45 75% 38%) 100%);
+    background: linear-gradient(135deg,
+        hsl(45 95% 58%) 0%,
+        hsl(45 85% 48%) 50%,
+        hsl(45 75% 38%) 100%);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 
+    box-shadow:
       0 8px 25px rgba(225, 162, 0, 0.4),
       inset 0 2px 0 rgba(255, 255, 255, 0.5),
       inset 0 -2px 0 rgba(0, 0, 0, 0.2);
@@ -895,7 +1017,7 @@ All colors MUST be HSL.
 
   .btn-glossy:hover {
     transform: translateY(-2px);
-    box-shadow: 
+    box-shadow:
       0 12px 35px rgba(225, 162, 0, 0.5),
       inset 0 2px 0 rgba(255, 255, 255, 0.6),
       inset 0 -2px 0 rgba(0, 0, 0, 0.3);
@@ -930,14 +1052,16 @@ All colors MUST be HSL.
   /* Gold gradient text legibility enhancement */
   .gradient-heading {
     text-shadow:
-      0 2px 8px rgba(120, 80, 0, 0.14),   /* very subtle diffuse brown */
-      0 0.5px 1.5px rgba(0,0,0,0.18);      /* faint black outline for crispness */
+      0 2px 8px rgba(120, 80, 0, 0.14),
+      /* very subtle diffuse brown */
+      0 0.5px 1.5px rgba(0, 0, 0, 0.18);
+    /* faint black outline for crispness */
   }
 
   /* ===================================================================
      SCRIBBLE UNDERLINE ANIMATIONS
      ================================================================= */
-  
+
   /* Scribble animation keyframes */
   @keyframes drawScribble {
     to {
@@ -950,6 +1074,7 @@ All colors MUST be HSL.
       opacity: 0;
       transform: translateY(10px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -998,12 +1123,19 @@ All colors MUST be HSL.
 
   /* WhatsApp Float Animations */
   @keyframes whatsappBounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
       transform: translateY(0) scale(1);
     }
+
     40% {
       transform: translateY(-8px) scale(1.05);
     }
+
     60% {
       transform: translateY(-4px) scale(1.02);
     }
@@ -1014,10 +1146,12 @@ All colors MUST be HSL.
       transform: scale(1);
       box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
     }
+
     70% {
       transform: scale(1.05);
       box-shadow: 0 0 0 15px rgba(34, 197, 94, 0);
     }
+
     100% {
       transform: scale(1);
       box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
@@ -1076,9 +1210,11 @@ All colors MUST be HSL.
     0% {
       filter: drop-shadow(0 0 8px rgba(225, 162, 0, 0.6));
     }
+
     50% {
       filter: drop-shadow(0 0 25px rgba(225, 162, 0, 0.9));
     }
+
     100% {
       filter: drop-shadow(0 0 8px rgba(225, 162, 0, 0.6));
     }
@@ -1210,21 +1346,25 @@ All colors MUST be HSL.
     0% {
       background-position: -200% 0;
     }
+
     100% {
       background-position: 200% 0;
     }
   }
 
   .showcase-shimmer {
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     background-size: 200% 100%;
     animation: shimmer 3s infinite;
   }
 
   @keyframes pulse-gold {
-    0%, 100% {
+
+    0%,
+    100% {
       box-shadow: 0 0 0 0 rgba(225, 162, 0, 0.7);
     }
+
     50% {
       box-shadow: 0 0 0 20px rgba(225, 162, 0, 0);
     }
@@ -1239,6 +1379,7 @@ All colors MUST be HSL.
       opacity: 0;
       transform: translateY(50px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -1256,11 +1397,9 @@ All colors MUST be HSL.
   }
 
   .showcase-image-overlay {
-    background: linear-gradient(
-      135deg,
-      rgba(225, 162, 0, 0.9) 0%,
-      rgba(184, 134, 11, 0.9) 100%
-    );
+    background: linear-gradient(135deg,
+        rgba(225, 162, 0, 0.9) 0%,
+        rgba(184, 134, 11, 0.9) 100%);
     opacity: 0;
     transition: opacity 0.5s ease;
   }
@@ -1292,12 +1431,10 @@ All colors MUST be HSL.
 
   /* Enhanced section backgrounds for consistent vibrancy */
   .section-enhanced-bg {
-    background: linear-gradient(
-      135deg,
-      rgba(225, 162, 0, 0.08) 0%,
-      rgba(184, 134, 11, 0.12) 50%,
-      rgba(70, 70, 70, 0.05) 100%
-    );
+    background: linear-gradient(135deg,
+        rgba(225, 162, 0, 0.08) 0%,
+        rgba(184, 134, 11, 0.12) 50%,
+        rgba(70, 70, 70, 0.05) 100%);
     position: relative;
     overflow: hidden;
   }
@@ -1309,29 +1446,27 @@ All colors MUST be HSL.
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
       radial-gradient(circle at 20% 20%, rgba(225, 162, 0, 0.06) 0%, transparent 50%),
       radial-gradient(circle at 80% 80%, rgba(184, 134, 11, 0.04) 0%, transparent 50%);
     opacity: 0.7;
     z-index: 0;
   }
 
-  .section-enhanced-bg > * {
+  .section-enhanced-bg>* {
     position: relative;
     z-index: 1;
   }
 
   /* Enhanced card styling for better visual appeal */
   .card-enhanced {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(249, 249, 247, 0.9) 50%,
-      rgba(245, 245, 245, 0.85) 100%
-    ) !important;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(249, 249, 247, 0.9) 50%,
+        rgba(245, 245, 245, 0.85) 100%) !important;
     backdrop-filter: blur(12px) brightness(105%);
     border: 2px solid rgba(225, 162, 0, 0.3) !important;
-    box-shadow: 
+    box-shadow:
       0 12px 40px rgba(0, 0, 0, 0.15),
       0 4px 16px rgba(225, 162, 0, 0.1),
       inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
@@ -1340,7 +1475,7 @@ All colors MUST be HSL.
 
   .card-enhanced:hover {
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 
+    box-shadow:
       0 20px 60px rgba(0, 0, 0, 0.2),
       0 8px 24px rgba(225, 162, 0, 0.2),
       inset 0 2px 0 rgba(255, 255, 255, 0.9);
@@ -1349,17 +1484,15 @@ All colors MUST be HSL.
 
   /* Enhanced text visibility and contrast */
   .text-enhanced-contrast {
-    background: linear-gradient(
-      135deg,
-      #2d1810 0%,
-      #4a2c1a 25%,
-      #6b3f28 50%,
-      #8b5a3c 75%,
-      #2d1810 100%
-    ) !important;
+    background: linear-gradient(135deg,
+        #2d1810 0%,
+        #4a2c1a 25%,
+        #6b3f28 50%,
+        #8b5a3c 75%,
+        #2d1810 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-    text-shadow: 
+    text-shadow:
       0 2px 4px rgba(255, 255, 255, 0.8),
       0 4px 8px rgba(0, 0, 0, 0.6),
       0 1px 0 rgba(255, 255, 255, 0.4) !important;
@@ -1369,7 +1502,7 @@ All colors MUST be HSL.
 
   .description-enhanced {
     color: #2c1810 !important;
-    text-shadow: 
+    text-shadow:
       0 1px 2px rgba(255, 255, 255, 0.9),
       0 2px 4px rgba(0, 0, 0, 0.5) !important;
     font-weight: 600 !important;
@@ -1392,14 +1525,12 @@ All colors MUST be HSL.
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(225, 162, 0, 0.3) 20%,
-      rgba(184, 134, 11, 0.6) 50%,
-      rgba(225, 162, 0, 0.3) 80%,
-      transparent 100%
-    );
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(225, 162, 0, 0.3) 20%,
+        rgba(184, 134, 11, 0.6) 50%,
+        rgba(225, 162, 0, 0.3) 80%,
+        transparent 100%);
     border-radius: 2px;
   }
 
@@ -1411,28 +1542,24 @@ All colors MUST be HSL.
     transform: translateX(-50%);
     width: 60px;
     height: 5px;
-    background: linear-gradient(
-      90deg,
-      #E1A200 0%,
-      #B8860B 50%,
-      #E1A200 100%
-    );
+    background: linear-gradient(90deg,
+        #E1A200 0%,
+        #B8860B 50%,
+        #E1A200 100%);
     border-radius: 3px;
     box-shadow: 0 2px 8px rgba(225, 162, 0, 0.4);
   }
 
   /* Enhanced menu and product card styling */
   .menu-card-enhanced {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 248, 220, 0.95) 0%,
-      rgba(255, 239, 213, 0.9) 30%,
-      rgba(245, 245, 220, 0.9) 70%,
-      rgba(250, 240, 190, 0.95) 100%
-    ) !important;
+    background: linear-gradient(135deg,
+        rgba(255, 248, 220, 0.95) 0%,
+        rgba(255, 239, 213, 0.9) 30%,
+        rgba(245, 245, 220, 0.9) 70%,
+        rgba(250, 240, 190, 0.95) 100%) !important;
     backdrop-filter: blur(15px) saturate(110%);
     border: 2px solid rgba(225, 162, 0, 0.4);
-    box-shadow: 
+    box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.12),
       0 4px 16px rgba(225, 162, 0, 0.08),
       inset 0 1px 0 rgba(255, 255, 255, 0.6);
@@ -1448,17 +1575,15 @@ All colors MUST be HSL.
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(
-      90deg,
-      #E1A200 0%,
-      #B8860B 50%,
-      #E1A200 100%
-    );
+    background: linear-gradient(90deg,
+        #E1A200 0%,
+        #B8860B 50%,
+        #E1A200 100%);
   }
 
   .menu-card-enhanced:hover {
     transform: translateY(-6px) scale(1.03);
-    box-shadow: 
+    box-shadow:
       0 16px 48px rgba(0, 0, 0, 0.18),
       0 8px 24px rgba(225, 162, 0, 0.15),
       inset 0 2px 0 rgba(255, 255, 255, 0.8);
@@ -1467,16 +1592,14 @@ All colors MUST be HSL.
 
   /* Enhanced price styling */
   .price-enhanced {
-    background: linear-gradient(
-      135deg,
-      #8B4513 0%,
-      #A0522D 30%,
-      #CD853F 70%,
-      #D2691E 100%
-    ) !important;
+    background: linear-gradient(135deg,
+        #8B4513 0%,
+        #A0522D 30%,
+        #CD853F 70%,
+        #D2691E 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-    text-shadow: 
+    text-shadow:
       0 2px 4px rgba(0, 0, 0, 0.8),
       0 1px 0 rgba(255, 255, 255, 0.6) !important;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
@@ -1488,7 +1611,7 @@ All colors MUST be HSL.
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
@@ -1532,12 +1655,12 @@ All colors MUST be HSL.
       justify-content: center;
       touch-action: manipulation;
     }
-    
+
     /* Prevent cart button and notification from being cut off */
     .mobile-cart-container {
       margin-right: 8px;
     }
-    
+
     /* Ensure proper spacing for mobile buttons */
     .mobile-button-group {
       gap: 12px;
@@ -1561,7 +1684,7 @@ All colors MUST be HSL.
       font-size: 11px;
       font-weight: 700;
       z-index: 30;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
   }
 
@@ -1571,53 +1694,50 @@ All colors MUST be HSL.
 
   /* Diwali Gradient Backgrounds */
   .diwali-gradient {
-    background: radial-gradient(
-      ellipse at center,
-      hsl(var(--diwali-cream)) 0%,
-      hsl(var(--diwali-light)) 25%,
-      hsl(var(--diwali-gold)) 70%,
-      hsl(var(--diwali-bronze)) 100%
-    );
+    background: radial-gradient(ellipse at center,
+        hsl(var(--diwali-cream)) 0%,
+        hsl(var(--diwali-light)) 25%,
+        hsl(var(--diwali-gold)) 70%,
+        hsl(var(--diwali-bronze)) 100%);
   }
 
   .diwali-molten-honey {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--diwali-cream)) 0%,
-      hsl(var(--diwali-soft)) 20%,
-      hsl(var(--diwali-bright)) 50%,
-      hsl(var(--diwali-amber)) 80%,
-      hsl(var(--diwali-bronze)) 100%
-    );
+    background: linear-gradient(135deg,
+        hsl(var(--diwali-cream)) 0%,
+        hsl(var(--diwali-soft)) 20%,
+        hsl(var(--diwali-bright)) 50%,
+        hsl(var(--diwali-amber)) 80%,
+        hsl(var(--diwali-bronze)) 100%);
   }
 
   /* Diwali Glass Morphism */
   .diwali-glass {
-    background: linear-gradient(
-      135deg,
-      hsla(var(--diwali-cream), 0.15) 0%,
-      hsla(var(--diwali-light), 0.08) 50%,
-      hsla(var(--diwali-amber), 0.05) 100%
-    );
+    background: linear-gradient(135deg,
+        hsla(var(--diwali-cream), 0.15) 0%,
+        hsla(var(--diwali-light), 0.08) 50%,
+        hsla(var(--diwali-amber), 0.05) 100%);
     backdrop-filter: blur(20px);
     border: 1px solid hsla(var(--diwali-bright), 0.3);
-    box-shadow: 
+    box-shadow:
       0 16px 40px hsla(var(--diwali-dark), 0.3),
       inset 0 2px 0 hsla(var(--diwali-cream), 0.4),
       inset 0 -2px 0 hsla(var(--diwali-bronze), 0.1);
   }
 
   .diwali-glass-card {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 248, 230, 0.95) 0%,    /* Warm cream with high opacity */
-      rgba(255, 241, 186, 0.9) 30%,    /* Light golden */
-      rgba(255, 235, 168, 0.85) 70%,   /* Soft yellow */
-      rgba(255, 230, 150, 0.8) 100%    /* Deeper golden */
-    );
+    background: linear-gradient(135deg,
+        rgba(255, 248, 230, 0.95) 0%,
+        /* Warm cream with high opacity */
+        rgba(255, 241, 186, 0.9) 30%,
+        /* Light golden */
+        rgba(255, 235, 168, 0.85) 70%,
+        /* Soft yellow */
+        rgba(255, 230, 150, 0.8) 100%
+        /* Deeper golden */
+      );
     backdrop-filter: blur(20px);
     border: 2px solid rgba(245, 200, 0, 0.4);
-    box-shadow: 
+    box-shadow:
       0 20px 50px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.8),
       inset 0 -1px 0 rgba(0, 0, 0, 0.1);
@@ -1632,26 +1752,22 @@ All colors MUST be HSL.
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(
-      90deg,
-      hsl(var(--diwali-cream)) 0%,
-      hsl(var(--diwali-bright)) 50%,
-      hsl(var(--diwali-amber)) 100%
-    );
+    background: linear-gradient(90deg,
+        hsl(var(--diwali-cream)) 0%,
+        hsl(var(--diwali-bright)) 50%,
+        hsl(var(--diwali-amber)) 100%);
   }
 
   /* Diwali Buttons */
   .diwali-btn {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--diwali-cream)) 0%,
-      hsl(var(--diwali-light)) 20%,
-      hsl(var(--diwali-gold)) 70%,
-      hsl(var(--diwali-bronze)) 100%
-    );
+    background: linear-gradient(135deg,
+        hsl(var(--diwali-cream)) 0%,
+        hsl(var(--diwali-light)) 20%,
+        hsl(var(--diwali-gold)) 70%,
+        hsl(var(--diwali-bronze)) 100%);
     color: hsl(var(--diwali-dark));
     border: 1px solid hsla(var(--diwali-cream), 0.5);
-    box-shadow: 
+    box-shadow:
       0 8px 25px hsla(var(--diwali-gold), 0.4),
       inset 0 2px 0 hsla(var(--diwali-cream), 0.6),
       inset 0 -2px 0 hsla(var(--diwali-bronze), 0.3);
@@ -1678,7 +1794,7 @@ All colors MUST be HSL.
 
   .diwali-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 
+    box-shadow:
       0 12px 35px hsla(var(--diwali-gold), 0.5),
       inset 0 2px 0 hsla(var(--diwali-cream), 0.8),
       inset 0 -2px 0 hsla(var(--diwali-bronze), 0.4);
@@ -1686,12 +1802,10 @@ All colors MUST be HSL.
 
   /* Diwali Badge */
   .diwali-badge {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--diwali-bright)) 0%,
-      hsl(var(--diwali-gold)) 50%,
-      hsl(var(--diwali-bronze)) 100%
-    );
+    background: linear-gradient(135deg,
+        hsl(var(--diwali-bright)) 0%,
+        hsl(var(--diwali-gold)) 50%,
+        hsl(var(--diwali-bronze)) 100%);
     color: hsl(var(--diwali-dark));
     text-shadow: 0 1px 2px hsla(var(--diwali-cream), 0.5);
     border: 1px solid hsla(var(--diwali-cream), 0.3);
@@ -1700,26 +1814,36 @@ All colors MUST be HSL.
 
   /* Diwali Text Gradient – strong embossed metallic gold */
   .diwali-text-gradient {
-    background: linear-gradient(
-      135deg,
-      #2d1810 0%,      /* Dark brown */
-      #4a2c1a 25%,     /* Medium brown */  
-      #6b3f28 45%,     /* Rich brown */
-      #8b5a3c 50%,     /* Warm brown highlight */
-      #6b3f28 55%,     /* Back to rich brown */
-      #4a2c1a 75%,     /* Medium brown */
-      #2d1810 100%     /* Dark brown */
-    );
+    background: linear-gradient(135deg,
+        #2d1810 0%,
+        /* Dark brown */
+        #4a2c1a 25%,
+        /* Medium brown */
+        #6b3f28 45%,
+        /* Rich brown */
+        #8b5a3c 50%,
+        /* Warm brown highlight */
+        #6b3f28 55%,
+        /* Back to rich brown */
+        #4a2c1a 75%,
+        /* Medium brown */
+        #2d1810 100%
+        /* Dark brown */
+      );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
     /* Strong contrast with better readability */
     text-shadow:
-      1px 1px 2px rgba(255, 255, 255, 0.8),     /* White outline for contrast */
-      -1px -1px 2px rgba(255, 255, 255, 0.8),   /* White outline */
-      2px 2px 4px rgba(0, 0, 0, 0.4),           /* Dark shadow for depth */
-      0 0 8px rgba(245, 200, 0, 0.3);           /* Golden glow */
+      1px 1px 2px rgba(255, 255, 255, 0.8),
+      /* White outline for contrast */
+      -1px -1px 2px rgba(255, 255, 255, 0.8),
+      /* White outline */
+      2px 2px 4px rgba(0, 0, 0, 0.4),
+      /* Dark shadow for depth */
+      0 0 8px rgba(245, 200, 0, 0.3);
+    /* Golden glow */
   }
 
   /* Diwali Animations */
@@ -1727,27 +1851,29 @@ All colors MUST be HSL.
     0% {
       background-position: -200% 0;
     }
+
     100% {
       background-position: 200% 0;
     }
   }
 
   .diwali-shimmer {
-    background: linear-gradient(
-      90deg,
-      hsla(var(--diwali-cream), 0.3),
-      hsla(var(--diwali-bright), 0.8),
-      hsla(var(--diwali-cream), 0.3)
-    );
+    background: linear-gradient(90deg,
+        hsla(var(--diwali-cream), 0.3),
+        hsla(var(--diwali-bright), 0.8),
+        hsla(var(--diwali-cream), 0.3));
     background-size: 200% 100%;
     animation: diwali-shimmer 3s infinite;
   }
 
   @keyframes diwali-particle-float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px) rotate(0deg);
       opacity: 0.3;
     }
+
     50% {
       transform: translateY(-20px) rotate(180deg);
       opacity: 0.8;
@@ -1760,13 +1886,13 @@ All colors MUST be HSL.
 
   /* Diwali Shadows */
   .diwali-shadow {
-    box-shadow: 
+    box-shadow:
       0 10px 30px hsla(var(--diwali-bronze), 0.3),
       0 4px 12px hsla(var(--diwali-gold), 0.2);
   }
 
   .diwali-shadow-lg {
-    box-shadow: 
+    box-shadow:
       0 20px 50px hsla(var(--diwali-bronze), 0.4),
       0 8px 20px hsla(var(--diwali-gold), 0.3),
       0 2px 8px hsla(var(--diwali-bright), 0.2);
@@ -1784,12 +1910,10 @@ All colors MUST be HSL.
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(
-      ellipse at center,
-      transparent 0%,
-      transparent 50%,
-      hsla(var(--diwali-dark), 0.3) 100%
-    );
+    background: radial-gradient(ellipse at center,
+        transparent 0%,
+        transparent 50%,
+        hsla(var(--diwali-dark), 0.3) 100%);
     pointer-events: none;
     z-index: 1;
   }
@@ -1810,10 +1934,12 @@ All colors MUST be HSL.
       transform: scale(1);
       box-shadow: 0 0 0 0 hsla(var(--diwali-gold), 0.7);
     }
+
     70% {
       transform: scale(1.05);
       box-shadow: 0 0 0 15px hsla(var(--diwali-gold), 0);
     }
+
     100% {
       transform: scale(1);
       box-shadow: 0 0 0 0 hsla(var(--diwali-gold), 0);
@@ -1841,7 +1967,7 @@ All colors MUST be HSL.
     font-weight: 700;
     z-index: 999;
     border: 2px solid white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     animation: bounce 2s infinite;
     min-width: 24px;
     min-height: 24px;
@@ -1853,7 +1979,7 @@ All colors MUST be HSL.
       position: relative;
       overflow: visible;
     }
-    
+
     .cart-notification-badge {
       top: -2px;
       right: -2px;
@@ -1875,24 +2001,21 @@ All colors MUST be HSL.
 
   /* Ultra Enhanced Text Visibility - Aggressive contrast improvements */
   .ultra-contrast-text {
-    background: linear-gradient(
-      135deg,
-      #8B4513 0%,
-      #A0522D 20%,
-      #CD853F 40%,
-      #DEB887 60%,
-      #F4A460 80%,
-      #D2691E 100%
-    ) !important;
+    background: linear-gradient(135deg,
+        #8B4513 0%,
+        #A0522D 20%,
+        #CD853F 40%,
+        #DEB887 60%,
+        #F4A460 80%,
+        #D2691E 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
-    text-shadow: 
+    text-shadow:
       0 2px 4px rgba(0, 0, 0, 0.8),
       0 4px 8px rgba(0, 0, 0, 0.6),
       0 1px 0 rgba(255, 255, 255, 0.5) !important;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8)) 
-            drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)) !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)) !important;
     font-weight: 800 !important;
     position: relative;
     z-index: 10;
@@ -1927,16 +2050,14 @@ All colors MUST be HSL.
     left: -8px;
     right: -8px;
     bottom: -4px;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(255, 255, 255, 0.6) 50%,
-      rgba(0, 0, 0, 0.3) 100%
-    );
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(0, 0, 0, 0.3) 100%);
     border-radius: 6px;
     z-index: -1;
     backdrop-filter: blur(4px);
-    box-shadow: 
+    box-shadow:
       0 2px 8px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.8);
   }
@@ -1944,7 +2065,7 @@ All colors MUST be HSL.
   /* Enhanced product description */
   .ultra-description-text {
     color: #2c1810 !important;
-    text-shadow: 
+    text-shadow:
       0 1px 2px rgba(255, 255, 255, 0.8),
       0 2px 4px rgba(0, 0, 0, 0.6) !important;
     font-weight: 600 !important;
@@ -1956,21 +2077,18 @@ All colors MUST be HSL.
 
   /* Enhanced price styling */
   .ultra-price-text {
-    background: linear-gradient(
-      135deg,
-      #8B4513 0%,
-      #A0522D 30%,
-      #CD853F 70%,
-      #D2691E 100%
-    ) !important;
+    background: linear-gradient(135deg,
+        #8B4513 0%,
+        #A0522D 30%,
+        #CD853F 70%,
+        #D2691E 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
-    text-shadow: 
+    text-shadow:
       0 2px 4px rgba(0, 0, 0, 0.9),
       0 4px 8px rgba(0, 0, 0, 0.7) !important;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9)) 
-            drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6)) !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9)) drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6)) !important;
     font-weight: 900 !important;
     font-size: 1.1em !important;
   }
@@ -1991,16 +2109,14 @@ All colors MUST be HSL.
 
   /* Card background adjustments for better contrast */
   .contrast-card-bg {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 248, 220, 0.95) 0%,
-      rgba(255, 239, 213, 0.9) 30%,
-      rgba(245, 245, 220, 0.85) 70%,
-      rgba(250, 240, 190, 0.9) 100%
-    ) !important;
+    background: linear-gradient(135deg,
+        rgba(255, 248, 220, 0.95) 0%,
+        rgba(255, 239, 213, 0.9) 30%,
+        rgba(245, 245, 220, 0.85) 70%,
+        rgba(250, 240, 190, 0.9) 100%) !important;
     backdrop-filter: blur(12px) !important;
     border: 2px solid rgba(139, 69, 19, 0.3) !important;
-    box-shadow: 
+    box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.2),
       0 4px 16px rgba(139, 69, 19, 0.1),
       inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
@@ -2009,41 +2125,42 @@ All colors MUST be HSL.
   /* Mobile specific enhancements */
   @media (max-width: 768px) {
     .ultra-contrast-text {
-      text-shadow: 
+      text-shadow:
         0 3px 6px rgba(0, 0, 0, 0.9),
         0 6px 12px rgba(0, 0, 0, 0.7),
         0 1px 0 rgba(255, 255, 255, 0.7) !important;
-      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.9)) 
-              drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5)) !important;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.9)) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5)) !important;
     }
 
     .ultra-description-text {
       background: rgba(255, 255, 255, 0.85);
-      text-shadow: 
+      text-shadow:
         0 2px 4px rgba(255, 255, 255, 0.9),
         0 3px 6px rgba(0, 0, 0, 0.8) !important;
     }
 
     .text-backdrop-strong::after {
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.9) 0%,
-        rgba(255, 255, 255, 0.8) 50%,
-        rgba(0, 0, 0, 0.4) 100%
-      );
+      background: linear-gradient(135deg,
+          rgba(255, 255, 255, 0.9) 0%,
+          rgba(255, 255, 255, 0.8) 50%,
+          rgba(0, 0, 0, 0.4) 100%);
     }
   }
 
   /* Premium Floating Background Elements */
   @keyframes etherealDrift {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translate(0, 0) rotate(0deg) scale(1);
       opacity: 0.3;
     }
+
     33% {
       transform: translate(20px, -15px) rotate(120deg) scale(1.1);
       opacity: 0.5;
     }
+
     66% {
       transform: translate(-10px, -25px) rotate(240deg) scale(0.9);
       opacity: 0.7;
@@ -2051,10 +2168,13 @@ All colors MUST be HSL.
   }
 
   @keyframes gentleFloat {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px) scale(1);
       opacity: 0.4;
     }
+
     50% {
       transform: translateY(-20px) scale(1.05);
       opacity: 0.6;
@@ -2065,6 +2185,7 @@ All colors MUST be HSL.
     0% {
       transform: rotate(0deg);
     }
+
     100% {
       transform: rotate(360deg);
     }
@@ -2088,23 +2209,21 @@ All colors MUST be HSL.
   }
 
   .text-shadow-premium {
-    text-shadow: 
-      0 4px 8px rgba(0, 0, 0, 0.8), 
-      0 8px 16px rgba(0, 0, 0, 0.6), 
+    text-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.8),
+      0 8px 16px rgba(0, 0, 0, 0.6),
       0 2px 0 rgba(255, 255, 255, 0.1);
   }
 
   /* Premium Glass Effects */
   .glass-sophisticated {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.05) 50%,
-      rgba(255, 255, 255, 0.02) 100%
-    );
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0.02) 100%);
     backdrop-filter: blur(20px) saturate(150%) brightness(110%);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 
+    box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.3),
       inset 0 -1px 0 rgba(0, 0, 0, 0.1);
@@ -2143,7 +2262,7 @@ All colors MUST be HSL.
     left: -40px;
     right: -40px;
     bottom: -40px;
-    background-image: 
+    background-image:
       radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
       radial-gradient(circle at 75% 75%, rgba(255, 215, 0, 0.02) 0%, transparent 50%),
       linear-gradient(45deg, rgba(255, 215, 0, 0.01) 25%, transparent 25%),
@@ -2175,7 +2294,7 @@ All colors MUST be HSL.
     -webkit-backdrop-filter: blur(24px) saturate(150%);
     border-radius: 16px;
     border: 1px solid rgba(255, 215, 0, 0.6);
-    box-shadow: 
+    box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.2),
       0 0 0 1px rgba(255, 215, 0, 0.1);
@@ -2193,7 +2312,7 @@ All colors MUST be HSL.
     height: 24px;
     border-radius: 50%;
     background: linear-gradient(145deg, #FFD700, #E6C200);
-    box-shadow: 
+    box-shadow:
       inset 0 0 4px rgba(0, 0, 0, 0.1),
       0 2px 6px rgba(0, 0, 0, 0.2),
       0 0 12px rgba(255, 215, 0, 0.3);
@@ -2214,9 +2333,19 @@ All colors MUST be HSL.
 
   /* Glint Animation */
   @keyframes glintSweep {
-    0% { transform: translateX(-100%) skewX(-25deg); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateX(100%) skewX(-25deg); opacity: 0; }
+    0% {
+      transform: translateX(-100%) skewX(-25deg);
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateX(100%) skewX(-25deg);
+      opacity: 0;
+    }
   }
 
   .royal-emblem:hover::after {
@@ -2302,6 +2431,7 @@ All colors MUST be HSL.
       transform: scale(0);
       opacity: 1;
     }
+
     100% {
       transform: scale(4);
       opacity: 0;
@@ -2335,6 +2465,7 @@ All colors MUST be HSL.
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -2352,25 +2483,25 @@ All colors MUST be HSL.
       padding: 0 16px;
       gap: 32px;
     }
-    
+
     .premium-hero-card {
       width: 320px;
       height: 200px;
     }
-    
+
     .premium-headline {
       font-size: 24px;
       margin-top: 24px;
     }
-    
+
     .premium-tagline {
       font-size: 14px;
     }
-    
+
     .luxury-filters {
       gap: 12px;
     }
-    
+
     .luxury-pill {
       flex: 1 1 calc(50% - 6px);
       max-width: calc(50% - 6px);
@@ -2382,7 +2513,7 @@ All colors MUST be HSL.
     .luxury-hero-section {
       padding: 0 16px;
     }
-    
+
     .luxury-pill {
       flex: 1 1 100%;
       max-width: 100%;
@@ -2391,12 +2522,13 @@ All colors MUST be HSL.
 
   /* Accessibility Enhancements */
   @media (prefers-reduced-motion: reduce) {
+
     .premium-hero-card,
     .luxury-pill,
     .royal-emblem {
       transition: none;
     }
-    
+
     .scroll-fade-in {
       animation: none;
     }
@@ -2414,14 +2546,14 @@ All colors MUST be HSL.
   height: 100vh;
   z-index: 999999;
   /* Beautiful golden gradient background */
-  background: linear-gradient(135deg, 
-    #FEF3C7 0%, 
-    #FDE68A 15%, 
-    #FBBF24 30%, 
-    #F59E0B 50%, 
-    #FBBF24 70%, 
-    #FDE68A 85%, 
-    #FEF3C7 100%);
+  background: linear-gradient(135deg,
+      #FEF3C7 0%,
+      #FDE68A 15%,
+      #FBBF24 30%,
+      #F59E0B 50%,
+      #FBBF24 70%,
+      #FDE68A 85%,
+      #FEF3C7 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2444,7 +2576,7 @@ All colors MUST be HSL.
 .otp-form-wrapper {
   background: rgba(255, 255, 255, 0.98);
   border-radius: 24px;
-  box-shadow: 
+  box-shadow:
     0 25px 50px -12px rgba(0, 0, 0, 0.25),
     0 0 0 1px rgba(251, 191, 36, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -2528,9 +2660,10 @@ html.otp-modal-open {
   .otp-modal-overlay {
     height: -webkit-fill-available;
   }
-  
+
   .otp-input-field {
-    font-size: 16px; /* Prevents zoom on iOS Safari */
+    font-size: 16px;
+    /* Prevents zoom on iOS Safari */
     -webkit-appearance: none;
     appearance: none;
     -webkit-text-size-adjust: none;
@@ -2550,7 +2683,7 @@ html.otp-modal-open {
   .otp-modal-overlay {
     padding: 16px;
   }
-  
+
   .otp-input-enhanced {
     font-size: 18px;
     padding: 14px 16px;
@@ -2564,7 +2697,7 @@ html.otp-modal-open {
     transition: none;
     transform: none;
   }
-  
+
   .otp-input-enhanced:focus {
     transform: none;
   }
@@ -2590,6 +2723,7 @@ html.otp-modal-open {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.5);
   }
+
   to {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
@@ -2602,18 +2736,29 @@ html.otp-modal-open {
 }
 
 @keyframes cart-bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
   }
-  10%, 30%, 50%, 70% {
+
+  10%,
+  30%,
+  50%,
+  70% {
     transform: scale(1.1) rotate(-5deg);
   }
-  20%, 40%, 60% {
+
+  20%,
+  40%,
+  60% {
     transform: scale(1.15) rotate(5deg);
   }
+
   80% {
     transform: scale(1.05);
   }
+
   90% {
     transform: scale(1.02);
   }
@@ -2628,10 +2773,12 @@ html.otp-modal-open {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.3);
     background-color: #ef4444;
   }
+
   100% {
     transform: scale(1);
   }
@@ -2647,21 +2794,25 @@ html.otp-modal-open {
     transform: translate(0, 0) rotate(0deg) scale(1);
     opacity: 1;
   }
+
   25% {
     /* Arc upward - item goes up first */
     transform: translate(25%, -30%) rotate(90deg) scale(1.1);
     opacity: 1;
   }
+
   50% {
     /* Peak of arc */
     transform: translate(50%, -40%) rotate(180deg) scale(1);
     opacity: 0.9;
   }
+
   75% {
     /* Descending - item falls into cart */
     transform: translate(75%, -20%) rotate(270deg) scale(0.7);
     opacity: 0.6;
   }
+
   100% {
     /* Landing in cart */
     transform: translate(100%, 0) rotate(360deg) scale(0.3);
@@ -2675,31 +2826,37 @@ html.otp-modal-open {
     transform: translate(0, 0) rotate(0deg) scale(1);
     opacity: 1;
   }
+
   20% {
     /* Initial throw - goes up sharply */
     transform: translate(15%, -50%) rotate(90deg) scale(1.15);
     opacity: 1;
   }
+
   40% {
     /* High arc peak */
     transform: translate(40%, -60%) rotate(180deg) scale(1.05);
     opacity: 1;
   }
+
   60% {
     /* Descending rapidly */
     transform: translate(65%, -35%) rotate(270deg) scale(0.8);
     opacity: 0.8;
   }
+
   80% {
     /* Near landing */
     transform: translate(85%, -10%) rotate(330deg) scale(0.5);
     opacity: 0.5;
   }
+
   90% {
     /* Bounce slightly */
     transform: translate(95%, -5%) rotate(350deg) scale(0.4);
     opacity: 0.3;
   }
+
   100% {
     /* Final rest in cart */
     transform: translate(100%, 0) rotate(360deg) scale(0.3);
@@ -2709,6 +2866,7 @@ html.otp-modal-open {
 
 /* Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
   .cart-fly-animation,
   .cart-bounce,
   .cart-badge-pulse,
@@ -2716,4 +2874,26 @@ html.otp-modal-open {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* Loading Screen Animations */
+@keyframes bounce-slow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* Transition duration utility */
+.duration-800 {
+  transition-duration: 800ms;
 }

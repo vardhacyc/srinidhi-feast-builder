@@ -1,181 +1,107 @@
-
 import { Star, Quote } from 'lucide-react';
-import ScribbleUnderline from '@/components/ui/ScribbleUnderline';
 
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Rajesh Kumar",
-      event: "Wedding Reception",
+      name: 'Ramesh Kumar',
+      event: 'Wedding Reception',
+      image: '/a3_demo.jpg',
       rating: 5,
-      text: "Sri Nidhi Catering made our wedding reception absolutely perfect! The food was delicious and the service was impeccable. All our guests couldn't stop praising the authentic South Indian flavors.",
-      location: "Coimbatore"
+      comment: 'Sri Nidhi Catering made our wedding reception absolutely memorable. The food was authentic, service was impeccable.'
     },
     {
-      name: "Priya Mahesh",
-      event: "Corporate Event",
+      name: 'Priya Venkatesh',
+      event: 'Corporate Event',
+      image: '/a2.jpg',
       rating: 5,
-      text: "We've been using Sri Nidhi Catering for all our corporate events for the past 2 years. Their consistency in quality and timely service has never disappointed us. Highly recommended!",
-      location: "Coimbatore"
+      comment: 'Professional service from start to finish. They handled our annual day with 500+ guests effortlessly.'
     },
     {
-      name: "Venkat Subramanian",
-      event: "House Warming",
+      name: 'Suresh Narayanan',
+      event: 'House Warming',
+      image: '/a4_outdoor.jpg',
       rating: 5,
-      text: "The traditional feast they prepared for our house warming was exceptional. Every dish was prepared with care and tasted just like home-cooked food. The pricing was very reasonable too.",
-      location: "Coimbatore"
+      comment: 'The traditional breakfast spread was exactly what we wanted for our griha pravesham. Fresh and delicious!'
     },
     {
-      name: "Lakshmi Narayan",
-      event: "Anniversary Celebration",
+      name: 'Lakshmi Devi',
+      event: 'Birthday Party',
+      image: '/a1_award.jpg',
       rating: 5,
-      text: "From menu planning to execution, everything was handled professionally. The team was courteous and the food quality was outstanding. Will definitely book them again for future events.",
-      location: "Coimbatore"
+      comment: 'The live dosa counter was a hit! Everyone loved the variety and quality of food.'
     }
   ];
 
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, index) => (
-      <Star
-        key={index}
-        className={`h-5 w-5 ${
-          index < rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
-        }`}
-      />
-    ));
-  };
-
   return (
-    <section className="py-24 bg-bg-neutral">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8">
-            What Our{' '}
-            <span className="relative inline-block">
-              <ScribbleUnderline variant="smooth" delay={1.8} color="#B8860B">
-                <span className="text-primary">Clients Say</span>
-              </ScribbleUnderline>
-              {/* Hand-drawn yellow underline effect */}
-              <div className="absolute -bottom-2 left-0 w-full h-4 bg-accent opacity-60 transform -rotate-1 rounded-lg"></div>
+    <section id="testimonials" className="relative py-24 overflow-hidden bg-black">
+      <div className="container mx-auto px-4 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#C9A227]"></div>
+            <span className="text-sm tracking-[0.3em] uppercase" style={{ color: '#C9A227' }}>
+              Testimonials
             </span>
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#C9A227]"></div>
+          </div>
+
+          <h2
+            className="text-3xl md:text-4xl lg:text-5xl font-light text-white mb-6"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            Client{' '}
+            <span className="italic" style={{ color: '#C9A227' }}>Love</span>
           </h2>
-          <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
-            Don't just take our word for it - hear from our satisfied customers
-          </p>
         </div>
 
-        {/* Happy Customers Gallery */}
-        <div className="mb-20 bg-white rounded-3xl p-12 shadow-xl border-2 border-green/20">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-black text-gray-900 mb-4">
-              Happy <span className="text-green">Moments</span>
-            </h3>
-            <p className="text-lg text-gray-700">Capturing joy at every celebration</p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
-              <img 
-                src="/a2.jpg" 
-                alt="Happy Wedding Guests - Sri Nidhi Catering"
-                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h4 className="font-bold text-lg">Wedding Celebrations</h4>
-                <p className="text-sm opacity-90">Creating unforgettable moments</p>
-              </div>
-            </div>
-            
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
-              <img 
-                src="/a3_demo.jpg" 
-                alt="Corporate Event Success - Sri Nidhi Catering"
-                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h4 className="font-bold text-lg">Corporate Events</h4>
-                <p className="text-sm opacity-90">Professional excellence</p>
-              </div>
-            </div>
-            
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
-              <img 
-                src="/a4_outdoor.jpg" 
-                alt="Outdoor Celebration - Sri Nidhi Catering"
-                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h4 className="font-bold text-lg">Outdoor Events</h4>
-                <p className="text-sm opacity-90">Any venue, any occasion</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+        {/* Testimonials Grid */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <div 
+            <div
               key={index}
-              className="bg-white rounded-3xl p-10 shadow-2xl hover:shadow-3xl transition-all duration-300 relative border-2 border-primary/20 hover:border-primary/40 hover:-translate-y-2"
+              className="relative p-8 rounded-2xl transition-all duration-300 hover:border-[#C9A227]/50 group"
+              style={{
+                background: 'rgba(255,255,255,0.02)',
+                border: '1px solid rgba(255,255,255,0.1)'
+              }}
             >
-              <div className="absolute top-6 right-6 text-accent/30">
-                <Quote className="h-16 w-16" />
+              {/* Quote icon */}
+              <Quote
+                className="absolute top-8 right-8 w-10 h-10 opacity-10"
+                style={{ color: '#C9A227' }}
+              />
+
+              {/* Rating */}
+              <div className="flex gap-1 mb-6">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-[#C9A227]" style={{ color: '#C9A227' }} />
+                ))}
               </div>
-              
-              <div className="flex items-center mb-6">
-                {renderStars(testimonial.rating)}
-              </div>
-              
-              <p className="text-gray-700 text-xl mb-8 leading-relaxed font-medium">
-                "{testimonial.text}"
+
+              {/* Comment */}
+              <p className="text-white/70 leading-relaxed mb-8 text-lg font-light">
+                "{testimonial.comment}"
               </p>
-              
-              <div className="flex items-center justify-between">
+
+              {/* Author */}
+              <div className="flex items-center gap-4">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="w-14 h-14 rounded-full object-cover border-2"
+                  style={{ borderColor: 'rgba(201, 162, 39, 0.3)' }}
+                />
                 <div>
-                  <h4 className="font-black text-gray-900 text-xl mb-1">{testimonial.name}</h4>
-                  <p className="text-primary font-black text-lg">{testimonial.event}</p>
-                  <p className="text-gray-600 text-lg font-medium">{testimonial.location}</p>
-                </div>
-                <div className="bg-gradient-to-br from-primary to-accent rounded-full p-2 shadow-xl">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-primary font-black text-2xl shadow-lg">
-                    {testimonial.name.charAt(0)}
-                  </div>
+                  <h4 className="text-white font-medium">
+                    {testimonial.name}
+                  </h4>
+                  <p className="text-sm" style={{ color: '#C9A227' }}>
+                    {testimonial.event}
+                  </p>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Call to action with vibrant styling */}
-        <div className="text-center mt-20">
-          <div className="bg-gradient-to-r from-primary via-accent to-green rounded-3xl p-12 text-white max-w-4xl mx-auto shadow-2xl">
-            <h3 className="text-4xl font-black mb-6">Ready to Create Your Own Success Story?</h3>
-            <p className="text-xl mb-8 opacity-90 font-medium leading-relaxed">
-              Join hundreds of satisfied customers who trust us for their special occasions
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button 
-                onClick={() => {
-                  const element = document.querySelector('#contact');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="bg-white text-primary px-10 py-4 rounded-xl font-black text-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105 shadow-xl"
-              >
-                Book Your Event
-              </button>
-              <a 
-                href="https://wa.me/918760101010"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-4 border-white text-white px-10 py-4 rounded-xl font-black text-lg hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105"
-              >
-                Chat on WhatsApp
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
