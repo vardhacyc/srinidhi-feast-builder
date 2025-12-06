@@ -8,6 +8,7 @@ import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import Index from "./pages/Index";
 import DiwaliIndex from "./pages/DiwaliIndex";
 import Xmas from "./pages/Xmas";
+import MenuBuilder from "./pages/MenuBuilder";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
 import MasterAdminDashboard from "./pages/MasterAdminDashboard";
@@ -28,6 +29,7 @@ const AppContent = () => {
         <Route path="/diwali" element={<DiwaliIndex />} />
         <Route path="/xmas" element={<Xmas />} />
         <Route path="/catering" element={<Index />} />
+        <Route path="/menu-builder" element={<MenuBuilder />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/master-admin-login" element={<MasterAdminLogin />} />
@@ -38,7 +40,7 @@ const AppContent = () => {
       </Routes>
       {/* Floating WhatsApp Button - Hidden on admin pages and custom pages with their own buttons */}
       {!isAdminPage && !location.pathname.startsWith('/xmas') && (
-        <WhatsAppFloat 
+        <WhatsAppFloat
           phoneNumber="918760101010"
           message="Hi! I'm interested in your Diwali sweets. Could you please provide more information?"
         />

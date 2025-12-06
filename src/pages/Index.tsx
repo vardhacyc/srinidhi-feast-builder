@@ -6,8 +6,6 @@ import ImageShowcase from '../components/ImageShowcase';
 import CelebrityShowcase from '../components/CelebrityShowcase';
 import About from '../components/About';
 import Services from '../components/Services';
-import Menu from '../components/Menu';
-import MenuCalculator from '../components/MenuCalculator';
 import Gallery from '../components/Gallery';
 import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
@@ -33,8 +31,6 @@ const Index = () => {
         <CelebrityShowcase />
         <About />
         <Services />
-        <Menu />
-        <MenuCalculator />
         <Gallery />
         <Testimonials />
         <Contact />

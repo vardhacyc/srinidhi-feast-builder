@@ -1,5 +1,6 @@
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Utensils } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const scrollToSection = (href: string) => {
@@ -104,20 +105,21 @@ const Hero = () => {
             <span>Book Your Event</span>
             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <Button
-            onClick={() => scrollToSection('#services')}
-            variant="outline"
-            size="lg"
-            className="group px-8 py-6 text-sm md:text-base font-medium tracking-wide transition-all duration-500 hover:bg-white/10"
-            style={{
-              background: 'transparent',
-              border: '1px solid rgba(255,255,255,0.3)',
-              color: 'white',
-            }}
-          >
-            <Play className="mr-2 w-4 h-4" />
-            <span>Know More</span>
-          </Button>
+          <Link to="/menu-builder">
+            <Button
+              variant="outline"
+              size="lg"
+              className="group px-8 py-6 text-sm md:text-base font-medium tracking-wide transition-all duration-500 hover:bg-white/10"
+              style={{
+                background: 'transparent',
+                border: '1px solid rgba(255,255,255,0.3)',
+                color: 'white',
+              }}
+            >
+              <Utensils className="mr-2 w-4 h-4" />
+              <span>Build Your Menu</span>
+            </Button>
+          </Link>
         </div>
 
         {/* Stats Row - compact */}

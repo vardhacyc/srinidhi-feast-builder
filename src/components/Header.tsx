@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,8 +35,8 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? 'bg-black/95 backdrop-blur-xl border-b border-white/10'
-          : 'bg-transparent'
+        ? 'bg-black/95 backdrop-blur-xl border-b border-white/10'
+        : 'bg-transparent'
         }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
@@ -68,7 +69,7 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <button
                 key={link.name}
@@ -78,6 +79,17 @@ const Header = () => {
                 {link.name}
               </button>
             ))}
+            <Link
+              to="/menu-builder"
+              className="text-sm font-medium tracking-wide px-4 py-2 rounded-full transition-all duration-300 hover:scale-105"
+              style={{
+                background: 'rgba(201, 162, 39, 0.15)',
+                color: '#C9A227',
+                border: '1px solid rgba(201, 162, 39, 0.3)'
+              }}
+            >
+              Build Menu
+            </Link>
           </nav>
 
           {/* CTA + Phone */}
@@ -124,6 +136,14 @@ const Header = () => {
                     {link.name}
                   </button>
                 ))}
+                <Link
+                  to="/menu-builder"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-left py-3 font-medium transition-colors border-b border-white/5"
+                  style={{ color: '#C9A227' }}
+                >
+                  Build Your Menu →
+                </Link>
                 <Button
                   onClick={() => scrollToSection('#contact')}
                   className="mt-4 py-6 font-medium tracking-wide border-0"
