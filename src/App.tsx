@@ -36,6 +36,7 @@ const AppContent = () => {
         <Route path="/master-admin-login" element={<MasterAdminLogin />} />
         <Route path="/master-admin" element={<MasterAdminDashboard />} />
         <Route path="/whatsapp-orders" element={<WhatsAppOrdersDashboard />} />
+        <Route path="/quotation" element={<Quotation />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
