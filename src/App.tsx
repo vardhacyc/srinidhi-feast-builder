@@ -15,6 +15,7 @@ import MasterAdminDashboard from "./pages/MasterAdminDashboard";
 import MasterAdminLogin from "./pages/MasterAdminLogin";
 import WhatsAppOrdersDashboard from "./pages/WhatsAppOrdersDashboard";
 import Quotation from "./pages/Quotation";
+import LunchPackages from "./pages/LunchPackages";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -37,6 +38,7 @@ const AppContent = () => {
         <Route path="/master-admin" element={<MasterAdminDashboard />} />
         <Route path="/whatsapp-orders" element={<WhatsAppOrdersDashboard />} />
         <Route path="/quotation" element={<Quotation />} />
+        <Route path="/lunch-packages" element={<LunchPackages />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
