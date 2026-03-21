@@ -14,6 +14,7 @@ import AdminLogin from "./pages/AdminLogin";
 import MasterAdminDashboard from "./pages/MasterAdminDashboard";
 import MasterAdminLogin from "./pages/MasterAdminLogin";
 import WhatsAppOrdersDashboard from "./pages/WhatsAppOrdersDashboard";
+import Quotation from "./pages/Quotation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
