@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Download, Star, ChefHat, Sparkles, UtensilsCrossed } from 'lucide-react';
+import { ArrowLeft, Download, Star, ChefHat, Sparkles, UtensilsCrossed, Leaf, Drumstick } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { LUNCH_PACKAGES, ADD_ONS, SERVICE_CHARGES, type LunchPackage } from '@/data/lunchPackages';
+import {
+  LUNCH_PACKAGES, NONVEG_PACKAGES, ADD_ONS, SERVICE_CHARGES, NONVEG_SERVICE_CHARGES,
+  type LunchPackage,
+} from '@/data/lunchPackages';
 import { generateLunchMenuPDF } from '@/utils/generateLunchMenuPDF';
 import { useToast } from '@/hooks/use-toast';
 
@@ -12,7 +15,7 @@ const tierColors: Record<string, { border: string; glow: string; badge: string }
   'Grand Feast': { border: 'rgba(201, 122, 25, 0.6)', glow: 'rgba(201, 122, 25, 0.1)', badge: '#C97A19' },
 };
 
-const PackageCard = ({ pkg, index }: { pkg: LunchPackage; index: number }) => {
+const PackageCard = ({ pkg, index, accentColor }: { pkg: LunchPackage; index: number; accentColor: string }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -28,6 +31,7 @@ const PackageCard = ({ pkg, index }: { pkg: LunchPackage; index: number }) => {
 
   const tier = pkg.highlight ? tierColors[pkg.highlight] : null;
   const displayItems = isExpanded ? pkg.items : pkg.items.slice(0, 6);
+  const hasDualPrice = !!pkg.priceAlt;
 
   return (
     <div
@@ -42,12 +46,10 @@ const PackageCard = ({ pkg, index }: { pkg: LunchPackage; index: number }) => {
       }}
       onClick={() => setIsExpanded(!isExpanded)}
     >
-      {/* Hover glow effect */}
+      {/* Hover glow */}
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse at center, rgba(201, 162, 39, 0.06) 0%, transparent 70%)',
-        }}
+        style={{ background: `radial-gradient(ellipse at center, ${accentColor}10 0%, transparent 70%)` }}
       />
 
       {/* Highlight badge */}
@@ -63,9 +65,9 @@ const PackageCard = ({ pkg, index }: { pkg: LunchPackage; index: number }) => {
 
       <div className="p-6">
         {/* Header */}
-        <div className="flex items-end justify-between mb-5">
+        <div className="flex items-start justify-between mb-5">
           <div>
-            <p className="text-[10px] tracking-[0.2em] uppercase mb-1" style={{ color: '#C9A227' }}>
+            <p className="text-[10px] tracking-[0.2em] uppercase mb-1" style={{ color: accentColor }}>
               Package {index + 1}
             </p>
             <h3
@@ -76,15 +78,34 @@ const PackageCard = ({ pkg, index }: { pkg: LunchPackage; index: number }) => {
             </h3>
           </div>
           <div className="text-right">
-            <span className="text-3xl font-light" style={{ color: '#C9A227', fontFamily: "'Playfair Display', serif" }}>
-              ₹{pkg.price}
-            </span>
-            <p className="text-[10px] text-white/30 tracking-wide">per plate</p>
+            {hasDualPrice ? (
+              <>
+                <div className="mb-1">
+                  <span className="text-2xl font-light" style={{ color: accentColor, fontFamily: "'Playfair Display', serif" }}>
+                    ₹{pkg.price}
+                  </span>
+                  <p className="text-[9px] text-white/40">{pkg.priceLabel}</p>
+                </div>
+                <div>
+                  <span className="text-2xl font-light" style={{ color: accentColor, fontFamily: "'Playfair Display', serif" }}>
+                    ₹{pkg.priceAlt}
+                  </span>
+                  <p className="text-[9px] text-white/40">{pkg.priceAltLabel}</p>
+                </div>
+              </>
+            ) : (
+              <>
+                <span className="text-3xl font-light" style={{ color: accentColor, fontFamily: "'Playfair Display', serif" }}>
+                  ₹{pkg.price}
+                </span>
+                <p className="text-[10px] text-white/30 tracking-wide">per plate</p>
+              </>
+            )}
           </div>
         </div>
 
         {/* Divider */}
-        <div className="h-px mb-4" style={{ background: 'linear-gradient(to right, rgba(201,162,39,0.4), rgba(201,162,39,0.05))' }} />
+        <div className="h-px mb-4" style={{ background: `linear-gradient(to right, ${accentColor}66, ${accentColor}0D)` }} />
 
         {/* Items grid */}
         <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
@@ -94,10 +115,7 @@ const PackageCard = ({ pkg, index }: { pkg: LunchPackage; index: number }) => {
               className="flex items-center gap-2 py-1 transition-all duration-300"
               style={{ opacity: isVisible ? 1 : 0, transitionDelay: `${(index * 80) + (i * 30)}ms` }}
             >
-              <span
-                className="w-1 h-1 rounded-full flex-shrink-0"
-                style={{ background: '#C9A227' }}
-              />
+              <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: accentColor }} />
               <span className="text-white/70 text-[13px] font-light leading-tight">{item.name}</span>
             </div>
           ))}
@@ -106,7 +124,7 @@ const PackageCard = ({ pkg, index }: { pkg: LunchPackage; index: number }) => {
         {/* Expand indicator */}
         {pkg.items.length > 6 && (
           <div className="mt-3 text-center">
-            <span className="text-[11px] tracking-wide" style={{ color: '#C9A227' }}>
+            <span className="text-[11px] tracking-wide" style={{ color: accentColor }}>
               {isExpanded ? '— Show less —' : `+ ${pkg.items.length - 6} more items`}
             </span>
           </div>
@@ -116,15 +134,18 @@ const PackageCard = ({ pkg, index }: { pkg: LunchPackage; index: number }) => {
       {/* Bottom accent */}
       <div
         className="h-0.5 w-0 group-hover:w-full transition-all duration-700"
-        style={{ background: 'linear-gradient(to right, #C9A227, rgba(180, 90, 40, 0.6))' }}
+        style={{ background: `linear-gradient(to right, ${accentColor}, ${accentColor}66)` }}
       />
     </div>
   );
 };
 
+type TabType = 'veg' | 'nonveg';
+
 const LunchPackages = () => {
   const { toast } = useToast();
   const [headerVisible, setHeaderVisible] = useState(false);
+  const [activeTab, setActiveTab] = useState<TabType>('veg');
 
   useEffect(() => {
     const timer = setTimeout(() => setHeaderVisible(true), 100);
@@ -133,8 +154,12 @@ const LunchPackages = () => {
 
   const handleDownloadPDF = () => {
     generateLunchMenuPDF();
-    toast({ title: 'Menu PDF downloaded!' });
+    toast({ title: 'Complete menu PDF downloaded!' });
   };
+
+  const packages = activeTab === 'veg' ? LUNCH_PACKAGES : NONVEG_PACKAGES;
+  const serviceCharges = activeTab === 'veg' ? SERVICE_CHARGES : NONVEG_SERVICE_CHARGES;
+  const accentColor = activeTab === 'veg' ? '#C9A227' : '#D4603A';
 
   return (
     <div className="min-h-screen" style={{ background: '#0A0A0A' }}>
@@ -149,7 +174,7 @@ const LunchPackages = () => {
             onClick={handleDownloadPDF}
             size="sm"
             className="border-0 text-sm font-light tracking-wide"
-            style={{ background: '#C9A227', color: '#0A0A0A' }}
+            style={{ background: accentColor, color: '#0A0A0A' }}
           >
             <Download className="w-3.5 h-3.5 mr-1.5" />
             Download PDF
@@ -158,16 +183,15 @@ const LunchPackages = () => {
       </div>
 
       {/* Hero Header */}
-      <section className="relative py-20 overflow-hidden">
-        {/* Ambient glow */}
+      <section className="relative py-16 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div
-            className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-[120px] opacity-20"
-            style={{ background: 'radial-gradient(circle, hsl(38, 95%, 55%), transparent)' }}
+            className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-[120px] opacity-20 transition-colors duration-700"
+            style={{ background: `radial-gradient(circle, ${accentColor}, transparent)` }}
           />
           <div
-            className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full blur-[100px] opacity-10"
-            style={{ background: 'radial-gradient(circle, hsl(15, 60%, 50%), transparent)' }}
+            className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full blur-[100px] opacity-10 transition-colors duration-700"
+            style={{ background: `radial-gradient(circle, ${activeTab === 'veg' ? 'hsl(15,60%,50%)' : 'hsl(38,95%,55%)'}, transparent)` }}
           />
         </div>
 
@@ -176,24 +200,54 @@ const LunchPackages = () => {
           style={{ opacity: headerVisible ? 1 : 0, transform: headerVisible ? 'translateY(0)' : 'translateY(30px)' }}
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Sparkles className="w-4 h-4" style={{ color: '#C9A227' }} />
-            <span className="text-[11px] tracking-[0.3em] uppercase" style={{ color: '#C9A227' }}>
-              Traditional South Indian
+            <Sparkles className="w-4 h-4" style={{ color: accentColor }} />
+            <span className="text-[11px] tracking-[0.3em] uppercase transition-colors duration-500" style={{ color: accentColor }}>
+              {activeTab === 'veg' ? 'Traditional South Indian' : 'South Indian Non-Veg'}
             </span>
-            <Sparkles className="w-4 h-4" style={{ color: '#C9A227' }} />
+            <Sparkles className="w-4 h-4" style={{ color: accentColor }} />
           </div>
 
           <h1
             className="text-4xl md:text-6xl font-light text-white mb-4"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            Lunch{' '}
-            <span className="italic" style={{ color: '#C9A227' }}>Packages</span>
+            {activeTab === 'veg' ? 'Lunch' : 'Non-Veg'}{' '}
+            <span className="italic transition-colors duration-500" style={{ color: accentColor }}>
+              {activeTab === 'veg' ? 'Packages' : 'Meals'}
+            </span>
           </h1>
 
-          <p className="text-white/40 text-sm md:text-base font-light max-w-lg mx-auto mb-2">
-            Authentic flavours crafted with love — from classic banana-leaf meals to grand feast spreads
+          <p className="text-white/40 text-sm md:text-base font-light max-w-lg mx-auto mb-6">
+            {activeTab === 'veg'
+              ? 'Authentic flavours crafted with love — from classic banana-leaf meals to grand feast spreads'
+              : 'Succulent biryanis, rich gravies & aromatic spices — the ultimate non-veg feast experience'}
           </p>
+
+          {/* Tab Switcher */}
+          <div className="inline-flex rounded-full p-1" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <button
+              onClick={() => setActiveTab('veg')}
+              className="flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-light tracking-wide transition-all duration-500"
+              style={{
+                background: activeTab === 'veg' ? '#C9A227' : 'transparent',
+                color: activeTab === 'veg' ? '#0A0A0A' : 'rgba(255,255,255,0.5)',
+              }}
+            >
+              <Leaf className="w-3.5 h-3.5" />
+              Veg
+            </button>
+            <button
+              onClick={() => setActiveTab('nonveg')}
+              className="flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-light tracking-wide transition-all duration-500"
+              style={{
+                background: activeTab === 'nonveg' ? '#D4603A' : 'transparent',
+                color: activeTab === 'nonveg' ? '#FFFFFF' : 'rgba(255,255,255,0.5)',
+              }}
+            >
+              <Drumstick className="w-3.5 h-3.5" />
+              Non-Veg
+            </button>
+          </div>
 
           {/* Decorative dots */}
           <div className="flex justify-center gap-1.5 mt-6">
@@ -202,7 +256,7 @@ const LunchPackages = () => {
                 key={i}
                 className="w-1 h-1 rounded-full transition-all duration-500"
                 style={{
-                  background: '#C9A227',
+                  background: accentColor,
                   opacity: headerVisible ? 0.3 + (i * 0.1) : 0,
                   transitionDelay: `${600 + i * 80}ms`,
                 }}
@@ -213,10 +267,10 @@ const LunchPackages = () => {
       </section>
 
       {/* Packages Grid */}
-      <section className="container mx-auto px-4 pb-12">
+      <section className="container mx-auto px-4 pb-12" key={activeTab}>
         <div className="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
-          {LUNCH_PACKAGES.map((pkg, i) => (
-            <PackageCard key={pkg.id} pkg={pkg} index={i} />
+          {packages.map((pkg, i) => (
+            <PackageCard key={pkg.id} pkg={pkg} index={i} accentColor={accentColor} />
           ))}
         </div>
       </section>
@@ -230,14 +284,14 @@ const LunchPackages = () => {
             style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)' }}
           >
             <div className="flex items-center gap-2 mb-4">
-              <UtensilsCrossed className="w-4 h-4" style={{ color: '#C9A227' }} />
-              <h3 className="text-sm tracking-[0.15em] uppercase" style={{ color: '#C9A227' }}>Add-Ons</h3>
+              <UtensilsCrossed className="w-4 h-4" style={{ color: accentColor }} />
+              <h3 className="text-sm tracking-[0.15em] uppercase transition-colors duration-500" style={{ color: accentColor }}>Add-Ons</h3>
             </div>
             <div className="space-y-3">
               {ADD_ONS.map(addon => (
                 <div key={addon.name} className="flex justify-between items-center py-2 border-b border-white/5">
                   <span className="text-white/60 text-sm font-light">{addon.name}</span>
-                  <span className="text-sm font-light" style={{ color: '#C9A227' }}>₹{addon.price}/-</span>
+                  <span className="text-sm font-light transition-colors duration-500" style={{ color: accentColor }}>₹{addon.price}/-</span>
                 </div>
               ))}
             </div>
@@ -249,14 +303,14 @@ const LunchPackages = () => {
             style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)' }}
           >
             <div className="flex items-center gap-2 mb-4">
-              <ChefHat className="w-4 h-4" style={{ color: '#C9A227' }} />
-              <h3 className="text-sm tracking-[0.15em] uppercase" style={{ color: '#C9A227' }}>Service Charges</h3>
+              <ChefHat className="w-4 h-4" style={{ color: accentColor }} />
+              <h3 className="text-sm tracking-[0.15em] uppercase transition-colors duration-500" style={{ color: accentColor }}>Service Charges</h3>
             </div>
             <div className="space-y-3">
-              {SERVICE_CHARGES.map(charge => (
+              {serviceCharges.map(charge => (
                 <div key={charge.name} className="flex justify-between items-center py-2 border-b border-white/5">
                   <span className="text-white/60 text-sm font-light">{charge.name}</span>
-                  <span className="text-sm font-light" style={{ color: '#C9A227' }}>
+                  <span className="text-sm font-light transition-colors duration-500" style={{ color: accentColor }}>
                     {typeof charge.price === 'number' ? `₹${charge.price}/-` : charge.price}
                   </span>
                 </div>
@@ -265,7 +319,6 @@ const LunchPackages = () => {
           </div>
         </div>
 
-        {/* Note */}
         <p className="text-center text-white/25 text-xs mt-8 font-light">
           * Mandapam charges (gas, electricity, washing water, vessel rent & cleaning) to be borne by the party.
         </p>
