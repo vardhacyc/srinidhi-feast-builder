@@ -26,230 +26,321 @@ export interface QuotationData {
   validityDays: number;
 }
 
+// ── Color Palette ──
+const SAFFRON = [201, 122, 25];    // Deep saffron
+const GOLD = [196, 155, 45];       // Warm gold
+const CREAM = [255, 248, 235];     // Warm cream
+const DARK_BROWN = [45, 30, 15];   // Rich espresso
+const WARM_GRAY = [110, 95, 80];   // Warm gray
+const TERRACOTTA = [180, 90, 40];  // Terracotta accent
+const LIGHT_SAFFRON = [255, 240, 218]; // Light saffron tint
+const WHITE = [255, 255, 255];
+
+const r = (c: number[]) => c as [number, number, number];
+
 export const generateQuotationPDF = (data: QuotationData) => {
   const doc = new jsPDF();
-  const pageWidth = doc.internal.pageSize.getWidth();
-  const margin = 15;
-  const gold = [201, 162, 39] as const;
-  const dark = [10, 10, 10] as const;
-  const warmGray = [120, 110, 100] as const;
+  const pw = doc.internal.pageSize.getWidth();
+  const ph = doc.internal.pageSize.getHeight();
+  const m = 16; // margin
 
-  // ── Header Banner ──
-  doc.setFillColor(...dark);
-  doc.rect(0, 0, pageWidth, 45, 'F');
+  // ═══════════════════════════════════════════
+  // FULL PAGE WARM CREAM BACKGROUND
+  // ═══════════════════════════════════════════
+  doc.setFillColor(...r(CREAM));
+  doc.rect(0, 0, pw, ph, 'F');
 
-  // Gold accent line
-  doc.setFillColor(...gold);
-  doc.rect(0, 45, pageWidth, 2, 'F');
+  // ── Decorative top border (saffron gradient band) ──
+  doc.setFillColor(...r(SAFFRON));
+  doc.rect(0, 0, pw, 4, 'F');
+  doc.setFillColor(...r(GOLD));
+  doc.rect(0, 4, pw, 1.5, 'F');
 
-  // Company Name
-  doc.setTextColor(255, 255, 255);
-  doc.setFontSize(24);
+  // ═══════════════════════════════════════════
+  // HEADER SECTION
+  // ═══════════════════════════════════════════
+  let y = 18;
+
+  // Company name - large, elegant
   doc.setFont('helvetica', 'bold');
-  doc.text('Sri Nidhi', margin, 22);
-  doc.setFontSize(10);
-  doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...gold);
-  doc.text('C A T E R I N G', margin, 30);
+  doc.setFontSize(28);
+  doc.setTextColor(...r(DARK_BROWN));
+  doc.text('Sri Nidhi', m, y);
 
-  // Contact info on right
-  doc.setFontSize(8);
-  doc.setTextColor(200, 200, 200);
-  doc.text('+91 87601 01010', pageWidth - margin, 18, { align: 'right' });
-  doc.text('srinidhicatering10@gmail.com', pageWidth - margin, 24, { align: 'right' });
-  doc.text('Coimbatore, Tamil Nadu', pageWidth - margin, 30, { align: 'right' });
-
-  // ── Quotation Title ──
-  let y = 55;
-  doc.setFontSize(18);
-  doc.setTextColor(...dark);
-  doc.setFont('helvetica', 'bold');
-  doc.text('QUOTATION', margin, y);
-
-  // Quotation details on right
+  // "CATERING" in saffron, spaced
   doc.setFontSize(9);
+  doc.setTextColor(...r(SAFFRON));
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...warmGray);
-  doc.text(`Ref: ${data.quotationNumber}`, pageWidth - margin, y - 5, { align: 'right' });
-  doc.text(`Date: ${new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}`, pageWidth - margin, y + 1, { align: 'right' });
-  doc.text(`Valid for: ${data.validityDays} days`, pageWidth - margin, y + 7, { align: 'right' });
+  doc.text('C  A  T  E  R  I  N  G', m, y + 7);
 
-  // ── Divider ──
-  y += 12;
-  doc.setDrawColor(...gold);
-  doc.setLineWidth(0.3);
-  doc.line(margin, y, pageWidth - margin, y);
-
-  // ── Customer & Event Details ──
-  y += 8;
-  const colMid = pageWidth / 2;
-
-  // Left: Customer Info
-  doc.setFontSize(10);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...dark);
-  doc.text('Customer Details', margin, y);
-
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(9);
-  doc.setTextColor(...warmGray);
-  y += 7;
-  doc.text(`Name: ${data.customerName}`, margin, y);
-  y += 5;
-  doc.text(`Phone: ${data.customerPhone}`, margin, y);
-  y += 5;
-  if (data.customerEmail) doc.text(`Email: ${data.customerEmail}`, margin, y);
-
-  // Right: Event Info
-  let yRight = y - 17;
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...dark);
-  doc.text('Event Details', colMid + 5, yRight);
-
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(9);
-  doc.setTextColor(...warmGray);
-  yRight += 7;
-  doc.text(`Type: ${data.eventType || 'Not specified'}`, colMid + 5, yRight);
-  yRight += 5;
-  doc.text(`Date: ${data.eventDate || 'TBD'}`, colMid + 5, yRight);
-  yRight += 5;
-  if (data.eventTime) doc.text(`Time: ${data.eventTime}`, colMid + 5, yRight);
-  yRight += 5;
-  doc.text(`Guests: ${data.guestCount}`, colMid + 5, yRight);
-
-  y += 8;
-  if (data.deliveryAddress) {
-    doc.setTextColor(...warmGray);
-    doc.text(`Delivery: ${data.deliveryAddress}`, margin, y, { maxWidth: pageWidth - margin * 2 });
-    y += 8;
+  // Decorative motif - small diamond pattern
+  const motifX = m + 2;
+  const motifY = y + 12;
+  doc.setFillColor(...r(GOLD));
+  for (let i = 0; i < 5; i++) {
+    doc.circle(motifX + i * 5, motifY, 0.6, 'F');
   }
 
-  // ── Items Table ──
-  y += 5;
+  // Contact info - right aligned, warm gray
+  doc.setFontSize(7.5);
+  doc.setTextColor(...r(WARM_GRAY));
+  doc.setFont('helvetica', 'normal');
+  const cx = pw - m;
+  doc.text('+91 87601 01010', cx, y - 3, { align: 'right' });
+  doc.text('srinidhicatering10@gmail.com', cx, y + 2, { align: 'right' });
+  doc.text('B 111, Manchester Grand, MG Road', cx, y + 7, { align: 'right' });
+  doc.text('Coimbatore, Tamil Nadu - 641004', cx, y + 12, { align: 'right' });
+
+  // Horizontal divider with saffron
+  y = 38;
+  doc.setDrawColor(...r(GOLD));
+  doc.setLineWidth(0.4);
+  doc.line(m, y, pw - m, y);
+  doc.setDrawColor(...r(SAFFRON));
+  doc.setLineWidth(0.15);
+  doc.line(m, y + 1.5, pw - m, y + 1.5);
+
+  // ═══════════════════════════════════════════
+  // QUOTATION TITLE SECTION
+  // ═══════════════════════════════════════════
+  y = 48;
+
+  // Warm background strip for title
+  doc.setFillColor(...r(LIGHT_SAFFRON));
+  doc.roundedRect(m, y - 5, pw - m * 2, 18, 2, 2, 'F');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(16);
+  doc.setTextColor(...r(DARK_BROWN));
+  doc.text('QUOTATION', m + 5, y + 4);
+
+  // Ref details
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(...r(WARM_GRAY));
+  doc.text(`Ref: ${data.quotationNumber}`, cx - 5, y - 1, { align: 'right' });
+  const dateStr = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+  doc.text(`Date: ${dateStr}`, cx - 5, y + 4, { align: 'right' });
+  doc.setTextColor(...r(TERRACOTTA));
+  doc.text(`Valid for ${data.validityDays} days`, cx - 5, y + 9, { align: 'right' });
+
+  // ═══════════════════════════════════════════
+  // CUSTOMER & EVENT DETAILS
+  // ═══════════════════════════════════════════
+  y = 72;
+  const colMid = pw / 2 + 2;
+
+  // Customer card
+  doc.setFillColor(...r(WHITE));
+  doc.setDrawColor(220, 210, 195);
+  doc.setLineWidth(0.3);
+  doc.roundedRect(m, y - 4, colMid - m - 4, 36, 2, 2, 'FD');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(...r(SAFFRON));
+  doc.text('CUSTOMER DETAILS', m + 5, y + 2);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.5);
+  doc.setTextColor(...r(DARK_BROWN));
+  y += 9;
+  doc.text(data.customerName, m + 5, y);
+  doc.setTextColor(...r(WARM_GRAY));
+  if (data.customerPhone) { y += 5; doc.text(data.customerPhone, m + 5, y); }
+  if (data.customerEmail) { y += 5; doc.text(data.customerEmail, m + 5, y); }
+  if (data.deliveryAddress) { y += 5; doc.text(data.deliveryAddress, m + 5, y, { maxWidth: colMid - m - 14 }); }
+
+  // Event card
+  let ey = 72;
+  doc.setFillColor(...r(WHITE));
+  doc.roundedRect(colMid, ey - 4, pw - m - colMid, 36, 2, 2, 'FD');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(...r(SAFFRON));
+  doc.text('EVENT DETAILS', colMid + 5, ey + 2);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.5);
+  doc.setTextColor(...r(DARK_BROWN));
+  ey += 9;
+  doc.text(data.eventType || 'Not specified', colMid + 5, ey);
+  doc.setTextColor(...r(WARM_GRAY));
+  if (data.eventDate) {
+    ey += 5;
+    const formatted = new Date(data.eventDate).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+    doc.text(`Date: ${formatted}`, colMid + 5, ey);
+  }
+  if (data.eventTime) { ey += 5; doc.text(`Time: ${data.eventTime}`, colMid + 5, ey); }
+  ey += 5;
+  doc.setTextColor(...r(TERRACOTTA));
+  doc.setFont('helvetica', 'bold');
+  doc.text(`${data.guestCount} Guests`, colMid + 5, ey);
+
+  // ═══════════════════════════════════════════
+  // ITEMS TABLE
+  // ═══════════════════════════════════════════
+  const tableY = 112;
+
   const tableBody = data.items.map((item, i) => [
     (i + 1).toString(),
     item.name,
     item.quantity.toString(),
-    `₹${item.rate.toLocaleString('en-IN')}`,
-    `₹${item.total.toLocaleString('en-IN')}`,
+    `\u20B9${item.rate.toLocaleString('en-IN')}`,
+    `\u20B9${item.total.toLocaleString('en-IN')}`,
   ]);
 
   autoTable(doc, {
-    startY: y,
-    head: [['#', 'Item', 'Qty', 'Rate', 'Amount']],
+    startY: tableY,
+    head: [['#', 'Item Description', 'Qty', 'Rate', 'Amount']],
     body: tableBody,
     theme: 'plain',
+    styles: {
+      font: 'helvetica',
+      cellPadding: { top: 4, bottom: 4, left: 5, right: 5 },
+    },
     headStyles: {
-      fillColor: [...dark],
-      textColor: [255, 255, 255],
+      fillColor: r(DARK_BROWN),
+      textColor: r(GOLD),
       fontStyle: 'bold',
-      fontSize: 9,
-      cellPadding: 4,
+      fontSize: 8.5,
+      cellPadding: { top: 5, bottom: 5, left: 5, right: 5 },
     },
     bodyStyles: {
-      fontSize: 9,
-      textColor: [60, 60, 60],
-      cellPadding: 3.5,
+      fontSize: 8.5,
+      textColor: r(DARK_BROWN),
     },
     alternateRowStyles: {
-      fillColor: [248, 245, 240],
+      fillColor: r(LIGHT_SAFFRON),
     },
     columnStyles: {
-      0: { cellWidth: 12, halign: 'center' },
+      0: { cellWidth: 12, halign: 'center', textColor: r(WARM_GRAY), fontSize: 8 },
       1: { cellWidth: 'auto' },
-      2: { cellWidth: 20, halign: 'center' },
+      2: { cellWidth: 22, halign: 'center' },
       3: { cellWidth: 30, halign: 'right' },
-      4: { cellWidth: 35, halign: 'right' },
+      4: { cellWidth: 35, halign: 'right', fontStyle: 'bold' },
     },
-    margin: { left: margin, right: margin },
-    didDrawPage: () => {
-      // Gold line under header on each page
-      doc.setFillColor(...gold);
-      doc.rect(margin, y + 12, pageWidth - margin * 2, 0.5, 'F');
+    margin: { left: m, right: m },
+    tableLineColor: [220, 210, 195],
+    tableLineWidth: 0.2,
+    didDrawCell: (cellData) => {
+      // Gold line under header
+      if (cellData.section === 'head') {
+        doc.setFillColor(...r(GOLD));
+        doc.rect(cellData.cell.x, cellData.cell.y + cellData.cell.height - 0.8, cellData.cell.width, 0.8, 'F');
+      }
     },
   });
 
-  // ── Totals ──
-  const finalY = (doc as any).lastAutoTable.finalY + 5;
-  const totalsX = pageWidth - margin - 60;
+  // ═══════════════════════════════════════════
+  // TOTALS SECTION
+  // ═══════════════════════════════════════════
+  let fy = (doc as any).lastAutoTable.finalY + 4;
+  const totW = 75;
+  const totX = pw - m - totW;
 
-  doc.setFontSize(9);
+  // Subtotal
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...warmGray);
-  doc.text('Subtotal:', totalsX, finalY);
-  doc.text(`₹${data.subtotal.toLocaleString('en-IN')}`, pageWidth - margin, finalY, { align: 'right' });
+  doc.setFontSize(8.5);
+  doc.setTextColor(...r(WARM_GRAY));
+  doc.text('Subtotal', totX + 5, fy + 5);
+  doc.setTextColor(...r(DARK_BROWN));
+  doc.text(`\u20B9${data.subtotal.toLocaleString('en-IN')}`, pw - m - 5, fy + 5, { align: 'right' });
 
-  doc.text('GST (5%):', totalsX, finalY + 6);
-  doc.text(`₹${data.gstAmount.toLocaleString('en-IN')}`, pageWidth - margin, finalY + 6, { align: 'right' });
+  // GST
+  fy += 7;
+  doc.setTextColor(...r(WARM_GRAY));
+  doc.text('GST (5%)', totX + 5, fy + 5);
+  doc.setTextColor(...r(DARK_BROWN));
+  doc.text(`\u20B9${data.gstAmount.toLocaleString('en-IN')}`, pw - m - 5, fy + 5, { align: 'right' });
 
-  // Grand total line
-  doc.setDrawColor(...gold);
-  doc.setLineWidth(0.5);
-  doc.line(totalsX - 5, finalY + 10, pageWidth - margin, finalY + 10);
+  // Grand total band
+  fy += 10;
+  doc.setFillColor(...r(SAFFRON));
+  doc.roundedRect(totX, fy, totW, 14, 2, 2, 'F');
 
-  doc.setFontSize(12);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...dark);
-  doc.text('Grand Total:', totalsX, finalY + 17);
-  doc.setTextColor(...gold);
-  doc.text(`₹${data.grandTotal.toLocaleString('en-IN')}`, pageWidth - margin, finalY + 17, { align: 'right' });
+  doc.setFontSize(10);
+  doc.setTextColor(...r(WHITE));
+  doc.text('GRAND TOTAL', totX + 5, fy + 9);
+  doc.setFontSize(12);
+  doc.text(`\u20B9${data.grandTotal.toLocaleString('en-IN')}`, pw - m - 5, fy + 9, { align: 'right' });
 
-  // ── Notes ──
-  let notesY = finalY + 28;
+  // ═══════════════════════════════════════════
+  // NOTES
+  // ═══════════════════════════════════════════
+  fy += 22;
   if (data.notes) {
-    doc.setFontSize(9);
     doc.setFont('helvetica', 'bold');
-    doc.setTextColor(...dark);
-    doc.text('Special Instructions:', margin, notesY);
+    doc.setFontSize(8);
+    doc.setTextColor(...r(SAFFRON));
+    doc.text('SPECIAL INSTRUCTIONS', m, fy);
     doc.setFont('helvetica', 'normal');
-    doc.setTextColor(...warmGray);
-    notesY += 5;
-    doc.text(data.notes, margin, notesY, { maxWidth: pageWidth - margin * 2 });
-    notesY += 10;
+    doc.setFontSize(8);
+    doc.setTextColor(...r(WARM_GRAY));
+    fy += 5;
+    doc.text(data.notes, m, fy, { maxWidth: pw - m * 2 });
+    fy += 10;
   }
 
-  // ── Terms & Conditions ──
-  const termsY = notesY + 5;
-  doc.setFillColor(248, 245, 240);
-  doc.rect(margin, termsY - 3, pageWidth - margin * 2, 40, 'F');
+  // ═══════════════════════════════════════════
+  // TERMS & CONDITIONS
+  // ═══════════════════════════════════════════
+  fy += 2;
+  doc.setFillColor(...r(WHITE));
+  doc.setDrawColor(220, 210, 195);
+  doc.setLineWidth(0.3);
+  const termsH = 32;
+  doc.roundedRect(m, fy, pw - m * 2, termsH, 2, 2, 'FD');
 
-  doc.setFontSize(8);
+  // Saffron left accent bar
+  doc.setFillColor(...r(GOLD));
+  doc.rect(m, fy, 2.5, termsH, 'F');
+
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...dark);
-  doc.text('Terms & Conditions', margin + 3, termsY + 3);
+  doc.setFontSize(7.5);
+  doc.setTextColor(...r(DARK_BROWN));
+  doc.text('Terms & Conditions', m + 7, fy + 5);
 
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...warmGray);
-  doc.setFontSize(7);
+  doc.setFontSize(6.5);
+  doc.setTextColor(...r(WARM_GRAY));
   const terms = [
-    `1. This quotation is valid for ${data.validityDays} days from the date of issue.`,
-    '2. 50% advance payment required to confirm the order.',
-    '3. Final prices may vary based on market rates and availability.',
-    '4. GST of 5% is applicable on all items.',
-    '5. Cancellation within 48 hours of the event will incur a 25% charge.',
-    '6. Menu items are subject to seasonal availability.',
+    `This quotation is valid for ${data.validityDays} days from the date of issue.`,
+    '50% advance payment required to confirm the order.',
+    'Final prices may vary based on market rates and seasonal availability.',
+    'GST of 5% is applicable on all food items as per government regulations.',
+    'Cancellation within 48 hours of event will incur a 25% cancellation charge.',
   ];
-  terms.forEach((term, i) => {
-    doc.text(term, margin + 3, termsY + 9 + i * 4.5);
+  terms.forEach((t, i) => {
+    doc.text(`${i + 1}.  ${t}`, m + 7, fy + 10 + i * 4.2);
   });
 
-  // ── Footer ──
-  const footerY = doc.internal.pageSize.getHeight() - 15;
-  doc.setFillColor(...gold);
-  doc.rect(0, footerY - 3, pageWidth, 1, 'F');
+  // ═══════════════════════════════════════════
+  // FOOTER
+  // ═══════════════════════════════════════════
+  const footY = ph - 14;
 
-  doc.setFontSize(7);
-  doc.setTextColor(...warmGray);
+  // Saffron bottom border
+  doc.setFillColor(...r(GOLD));
+  doc.rect(0, footY - 2, pw, 0.5, 'F');
+  doc.setFillColor(...r(SAFFRON));
+  doc.rect(0, ph - 4, pw, 4, 'F');
+
+  doc.setFontSize(6.5);
+  doc.setTextColor(...r(WARM_GRAY));
   doc.text(
-    'Sri Nidhi Catering | B 111, Manchester Grand, MG Road, Avarampalayam, Coimbatore, TN - 641004',
-    pageWidth / 2, footerY + 3, { align: 'center' }
-  );
-  doc.text(
-    'Phone: +91 87601 01010 | Email: srinidhicatering10@gmail.com',
-    pageWidth / 2, footerY + 8, { align: 'center' }
+    'Sri Nidhi Catering  \u2022  B 111, Manchester Grand, MG Road, Coimbatore  \u2022  +91 87601 01010  \u2022  srinidhicatering10@gmail.com',
+    pw / 2, footY + 2, { align: 'center' }
   );
 
-  // Save
+  // Small decorative dots in footer
+  doc.setFillColor(...r(GOLD));
+  for (let i = 0; i < 3; i++) {
+    doc.circle(pw / 2 - 4 + i * 4, footY + 6, 0.5, 'F');
+  }
+
+  // ── Save ──
   doc.save(`Quotation_${data.quotationNumber}_${data.customerName.replace(/\s+/g, '_')}.pdf`);
 };
