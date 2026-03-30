@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 const Gallery = () => {
   const images = [
     {
@@ -84,4 +86,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default memo(Gallery);

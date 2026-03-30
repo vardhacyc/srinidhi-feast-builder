@@ -1,25 +1,26 @@
+import { memo } from "react";
 
 const ImageShowcase = () => {
   const images = [
     {
-      src: '/a3_demo.jpg',
-      alt: 'Professional Food Service',
-      title: 'Professional Service',
+      src: "/a3_demo.jpg",
+      alt: "Professional Food Service",
+      title: "Professional Service",
     },
     {
-      src: '/a2.jpg',
-      alt: 'Authentic Biryani',
-      title: 'Authentic Cuisine',
+      src: "/a2.jpg",
+      alt: "Authentic Biryani",
+      title: "Authentic Cuisine",
     },
     {
-      src: '/a4_outdoor.jpg',
-      alt: 'Outdoor Event Setup',
-      title: 'Outdoor Events',
+      src: "/a4_outdoor.jpg",
+      alt: "Outdoor Event Setup",
+      title: "Outdoor Events",
     },
     {
-      src: '/a1_award.jpg',
-      alt: 'Award Winning',
-      title: 'Award Winning',
+      src: "/a1_award.jpg",
+      alt: "Award Winning",
+      title: "Award Winning",
     },
   ];
 
@@ -39,7 +40,9 @@ const ImageShowcase = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
               <div className="absolute bottom-4 left-4">
-                <span className="text-white font-bold text-sm">{image.title}</span>
+                <span className="text-white font-bold text-sm">
+                  {image.title}
+                </span>
               </div>
             </div>
           ))}
@@ -49,4 +52,4 @@ const ImageShowcase = () => {
   );
 };
 
-export default ImageShowcase;
+export default memo(ImageShowcase);
