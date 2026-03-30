@@ -1,0 +1,6 @@
+# Netlify SPA Redirect Rules
+# This file ensures all routes are redirected to index.html for React Router
+# Place in the root of your project (not in public/ folder)
+
+# SPA Fallback - redirect all routes to index.html for client-side routing
+/*    /index.html   200
