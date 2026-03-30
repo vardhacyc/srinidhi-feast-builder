@@ -2,4 +2,4 @@
 # Redirect all routes to index.html so React Router can handle them
 # This ensures page refresh and direct URL access work correctly
 
-/* /index.html 200
+/*    /index.html   200

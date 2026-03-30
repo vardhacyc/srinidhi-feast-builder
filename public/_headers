@@ -1,6 +1,6 @@
 # Netlify/Vercel headers for browser caching and compression
 
-# Enable compression
+# Enable compression for all resources
 /*
   Content-Encoding: gzip
 
