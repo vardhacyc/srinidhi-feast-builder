@@ -1,50 +1,63 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { Menu, X, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Menu', href: '#menu' },
-    { name: 'Gallery', href: '#gallery' },
-    { name: 'Contact', href: '#contact' },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Menu", href: "/menu-builder" },
+    { name: "Gallery", href: "#gallery" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
+
     setIsMobileMenuOpen(false);
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-        ? 'bg-black/95 backdrop-blur-xl border-b border-white/10'
-        : 'bg-transparent'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? "bg-black/95 backdrop-blur-xl border-b border-white/10"
+          : "bg-transparent"
+      }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <a
-            href="#home"
-            onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}
+          <button
+            onClick={() => scrollToSection("#home")}
             className="flex items-center gap-3"
           >
             <img
@@ -61,95 +74,119 @@ const Header = () => {
               </span>
               <span
                 className="text-xs ml-2 tracking-[0.2em] uppercase"
-                style={{ color: '#C9A227' }}
+                style={{ color: "#C9A227" }}
               >
                 Catering
               </span>
             </div>
-          </a>
+          </button>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollToSection(link.href)}
-                className="text-sm font-light tracking-wide text-white/70 hover:text-[#C9A227] transition-colors duration-300"
-              >
-                {link.name}
-              </button>
-            ))}
+            {navLinks.map((link) =>
+              link.href.startsWith("#") ? (
+                <button
+                  key={link.name}
+                  onClick={() => scrollToSection(link.href)}
+                  className="text-sm font-light tracking-wide text-white/70 hover:text-[#C9A227] transition-colors duration-300"
+                >
+                  {link.name}
+                </button>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="text-sm font-light tracking-wide text-white/70 hover:text-[#C9A227] transition-colors duration-300"
+                >
+                  {link.name}
+                </Link>
+              )
+            )}
+
             <Link
               to="/menu-builder"
               className="text-sm font-medium tracking-wide px-4 py-2 rounded-full transition-all duration-300 hover:scale-105"
               style={{
-                background: 'rgba(201, 162, 39, 0.15)',
-                color: '#C9A227',
-                border: '1px solid rgba(201, 162, 39, 0.3)'
+                background: "rgba(201, 162, 39, 0.15)",
+                color: "#C9A227",
+                border: "1px solid rgba(201, 162, 39, 0.3)",
               }}
             >
               Build Menu
             </Link>
           </nav>
 
-          {/* CTA + Phone */}
           <div className="hidden lg:flex items-center gap-6">
             <a
               href="tel:+918760101010"
               className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
             >
-              <Phone className="w-4 h-4" style={{ color: '#C9A227' }} />
+              <Phone className="w-4 h-4" style={{ color: "#C9A227" }} />
               <span className="text-sm font-light">+91 87601 01010</span>
             </a>
             <Button
-              onClick={() => scrollToSection('#contact')}
+              onClick={() => scrollToSection("#contact")}
               className="font-medium px-6 py-5 tracking-wide transition-all duration-300 hover:scale-105 border-0"
               style={{
-                background: '#C9A227',
-                color: '#0A0A0A',
+                background: "#C9A227",
+                color: "#0A0A0A",
               }}
             >
               Book Now
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 text-white"
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="lg:hidden absolute top-20 left-0 right-0 bg-black/98 backdrop-blur-xl border-b border-white/10">
             <nav className="container mx-auto px-4 py-6">
               <div className="flex flex-col gap-4">
-                {navLinks.map((link) => (
-                  <button
-                    key={link.name}
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-left py-3 text-white/70 hover:text-[#C9A227] transition-colors border-b border-white/5"
-                  >
-                    {link.name}
-                  </button>
-                ))}
+                {navLinks.map((link) =>
+                  link.href.startsWith("#") ? (
+                    <button
+                      key={link.name}
+                      onClick={() => scrollToSection(link.href)}
+                      className="text-left py-3 text-white/70 hover:text-[#C9A227] transition-colors border-b border-white/5"
+                    >
+                      {link.name}
+                    </button>
+                  ) : (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-left py-3 text-white/70 hover:text-[#C9A227] transition-colors border-b border-white/5"
+                    >
+                      {link.name}
+                    </Link>
+                  )
+                )}
+
                 <Link
                   to="/menu-builder"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-left py-3 font-medium transition-colors border-b border-white/5"
-                  style={{ color: '#C9A227' }}
+                  style={{ color: "#C9A227" }}
                 >
                   Build Your Menu →
                 </Link>
+
                 <Button
-                  onClick={() => scrollToSection('#contact')}
+                  onClick={() => scrollToSection("#contact")}
                   className="mt-4 py-6 font-medium tracking-wide border-0"
                   style={{
-                    background: '#C9A227',
-                    color: '#0A0A0A',
+                    background: "#C9A227",
+                    color: "#0A0A0A",
                   }}
                 >
                   Book Now

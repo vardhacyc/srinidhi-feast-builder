@@ -1,19 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sri Nidhi Catering - Premium Catering Services | Coimbatore</title>
-    <meta name="description" content="Premium catering services in Coimbatore. Wedding catering, corporate events, and institutional catering by Sri Nidhi Catering with 15+ years of excellence." />
+    <meta
+      name="description"
+      content="Premium catering services in Coimbatore. Wedding catering, corporate events, and institutional catering by Sri Nidhi Catering with 15+ years of excellence."
+    />
     <meta name="author" content="Sri Nidhi Catering" />
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="shortcut icon" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
 
-    <meta property="og:title" content="Sri Nidhi Catering - Premium Catering Services" />
-    <meta property="og:description" content="Premium catering services in Coimbatore. Wedding catering, corporate events, and institutional catering with 15+ years of excellence." />
+    <meta
+      property="og:title"
+      content="Sri Nidhi Catering - Premium Catering Services"
+    />
+    <meta
+      property="og:description"
+      content="Premium catering services in Coimbatore. Wedding catering, corporate events, and institutional catering with 15+ years of excellence."
+    />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/cateringLogo.png" />
 
@@ -21,18 +30,59 @@
     <meta name="twitter:site" content="@srinidhicatering" />
     <meta name="twitter:image" content="/cateringLogo.png" />
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-T5EKZ40FN8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-T5EKZ40FN8"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'G-T5EKZ40FN8');
-</script>
+      gtag("config", "G-T5EKZ40FN8");
+    </script>
     <!-- Google Fonts - Premium Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- URL Rewrite Configuration -->
+    <script>
+      // URL Rewrite Rules Configuration
+      const rewriteRules = [
+        // Example: Redirect old URL patterns to new destinations
+        // { pattern: /^\/about-old$/, destination: '/about', type: 'redirect' },
+        // { pattern: /^\/services\/legacy$/, destination: '/services', type: 'redirect' },
+        // Add your rewrite rules below:
+        {
+          pattern: /^\/catering-services$/,
+          destination: "/#services",
+          type: "redirect",
+        },
+      ];
+
+      // Apply rewrite rules
+      function applyRewrites() {
+        const currentPath = window.location.pathname;
+
+        for (const rule of rewriteRules) {
+          if (rule.pattern.test(currentPath)) {
+            if (rule.type === "redirect") {
+              window.location.href = window.location.origin + rule.destination;
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+
+      // Apply on page load
+      applyRewrites();
+    </script>
   </head>
 
   <body>
