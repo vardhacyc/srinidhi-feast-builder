@@ -29,9 +29,9 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@srinidhicatering" />
     <meta name="twitter:image" content="/cateringLogo.png" />
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) - Load with defer for non-blocking -->
     <script
-      async
+      defer
       src="https://www.googletagmanager.com/gtag/js?id=G-T5EKZ40FN8"
     ></script>
     <script>
@@ -50,6 +50,28 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap"
       rel="stylesheet"
     />
+    <style>
+      /* Optimize font loading with font-display: swap */
+      @font-face {
+        font-family: "Playfair Display";
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Crimson Text";
+        font-display: swap;
+      }
+      /* Hide fallback text during font load to reduce FOIT */
+      .font-loading {
+        font-display: swap;
+      }
+    </style>
+    <!-- Preload critical hero image for faster LCP -->
+    <link rel="preload" as="image" href="/a3_demo.jpg" />
+    <link rel="preload" as="image" href="/cateringLogo.png" />
     <!-- URL Rewrite Configuration -->
     <script>
       // URL Rewrite Rules Configuration

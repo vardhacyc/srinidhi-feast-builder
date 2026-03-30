@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -99,7 +99,7 @@ const Header = () => {
                 >
                   {link.name}
                 </Link>
-              )
+              ),
             )}
 
             <Link
@@ -169,7 +169,7 @@ const Header = () => {
                     >
                       {link.name}
                     </Link>
-                  )
+                  ),
                 )}
 
                 <Link
@@ -200,4 +200,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

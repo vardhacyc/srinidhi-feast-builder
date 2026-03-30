@@ -1,30 +1,37 @@
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Instagram,
+  Twitter,
+} from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Menu', href: '#menu' },
-    { name: 'Gallery', href: '#gallery' },
-    { name: 'Contact', href: '#contact' },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Menu", href: "#menu" },
+    { name: "Gallery", href: "#gallery" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const services = [
-    'Wedding Catering',
-    'Corporate Events',
-    'Birthday Parties',
-    'House Warming',
-    'Destination Weddings',
-    'Live Counters',
+    "Wedding Catering",
+    "Corporate Events",
+    "Birthday Parties",
+    "House Warming",
+    "Destination Weddings",
+    "Live Counters",
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -38,6 +45,9 @@ const Footer = () => {
               <img
                 src="/cateringLogo.png"
                 alt="Sri Nidhi Catering"
+                width="40"
+                height="40"
+                loading="lazy"
                 className="w-10 h-10 object-contain"
               />
               <div>
@@ -47,13 +57,17 @@ const Footer = () => {
                 >
                   Sri Nidhi
                 </span>
-                <span className="text-xs tracking-[0.2em] uppercase" style={{ color: '#C9A227' }}>
+                <span
+                  className="text-xs tracking-[0.2em] uppercase"
+                  style={{ color: "#C9A227" }}
+                >
                   Catering
                 </span>
               </div>
             </div>
             <p className="text-white/50 mb-6 leading-relaxed text-sm">
-              Elevating your events with exceptional gourmet cuisine and impeccable service since 2008.
+              Elevating your events with exceptional gourmet cuisine and
+              impeccable service since 2008.
             </p>
             <div className="flex gap-4">
               {[Facebook, Instagram, Twitter].map((Icon, index) => (
@@ -62,8 +76,8 @@ const Footer = () => {
                   href="#"
                   className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-[#C9A227]/20"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)'
+                    background: "rgba(255, 255, 255, 0.05)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
                   }}
                 >
                   <Icon className="w-4 h-4 text-white/70" />
@@ -94,7 +108,9 @@ const Footer = () => {
             <h4 className="text-white font-medium mb-6">Our Services</h4>
             <ul className="space-y-3">
               {services.map((service, index) => (
-                <li key={index} className="text-white/50 text-sm">{service}</li>
+                <li key={index} className="text-white/50 text-sm">
+                  {service}
+                </li>
               ))}
             </ul>
           </div>
@@ -104,19 +120,44 @@ const Footer = () => {
             <h4 className="text-white font-medium mb-6">Contact Info</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 mt-0.5" style={{ color: '#C9A227' }} />
+                <Phone
+                  className="w-4 h-4 mt-0.5"
+                  style={{ color: "#C9A227" }}
+                />
                 <div>
-                  <a href="tel:+918760101010" className="block text-white/70 text-sm hover:text-[#C9A227] transition-colors">+91 87601 01010</a>
-                  <a href="tel:+919994316559" className="block text-white/50 text-sm hover:text-[#C9A227] transition-colors">+91 9994316559</a>
+                  <a
+                    href="tel:+918760101010"
+                    className="block text-white/70 text-sm hover:text-[#C9A227] transition-colors"
+                  >
+                    +91 87601 01010
+                  </a>
+                  <a
+                    href="tel:+919994316559"
+                    className="block text-white/50 text-sm hover:text-[#C9A227] transition-colors"
+                  >
+                    +91 9994316559
+                  </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <Mail className="w-4 h-4 mt-0.5" style={{ color: '#C9A227' }} />
-                <a href="mailto:srinidhicatering10@gmail.com" className="text-white/50 text-sm hover:text-[#C9A227] transition-colors">srinidhicatering10@gmail.com</a>
+                <Mail className="w-4 h-4 mt-0.5" style={{ color: "#C9A227" }} />
+                <a
+                  href="mailto:srinidhicatering10@gmail.com"
+                  className="text-white/50 text-sm hover:text-[#C9A227] transition-colors"
+                >
+                  srinidhicatering10@gmail.com
+                </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 mt-0.5" style={{ color: '#C9A227' }} />
-                <p className="text-white/50 text-sm">B111, Manchester Grand, MG Rd<br />Coimbatore, TN 641004</p>
+                <MapPin
+                  className="w-4 h-4 mt-0.5"
+                  style={{ color: "#C9A227" }}
+                />
+                <p className="text-white/50 text-sm">
+                  B111, Manchester Grand, MG Rd
+                  <br />
+                  Coimbatore, TN 641004
+                </p>
               </li>
             </ul>
           </div>
@@ -129,7 +170,15 @@ const Footer = () => {
               © {currentYear} Sri Nidhi Catering. All rights reserved.
             </p>
             <p className="text-white/40 text-sm">
-              Website by <a href="https://www.berk-carp.com/" target="_blank" rel="noopener noreferrer" className="text-[#C9A227] hover:text-white transition-colors">berk-carp.com</a>
+              Website by{" "}
+              <a
+                href="https://www.berk-carp.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#C9A227] hover:text-white transition-colors"
+              >
+                berk-carp.com
+              </a>
             </p>
           </div>
         </div>
