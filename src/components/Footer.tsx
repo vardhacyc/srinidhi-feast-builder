@@ -1,4 +1,3 @@
-import { memo } from "react";
 import {
   Phone,
   Mail,
@@ -188,4 +187,4 @@ const Footer = () => {
   );
 };
 
-export default memo(Footer);
+export default Footer;

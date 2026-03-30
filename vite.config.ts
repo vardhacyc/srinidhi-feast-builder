@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode, isSsrBuild }) => ({
+export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
@@ -43,17 +43,9 @@ export default defineConfig(({ mode, isSsrBuild }) => ({
     minify: "esbuild",
     // Generate sourcemaps for debugging
     sourcemap: false,
-    // Mobile-specific optimizations: reduce initial bundle size
-    target: "es2020",
-    // Improve tree-shaking
-    treeShaking: true,
   },
   // Optimize dependencies
   optimizeDeps: {
     include: ["react", "react-dom", "react-router-dom"],
-  },
-  // SSR build optimizations (keep separate for SSR scenarios)
-  ssr: {
-    noExternal: ["lucide-react"],
   },
 }));

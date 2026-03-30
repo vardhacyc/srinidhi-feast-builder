@@ -64,10 +64,6 @@ const Header = () => {
               src="/cateringLogo.png"
               alt="Sri Nidhi Catering"
               className="w-10 h-10 object-contain"
-              loading="eager"
-              fetchPriority="high"
-              width="40"
-              height="40"
             />
             <div className="hidden sm:block">
               <span

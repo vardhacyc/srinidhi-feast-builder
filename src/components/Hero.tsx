@@ -25,7 +25,6 @@ const Hero = () => {
           className="w-full h-full object-cover opacity-40"
           loading="eager"
           fetchPriority="high"
-          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black"></div>
       </div>
@@ -76,7 +75,6 @@ const Hero = () => {
             className="relative z-10 w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 object-contain mx-auto"
             loading="eager"
             fetchPriority="high"
-            decoding="async"
             style={{
               filter: "drop-shadow(0 0 25px rgba(201, 162, 39, 0.4))",
             }}
