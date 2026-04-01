@@ -154,13 +154,13 @@ const Footer = () => {
                   style={{ color: "#C9A227" }}
                 />
                 <p className="text-white/50 text-sm">
-                  No. 4, Saradhi Nagar, 
+                  4, Sarathi Nagar, 
                   <br />
-                  Nandhanagar Road, Periyar Nagar, 
+                  Main Rd, Nandha Nagar, 
                    <br />
-                   Lakshmipuram, Singanallur,  
+                  Singanallur, Coimbatore,  
                     <br />
-                    Coimbatore, Tamil Nadu - 641006.
+                    Tamil Nadu - 641005.
                 </p>
               </li>
             </ul>
