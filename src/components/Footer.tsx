@@ -4,7 +4,6 @@ import {
   MapPin,
   Facebook,
   Instagram,
-  Twitter,
 } from "lucide-react";
 
 const Footer = () => {
@@ -70,19 +69,30 @@ const Footer = () => {
               impeccable service since 2008.
             </p>
             <div className="flex gap-4">
-              {[Facebook, Instagram, Twitter].map((Icon, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-[#C9A227]/20"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.05)",
-                    border: "1px solid rgba(255, 255, 255, 0.1)",
-                  }}
-                >
-                  <Icon className="w-4 h-4 text-white/70" />
-                </a>
-              ))}
+              <a
+                href="https://www.facebook.com/share/1HhCqdiL7f/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-[#C9A227]/20"
+                style={{
+                  background: "rgba(255, 255, 255, 0.05)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                }}
+              >
+                <Facebook className="w-4 h-4 text-white/70" />
+              </a>
+              <a
+                href="https://www.instagram.com/srinidhicatering10?igsh=czhwdzdmandidmIy&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-[#C9A227]/20"
+                style={{
+                  background: "rgba(255, 255, 255, 0.05)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                }}
+              >
+                <Instagram className="w-4 h-4 text-white/70" />
+              </a>
             </div>
           </div>
 
