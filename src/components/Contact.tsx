@@ -18,7 +18,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: ['B111, Manchester Grand, MG Rd', 'Coimbatore, TN 641004'],
+      details: ['4, Sarathi Nagar, Main Rd', 'Nandha Nagar, Singanallur', 'Coimbatore, Tamil Nadu  641005.'],
     },
     {
       icon: Clock,
