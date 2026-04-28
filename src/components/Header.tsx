@@ -17,7 +17,76 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+useEffect(() => {
+  const handleScroll = () => {
+    setIsScrolled(window.scrollY > 50);
+  };
 
+  window.addEventListener("scroll", handleScroll);
+
+  // Schema JSON-LD
+  const schemaId = "sri-nidhi-catering-schema";
+
+  if (!document.getElementById(schemaId)) {
+    const script = document.createElement("script");
+    script.id = schemaId;
+    script.type = "application/ld+json";
+    script.innerHTML = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CateringService",
+      name: "Sri Nidhi Catering",
+      image: "https://www.srinidhicatering.co.in/cateringLogo.png",
+      "@id": "https://www.srinidhicatering.co.in/",
+      url: "https://www.srinidhicatering.co.in/",
+      telephone: "+91-87601 01010",
+      priceRange: "₹₹",
+      description:
+        "Professional catering services for weddings, corporate events, and special occasions. Serving quality food with hygienic preparation and reliable service.",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress:
+          "No. 4, Sarathi Nagar, Main Rd, Nandha Nagar, Singanallur",
+        addressLocality: "Coimbatore",
+        addressRegion: "Tamil Nadu",
+        postalCode: "641005",
+        addressCountry: "IN",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: "11.002077663922416",
+        longitude: "77.03944586971676",
+      },
+      areaServed: {
+        "@type": "Place",
+        name: "Coimbatore",
+      },
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "08:00",
+        closes: "21:00",
+      },
+      sameAs: [
+        "https://www.facebook.com/srinidhicaterin/",
+        "https://www.instagram.com/srinidhicatering10?igsh=czhwdzdmandidmIy&utm_source=qr",
+      ],
+    });
+
+    document.head.appendChild(script);
+  }
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
