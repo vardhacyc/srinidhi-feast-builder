@@ -53,7 +53,7 @@ Successfully enhanced the catering logo with bigger size, smooth hover animation
 ## 📱 **Meta Tags Update:**
 
 ### **SEO Improvements:**
-- **Title**: "Sri Nidhi Catering - Premium Catering Services | Coimbatore"
+- **Title**: "Best Catering Services in Coimbatore | Sri Nidhi Catering"
 - **Description**: Comprehensive catering services description
 - **OpenGraph**: Logo image for social media sharing
 - **Twitter Cards**: Enhanced social media preview
