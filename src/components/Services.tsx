@@ -4,38 +4,38 @@ const Services = () => {
   const services = [
     {
       icon: Utensils,
-      title: 'Wedding Catering',
-      description: 'Premium South Indian wedding feasts',
+      title: 'Wedding Catering in Coimbatore',
+      description: 'Traditional South Indian wedding meals with full banana leaf service, live counters, and experienced serving staff for 100 to 10,000+ guests',
       image: '/a3_demo.jpg',
     },
     {
       icon: Building,
-      title: 'Corporate Events',
-      description: 'Professional catering solutions',
+      title: 'Corporate Event Catering Coimbatore',
+      description: 'Reliable catering for office lunches, seminars, product launches, and team events. Punctual delivery, professional setup, and clean serving.',
       image: '/a2.jpg',
     },
     {
       icon: Cake,
-      title: 'Birthday Parties',
-      description: 'Celebrations made delicious',
+      title: 'Birthday & Family Function Catering',
+      description: 'Special home catering services for birthdays, anniversaries, and gatherings. Customisable menus to suit every family preference.',
       image: '/a4_outdoor.jpg',
     },
     {
       icon: PartyPopper,
-      title: 'House Warming',
-      description: 'Traditional auspicious meals',
+      title: 'Housewarming & Traditional Functions',
+      description: 'Traditional catering services for housewarming, Seemantham, Valaikappu, poojas, and family functions with fresh food and smooth serving.',
       image: '/a1_award.jpg',
     },
     {
       icon: Users,
       title: 'Destination Weddings',
-      description: 'Nilgiri & hill station specialists',
+      description: 'Delicious catering services for destination weddings at resorts, beaches, and outdoor venues with customised menus and smooth serving.',
       image: '/celebrity-wedding.png',
     },
     {
       icon: Coffee,
       title: 'Live Counters',
-      description: 'Interactive cooking stations',
+      description: 'Enjoy fresh and hot dishes with live food counters featuring dosas, chats, grills, and desserts for a fun dining experience.',
       image: '/a3_demo.jpg',
     }
   ];

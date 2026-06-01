@@ -1,0 +1,63 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you provide vegetarian and non-vegetarian menus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we offer both pure vegetarian catering and non-vegetarian catering menus. All menus are fully customisable. We also handle mixed events with separate veg and non-veg counters."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What types of catering services are available in Coimbatore?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Caterers in Coimbatore provide services for weddings, birthdays, corporate events, housewarming functions, receptions, and traditional family celebrations. Both veg and non-veg menu options with buffet and banana leaf service are available."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Veg catering services in Coimbatore with price list?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pure veg catering services for all events, starting from ₹200 per plate with customizable menu options. "
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide buffet setup and serving staff?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, buffet setup and professional serving staff can be arranged."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide catering services for small functions in Coimbatore?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we offer catering services for small gatherings, family functions, birthday parties, and intimate events with customizable veg menus."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes your catering service special?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We provide tasty, hygienic food and smooth catering service for all types of events with customised menu options."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you have experience in cooking and serving fresh food for large gatherings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we have experience in preparing and serving fresh, delicious food for small and large gatherings with quality and hygiene."
+      }
+    }
+    
+  ]
+}

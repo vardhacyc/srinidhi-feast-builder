@@ -8,9 +8,11 @@ import About from '../components/About';
 import Services from '../components/Services';
 import Gallery from '../components/Gallery';
 import Testimonials from '../components/Testimonials';
+import FAQ from '../components/FAQ';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import LoadingScreen from '../components/LoadingScreen';
+import Intro from '@/components/intro';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,13 +29,16 @@ const Index = () => {
       >
         <Header />
         <Hero />
+        <Intro />
         <ImageShowcase />
-        <CelebrityShowcase />
+        
         <About />
         <Services />
         <Gallery />
         <Testimonials />
+        
         <Contact />
+        <FAQ />
         <Footer />
       </div>
     </>
