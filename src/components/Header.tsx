@@ -14,8 +14,12 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const navLinks = [
@@ -30,16 +34,23 @@ const Header = () => {
   const scrollToSection = (href: string) => {
     if (location.pathname !== "/") {
       navigate("/");
+
       setTimeout(() => {
         const element = document.querySelector(href);
+
         if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
+          element.scrollIntoView({
+            behavior: "smooth",
+          });
         }
       }, 100);
     } else {
       const element = document.querySelector(href);
+
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        element.scrollIntoView({
+          behavior: "smooth",
+        });
       }
     }
 
@@ -56,6 +67,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
+          {/* Logo */}
           <button
             onClick={() => scrollToSection("#home")}
             className="flex items-center gap-3"
@@ -65,6 +77,7 @@ const Header = () => {
               alt="Sri Nidhi Catering"
               className="w-10 h-10 object-contain"
             />
+
             <div className="hidden sm:block">
               <span
                 className="text-xl font-light tracking-wide text-white"
@@ -72,6 +85,7 @@ const Header = () => {
               >
                 Sri Nidhi
               </span>
+
               <span
                 className="text-xs ml-2 tracking-[0.2em] uppercase"
                 style={{ color: "#C9A227" }}
@@ -81,6 +95,7 @@ const Header = () => {
             </div>
           </button>
 
+          {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) =>
               link.href.startsWith("#") ? (
@@ -115,14 +130,21 @@ const Header = () => {
             </Link>
           </nav>
 
+          {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-6">
             <a
               href="tel:+918760101010"
               className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
             >
-              <Phone className="w-4 h-4" style={{ color: "#C9A227" }} />
-              <span className="text-sm font-light">+91 87601 01010</span>
+              <Phone
+                className="w-4 h-4"
+                style={{ color: "#C9A227" }}
+              />
+              <span className="text-sm font-light">
+                +91 87601 01010
+              </span>
             </a>
+
             <Button
               onClick={() => scrollToSection("#contact")}
               className="font-medium px-6 py-5 tracking-wide transition-all duration-300 hover:scale-105 border-0"
@@ -135,6 +157,7 @@ const Header = () => {
             </Button>
           </div>
 
+          {/* Mobile Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 text-white"
@@ -147,18 +170,22 @@ const Header = () => {
           </button>
         </div>
 
+        {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-20 left-0 right-0 bg-black/98 backdrop-blur-xl border-b border-white/10">
-            <nav className="container mx-auto px-6 py-8" style={{ background:"black" }}>
-              <div className="space-y-6">
+          <div className="lg:hidden absolute top-20 left-0 right-0 bg-black border-b border-white/10 shadow-2xl">
+            <nav
+              className="container mx-auto px-5 py-6"
+              style={{ background: "#000" }}
+            >
+              <div className="max-w-xs mx-auto">
                 {/* Navigation Links */}
-                <div className="space-y-4">
+                <div className="flex flex-col gap-1">
                   {navLinks.map((link) =>
                     link.href.startsWith("#") ? (
                       <button
                         key={link.name}
                         onClick={() => scrollToSection(link.href)}
-                        className="w-full text-left py-4 px-3 text-white/80 hover:text-white transition-colors duration-300 font-medium text-base"
+                        className="w-full text-left px-4 py-3 text-sm text-white/80 hover:text-[#C9A227] transition-colors duration-300 rounded-lg"
                       >
                         {link.name}
                       </button>
@@ -166,8 +193,10 @@ const Header = () => {
                       <Link
                         key={link.name}
                         to={link.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="w-full text-left py-4 px-3 text-white/80 hover:text-white transition-colors duration-300 font-medium text-base"
+                        onClick={() =>
+                          setIsMobileMenuOpen(false)
+                        }
+                        className="w-full text-left px-4 py-3 text-sm text-white/80 hover:text-[#C9A227] transition-colors duration-300 rounded-lg block"
                       >
                         {link.name}
                       </Link>
@@ -176,18 +205,20 @@ const Header = () => {
                 </div>
 
                 {/* Divider */}
-                <div className="border-t border-white/5 my-6"></div>
+                <div className="border-t border-white/10 my-5"></div>
 
-                {/* Call to Action Buttons */}
-                <div className="space-y-4">
+                {/* CTA Buttons */}
+                <div className="flex flex-col gap-3">
                   <Link
                     to="/menu-builder"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="w-full text-center py-4 px-3 font-medium text-base transition-all duration-300 hover:text-[#0A0A0A]"
+                    onClick={() =>
+                      setIsMobileMenuOpen(false)
+                    }
+                    className="w-full text-center py-3 px-4 font-medium text-sm transition-all duration-300"
                     style={{
                       background: "#C9A227",
                       color: "#0A0A0A",
-                      borderRadius: "12px",
+                      borderRadius: "10px",
                     }}
                   >
                     Build Your Menu
@@ -198,12 +229,14 @@ const Header = () => {
                       scrollToSection("#contact");
                       setIsMobileMenuOpen(false);
                     }}
-                    className="w-full py-4 px-3 font-medium text-base transition-all duration-300 hover:scale-105 border-0"
+                    className="w-full py-3 px-4 font-medium text-sm border-0"
                     style={{
-                      background: "rgba(201, 162, 39, 0.15)",
+                      background:
+                        "rgba(201, 162, 39, 0.12)",
                       color: "#C9A227",
-                      border: "1px solid rgba(201, 162, 39, 0.3)",
-                      borderRadius: "12px",
+                      border:
+                        "1px solid rgba(201, 162, 39, 0.3)",
+                      borderRadius: "10px",
                     }}
                   >
                     Book Now
