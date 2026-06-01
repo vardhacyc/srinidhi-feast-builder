@@ -15,13 +15,13 @@ const Intro = () => {
             <div className="w-12 h-px bg-[#C9A227]"></div>
           </div>
 
-          <h2
+          <h1
             className="text-3xl md:text-4xl lg:text-5xl font-light text-white mb-8"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Professional Catering Services in{" "}
             <span className="italic text-[#C9A227]">Coimbatore</span>
-          </h2>
+          </h1>
         </div>
 
         {/* Content */}

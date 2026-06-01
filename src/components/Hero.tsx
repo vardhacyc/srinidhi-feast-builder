@@ -82,7 +82,7 @@ const Hero = () => {
         </div>
 
         {/* Main Headline - tighter spacing */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-3 leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-3 leading-tight">
           <span className="block">Premium Gourmet</span>
           <span
             className="block font-serif italic"
@@ -93,7 +93,7 @@ const Hero = () => {
           >
             Catering Excellence
           </span>
-        </h1>
+        </h2>
 
         {/* Subheadline - concise */}
         <p className="text-base md:text-lg text-white/60 max-w-xl mx-auto mb-8 font-light leading-relaxed">
