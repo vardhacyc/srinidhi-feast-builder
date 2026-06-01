@@ -30,14 +30,14 @@ const Intro = () => {
             Sri Nidhi Catering provides professional catering services in Coimbatore for weddings, receptions, corporate events, birthday parties, and family functions. We are committed to delivering delicious food, hygienic preparation, and friendly service that make every event special and memorable.
           </p>
 
-          <p className="text-lg leading-relaxed text-white/60">
+          {/* <p className="text-lg leading-relaxed text-white/60">
             Our catering team offers a wide variety of menu options including traditional South Indian meals, customised dishes, vegetarian and non-vegetarian catering, and special event packages to match your taste and budget.
           </p>
 
           <p className="text-lg leading-relaxed text-white/60">
             At Sri Nithi Catering, we focus on quality, freshness, timely service, and customer satisfaction. From small family gatherings to large celebrations, we ensure smooth catering service with great taste and professional hospitality for all occasions.
 
-          </p>
+          </p> */}
         </div>
 
         {/* Highlight Box */}
