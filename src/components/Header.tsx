@@ -149,48 +149,66 @@ const Header = () => {
 
         {isMobileMenuOpen && (
           <div className="lg:hidden absolute top-20 left-0 right-0 bg-black/98 backdrop-blur-xl border-b border-white/10">
-            <nav className="container mx-auto px-4 py-6">
-              <div className="flex flex-col gap-4">
-                {navLinks.map((link) =>
-                  link.href.startsWith("#") ? (
-                    <button
-                      key={link.name}
-                      onClick={() => scrollToSection(link.href)}
-                      className="text-left py-3 text-white/70 hover:text-[#C9A227] transition-colors border-b border-white/5"
-                    >
-                      {link.name}
-                    </button>
-                  ) : (
-                    <Link
-                      key={link.name}
-                      to={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-left py-3 text-white/70 hover:text-[#C9A227] transition-colors border-b border-white/5"
-                    >
-                      {link.name}
-                    </Link>
-                  ),
-                )}
+            <nav className="container mx-auto px-6 py-8" style={{ background:"black" }}>
+              <div className="space-y-6">
+                {/* Navigation Links */}
+                <div className="space-y-4">
+                  {navLinks.map((link) =>
+                    link.href.startsWith("#") ? (
+                      <button
+                        key={link.name}
+                        onClick={() => scrollToSection(link.href)}
+                        className="w-full text-left py-4 px-3 text-white/80 hover:text-white transition-colors duration-300 font-medium text-base"
+                      >
+                        {link.name}
+                      </button>
+                    ) : (
+                      <Link
+                        key={link.name}
+                        to={link.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="w-full text-left py-4 px-3 text-white/80 hover:text-white transition-colors duration-300 font-medium text-base"
+                      >
+                        {link.name}
+                      </Link>
+                    ),
+                  )}
+                </div>
 
-                <Link
-                  to="/menu-builder"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-left py-3 font-medium transition-colors border-b border-white/5"
-                  style={{ color: "#C9A227" }}
-                >
-                  Build Your Menu →
-                </Link>
+                {/* Divider */}
+                <div className="border-t border-white/5 my-6"></div>
 
-                <Button
-                  onClick={() => scrollToSection("#contact")}
-                  className="mt-4 py-6 font-medium tracking-wide border-0"
-                  style={{
-                    background: "#C9A227",
-                    color: "#0A0A0A",
-                  }}
-                >
-                  Book Now
-                </Button>
+                {/* Call to Action Buttons */}
+                <div className="space-y-4">
+                  <Link
+                    to="/menu-builder"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="w-full text-center py-4 px-3 font-medium text-base transition-all duration-300 hover:text-[#0A0A0A]"
+                    style={{
+                      background: "#C9A227",
+                      color: "#0A0A0A",
+                      borderRadius: "12px",
+                    }}
+                  >
+                    Build Your Menu
+                  </Link>
+
+                  <Button
+                    onClick={() => {
+                      scrollToSection("#contact");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full py-4 px-3 font-medium text-base transition-all duration-300 hover:scale-105 border-0"
+                    style={{
+                      background: "rgba(201, 162, 39, 0.15)",
+                      color: "#C9A227",
+                      border: "1px solid rgba(201, 162, 39, 0.3)",
+                      borderRadius: "12px",
+                    }}
+                  >
+                    Book Now
+                  </Button>
+                </div>
               </div>
             </nav>
           </div>

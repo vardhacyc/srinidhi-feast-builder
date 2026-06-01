@@ -3,6 +3,7 @@ import { Coffee, Sun, Moon, Cookie, Cake } from 'lucide-react';
 
 const Menu = () => {
   const [activeCategory, setActiveCategory] = useState('breakfast');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const categories = [
     { id: 'breakfast', label: 'Breakfast', icon: Sun },
@@ -58,7 +59,21 @@ const Menu = () => {
     <section id="menu" className="relative py-24 overflow-hidden bg-[#0A0A0A]">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 relative">
+          {/* Mobile Menu Button (Three Dots) */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="absolute right-0 top-1/2 -translate-y-1/2 block md:hidden mobile-menu-button"
+            aria-label="Open menu"
+          >
+            <div className="h-5 w-5 flex flex-col space-y-1">
+              <div className="h-0.5 w-3 bg-white"></div>
+              <div className="h-0.5 w-3 bg-white"></div>
+              <div className="h-0.5 w-3 bg-white"></div>
+            </div>
+          </button>
+
+          {/* Section Header Content */}
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#C9A227]"></div>
             <span className="text-sm tracking-[0.3em] uppercase" style={{ color: '#C9A227' }}>
@@ -76,8 +91,8 @@ const Menu = () => {
           </h2>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        {/* Category Tabs (Desktop) */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12 hidden md:block">
           {categories.map((category) => (
             <button
               key={category.id}
@@ -95,6 +110,25 @@ const Menu = () => {
             </button>
           ))}
         </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="absolute left-0 right-0 mt-2 bg-white border border-white/20 rounded-md shadow-lg z-10 w-full max-w-xs mx-auto">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => {
+                  setActiveCategory(category.id);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full text-left px-4 py-3 border-b border-white/10 hover:bg-gray-50 transition-colors"
+              >
+                <category.icon className="w-4 h-4 mr-3 text-black" />
+                <span className="text-black">{category.label}</span>
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Menu Items Grid */}
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
